@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Geist';
-  src: url('/fonts/Geist-Variable.woff2') format('woff2');
+  src: url('../fonts/Geist-Variable.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -12,13 +12,13 @@
 
 @font-face {
   font-family: 'Geist Mono';
-  src: url('/fonts/GeistMono-Variable.woff2') format('woff2');
+  src: url('../fonts/GeistMono-Variable.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
-/* ===== Theme — BYAIME Dark Minimalist Studio ===== */
+/* ===== Theme — Dark (Linear-inspired) ===== */
 
 @theme {
   --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
@@ -45,71 +45,6 @@ body {
   font-family: var(--font-sans);
   background-color: var(--color-background);
   color: var(--color-foreground);
-}
-
-/* ===== Selection & Scrollbar ===== */
-::selection {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
-}
-
-/* ===== Custom Utilities & Components ===== */
-
-.glow-card {
-  background-image: radial-gradient(80% 50% at 50% 0%, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
-}
-
-.glow-subtle {
-  box-shadow: 0 0 30px -10px rgba(255, 255, 255, 0.12);
-}
-
-.glow-active {
-  box-shadow: 0 0 25px -5px rgba(255, 255, 255, 0.25);
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ===== Interactive Module Pills & Chips ===== */
-
-.tag-removable {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  background-color: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  transition: all 0.2s ease;
-}
-
-.tag-removable:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.tag-remove-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 9999px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #a1a1aa;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.tag-remove-btn:hover {
-  background-color: rgba(239, 68, 68, 0.3);
-  color: #fca5a5;
 }
 
 /* ===== Scroll Animations ===== */
@@ -166,7 +101,7 @@ body {
 [data-delay="4"] { transition-delay: 400ms; }
 [data-delay="5"] { transition-delay: 500ms; }
 
-/* JS-off fallback */
+/* JS-off fallback: elements visible when JS hasn't loaded */
 html:not(.js) [data-animate] {
   opacity: 1;
   transform: none;
@@ -220,32 +155,11 @@ html:not(.js) [data-animate] {
   50% { opacity: 1; }
 }
 
-@keyframes pulse-subtle {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.04); opacity: 1; }
-}
-
-.animate-pulse-subtle {
-  animation: pulse-subtle 3s ease-in-out infinite;
-}
-
-@keyframes soundwave {
-  0%, 100% { height: 4px; }
-  50% { height: 18px; }
-}
-
-.bar-1 { animation: soundwave 1.2s ease-in-out infinite; }
-.bar-2 { animation: soundwave 0.8s ease-in-out infinite 0.2s; }
-.bar-3 { animation: soundwave 1.4s ease-in-out infinite 0.4s; }
-.bar-4 { animation: soundwave 1.0s ease-in-out infinite 0.1s; }
-.bar-5 { animation: soundwave 1.3s ease-in-out infinite 0.3s; }
-
 @media (prefers-reduced-motion: reduce) {
   .hero-ring-1,
   .hero-ring-2,
-  .hero-knob,
-  .animate-pulse-subtle,
-  .bar-1, .bar-2, .bar-3, .bar-4, .bar-5 {
-    animation: none !important;
+  .hero-knob {
+    animation: none;
   }
 }
+
