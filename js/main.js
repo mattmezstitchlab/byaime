@@ -1,13 +1,52 @@
-/* ===== BYAIME — Studio & Laboratoire Expérimental — main.js ===== */
-/* Handles: navigation, scroll animations, modals, configurateur intelligent, galerie filters */
+/* ===== BYAIME — Studio & Laboratoire d'Expériences — main.js ===== */
+/* Handles: MVP Configurateur Intelligent, Prototypes Interactifs, Galerie Modales, Persistance & Analytics */
 
 (function () {
   'use strict';
 
-  // Mark JS as available (enables animation hiding via CSS)
+  // Mark JS as available
   document.documentElement.classList.add('js');
 
-  // ===== Hero Ring Overlap Glow =====
+  // ===== Internal Analytics Hook (Simple Event Bus) =====
+  window.trackBYAIME = function (eventName, eventData) {
+    var payload = {
+      event: eventName,
+      data: eventData || {},
+      timestamp: new Date().toISOString()
+    };
+    if (window.BYAIME_DEBUG) {
+      console.log('[BYAIME Analytics]', payload);
+    }
+    // Custom event dispatched for any future integration (Plausible, PostHog, Vercel Analytics)
+    try {
+      window.dispatchEvent(new CustomEvent('byaime_event', { detail: payload }));
+    } catch (e) {}
+  };
+
+  // ===== Local Storage Draft Manager =====
+  var STORAGE_KEY = 'byaime_project_draft_v1';
+  var BYAIME_Storage = {
+    save: function (data) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch (e) {}
+    },
+    load: function () {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        return null;
+      }
+    },
+    clear: function () {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch (e) {}
+    }
+  };
+
+  // ===== Hero Ring Glow Animation =====
   (function () {
     var glow = document.getElementById('overlap-glow');
     if (!glow) return;
@@ -26,9 +65,7 @@
       var s1 = Math.max(0, 1 - Math.abs(knob1x - overlapCenter) / range);
       var s2 = Math.max(0, 1 - Math.abs(knob2x - overlapCenter) / range);
 
-      var brightness = s1 * s2;
-      glow.setAttribute('opacity', brightness * 0.12);
-
+      glow.setAttribute('opacity', s1 * s2 * 0.12);
       requestAnimationFrame(tick);
     }
 
@@ -232,7 +269,114 @@
     });
   });
 
-  // ===== Filter Galerie Projets =====
+  // ===== PROTOTYPES INTERACTIFS (/projets & Accueil) =====
+  document.addEventListener('DOMContentLoaded', function () {
+    // 1. Mini Timeline interactive
+    document.querySelectorAll('[data-interactive-timeline]').forEach(function (timeline) {
+      var steps = timeline.querySelectorAll('[data-timeline-step]');
+      var infoDisplay = timeline.querySelector('[data-timeline-info]');
+
+      steps.forEach(function (step) {
+        step.addEventListener('click', function () {
+          steps.forEach(function (s) {
+            s.classList.remove('bg-pink-500/20', 'border-pink-500', 'text-white', 'scale-105');
+            s.classList.add('bg-white/5', 'border-white/10', 'text-muted-foreground');
+          });
+          step.classList.remove('bg-white/5', 'border-white/10', 'text-muted-foreground');
+          step.classList.add('bg-pink-500/20', 'border-pink-500', 'text-white', 'scale-105');
+
+          var title = step.getAttribute('data-timeline-title');
+          var time = step.getAttribute('data-timeline-time');
+          var desc = step.getAttribute('data-timeline-desc');
+
+          if (infoDisplay) {
+            infoDisplay.innerHTML = '<div class="flex justify-between items-baseline"><span class="font-semibold text-white">' + title + '</span><span class="font-mono text-pink-300 text-xs">' + time + '</span></div><p class="text-xs text-muted-foreground mt-1">' + desc + '</p>';
+          }
+        });
+      });
+    });
+
+    // 2. Mini Lecteur Musique Interactif
+    document.querySelectorAll('[data-interactive-player]').forEach(function (player) {
+      var playBtn = player.querySelector('[data-player-toggle]');
+      var statusText = player.querySelector('[data-player-status]');
+      var bars = player.querySelectorAll('.bar-1, .bar-2, .bar-3, .bar-4, .bar-5');
+      var isPlaying = true;
+
+      if (playBtn) {
+        playBtn.addEventListener('click', function () {
+          isPlaying = !isPlaying;
+          if (isPlaying) {
+            playBtn.innerHTML = '<svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+            if (statusText) statusText.textContent = 'En lecture';
+            bars.forEach(function (b) { b.style.animationPlayState = 'running'; });
+          } else {
+            playBtn.innerHTML = '<svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+            if (statusText) statusText.textContent = 'En pause';
+            bars.forEach(function (b) { b.style.animationPlayState = 'paused'; });
+          }
+        });
+      }
+    });
+
+    // 3. Mini Recherche Invités & Table Plan
+    document.querySelectorAll('[data-guest-lookup]').forEach(function (widget) {
+      var input = widget.querySelector('[data-guest-input]');
+      var result = widget.querySelector('[data-guest-result]');
+      var guestsDatabase = [
+        { name: 'Claire', table: 'Table Orion (Place 1)', status: 'RSVP Confirmé' },
+        { name: 'Antoine', table: 'Table Orion (Place 2)', status: 'RSVP Confirmé' },
+        { name: 'Camille', table: 'Table Cassiopée (Place 4)', status: 'RSVP Confirmé' },
+        { name: 'Sophie', table: 'Table Pégase (Place 3)', status: 'RSVP En attente' },
+        { name: 'Thomas', table: 'Table Cassiopée (Place 5)', status: 'RSVP Confirmé' }
+      ];
+
+      if (input && result) {
+        input.addEventListener('input', function () {
+          var query = input.value.trim().toLowerCase();
+          if (!query) {
+            result.innerHTML = '<p class="text-xs text-muted-foreground italic">Tapez un prénom pour tester la recherche d\'invité...</p>';
+            return;
+          }
+          var match = guestsDatabase.find(function (g) {
+            return g.name.toLowerCase().indexOf(query) !== -1;
+          });
+          if (match) {
+            result.innerHTML = '<div class="flex justify-between items-center p-2 rounded-lg bg-white/10 text-xs"><span class="text-white font-medium">' + match.name + '</span><span class="text-pink-300 font-mono">' + match.table + '</span></div>';
+          } else {
+            result.innerHTML = '<p class="text-xs text-muted-foreground">Aucun invité trouvé pour "' + query + '".</p>';
+          }
+        });
+      }
+    });
+
+    // 4. Mini Bougie Mémorielle
+    document.querySelectorAll('[data-candle-widget]').forEach(function (widget) {
+      var candleBtn = widget.querySelector('[data-candle-btn]');
+      var countEl = widget.querySelector('[data-candle-count]');
+      var candleFlame = widget.querySelector('[data-candle-flame]');
+      var count = 312;
+      var hasLit = false;
+
+      if (candleBtn && countEl) {
+        candleBtn.addEventListener('click', function () {
+          if (!hasLit) {
+            hasLit = true;
+            count++;
+            countEl.textContent = count + ' pensées déposées';
+            candleBtn.textContent = '✓ Pensée déposée avec douceur';
+            candleBtn.classList.add('bg-amber-500/20', 'text-amber-300', 'border-amber-400');
+            if (candleFlame) {
+              candleFlame.classList.remove('opacity-40');
+              candleFlame.classList.add('opacity-100', 'animate-pulse');
+            }
+          }
+        });
+      }
+    });
+  });
+
+  // ===== Filter Galerie Projets (/projets) =====
   document.addEventListener('DOMContentLoaded', function () {
     var filterButtons = document.querySelectorAll('[data-filter-btn]');
     var projectCards = document.querySelectorAll('[data-project-category]');
@@ -263,10 +407,167 @@
     });
   });
 
-  // ===== Configurateur Intelligent BYAIME (/projet) =====
+  // ===== CONFIGURATEUR INTELLIGENT BYAIME (/projet) =====
   document.addEventListener('DOMContentLoaded', function () {
     var configContainer = document.getElementById('byaime-configurator');
     if (!configContainer) return;
+
+    // Presets & Rule-based Suggestion Engine
+    var enginePresets = {
+      mariage: {
+        label: 'Mariage',
+        categoryName: 'Mariage Singulier',
+        badge: 'Univers Amour & Célébration',
+        suggestedTitle: 'Le Grand Jour — L\'expérience vivante',
+        artDirectionDefault: 'Poétique & Élégante',
+        artDirectionDesc: 'Tons chauds, typographie raffinée, constellation céleste interactive, ambiance sonore douce.',
+        architecture: ['Accueil poétique', 'Timeline du Jour J', 'Invités & Tables', 'Musique & Boîte à sons', 'Galerie photo & Souvenirs', 'Livre d\'or vocal', 'Guide & Hébergements'],
+        signatureFeature: 'Une Timeline vivante synchronisée qui transforme chaque moment du mariage en expérience partagée.',
+        defaultModules: ['Timeline du Jour J', 'RSVP sans mot de passe', 'Profils invités', 'Plan de table interactif', 'Musique & Playlist', 'Galerie photo HD', 'Livre d\'or vocal', 'Souvenirs & Archives', 'Prestataires & Guide', 'Carte interactive'],
+        allPossibleModules: [
+          'Timeline du Jour J', 'RSVP sans mot de passe', 'Profils invités', 'Plan de table interactif',
+          'Musique & Playlist', 'Galerie photo HD', 'Livre d\'or vocal', 'Souvenirs & Archives',
+          'Prestataires & Guide', 'Carte interactive', 'Compte à rebours céleste', 'Cagnotte de voyage'
+        ]
+      },
+      ceremonie: {
+        label: 'Cérémonie d\'adieu',
+        categoryName: 'Hommage & Mémorial',
+        badge: 'Mémorial Poétique & Apaisant',
+        suggestedTitle: 'La Trace & Le Souvenir — Mémorial Vivant',
+        artDirectionDefault: 'Sobriété & Délicatesse',
+        artDirectionDesc: 'Clair-obscur apaisant, contrastes doux, respiration visuelle généreuse, sobriété mémorielle.',
+        architecture: ['Espace de recueillement', 'Portrait & Biographie', 'Programme & Retransmission', 'Témoignages & Récits', 'Bougies virtuelles', 'Livret mémoriel imprimable'],
+        signatureFeature: 'Une bougie virtuelle du souvenir reliant les pensées des proches du monde entier.',
+        defaultModules: ['Programme & Retransmission', 'Hommage & Portrait', 'Galerie d\'archives privées', 'Musique & Pièces d\'époque', 'Témoignages & Condoléances', 'Livre de souvenirs', 'Messages privés pour la famille', 'Livret numérique imprimable'],
+        allPossibleModules: [
+          'Programme & Retransmission', 'Hommage & Portrait', 'Galerie d\'archives privées',
+          'Musique & Pièces d\'époque', 'Témoignages & Condoléances', 'Livre de souvenirs',
+          'Messages privés pour la famille', 'Livret numérique imprimable', 'Arbre généalogique intime', 'Podcast de mémoire'
+        ]
+      },
+      anniversaire: {
+        label: 'Anniversaire',
+        categoryName: 'Anniversaire d\'Exception',
+        badge: 'Capsule Temporelle Interactive',
+        suggestedTitle: 'Capsule Temporelle — La Rétrospective',
+        artDirectionDefault: 'Vibrante & Cinématique',
+        artDirectionDesc: 'Contraste affirmé, micro-animations festives et élégantes, typographie expressive.',
+        architecture: ['Décompte & Énigmes', 'Frise des années marquantes', 'Playlist collaborative', 'Cagnotte élégante', 'Vidéos surprises secrètes'],
+        signatureFeature: 'Une capsule temporelle interactive à énigmes révélant les étapes de la fête au fil des jours.',
+        defaultModules: ['Frise chronologique', 'Révélation du lieu secret', 'Playlist collaborative', 'Cagnotte commune', 'Vidéos surprises', 'Dress-code & Guide', 'Trombinoscope des amis'],
+        allPossibleModules: [
+          'Frise chronologique', 'Révélation du lieu secret', 'Playlist collaborative',
+          'Cagnotte commune', 'Vidéos surprises', 'Dress-code & Guide', 'Trombinoscope des amis',
+          'Quiz interactif sur le fêté', 'Mur de dédicaces'
+        ]
+      },
+      evenement: {
+        label: 'Événement culturel',
+        categoryName: 'Événement & Festival',
+        badge: 'Scénographie Numérique Immersion',
+        suggestedTitle: 'Le Pavillon Numérique — Guide Vivant',
+        artDirectionDefault: 'Avant-Garde & Ultra-Rapide',
+        artDirectionDesc: 'Esthétique épurée, responsive ultra-fluide, mode hors-ligne instantané.',
+        architecture: ['Landing événementielle', 'Programme interactif', 'Artistes & Intervenants', 'Plan des scènes', 'Mon Agenda personnel', 'Billetterie fluide'],
+        signatureFeature: 'Un plan interactif en temps réel avec notifications des temps forts et agenda hors-ligne.',
+        defaultModules: ['Programme dynamique', 'Fiches artistes & intervenants', 'Plan & Cartographie des lieux', 'Billetterie sans friction', 'Mon agenda personnalisé', 'Alertes en direct le jour J', 'Accès hors-ligne PWA'],
+        allPossibleModules: [
+          'Programme dynamique', 'Fiches artistes & intervenants', 'Plan & Cartographie des lieux',
+          'Billetterie sans friction', 'Mon agenda personnalisé', 'Alertes en direct le jour J',
+          'Accès hors-ligne PWA', 'Partenaires & Mécènes', 'Podcast des coulisses'
+        ]
+      },
+      festival: {
+        label: 'Festival',
+        categoryName: 'Festival & Rassemblement',
+        badge: 'Scénographie Numérique Immersion',
+        suggestedTitle: 'L\'Expérience Festival — Live & Offline',
+        artDirectionDefault: 'Énergique & Immersive',
+        artDirectionDesc: 'Contrastes dynamiques, navigation au pouce pensée pour le plein air.',
+        architecture: ['Line-up interactif', 'Planning par scènes', 'Carte géolocalisée', 'Favoris & Alertes', 'Infos pratiques & Navettes'],
+        signatureFeature: 'Un système d\'agenda personnalisé fonctionnant à 100% sans connexion réseau.',
+        defaultModules: ['Programme dynamique', 'Fiches artistes', 'Carte des scènes', 'Billetterie', 'Agenda favoris', 'Alertes SMS/PWA', 'Infos pratiques'],
+        allPossibleModules: [
+          'Programme dynamique', 'Fiches artistes', 'Carte des scènes', 'Billetterie',
+          'Agenda favoris', 'Alertes SMS/PWA', 'Infos pratiques', 'Boutique du festival'
+        ]
+      },
+      artistique: {
+        label: 'Projet artistique',
+        categoryName: 'Art & Performance',
+        badge: 'Galerie Sensorielle & Laboratoire',
+        suggestedTitle: 'Matière & Lumière — Scénographie Numérique',
+        artDirectionDefault: 'Minimalisme Radical & Sound Design',
+        artDirectionDesc: 'Fond noir profond, sound design réactif, exploration haute fidélité.',
+        architecture: ['Scénographie générative', 'Exploration des œuvres', 'Notes d\'intention & Podcasts', 'Espace mécénat & Acquisition'],
+        signatureFeature: 'Une scénographie sonore générative qui réagit au mouvement du visiteur sur les œuvres.',
+        defaultModules: ['Scénographie interactive générative', 'Sound design immersif', 'Galerie d\'œuvres haute fidélité', 'Podcasts & Notes d\'intention', 'Espace mécénat & Acquisition'],
+        allPossibleModules: [
+          'Scénographie interactive générative', 'Sound design immersif', 'Galerie d\'œuvres haute fidélité',
+          'Podcasts & Notes d\'intention', 'Espace mécénat & Acquisition', 'Manifeste d\'artiste'
+        ]
+      },
+      association: {
+        label: 'Association',
+        categoryName: 'Cause & Collectif',
+        badge: 'Récit d\'Impact & Mobilisation',
+        suggestedTitle: 'Plateforme d\'Engagement & Récits Vivants',
+        artDirectionDefault: 'Chaleureuse & Affirmée',
+        artDirectionDesc: 'Clarté éditoriale, visuels humains, infographies vivantes d\'impact.',
+        architecture: ['Storytelling des bénéficiaires', 'Tableau d\'impact en direct', 'Module d\'adhésion & soutien', 'Manifeste citoyen'],
+        signatureFeature: 'Un visualiseur d\'impact reliant chaque engagement citoyen à une action concrète sur le terrain.',
+        defaultModules: ['Récits & Témoignages vivants', 'Visualiseur d\'impact en direct', 'Module de don & Adhésion', 'Manifeste & Ressources', 'Mur des soutiens & Volontaires', 'Agenda des actions'],
+        allPossibleModules: [
+          'Récits & Témoignages vivants', 'Visualiseur d\'impact en direct', 'Module de don & Adhésion',
+          'Manifeste & Ressources', 'Mur des soutiens & Volontaires', 'Agenda des actions', 'Espace presse'
+        ]
+      },
+      professionnel: {
+        label: 'Projet professionnel',
+        categoryName: 'Événement Pro & Lancement',
+        badge: 'Vitrine Singulière & Expérience',
+        suggestedTitle: 'Le Lancement Singulier — Vitrine d\'Impact',
+        artDirectionDefault: 'Statutaire & Épurée',
+        artDirectionDesc: 'Typographie de caractère, fluidité absolue, présentation chirurgicale.',
+        architecture: ['Présentation de l\'initiative', 'Programme & Keynotes', 'Intervenants', 'Networking & Inscription'],
+        signatureFeature: 'Une expérience de présentation sans friction ni temps de chargement.',
+        defaultModules: ['Programme & Keynotes', 'Profils des intervenants', 'Inscriptions VIP sans friction', 'Livre blanc & Ressources', 'Espace partenaires'],
+        allPossibleModules: [
+          'Programme & Keynotes', 'Profils des intervenants', 'Inscriptions VIP sans friction',
+          'Livre blanc & Ressources', 'Espace partenaires', 'Diffusion en direct'
+        ]
+      },
+      autre: {
+        label: 'Autre / Inclassable',
+        categoryName: 'Création Expérimentale Libre',
+        badge: 'Création Libre & Sur Mesure',
+        suggestedTitle: 'Univers Numérique Sur Mesure',
+        artDirectionDefault: 'Libre & Adaptative',
+        artDirectionDesc: 'Sculptée sur mesure selon la vision unique de votre projet.',
+        architecture: ['Accueil immersif', 'Dispositif signature', 'Modules sur mesure', 'Espace de contact & transmission'],
+        signatureFeature: 'Un dispositif interactif conçu de zéro pour votre besoin spécifique.',
+        defaultModules: ['Architecture sur mesure intégrale', 'Dispositif interactif signature', 'Storytelling & Design d\'émotion', 'Haute performance & Sécurité'],
+        allPossibleModules: [
+          'Architecture sur mesure intégrale', 'Dispositif interactif signature',
+          'Storytelling & Design d\'émotion', 'Haute performance & Sécurité', 'Lecteur sonore'
+        ]
+      },
+      indecis: {
+        label: 'Je ne sais pas encore',
+        categoryName: 'Exploration Libre',
+        badge: 'Accompagnement & Cadrage',
+        suggestedTitle: 'Exploration Conceptuelle — Laboratoire BYAIME',
+        artDirectionDefault: 'Poétique & Évolutive',
+        artDirectionDesc: 'Nous définissons ensemble la direction au fil de nos premiers échanges.',
+        architecture: ['Session d\'exploration', 'Moodboard interactif', 'Prototypage rapide', 'Définition des modules'],
+        signatureFeature: 'Une session de co-création pour transformer une intuition en univers numérique concret.',
+        defaultModules: ['Cadrage créatif sur mesure', 'Moodboard interactif', 'Architecture narrative', 'Prototypage d\'idées'],
+        allPossibleModules: [
+          'Cadrage créatif sur mesure', 'Moodboard interactif', 'Architecture narrative', 'Prototypage d\'idées'
+        ]
+      }
+    };
 
     // State
     var state = {
@@ -274,272 +575,247 @@
       totalSteps: 5,
       type: 'mariage',
       audience: 'proches',
-      atmosphere: 'poetique',
-      objectives: ['emouvoir', 'souvenirs'],
-      features: ['timeline', 'musique', 'galerie', 'rsvp'],
-      contentStatus: 'partiel',
-      timeline: '3mois',
-      budget: 'standard',
-      customNotes: ''
-    };
-
-    // Dictionary of presets by event type
-    var presets = {
-      mariage: {
-        label: 'Mariage singulier',
-        badge: 'Univers Amour & Célébration',
-        suggestedTitle: 'Sanctuaire Émotionnel & Récit à Deux',
-        artDirection: 'Tons chauds, typographie raffinée, constellation céleste interactive, ambiance sonore douce.',
-        architecture: [
-          'Page d\'accueil cinématique avec compte à rebours poétique',
-          'Timeline vivante du Jour J avec indications spatiales',
-          'RSVP intelligent sans mot de passe avec régimes & musique',
-          'Galerie participative haute définition & livre d\'or audio',
-          'Guide des lieux & hébergements avec carte interactive'
-        ],
-        signatureFeature: 'Livre d\'or vocal immersif avec lecteur vinyle virtuel & dépôt de souvenirs en direct.',
-        defaultFeatures: ['timeline', 'musique', 'galerie', 'rsvp', 'plan-table', 'souvenirs']
-      },
-      ceremonie: {
-        label: 'Cérémonie d\'adieu & Hommage',
-        badge: 'Mémorial Poétique & Apaisant',
-        suggestedTitle: 'L\'Espace du Souvenir & des Mémoires',
-        artDirection: 'Clair-obscur apaisant, contrastes doux, respiration visuelle généreuse, sobriété mémorielle.',
-        architecture: [
-          'Page de recueillement avec portrait lumineux et biographie intime',
-          'Programme de la cérémonie et diffusion audio/vidéo sécurisée',
-          'Mur de témoignages, anecdotes et photographies d\'archives',
-          'Espace de condoléances privé pour la famille proche',
-          'Livret souvenir téléchargeable et imprimable en haute qualité'
-        ],
-        signatureFeature: 'Bougie virtuelle du souvenir avec message d\'hommage pérenne et archive mémorielle.',
-        defaultFeatures: ['hommage', 'musique-sobre', 'souvenirs', 'temoignages', 'programme', 'galerie-privee']
-      },
-      anniversaire: {
-        label: 'Anniversaire d\'exception & Célébration',
-        badge: 'Capsule Temporelle Interactive',
-        suggestedTitle: 'Rétrospective Vivante & Révélation Festive',
-        artDirection: 'Contraste saisissant, micro-animations festives et élégantes, typographie expressive.',
-        architecture: [
-          'Écran de bienvenue avec décompte interactif et teasing progressif',
-          'Frise chronologique des étapes marquantes de la vie célébrée',
-          'Énigme ou carte interactive pour révéler le lieu secret',
-          'Playlist collaborative connectée aux invités',
-          'Espace cagnotte raffiné et messages vidéo surprises'
-        ],
-        signatureFeature: 'Capsule temporelle interactive avec messages programmés à s\'ouvrir dans le futur.',
-        defaultFeatures: ['timeline', 'enigme-lieu', 'musique', 'cagnotte', 'galerie', 'video-surprise']
-      },
-      evenement: {
-        label: 'Événement culturel & Festival',
-        badge: 'Scénographie Numérique Immersion',
-        suggestedTitle: 'Pavillon Digital & Guide Interactif',
-        artDirection: 'Esthétique avant-gardiste, ultra-performant, responsive fluide, contrastes dynamiques.',
-        architecture: [
-          'Landing page événementielle avec billetterie intégrée sans friction',
-          'Programme dynamique heure par heure avec filtres thématiques',
-          'Fiches immersives des intervenants et artistes',
-          'Plan interactif des scènes et espaces en temps réel',
-          'Mode hors-ligne optimisé pour réseaux mobiles saturés'
-        ],
-        signatureFeature: 'Plan interactif en temps réel avec notifications des temps forts et agenda personnalisé.',
-        defaultFeatures: ['programme', 'participants', 'intervenants', 'lieux-carte', 'agenda', 'contenus']
-      },
-      artistique: {
-        label: 'Projet artistique & Performance',
-        badge: 'Galerie Sensorielle & Laboratoire',
-        suggestedTitle: 'Immersion Visuelle & Expérience Sonore',
-        artDirection: 'Minimalisme radical, fond noir profond, sound design réactif, typographie expérimentale.',
-        architecture: [
-          'Expérience plein écran générative réagissant au scroll',
-          'Exploration haute fidélité des œuvres et textures',
-          'Podcasts immersifs et notes d\'intention de l\'artiste',
-          'Espace mécénat et acquisition d\'œuvres en direct',
-          'Documentation du processus de création'
-        ],
-        signatureFeature: 'Scénographie sonore générative synchronisée avec l\'exploration visuelle des œuvres.',
-        defaultFeatures: ['canvas-interactif', 'audio-reactif', 'oeuvres', 'podcasts', 'mecenat']
-      },
-      association: {
-        label: 'Cause, Collectif & Association',
-        badge: 'Récit d\'Impact & Mobilisation',
-        suggestedTitle: 'Plateforme d\'Engagement & Témoignages',
-        artDirection: 'Chaleur humaine, clarté éditoriale, typographie affirmée, infographies d\'impact vivantes.',
-        architecture: [
-          'Storytelling immersif articulé autour des récits de bénéficiaires',
-          'Tableau de bord transparent de l\'impact des actions',
-          'Module d\'adhésion et de soutien associatif sans intermédiaire',
-          'Espace de ressources et manifeste téléchargeable',
-          'Mur des soutiens et communauté engagée'
-        ],
-        signatureFeature: 'Visualiseur d\'impact en direct reliant chaque don ou engagement à une action concrète.',
-        defaultFeatures: ['recits', 'impact-visuel', 'soutien-associatif', 'manifeste', 'communaute']
-      },
-      autre: {
-        label: 'Projet Unique & Hors Standard',
-        badge: 'Création Expérimentale Libre',
-        suggestedTitle: 'Univers Numérique Sur Mesure',
-        artDirection: 'Sur mesure selon la vision singulière du projet.',
-        architecture: [
-          'Direction artistique unique conçue de zéro',
-          'Architecture narrative interactive personnalisée',
-          'Micro-interactions et dispositifs technologiques adaptés',
-          'Fluidité maximale et souveraineté totale des données'
-        ],
-        signatureFeature: 'Dispositif interactif entièrement développé selon vos contraintes et désirs artistiques.',
-        defaultFeatures: ['sur-mesure', 'interactif', 'narration', 'optimisation']
+      intentions: ['Organiser', 'Partager', 'Créer des souvenirs'],
+      modules: ['Timeline du Jour J', 'RSVP sans mot de passe', 'Profils invités', 'Plan de table interactif', 'Musique & Playlist', 'Galerie photo HD'],
+      experienceLevel: 'interactif',
+      ambiance: 'poetique',
+      // Contact fields
+      contact: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        projectName: '',
+        eventDate: '',
+        location: '',
+        message: '',
+        wantsCallback: true
       }
     };
 
     // DOM Elements
-    var stepElements = configContainer.querySelectorAll('[data-step-content]');
+    var stepContents = configContainer.querySelectorAll('[data-step-content]');
     var stepIndicators = configContainer.querySelectorAll('[data-step-indicator]');
+    var progressBar = document.getElementById('cfg-progress-bar');
     var prevBtn = document.getElementById('cfg-prev-btn');
     var nextBtn = document.getElementById('cfg-next-btn');
-    var progressBar = document.getElementById('cfg-progress-bar');
-    var previewTitle = document.getElementById('preview-concept-title');
-    var previewBadge = document.getElementById('preview-concept-badge');
-    var previewArt = document.getElementById('preview-art-direction');
-    var previewArchList = document.getElementById('preview-architecture-list');
-    var previewSignature = document.getElementById('preview-signature-feature');
-    var typeSelectionInputs = configContainer.querySelectorAll('input[name="event-type"]');
-    var featureCheckboxes = configContainer.querySelectorAll('input[name="cfg-features"]');
 
-    // Update Concept Preview Card
-    function updateConceptPreview() {
-      var preset = presets[state.type] || presets.mariage;
+    // Synthesis Elements
+    var synthTitle = document.getElementById('synth-project-title');
+    var synthBadge = document.getElementById('synth-project-badge');
+    var synthType = document.getElementById('synth-type-display');
+    var synthAmbiance = document.getElementById('synth-ambiance-display');
+    var synthLevel = document.getElementById('synth-level-display');
+    var synthArtDesc = document.getElementById('synth-art-desc');
+    var synthSignature = document.getElementById('synth-signature-feature');
+    var synthArchList = document.getElementById('synth-arch-list');
+    var synthModulesContainer = document.getElementById('synth-active-modules');
+    var synthAvailableModulesContainer = document.getElementById('synth-available-modules');
+    var ambianceSelect = document.getElementById('synth-ambiance-select');
+    var levelSelect = document.getElementById('synth-level-select');
 
-      if (previewTitle) previewTitle.textContent = preset.suggestedTitle;
-      if (previewBadge) previewBadge.textContent = preset.badge;
-      if (previewArt) previewArt.textContent = preset.artDirection;
-      if (previewSignature) previewSignature.textContent = preset.signatureFeature;
+    // Summary Review Elements
+    var summaryType = document.getElementById('sum-type');
+    var summaryAudience = document.getElementById('sum-audience');
+    var summaryIntentions = document.getElementById('sum-intentions');
+    var summaryAmbiance = document.getElementById('sum-ambiance');
+    var summaryLevel = document.getElementById('sum-level');
+    var summaryModulesList = document.getElementById('sum-modules-list');
 
-      if (previewArchList) {
-        previewArchList.innerHTML = '';
-        preset.architecture.forEach(function (item) {
-          var li = document.createElement('li');
-          li.className = 'text-xs text-muted-foreground flex items-start gap-2.5';
-          li.innerHTML = '<span class="mt-1 h-1.5 w-1.5 rounded-full bg-white flex-shrink-0"></span><span>' + item + '</span>';
-          previewArchList.appendChild(li);
-        });
-      }
+    // Restore Draft from LocalStorage if available
+    var draft = BYAIME_Storage.load();
+    if (draft && draft.type) {
+      var resumeBanner = document.getElementById('cfg-resume-banner');
+      if (resumeBanner) {
+        resumeBanner.classList.remove('hidden');
+        var resumeBtn = document.getElementById('cfg-resume-btn');
+        var restartBtn = document.getElementById('cfg-restart-btn');
 
-      // Update features list in step 4 dynamically based on selected type
-      var featuresContainer = document.getElementById('cfg-features-container');
-      if (featuresContainer && state.step === 4) {
-        renderFeaturesForType(state.type);
+        if (resumeBtn) {
+          resumeBtn.addEventListener('click', function () {
+            Object.assign(state, draft);
+            applyStateToInputs();
+            resumeBanner.classList.add('hidden');
+            recalculateProposal();
+          });
+        }
+        if (restartBtn) {
+          restartBtn.addEventListener('click', function () {
+            BYAIME_Storage.clear();
+            resumeBanner.classList.add('hidden');
+          });
+        }
       }
     }
 
-    // Dynamic feature checkboxes tailored to type
-    function renderFeaturesForType(type) {
-      var container = document.getElementById('cfg-features-container');
+    // Recalculate and update the live synthesis
+    function recalculateProposal() {
+      var preset = enginePresets[state.type] || enginePresets.mariage;
+
+      // Title & category
+      if (synthTitle) synthTitle.textContent = preset.suggestedTitle;
+      if (synthBadge) synthBadge.textContent = preset.badge;
+      if (synthType) synthType.textContent = preset.categoryName;
+      if (synthSignature) synthSignature.textContent = preset.signatureFeature;
+
+      // Ambiance label
+      var ambianceLabels = {
+        poetique: 'Poétique & Intimiste',
+        minimaliste: 'Minimaliste & Épurée',
+        cinematique: 'Cinématique & Immersive',
+        vibrante: 'Vibrante & Énergique',
+        elegante: 'Élégante & Statutaire',
+        libre: 'Libre & Personnalisée'
+      };
+      var activeAmbiance = ambianceLabels[state.ambiance] || preset.artDirectionDefault;
+      if (synthAmbiance) synthAmbiance.textContent = activeAmbiance;
+      if (synthArtDesc) synthArtDesc.textContent = preset.artDirectionDesc;
+
+      // Level label
+      var levelLabels = {
+        minimal: 'Minimal (Mini-site élégant)',
+        interactif: 'Interactif (Avec outils & interactions)',
+        immersif: 'Immersif (Expérience numérique totale)',
+        indecis: 'Sur mesure (À imaginer ensemble)'
+      };
+      if (synthLevel) synthLevel.textContent = levelLabels[state.experienceLevel] || state.experienceLevel;
+
+      // Architecture
+      if (synthArchList) {
+        synthArchList.innerHTML = '';
+        preset.architecture.forEach(function (item) {
+          var li = document.createElement('li');
+          li.className = 'text-xs text-muted-foreground flex items-center gap-2';
+          li.innerHTML = '<span class="h-1.5 w-1.5 rounded-full bg-white flex-shrink-0"></span><span>' + item + '</span>';
+          synthArchList.appendChild(li);
+        });
+      }
+
+      // Render Active Removable Modules
+      if (synthModulesContainer) {
+        synthModulesContainer.innerHTML = '';
+        state.modules.forEach(function (modName) {
+          var chip = document.createElement('span');
+          chip.className = 'tag-removable';
+          chip.innerHTML = '<span>' + modName + '</span><button type="button" class="tag-remove-btn" title="Retirer ce module" aria-label="Retirer ' + modName + '">×</button>';
+
+          var removeBtn = chip.querySelector('button');
+          removeBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            state.modules = state.modules.filter(function (m) { return m !== modName; });
+            recalculateProposal();
+            window.trackBYAIME('project_module_removed', { module: modName });
+          });
+
+          synthModulesContainer.appendChild(chip);
+        });
+      }
+
+      // Render Available Modules to Add
+      if (synthAvailableModulesContainer) {
+        synthAvailableModulesContainer.innerHTML = '';
+        var notAdded = preset.allPossibleModules.filter(function (m) {
+          return state.modules.indexOf(m) === -1;
+        });
+
+        if (notAdded.length === 0) {
+          synthAvailableModulesContainer.innerHTML = '<span class="text-xs text-muted-foreground italic">Tous les modules suggérés sont déjà intégrés.</span>';
+        } else {
+          notAdded.forEach(function (modName) {
+            var addBtn = document.createElement('button');
+            addBtn.type = 'button';
+            addBtn.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-white/5 border border-dashed border-white/20 text-muted-foreground hover:text-white hover:border-white hover:bg-white/10 transition-all';
+            addBtn.innerHTML = '<span>+ ' + modName + '</span>';
+
+            addBtn.addEventListener('click', function (e) {
+              e.preventDefault();
+              state.modules.push(modName);
+              recalculateProposal();
+              window.trackBYAIME('project_module_added', { module: modName });
+            });
+
+            synthAvailableModulesContainer.appendChild(addBtn);
+          });
+        }
+      }
+
+      // Update Summary Review (Step 5 / Final State)
+      if (summaryType) summaryType.textContent = preset.categoryName;
+      if (summaryAudience) summaryAudience.textContent = state.audience;
+      if (summaryIntentions) summaryIntentions.textContent = state.intentions.join(', ') || 'Non spécifié';
+      if (summaryAmbiance) summaryAmbiance.textContent = activeAmbiance;
+      if (summaryLevel) summaryLevel.textContent = levelLabels[state.experienceLevel] || state.experienceLevel;
+
+      if (summaryModulesList) {
+        summaryModulesList.innerHTML = '';
+        state.modules.forEach(function (mod) {
+          var li = document.createElement('li');
+          li.className = 'text-xs text-muted-foreground flex items-center gap-2';
+          li.innerHTML = '<span class="text-emerald-400">✓</span><span>' + mod + '</span>';
+          summaryModulesList.appendChild(li);
+        });
+      }
+
+      // Save to localStorage
+      BYAIME_Storage.save(state);
+    }
+
+    // Populate Dynamic Checkboxes in Step 4
+    function renderStep4Checkboxes() {
+      var container = document.getElementById('step4-tools-checkboxes');
       if (!container) return;
 
-      var featureOptionsMap = {
-        mariage: [
-          { id: 'f_timeline', val: 'timeline', label: 'Timeline interactive du Jour J', desc: 'Déroulé en direct, horaires et lieux géolocalisés' },
-          { id: 'f_musique', val: 'musique', label: 'Ambiance sonore & Playlist', desc: 'Lecteur audio immersif et boîte à musiques des invités' },
-          { id: 'f_galerie', val: 'galerie', label: 'Galerie de souvenirs & Dépôt photos', desc: 'Téléchargement HD instantané par QR code le soir même' },
-          { id: 'f_rsvp', val: 'rsvp', label: 'RSVP fluide sans compte', desc: 'Gestion des présences, régimes et questions personnalisées' },
-          { id: 'f_plan', val: 'plan-table', label: 'Plan de table interactif', desc: 'Recherche de sa table par nom avec animation douce' },
-          { id: 'f_vocal', val: 'livre-vocal', label: 'Livre d\'or audio & vocal', desc: 'Enregistrement vocal des messages des proches' }
-        ],
-        ceremonie: [
-          { id: 'f_hommage', val: 'hommage', label: 'Espace d\'hommage & Portrait', desc: 'Biographie intime, mots choisis et citations' },
-          { id: 'f_bougie', val: 'bougie', label: 'Bougies virtuelles & Pensées', desc: 'Geste d\'hommage interactif allumé par les proches' },
-          { id: 'f_temoignages', val: 'temoignages', label: 'Collecte de témoignages & Récits', desc: 'Livre de condoléances sécurisé et modéré avec douceur' },
-          { id: 'f_musique_s', val: 'musique-sobre', label: 'Musiques & Pièces sonores', desc: 'Sélection des morceaux chers à la personne honorée' },
-          { id: 'f_prog_c', val: 'programme', label: 'Programme & Diffusion', desc: 'Déroulé de la cérémonie et retransmission éventuelle' },
-          { id: 'f_livret', val: 'livret', label: 'Livret souvenir imprimable', desc: 'Génération PDF haute qualité en mémoire' }
-        ],
-        anniversaire: [
-          { id: 'f_chrono', val: 'timeline', label: 'Frise chronologique rétrospective', desc: 'Photos et faits marquants des années passées' },
-          { id: 'f_enigme', val: 'enigme-lieu', label: 'Révélation interactive du lieu', desc: 'Suspense avec compte à rebours et indices' },
-          { id: 'f_cagnotte', val: 'cagnotte', label: 'Cagnotte & Cadeau commun', desc: 'Présentation élégante sans frais tiers abusifs' },
-          { id: 'f_playlist', val: 'musique', label: 'Boîte à sons collaborative', desc: 'Suggestions de morceaux par les invités' },
-          { id: 'f_videos', val: 'video-surprise', label: 'Espace vidéos surprises', desc: 'Dépôt secret de capsules vidéos pour le fêté' },
-          { id: 'f_dress', val: 'dress-code', label: 'Dress-code & Guide pratique', desc: 'Inspirations visuelles et détails d\'accès' }
-        ],
-        evenement: [
-          { id: 'f_prog_e', val: 'programme', label: 'Programme dynamique interactif', desc: 'Filtre par scène, horaire et thématique' },
-          { id: 'f_speakers', val: 'intervenants', label: 'Fiches artistes & intervenants', desc: 'Bios, liens et extraits immersifs' },
-          { id: 'f_carte_e', val: 'lieux-carte', label: 'Plan & Cartographie des lieux', desc: 'Repérage fluide sur smartphone' },
-          { id: 'f_billets', val: 'billetterie', label: 'Accès & Billetterie fluide', desc: 'Intégration sans redirection frustrante' },
-          { id: 'f_agenda_p', val: 'agenda', label: 'Mon agenda personnalisé', desc: 'L\'invité compose son parcours en 1 clic' },
-          { id: 'f_notifs', val: 'notifs', label: 'Alertes en direct le jour J', desc: 'Annonces discrètes pour les temps forts' }
-        ],
-        artistique: [
-          { id: 'f_canvas', val: 'canvas-interactif', label: 'Scénographie interactive générative', desc: 'Micro-interactions sensorielles réactives au curseur' },
-          { id: 'f_audio_r', val: 'audio-reactif', label: 'Sound design immersif', desc: 'Univers sonore adapté à chaque œuvre' },
-          { id: 'f_galerie_a', val: 'oeuvres', label: 'Galerie d\'œuvres en haute fidélité', desc: 'Zooms texturés et détails matières' },
-          { id: 'f_podcasts', val: 'podcasts', label: 'Podcasts & Notes d\'intention', desc: 'La voix de l\'artiste sur ses créations' },
-          { id: 'f_mecenat', val: 'mecenat', label: 'Espace mécénat & Acquisition', desc: 'Liaison directe avec les collectionneurs' }
-        ],
-        association: [
-          { id: 'f_recits', val: 'recits', label: 'Récits & Témoignages vivants', desc: 'Storytelling immersif avec photographies' },
-          { id: 'f_impact', val: 'impact-visuel', label: 'Visualiseur d\'impact en direct', desc: 'Données concrètes et transparentes' },
-          { id: 'f_soutien', val: 'soutien-associatif', label: 'Module de don & Adhésion', desc: 'Soutien direct libre ou récurrent' },
-          { id: 'f_manifeste', val: 'manifeste', label: 'Manifeste & Ressources', desc: 'Consultation et partage fluide' },
-          { id: 'f_comm', val: 'communaute', label: 'Mur des soutiens & Volontaires', desc: 'Mise en valeur de la communauté' }
-        ],
-        autre: [
-          { id: 'f_sur_mesure', val: 'sur-mesure', label: 'Architecture sur mesure intégrale', desc: 'Conception libre selon le cahier des charges' },
-          { id: 'f_interact', val: 'interactif', label: 'Dispositif interactif signature', desc: 'Création d\'une expérience jamais vue ailleurs' },
-          { id: 'f_narration', val: 'narration', label: 'Storytelling & Design d\'émotion', desc: 'Récit immersif captivant' },
-          { id: 'f_perf', val: 'optimisation', label: 'Haute performance & Sécurité', desc: 'Zéro traceur intrusif, ultra-rapide' }
-        ]
-      };
-
-      var list = featureOptionsMap[type] || featureOptionsMap.mariage;
+      var preset = enginePresets[state.type] || enginePresets.mariage;
       container.innerHTML = '';
 
-      list.forEach(function (opt) {
-        var isChecked = state.features.indexOf(opt.val) !== -1 || (state.features.length === 0);
+      preset.defaultModules.forEach(function (modName) {
+        var isChecked = state.modules.indexOf(modName) !== -1;
         var label = document.createElement('label');
-        label.className = 'flex items-start gap-3.5 p-4 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors';
-        label.innerHTML = '<input type="checkbox" name="cfg-features" value="' + opt.val + '" class="mt-1 rounded border-border text-white focus:ring-white bg-black h-4 w-4" ' + (isChecked ? 'checked' : '') + '>' +
-          '<div><p class="text-sm font-medium text-white">' + opt.label + '</p><p class="text-xs text-muted-foreground mt-0.5">' + opt.desc + '</p></div>';
+        label.className = 'flex items-start gap-3 p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors';
+        label.innerHTML = '<input type="checkbox" name="step4-tool" value="' + modName + '" class="mt-1 rounded border-border text-white focus:ring-white bg-black h-4 w-4" ' + (isChecked ? 'checked' : '') + '>' +
+          '<div><p class="text-xs font-semibold text-white">' + modName + '</p></div>';
 
-        var checkbox = label.querySelector('input');
-        checkbox.addEventListener('change', function () {
-          var selected = [];
-          container.querySelectorAll('input[name="cfg-features"]:checked').forEach(function (cb) {
-            selected.push(cb.value);
+        var cb = label.querySelector('input');
+        cb.addEventListener('change', function () {
+          var checkedList = [];
+          container.querySelectorAll('input[name="step4-tool"]:checked').forEach(function (box) {
+            checkedList.push(box.value);
           });
-          state.features = selected;
+          state.modules = checkedList;
+          recalculateProposal();
         });
 
         container.appendChild(label);
       });
     }
 
-    // Go to step
-    function goToStep(stepNum) {
-      if (stepNum < 1 || stepNum > state.totalSteps) return;
-      state.step = stepNum;
+    // Go to Step
+    function goToStep(targetStep) {
+      if (targetStep < 1 || targetStep > state.totalSteps) return;
+      state.step = targetStep;
 
-      // Update step contents
-      stepElements.forEach(function (el) {
-        var s = parseInt(el.getAttribute('data-step-content'), 10);
+      // Switch views
+      stepContents.forEach(function (content) {
+        var s = parseInt(content.getAttribute('data-step-content'), 10);
         if (s === state.step) {
-          el.classList.remove('hidden');
-          el.classList.add('block');
+          content.classList.remove('hidden');
+          content.classList.add('block');
         } else {
-          el.classList.add('hidden');
-          el.classList.remove('block');
+          content.classList.add('hidden');
+          content.classList.remove('block');
         }
       });
 
-      // Update step indicators
+      // Update indicators
       stepIndicators.forEach(function (ind) {
         var s = parseInt(ind.getAttribute('data-step-indicator'), 10);
         if (s === state.step) {
           ind.classList.add('border-white', 'text-white', 'bg-white/10');
-          ind.classList.remove('border-border', 'text-muted-foreground', 'bg-transparent');
+          ind.classList.remove('border-border', 'text-muted-foreground', 'bg-transparent', 'border-emerald-500', 'text-emerald-400', 'bg-emerald-500/10');
         } else if (s < state.step) {
           ind.classList.add('border-emerald-500', 'text-emerald-400', 'bg-emerald-500/10');
-          ind.classList.remove('border-white', 'border-border', 'text-white', 'text-muted-foreground');
+          ind.classList.remove('border-white', 'border-border', 'text-white', 'text-muted-foreground', 'bg-white/10');
         } else {
           ind.classList.remove('border-white', 'border-emerald-500', 'text-white', 'text-emerald-400', 'bg-white/10', 'bg-emerald-500/10');
           ind.classList.add('border-border', 'text-muted-foreground', 'bg-transparent');
@@ -549,7 +825,7 @@
       // Progress bar
       if (progressBar) {
         var pct = ((state.step - 1) / (state.totalSteps - 1)) * 100;
-        progressBar.style.width = Math.max(5, pct) + '%';
+        progressBar.style.width = Math.max(8, pct) + '%';
       }
 
       // Prev / Next button states
@@ -563,38 +839,98 @@
 
       if (nextBtn) {
         if (state.step === state.totalSteps) {
-          nextBtn.textContent = 'Valider & Transmettre';
+          nextBtn.textContent = 'Transmettre mon projet à Matt Mez →';
         } else {
           nextBtn.textContent = 'Étape suivante →';
         }
       }
 
-      updateConceptPreview();
+      if (state.step === 4) {
+        renderStep4Checkboxes();
+      }
 
-      // Smooth scroll to configurator card
+      recalculateProposal();
+      window.trackBYAIME('project_step_changed', { step: state.step });
+
+      // Scroll to configurator
       configContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // Type radio change
-    typeSelectionInputs.forEach(function (radio) {
+    // Apply state to form radio inputs
+    function applyStateToInputs() {
+      var typeRadio = configContainer.querySelector('input[name="event-type"][value="' + state.type + '"]');
+      if (typeRadio) typeRadio.checked = true;
+
+      var audRadio = configContainer.querySelector('input[name="cfg-audience"][value="' + state.audience + '"]');
+      if (audRadio) audRadio.checked = true;
+
+      var levelRadio = configContainer.querySelector('input[name="cfg-level"][value="' + state.experienceLevel + '"]');
+      if (levelRadio) levelRadio.checked = true;
+    }
+
+    // Step 1: Event Type Listener
+    configContainer.querySelectorAll('input[name="event-type"]').forEach(function (radio) {
       radio.addEventListener('change', function () {
         state.type = radio.value;
-        // update preset features
-        var preset = presets[state.type] || presets.mariage;
-        state.features = preset.defaultFeatures.slice();
-        updateConceptPreview();
+        var preset = enginePresets[state.type] || enginePresets.mariage;
+        state.modules = preset.defaultModules.slice(0, 6);
+        recalculateProposal();
+        window.trackBYAIME('project_event_selected', { type: state.type });
       });
     });
 
-    // Next / Prev listeners
+    // Step 2: Audience Listener
+    configContainer.querySelectorAll('input[name="cfg-audience"]').forEach(function (radio) {
+      radio.addEventListener('change', function () {
+        state.audience = radio.value;
+        recalculateProposal();
+      });
+    });
+
+    // Step 3: Intentions Listeners
+    configContainer.querySelectorAll('input[name="cfg-intentions"]').forEach(function (cb) {
+      cb.addEventListener('change', function () {
+        var list = [];
+        configContainer.querySelectorAll('input[name="cfg-intentions"]:checked').forEach(function (b) {
+          list.push(b.value);
+        });
+        state.intentions = list;
+        recalculateProposal();
+      });
+    });
+
+    // Step 5: Experience Level Listener
+    configContainer.querySelectorAll('input[name="cfg-level"]').forEach(function (radio) {
+      radio.addEventListener('change', function () {
+        state.experienceLevel = radio.value;
+        recalculateProposal();
+      });
+    });
+
+    // Live Proposal Modifier: Ambiance Dropdown
+    if (ambianceSelect) {
+      ambianceSelect.addEventListener('change', function () {
+        state.ambiance = ambianceSelect.value;
+        recalculateProposal();
+      });
+    }
+
+    // Live Proposal Modifier: Level Dropdown
+    if (levelSelect) {
+      levelSelect.addEventListener('change', function () {
+        state.experienceLevel = levelSelect.value;
+        recalculateProposal();
+      });
+    }
+
+    // Next / Prev Button Clicks
     if (nextBtn) {
       nextBtn.addEventListener('click', function (e) {
         e.preventDefault();
         if (state.step < state.totalSteps) {
           goToStep(state.step + 1);
         } else {
-          // Submit step
-          submitConfigurator();
+          submitProjectWorkflow();
         }
       });
     }
@@ -606,46 +942,135 @@
       });
     }
 
-    // Handle final submission
-    function submitConfigurator() {
-      var nameInput = document.getElementById('cfg-user-name');
-      var emailInput = document.getElementById('cfg-user-email');
-      var notesInput = document.getElementById('cfg-user-notes');
+    // Submissions and Abstraction Function: submitProject()
+    function submitProjectWorkflow() {
+      // Gather contact fields
+      var fn = (document.getElementById('cfg-contact-first') || {}).value || '';
+      var ln = (document.getElementById('cfg-contact-last') || {}).value || '';
+      var em = (document.getElementById('cfg-contact-email') || {}).value || '';
+      var ph = (document.getElementById('cfg-contact-phone') || {}).value || '';
+      var pn = (document.getElementById('cfg-contact-projname') || {}).value || '';
+      var dt = (document.getElementById('cfg-contact-date') || {}).value || '';
+      var loc = (document.getElementById('cfg-contact-loc') || {}).value || '';
+      var msg = (document.getElementById('cfg-contact-message') || {}).value || '';
+      var cb = (document.getElementById('cfg-contact-callback') || {}).checked;
 
-      var name = nameInput ? nameInput.value.trim() : '';
-      var email = emailInput ? emailInput.value.trim() : '';
-      var notes = notesInput ? notesInput.value.trim() : '';
+      state.contact = {
+        firstName: fn.trim(),
+        lastName: ln.trim(),
+        email: em.trim(),
+        phone: ph.trim(),
+        projectName: pn.trim(),
+        eventDate: dt.trim(),
+        location: loc.trim(),
+        message: msg.trim(),
+        wantsCallback: cb !== false
+      };
 
-      if (!name || !email) {
-        alert('Veuillez renseigner votre nom et votre adresse e-mail pour que Matt Mez puisse vous répondre.');
+      if (!state.contact.firstName || !state.contact.email) {
+        alert('Veuillez au minimum renseigner votre prénom et votre adresse e-mail.');
+        var emInput = document.getElementById('cfg-contact-email');
+        if (emInput) emInput.focus();
         return;
       }
 
-      // Show success modal or replace content
+      var projectPayload = {
+        meta: {
+          submittedAt: new Date().toISOString(),
+          version: 'BYAIME_MVP_1.0'
+        },
+        type: state.type,
+        category: (enginePresets[state.type] || {}).categoryName || state.type,
+        audience: state.audience,
+        intentions: state.intentions,
+        ambiance: state.ambiance,
+        level: state.experienceLevel,
+        selectedModules: state.modules,
+        suggestedTitle: (enginePresets[state.type] || {}).suggestedTitle || '',
+        contact: state.contact
+      };
+
+      // Call Centralized Abstraction Function
+      submitProject(projectPayload);
+    }
+
+    // Centralized submitProject abstraction
+    function submitProject(payload) {
+      window.trackBYAIME('project_submitted', { type: payload.type });
+
       var formWrap = document.getElementById('cfg-form-wrapper');
-      var successWrap = document.getElementById('cfg-success-wrapper');
+      var readyWrap = document.getElementById('cfg-ready-wrapper');
 
-      if (formWrap && successWrap) {
+      if (formWrap && readyWrap) {
         formWrap.classList.add('hidden');
-        successWrap.classList.remove('hidden');
+        readyWrap.classList.remove('hidden');
 
-        var recapType = document.getElementById('recap-type');
-        var recapTitle = document.getElementById('recap-title');
-        var recapName = document.getElementById('recap-name');
+        var confName = document.getElementById('conf-name');
+        var confTitle = document.getElementById('conf-title');
+        var confModules = document.getElementById('conf-modules-count');
+        var confMailto = document.getElementById('conf-mailto-link');
+        var confDownload = document.getElementById('conf-download-btn');
+        var confCopy = document.getElementById('conf-copy-btn');
 
-        if (recapType) recapType.textContent = (presets[state.type] || {}).label || state.type;
-        if (recapTitle) recapTitle.textContent = (presets[state.type] || {}).suggestedTitle || '';
-        if (recapName) recapName.textContent = name;
+        if (confName) confName.textContent = payload.contact.firstName + ' ' + payload.contact.lastName;
+        if (confTitle) confTitle.textContent = payload.suggestedTitle;
+        if (confModules) confModules.textContent = payload.selectedModules.length;
 
-        successWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Build formatted mailto link
+        var mailSubject = encodeURIComponent('[BYAIME Conception] Nouveau Projet : ' + (payload.contact.projectName || payload.suggestedTitle));
+        var mailBodyText = 'Bonjour Matt,\n\nVoici les détails de mon projet configuré sur BYAIME :\n\n' +
+          '• Type d\'événement : ' + payload.category + '\n' +
+          '• Titre suggéré : ' + payload.suggestedTitle + '\n' +
+          '• Public : ' + payload.audience + '\n' +
+          '• Intentions : ' + payload.intentions.join(', ') + '\n' +
+          '• Style / Ambiance : ' + payload.ambiance + '\n' +
+          '• Niveau : ' + payload.level + '\n' +
+          '• Modules retenus (' + payload.selectedModules.length + ') :\n  - ' + payload.selectedModules.join('\n  - ') + '\n\n' +
+          '• Nom du contact : ' + payload.contact.firstName + ' ' + payload.contact.lastName + '\n' +
+          '• E-mail : ' + payload.contact.email + '\n' +
+          '• Téléphone : ' + (payload.contact.phone || 'Non précisé') + '\n' +
+          '• Date envisagée : ' + (payload.contact.eventDate || 'Non précisée') + '\n' +
+          '• Localisation : ' + (payload.contact.location || 'Non précisée') + '\n' +
+          '• Message : ' + (payload.contact.message || 'Aucun') + '\n\n' +
+          'À très bientôt,\n' + payload.contact.firstName;
+
+        if (confMailto) {
+          confMailto.href = 'mailto:contact@byaime.com?subject=' + mailSubject + '&body=' + encodeURIComponent(mailBodyText);
+        }
+
+        // Copy Payload button
+        if (confCopy) {
+          confCopy.addEventListener('click', function () {
+            navigator.clipboard.writeText(mailBodyText).then(function () {
+              confCopy.textContent = '✓ Spécifications copiées !';
+              setTimeout(function () { confCopy.textContent = 'Copier la synthèse complète'; }, 3000);
+            });
+          });
+        }
+
+        // Download JSON button
+        if (confDownload) {
+          confDownload.addEventListener('click', function () {
+            var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'BYAIME-Projet-' + (payload.contact.firstName || 'Concept') + '.json';
+            a.click();
+            URL.revokeObjectURL(url);
+          });
+        }
+
+        readyWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }
 
-    // Initialize
-    updateConceptPreview();
+    // Initialize proposal
+    recalculateProposal();
+    window.trackBYAIME('project_started', {});
   });
 
-  // ===== Module Soutien Associatif LE MONDE AIME =====
+  // ===== MODULE SOUTIEN ASSOCIATIF LE MONDE AIME =====
   document.addEventListener('DOMContentLoaded', function () {
     var donationContainer = document.getElementById('association-donation-module');
     if (!donationContainer) return;
@@ -690,8 +1115,9 @@
     if (donateButton) {
       donateButton.addEventListener('click', function (e) {
         e.preventDefault();
-        var current = displayAmount ? displayAmount.textContent : 'votre soutien';
-        alert('Merci pour votre intérêt envers l\'association LE MONDE AIME ! Le module sécurisé de don pour ' + current + ' sera ouvert très prochainement lors du lancement officiel.');
+        window.trackBYAIME('support_clicked', { amount: (displayAmount ? displayAmount.textContent : '50 €') });
+        var current = displayAmount ? displayAmount.textContent : '50 €';
+        alert('Merci pour votre intérêt envers l\'association LE MONDE AIME !\n\nVotre intention de soutien pour un montant de ' + current + ' a été enregistrée. Le module de paiement sécurisé officiel sera ouvert très prochainement lors de la publication du compte associatif.');
       });
     }
   });

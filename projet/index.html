@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Imaginer mon projet — Configurateur d'Univers Numérique | BYAIME</title>
-  <meta name="description" content="Configurez l'univers numérique sur mesure de votre événement ou projet avec Matt Mez. Prévisualisation conceptuelle interactive en direct et co-création.">
+  <meta name="description" content="Définissez en quelques étapes l'univers numérique sur mesure de votre événement. Moteur de suggestion conceptuelle en temps réel et transmission directe à Matt Mez.">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><circle cx='12' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/><circle cx='20' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/></svg>">
-  <link rel="apple-touch-icon" href="img/og-image.png">
+  <link rel="apple-touch-icon" href="/img/og-image.png">
   <link rel="canonical" href="https://example.com/projet">
   <link rel="manifest" href="/manifest.json">
 
@@ -39,16 +39,15 @@
   <!-- ===== Navigation ===== -->
   <header id="main-header" class="sticky top-0 z-40 w-full bg-background/80 backdrop-blur-md transition-[border-color] duration-300" style="border-bottom: 1px solid transparent">
     <nav id="main-nav" class="relative mx-auto flex max-w-5xl items-center justify-between px-6 pt-12 pb-0 transition-[padding] duration-300">
-      <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight">
+      <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight text-white">
         <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1"/></svg>
         BYAIME
       </a>
 
       <div class="hidden items-center gap-6 lg:gap-8 md:flex absolute left-1/2 -translate-x-1/2">
-        <a href="/" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Accueil</a>
-        <a href="/a-propos" class="text-sm text-muted-foreground hover:text-foreground transition-colors">À propos</a>
-        <a href="/projets" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Galerie d'expériences</a>
-        <a href="/projet" class="text-sm text-foreground font-medium transition-colors">Imaginer mon projet</a>
+        <a href="/a-propos" class="text-sm text-muted-foreground hover:text-white transition-colors">À propos</a>
+        <a href="/projets" class="text-sm text-muted-foreground hover:text-white transition-colors">Projets</a>
+        <a href="/projet" class="text-sm text-white font-medium transition-colors">Imaginer mon projet</a>
       </div>
 
       <a href="#soutien" class="hidden md:inline-flex items-center rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-medium text-white hover:bg-white/10 transition-colors">
@@ -63,10 +62,10 @@
 
     <div id="mobile-menu" aria-hidden="true" class="hidden border-t border-border bg-background px-6 py-4 md:hidden">
       <div class="flex flex-col gap-4">
-        <a href="/" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Accueil</a>
-        <a href="/a-propos" class="text-sm text-muted-foreground hover:text-foreground transition-colors">À propos</a>
-        <a href="/projets" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Galerie d'expériences</a>
-        <a href="/projet" class="text-sm text-foreground font-medium transition-colors">Imaginer mon projet</a>
+        <a href="/" class="text-sm text-muted-foreground hover:text-white transition-colors">Accueil</a>
+        <a href="/a-propos" class="text-sm text-muted-foreground hover:text-white transition-colors">À propos</a>
+        <a href="/projets" class="text-sm text-muted-foreground hover:text-white transition-colors">Projets</a>
+        <a href="/projet" class="text-sm text-white font-medium transition-colors">Imaginer mon projet</a>
         <a href="#soutien" class="text-sm text-emerald-400 hover:underline">Soutenir LE MONDE AIME</a>
       </div>
     </div>
@@ -80,293 +79,366 @@
         <div class="max-w-3xl" data-animate>
           <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium tracking-wide mb-6 bg-white/[0.03]">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            Configurateur Intelligent BYAIME
+            Moteur AIME • Configurateur Conversationnel de Projet
           </span>
           <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-white leading-[1.15]">
             Donnons vie à l'univers numérique <br class="hidden sm:inline">
             <span class="text-gradient">de votre événement.</span>
           </h1>
           <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
-            Parcourez les étapes ci-dessous pour définir les contours de votre projet. Notre moteur génère en temps réel une prévisualisation conceptuelle sur mesure de ce que BYAIME pourrait imaginer pour vous.
+            Parcourez 5 étapes simples et rapides. Notre moteur génère en direct une proposition conceptuelle sur mesure, que vous pouvez ajuster en temps réel avant de la transmettre à Matt Mez.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- ===== Configurateur Conversationnel & Live Preview ===== -->
+    <!-- ===== Configurateur MVP ===== -->
     <section id="byaime-configurator" class="py-8 border-t border-border">
       <div class="mx-auto max-w-5xl px-6">
         
-        <!-- Progress Steps Indicator -->
+        <!-- LocalStorage Resume Draft Banner -->
+        <div id="cfg-resume-banner" class="hidden mb-8 p-4 rounded-2xl bg-white/[0.04] border border-emerald-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+            <p class="text-xs text-white">Un projet configuré précédemment a été retrouvé dans votre navigateur.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="cfg-resume-btn" type="button" class="px-4 py-1.5 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90">
+              Reprendre mon projet
+            </button>
+            <button id="cfg-restart-btn" type="button" class="px-3 py-1.5 rounded-full border border-border text-xs text-muted-foreground hover:text-white">
+              Nouveau projet
+            </button>
+          </div>
+        </div>
+
+        <!-- Progress Steps Bar -->
         <div class="mb-10" data-animate>
           <div class="w-full bg-white/10 h-1 rounded-full overflow-hidden mb-6">
             <div id="cfg-progress-bar" class="bg-white h-full transition-all duration-500 rounded-full" style="width: 20%"></div>
           </div>
           <div class="grid grid-cols-5 gap-2 text-center text-xs">
             <div data-step-indicator="1" class="p-2 rounded-lg border border-white text-white bg-white/10 font-medium transition-all">
-              1. Nature
+              1. Créer
             </div>
             <div data-step-indicator="2" class="p-2 rounded-lg border border-border text-muted-foreground transition-all">
-              2. Ambiance
+              2. Pour qui
             </div>
             <div data-step-indicator="3" class="p-2 rounded-lg border border-border text-muted-foreground transition-all">
-              3. Objectifs
+              3. Intention
             </div>
             <div data-step-indicator="4" class="p-2 rounded-lg border border-border text-muted-foreground transition-all">
               4. Outils
             </div>
             <div data-step-indicator="5" class="p-2 rounded-lg border border-border text-muted-foreground transition-all">
-              5. Transmission
+              5. Niveau & Contact
             </div>
           </div>
         </div>
 
-        <!-- Two Columns : Form Flow on Left, Live Generative Concept on Right -->
+        <!-- Two Columns : Form Flow on Left, Live Generative Proposal on Right -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 
-          <!-- Left Column: Step Content -->
+          <!-- Left Column: Form Content -->
           <div class="lg:col-span-7">
             <div id="cfg-form-wrapper" class="p-6 md:p-8 rounded-3xl bg-black border border-white/10 glow-card" data-animate>
 
-              <!-- STEP 1 : Type d'événement -->
+              <!-- ÉTAPE 1 : Qu'aimeriez-vous créer ? -->
               <div data-step-content="1" class="space-y-6">
                 <div>
-                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 01 sur 05</p>
-                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Quelle est la nature de votre événement ?</h2>
-                  <p class="text-xs text-muted-foreground mt-1">Choisissez la catégorie principale pour adapter les fonctionnalités interactives.</p>
+                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 01 • L'Événement</p>
+                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Qu'aimeriez-vous créer ?</h2>
+                  <p class="text-xs text-muted-foreground mt-1">Sélectionnez la nature de votre moment singulier :</p>
                 </div>
 
-                <div class="space-y-3">
-                  <label class="flex items-center justify-between p-4 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                <div class="space-y-2.5">
+                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
                     <div class="flex items-center gap-3">
                       <input type="radio" name="event-type" value="mariage" checked class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <div>
-                        <p class="text-sm font-semibold text-white">Mariage Singulier & Célébration à deux</p>
-                        <p class="text-xs text-muted-foreground">Union, cérémonie laïque, fête intimiste ou grandiose</p>
-                      </div>
+                      <span class="text-sm font-medium text-white">Mariage</span>
                     </div>
                     <span class="text-xs text-pink-300 font-mono">Amour</span>
                   </label>
 
-                  <label class="flex items-center justify-between p-4 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
                     <div class="flex items-center gap-3">
                       <input type="radio" name="event-type" value="ceremonie" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <div>
-                        <p class="text-sm font-semibold text-white">Cérémonie d'Adieu, Hommage & Mémoire</p>
-                        <p class="text-xs text-muted-foreground">Mémorial apaisé, recueillement des proches, transmission de vie</p>
-                      </div>
+                      <span class="text-sm font-medium text-white">Cérémonie d'adieu / Hommage</span>
                     </div>
                     <span class="text-xs text-amber-300 font-mono">Mémoire</span>
                   </label>
 
-                  <label class="flex items-center justify-between p-4 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
                     <div class="flex items-center gap-3">
                       <input type="radio" name="event-type" value="anniversaire" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <div>
-                        <p class="text-sm font-semibold text-white">Anniversaire d'Exception & Cap de Vie</p>
-                        <p class="text-xs text-muted-foreground">Passage de dizaine, célébration surprise, retrouvailles</p>
-                      </div>
+                      <span class="text-sm font-medium text-white">Anniversaire & Cap de vie</span>
                     </div>
-                    <span class="text-xs text-cyan-300 font-mono">Fête</span>
+                    <span class="text-xs text-cyan-300 font-mono">Célébration</span>
                   </label>
 
-                  <label class="flex items-center justify-between p-4 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
                     <div class="flex items-center gap-3">
                       <input type="radio" name="event-type" value="evenement" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <div>
-                        <p class="text-sm font-semibold text-white">Événement Culturel, Festival & Rassemblement</p>
-                        <p class="text-xs text-muted-foreground">Rencontres artistiques, festival indépendant, convention créative</p>
-                      </div>
+                      <span class="text-sm font-medium text-white">Événement culturel</span>
                     </div>
                     <span class="text-xs text-violet-300 font-mono">Culture</span>
                   </label>
 
-                  <label class="flex items-center justify-between p-4 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                    <div class="flex items-center gap-3">
+                      <input type="radio" name="event-type" value="festival" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <span class="text-sm font-medium text-white">Festival & Grand rassemblement</span>
+                    </div>
+                    <span class="text-xs text-purple-300 font-mono">Festival</span>
+                  </label>
+
+                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
                     <div class="flex items-center gap-3">
                       <input type="radio" name="event-type" value="artistique" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <div>
-                        <p class="text-sm font-semibold text-white">Projet Artistique, Exposition & Performance</p>
-                        <p class="text-xs text-muted-foreground">Scénographie numérique pour œuvres, plasticiens, musiciens</p>
-                      </div>
+                      <span class="text-sm font-medium text-white">Projet artistique & Performance</span>
                     </div>
                     <span class="text-xs text-emerald-300 font-mono">Art</span>
                   </label>
 
-                  <label class="flex items-center justify-between p-4 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
                     <div class="flex items-center gap-3">
                       <input type="radio" name="event-type" value="association" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <div>
-                        <p class="text-sm font-semibold text-white">Cause Solidaire, Collectif & Association</p>
-                        <p class="text-xs text-muted-foreground">Mobilisation citoyenne, plaidoyer, campagne d'impact</p>
-                      </div>
+                      <span class="text-sm font-medium text-white">Association & Cause solidaire</span>
                     </div>
                     <span class="text-xs text-blue-300 font-mono">Cause</span>
                   </label>
 
-                  <label class="flex items-center justify-between p-4 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                    <div class="flex items-center gap-3">
+                      <input type="radio" name="event-type" value="professionnel" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <span class="text-sm font-medium text-white">Projet professionnel & Lancement</span>
+                    </div>
+                    <span class="text-xs text-orange-300 font-mono">Pro</span>
+                  </label>
+
+                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
                     <div class="flex items-center gap-3">
                       <input type="radio" name="event-type" value="autre" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <div>
-                        <p class="text-sm font-semibold text-white">Projet Unique & Hors Standard</p>
-                        <p class="text-xs text-muted-foreground">Une idée inclassable nécessitant une conception totale de zéro</p>
-                      </div>
+                      <span class="text-sm font-medium text-white">Autre projet singulier</span>
                     </div>
-                    <span class="text-xs text-gray-400 font-mono">Libre</span>
+                    <span class="text-xs text-gray-400 font-mono">Sur mesure</span>
+                  </label>
+
+                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                    <div class="flex items-center gap-3">
+                      <input type="radio" name="event-type" value="indecis" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <span class="text-sm font-medium text-white">Je ne sais pas encore</span>
+                    </div>
+                    <span class="text-xs text-muted-foreground font-mono">Exploration</span>
                   </label>
                 </div>
               </div>
 
-              <!-- STEP 2 : Public & Atmosphère -->
+              <!-- ÉTAPE 2 : Pour qui ? -->
               <div data-step-content="2" class="hidden space-y-6">
                 <div>
-                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 02 sur 05</p>
-                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">À qui s'adresse l'expérience et quelle émotion susciter ?</h2>
-                  <p class="text-xs text-muted-foreground mt-1">Définissons le public cible et la tonalité sensorielle.</p>
+                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 02 • Le Public</p>
+                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Pour qui imaginez-vous ce mini-site ?</h2>
+                  <p class="text-xs text-muted-foreground mt-1">Précisez qui seront les visiteurs et participants privilégiés :</p>
                 </div>
 
-                <div class="space-y-4">
-                  <div>
-                    <label class="block text-xs font-semibold text-white uppercase tracking-wider mb-2">Audience attendue</label>
-                    <div class="grid grid-cols-2 gap-3">
-                      <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5">
-                        <input type="radio" name="cfg-audience" value="intime" checked class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                        <span class="text-xs font-medium text-white">Cercle intime & proches (10 à 80 pers.)</span>
-                      </label>
-                      <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5">
-                        <input type="radio" name="cfg-audience" value="moyen" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                        <span class="text-xs font-medium text-white">Communauté élargie (80 à 300 pers.)</span>
-                      </label>
-                      <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5">
-                        <input type="radio" name="cfg-audience" value="large" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                        <span class="text-xs font-medium text-white">Grand public & festivaliers (300+ pers.)</span>
-                      </label>
-                      <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5">
-                        <input type="radio" name="cfg-audience" value="hybride" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                        <span class="text-xs font-medium text-white">Présentiel & proches à distance</span>
-                      </label>
-                    </div>
-                  </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                    <input type="radio" name="cfg-audience" value="Moi" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                    <span class="text-xs font-medium text-white">Moi</span>
+                  </label>
 
-                  <div>
-                    <label class="block text-xs font-semibold text-white uppercase tracking-wider mb-2">Atmosphère & Ton de l'expérience</label>
-                    <div class="grid grid-cols-2 gap-3">
-                      <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5">
-                        <input type="radio" name="cfg-atmo" value="poetique" checked class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                        <div>
-                          <p class="text-xs font-semibold text-white">Poétique & Intimiste</p>
-                          <p class="text-[10px] text-muted-foreground">Lumière douce, calme, délicatesse</p>
-                        </div>
-                      </label>
-                      <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5">
-                        <input type="radio" name="cfg-atmo" value="minimaliste" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                        <div>
-                          <p class="text-xs font-semibold text-white">Minimaliste & Épuré</p>
-                          <p class="text-[10px] text-muted-foreground">Noir profond, typographie statutaire</p>
-                        </div>
-                      </label>
-                      <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5">
-                        <input type="radio" name="cfg-atmo" value="cinematique" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                        <div>
-                          <p class="text-xs font-semibold text-white">Cinématique & Immersif</p>
-                          <p class="text-[10px] text-muted-foreground">Sound design, micro-interactions</p>
-                        </div>
-                      </label>
-                      <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5">
-                        <input type="radio" name="cfg-atmo" value="festif" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                        <div>
-                          <p class="text-xs font-semibold text-white">Vibrant & Énergique</p>
-                          <p class="text-[10px] text-muted-foreground">Rythme soutenu, jeux d'indices</p>
-                        </div>
-                      </label>
-                    </div>
-                  </div>
+                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                    <input type="radio" name="cfg-audience" value="Ma famille" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                    <span class="text-xs font-medium text-white">Ma famille</span>
+                  </label>
+
+                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                    <input type="radio" name="cfg-audience" value="Mes proches" checked class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                    <span class="text-xs font-medium text-white">Mes proches</span>
+                  </label>
+
+                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                    <input type="radio" name="cfg-audience" value="Une communauté" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                    <span class="text-xs font-medium text-white">Une communauté</span>
+                  </label>
+
+                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                    <input type="radio" name="cfg-audience" value="Une association" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                    <span class="text-xs font-medium text-white">Une association</span>
+                  </label>
+
+                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                    <input type="radio" name="cfg-audience" value="Une entreprise" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                    <span class="text-xs font-medium text-white">Une entreprise</span>
+                  </label>
+
+                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                    <input type="radio" name="cfg-audience" value="Un public" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                    <span class="text-xs font-medium text-white">Un public</span>
+                  </label>
+
+                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                    <input type="radio" name="cfg-audience" value="Autre" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                    <span class="text-xs font-medium text-white">Autre</span>
+                  </label>
                 </div>
               </div>
 
-              <!-- STEP 3 : Objectifs Prioritaires -->
+              <!-- ÉTAPE 3 : Que voulez-vous faire vivre ? -->
               <div data-step-content="3" class="hidden space-y-6">
                 <div>
-                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 03 sur 05</p>
-                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Quels sont vos objectifs majeurs ?</h2>
-                  <p class="text-xs text-muted-foreground mt-1">Cochez les priorités que ce mini-site doit accomplir.</p>
+                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 03 • L'Intention</p>
+                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Que voulez-vous faire vivre ?</h2>
+                  <p class="text-xs text-muted-foreground mt-1">Sélectionnez une ou plusieurs intentions majeures :</p>
                 </div>
 
-                <div class="space-y-3">
-                  <label class="flex items-start gap-3 p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
-                    <input type="checkbox" checked class="mt-1 text-white focus:ring-white bg-black border-border h-4 w-4 rounded">
-                    <div>
-                      <p class="text-sm font-medium text-white">Émouvoir & Marquer les mémoires</p>
-                      <p class="text-xs text-muted-foreground">Créer un moment d'émerveillement dès l'ouverture du lien et au-delà du jour J.</p>
-                    </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                    <input type="checkbox" name="cfg-intentions" value="Organiser" checked class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                    <span>Organiser</span>
                   </label>
-
-                  <label class="flex items-start gap-3 p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
-                    <input type="checkbox" checked class="mt-1 text-white focus:ring-white bg-black border-border h-4 w-4 rounded">
-                    <div>
-                      <p class="text-sm font-medium text-white">Fluidifier la logistique & l'orientation des participants</p>
-                      <p class="text-xs text-muted-foreground">RSVP sans friction, programme heure par heure, plans, accès et hébergements.</p>
-                    </div>
+                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                    <input type="checkbox" name="cfg-intentions" value="Inviter" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                    <span>Inviter</span>
                   </label>
-
-                  <label class="flex items-start gap-3 p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
-                    <input type="checkbox" class="mt-1 text-white focus:ring-white bg-black border-border h-4 w-4 rounded">
-                    <div>
-                      <p class="text-sm font-medium text-white">Rassembler des souvenirs & témoignages en direct</p>
-                      <p class="text-xs text-muted-foreground">Collecte instantanée de photos haute définition, messages vocaux et anecdotes.</p>
-                    </div>
+                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                    <input type="checkbox" name="cfg-intentions" value="Partager" checked class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                    <span>Partager</span>
                   </label>
-
-                  <label class="flex items-start gap-3 p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
-                    <input type="checkbox" class="mt-1 text-white focus:ring-white bg-black border-border h-4 w-4 rounded">
-                    <div>
-                      <p class="text-sm font-medium text-white">Relier les proches dispersés dans le monde entier</p>
-                      <p class="text-xs text-muted-foreground">Diffusion sonore ou vidéo discrète et espace de participation à distance.</p>
-                    </div>
+                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                    <input type="checkbox" name="cfg-intentions" value="Rassembler" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                    <span>Rassembler</span>
+                  </label>
+                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                    <input type="checkbox" name="cfg-intentions" value="Émouvoir" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                    <span>Émouvoir</span>
+                  </label>
+                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                    <input type="checkbox" name="cfg-intentions" value="Informer" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                    <span>Informer</span>
+                  </label>
+                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                    <input type="checkbox" name="cfg-intentions" value="Créer des souvenirs" checked class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                    <span>Créer des souvenirs</span>
+                  </label>
+                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                    <input type="checkbox" name="cfg-intentions" value="Faire participer" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                    <span>Faire participer</span>
+                  </label>
+                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                    <input type="checkbox" name="cfg-intentions" value="Raconter une histoire" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                    <span>Raconter une histoire</span>
+                  </label>
+                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                    <input type="checkbox" name="cfg-intentions" value="Coordonner" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                    <span>Coordonner</span>
+                  </label>
+                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                    <input type="checkbox" name="cfg-intentions" value="Créer une expérience" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                    <span>Créer une expérience</span>
+                  </label>
+                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                    <input type="checkbox" name="cfg-intentions" value="Autre" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                    <span>Autre</span>
                   </label>
                 </div>
               </div>
 
-              <!-- STEP 4 : Outils & Dispositifs adaptés -->
+              <!-- ÉTAPE 4 : Quels outils vous intéressent ? -->
               <div data-step-content="4" class="hidden space-y-6">
                 <div>
-                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 04 sur 05</p>
-                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Fonctionnalités & Modules suggérés</h2>
-                  <p class="text-xs text-muted-foreground mt-1">Modules pré-sélectionnés par BYAIME pour votre type d'événement (ajustables en direct) :</p>
+                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 04 • Les Outils</p>
+                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Quels outils vous intéressent ?</h2>
+                  <p class="text-xs text-muted-foreground mt-1">Modules suggérés automatiquement selon vos choix (cochage libre) :</p>
                 </div>
 
-                <div id="cfg-features-container" class="space-y-3">
-                  <!-- Dynamically populated by JS based on event type -->
+                <div id="step4-tools-checkboxes" class="space-y-2.5">
+                  <!-- Injected by JavaScript dynamically -->
                 </div>
               </div>
 
-              <!-- STEP 5 : Coordonnées & Envoi -->
+              <!-- ÉTAPE 5 : Niveau d'expérience & Contact réel -->
               <div data-step-content="5" class="hidden space-y-6">
                 <div>
-                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 05 sur 05</p>
-                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Transmettre votre idée à Matt Mez</h2>
-                  <p class="text-xs text-muted-foreground mt-1">Renseignez vos coordonnées pour recevoir une proposition de cadrage et amorcer la co-création.</p>
+                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 05 • Niveau & Coordonnées</p>
+                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Quel niveau d'expérience imaginez-vous ?</h2>
                 </div>
 
-                <div class="space-y-4">
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Niveau d'expérience -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
+                    <input type="radio" name="cfg-level" value="minimal" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                    <p class="text-xs font-bold text-white mt-1">MINIMAL</p>
+                    <p class="text-[11px] text-muted-foreground">Un mini-site élégant et soigné.</p>
+                  </label>
+                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
+                    <input type="radio" name="cfg-level" value="interactif" checked class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                    <p class="text-xs font-bold text-white mt-1">INTERACTIF</p>
+                    <p class="text-[11px] text-muted-foreground">Un mini-site avec outils et interactions.</p>
+                  </label>
+                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
+                    <input type="radio" name="cfg-level" value="immersif" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                    <p class="text-xs font-bold text-white mt-1">IMMERSIF</p>
+                    <p class="text-[11px] text-muted-foreground">Une véritable expérience numérique totale.</p>
+                  </label>
+                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
+                    <input type="radio" name="cfg-level" value="indecis" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                    <p class="text-xs font-bold text-white mt-1">JE NE SAIS PAS</p>
+                    <p class="text-[11px] text-muted-foreground">« Imaginez pour moi. »</p>
+                  </label>
+                </div>
+
+                <!-- Coordonnées et projet -->
+                <div class="pt-6 border-t border-white/10 space-y-4">
+                  <h3 class="text-base font-bold text-white">Vos coordonnées pour la transmission</h3>
+                  
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label for="cfg-user-name" class="block text-xs font-medium text-white mb-1.5">Votre Prénom & Nom *</label>
-                      <input id="cfg-user-name" type="text" required placeholder="Alexandre & Camille" class="w-full rounded-xl border border-border bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                      <label for="cfg-contact-first" class="block text-xs text-white mb-1">Prénom *</label>
+                      <input id="cfg-contact-first" type="text" required placeholder="Camille" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
                     </div>
                     <div>
-                      <label for="cfg-user-email" class="block text-xs font-medium text-white mb-1.5">Votre Adresse E-mail *</label>
-                      <input id="cfg-user-email" type="email" required placeholder="alexandre@domaine.com" class="w-full rounded-xl border border-border bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                      <label for="cfg-contact-last" class="block text-xs text-white mb-1">Nom *</label>
+                      <input id="cfg-contact-last" type="text" required placeholder="Dupont" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label for="cfg-contact-email" class="block text-xs text-white mb-1">E-mail *</label>
+                      <input id="cfg-contact-email" type="email" required placeholder="camille@domaine.com" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                    <div>
+                      <label for="cfg-contact-phone" class="block text-xs text-white mb-1">Téléphone (facultatif)</label>
+                      <input id="cfg-contact-phone" type="tel" placeholder="06 12 34 56 78" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                      <label for="cfg-contact-projname" class="block text-xs text-white mb-1">Nom du projet</label>
+                      <input id="cfg-contact-projname" type="text" placeholder="Ex: Mariage C&A" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                    <div>
+                      <label for="cfg-contact-date" class="block text-xs text-white mb-1">Date estimée</label>
+                      <input id="cfg-contact-date" type="text" placeholder="Ex: Été 2026" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                    <div>
+                      <label for="cfg-contact-loc" class="block text-xs text-white mb-1">Localisation</label>
+                      <input id="cfg-contact-loc" type="text" placeholder="Ex: Provence / Paris" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
                     </div>
                   </div>
 
                   <div>
-                    <label for="cfg-user-notes" class="block text-xs font-medium text-white mb-1.5">Décrivez votre vision en quelques mots (optionnel)</label>
-                    <textarea id="cfg-user-notes" rows="3" placeholder="Date envisagée, lieu, envies particulières, univers musical ou visuel..." class="w-full rounded-xl border border-border bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white resize-y"></textarea>
+                    <label for="cfg-contact-message" class="block text-xs text-white mb-1">Message libre (optionnel)</label>
+                    <textarea id="cfg-contact-message" rows="2" placeholder="Précisez toute envie particulière..." class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white resize-y"></textarea>
                   </div>
 
-                  <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 text-xs text-muted-foreground space-y-1">
-                    <p><strong class="text-white">Engagement de confidentialité :</strong> Vos informations sont traitées directement par Matt Mez et ne font l'objet d'aucun partage commercial.</p>
-                  </div>
+                  <label class="flex items-center gap-2.5 text-xs text-white cursor-pointer pt-1">
+                    <input id="cfg-contact-callback" type="checkbox" checked class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                    <span>Je souhaite être recontacté(e) par Matt Mez pour échanger sur ce projet.</span>
+                  </label>
                 </div>
               </div>
 
@@ -383,75 +455,148 @@
 
             </div>
 
-            <!-- SUCCESS STATE WRAPPER (Hidden initially) -->
-            <div id="cfg-success-wrapper" class="hidden p-8 md:p-12 rounded-3xl bg-black border border-emerald-500/30 glow-card text-center space-y-6">
-              <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 mx-auto">
-                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <!-- SUCCESS & READY TO SUBMIT WRAPPER -->
+            <div id="cfg-ready-wrapper" class="hidden p-8 md:p-10 rounded-3xl bg-black border border-emerald-500/30 glow-card space-y-6">
+              <div class="flex items-center gap-3">
+                <div class="h-10 w-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-white tracking-tight">Votre projet est prêt à être transmis.</h3>
+                  <p class="text-xs text-muted-foreground">Toute votre configuration a été enregistrée et structurée.</p>
+                </div>
               </div>
-              <h3 class="text-2xl font-bold text-white tracking-tight">Votre projet a été transmis à Matt Mez</h3>
-              <p class="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
-                Merci <span id="recap-name" class="text-white font-medium"></span> ! Nous étudions votre projet (<strong id="recap-type" class="text-white"></strong>) et vous recontacterons sous 24 à 48 heures pour organiser un premier échange créatif.
-              </p>
-              <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-left max-w-md mx-auto text-xs space-y-2">
-                <p class="text-white font-semibold">Concept Pré-enregistré :</p>
-                <p id="recap-title" class="text-muted-foreground italic"></p>
-                <p class="text-[11px] text-emerald-400">✓ Prévisualisation sauvegardée sur notre laboratoire</p>
+
+              <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-xs text-muted-foreground space-y-2">
+                <p><strong class="text-white">Contact :</strong> <span id="conf-name" class="text-gray-200"></span></p>
+                <p><strong class="text-white">Titre du concept :</strong> <span id="conf-title" class="text-gray-200 italic"></span></p>
+                <p><strong class="text-white">Nombre de modules retenus :</strong> <span id="conf-modules-count" class="text-emerald-400 font-bold"></span></p>
               </div>
-              <div class="pt-4">
-                <a href="/projets" class="inline-flex items-center rounded-full border border-white/20 px-6 py-3 text-xs font-medium text-white hover:bg-white/10 transition-colors">
-                  Explorer d'autres créations en attendant
+
+              <div class="space-y-3 pt-2">
+                <a id="conf-mailto-link" href="#" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
+                  ✉️ Envoyer les spécifications par E-mail à Matt Mez →
                 </a>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <button id="conf-copy-btn" type="button" class="w-full py-2.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
+                    Copier la synthèse complète
+                  </button>
+                  <button id="conf-download-btn" type="button" class="w-full py-2.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
+                    Télécharger la configuration JSON
+                  </button>
+                </div>
               </div>
             </div>
 
           </div>
 
-          <!-- Right Column: Live Concept Preview Card (Generative) -->
-          <div class="lg:col-span-5 sticky top-28">
+          <!-- Right Column: Live Suggestion Proposal & Customizer Studio -->
+          <div class="lg:col-span-5 sticky top-28 space-y-6">
+            
+            <!-- Live Synthesis Card -->
             <div class="rounded-3xl bg-zinc-950 p-6 md:p-8 border border-white/10 shadow-2xl relative overflow-hidden space-y-6" data-animate data-delay="1">
-              <div class="absolute top-0 right-0 p-4 opacity-20 pointer-events-none">
+              <div class="absolute top-0 right-0 p-4 opacity-15 pointer-events-none">
                 <svg width="60" height="40" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1"/></svg>
               </div>
 
+              <!-- Header -->
               <div>
-                <span id="preview-concept-badge" class="inline-block rounded-full bg-white/10 px-3 py-1 text-[10px] font-mono text-white mb-2">
+                <span id="synth-project-badge" class="inline-block rounded-full bg-white/10 px-3 py-1 text-[10px] font-mono text-white mb-2">
                   Univers Amour & Célébration
                 </span>
-                <p class="text-[11px] uppercase tracking-wider text-muted-foreground">Prévisualisation Conceptuelle BYAIME</p>
-                <h3 id="preview-concept-title" class="text-xl font-bold text-white tracking-tight mt-1">
-                  Sanctuaire Émotionnel & Récit à Deux
+                <p class="text-[11px] uppercase tracking-wider text-muted-foreground">Voici ce que BYAIME imagine pour vous :</p>
+                <h3 id="synth-project-title" class="text-xl font-bold text-white tracking-tight mt-1">
+                  Le Grand Jour — L'expérience vivante
                 </h3>
               </div>
 
-              <div class="p-4 rounded-xl bg-white/[0.03] border border-white/5 space-y-2">
-                <p class="text-[11px] font-semibold text-white">Direction Artistique Suggérée :</p>
-                <p id="preview-art-direction" class="text-xs text-muted-foreground leading-relaxed">
+              <!-- Live Adjusters (Ambiance & Level) -->
+              <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+                <p class="text-[11px] font-semibold text-white">Personnaliser en direct :</p>
+                
+                <div class="grid grid-cols-2 gap-2">
+                  <div>
+                    <label for="synth-ambiance-select" class="block text-[10px] text-muted-foreground mb-1">Ambiance :</label>
+                    <select id="synth-ambiance-select" class="w-full text-xs rounded-lg border border-border bg-black text-white p-1.5 focus:outline-none">
+                      <option value="poetique">Poétique</option>
+                      <option value="minimaliste">Minimaliste</option>
+                      <option value="cinematique">Cinématique</option>
+                      <option value="vibrante">Vibrante</option>
+                      <option value="elegante">Élégante</option>
+                      <option value="libre">Libre</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="synth-level-select" class="block text-[10px] text-muted-foreground mb-1">Niveau :</label>
+                    <select id="synth-level-select" class="w-full text-xs rounded-lg border border-border bg-black text-white p-1.5 focus:outline-none">
+                      <option value="minimal">Minimal</option>
+                      <option value="interactif" selected>Interactif</option>
+                      <option value="immersif">Immersif</option>
+                      <option value="indecis">Sur mesure</option>
+                    </select>
+                  </div>
+                </div>
+
+                <p id="synth-art-desc" class="text-[11px] text-muted-foreground italic leading-relaxed pt-1">
                   Tons chauds, typographie raffinée, constellation céleste interactive, ambiance sonore douce.
                 </p>
               </div>
 
+              <!-- Active Modules with Removal (×) -->
               <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <p class="text-[11px] font-semibold text-white">Modules Actifs (Cliquez sur × pour retirer) :</p>
+                </div>
+                <div id="synth-active-modules" class="flex flex-wrap gap-1.5">
+                  <!-- Injected by JS -->
+                </div>
+              </div>
+
+              <!-- Available Modules to Add (+) -->
+              <div class="space-y-2 pt-2 border-t border-white/10">
+                <p class="text-[11px] font-semibold text-white">Ajouter d'autres modules suggérés :</p>
+                <div id="synth-available-modules" class="flex flex-wrap gap-1.5">
+                  <!-- Injected by JS -->
+                </div>
+              </div>
+
+              <!-- Architecture list -->
+              <div class="space-y-2 pt-2 border-t border-white/10">
                 <p class="text-[11px] font-semibold text-white">Architecture Recommandée :</p>
-                <ul id="preview-architecture-list" class="space-y-1.5">
-                  <!-- Injected via JS -->
+                <ul id="synth-arch-list" class="space-y-1">
+                  <!-- Injected by JS -->
                 </ul>
               </div>
 
-              <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1.5">
+              <!-- Signature Interaction -->
+              <div class="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
                 <div class="flex items-center gap-2 text-xs font-semibold text-white">
                   <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-                  Dispositif Signature Imaginé :
+                  Interaction Signature :
                 </div>
-                <p id="preview-signature-feature" class="text-xs text-muted-foreground leading-relaxed">
-                  Livre d'or vocal immersif avec lecteur vinyle virtuel & dépôt de souvenirs en direct.
+                <p id="synth-signature-feature" class="text-xs text-muted-foreground leading-relaxed">
+                  Une Timeline vivante qui transforme chaque moment du mariage en expérience.
                 </p>
               </div>
 
-              <div class="pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-muted-foreground">
-                <span>Conception : Matt Mez</span>
-                <span class="text-white font-mono">100% Sur Mesure</span>
-              </div>
             </div>
+
+            <!-- Summary Review Box -->
+            <div class="rounded-2xl bg-black p-5 border border-white/10 text-xs space-y-3">
+              <p class="font-bold text-white uppercase tracking-wider text-[10px]">Synthèse du Projet</p>
+              <div class="space-y-1.5 text-muted-foreground">
+                <p><strong class="text-white">Type :</strong> <span id="sum-type">Mariage</span></p>
+                <p><strong class="text-white">Public :</strong> <span id="sum-audience">Mes proches</span></p>
+                <p><strong class="text-white">Intention :</strong> <span id="sum-intentions">Organiser + Partager + Créer des souvenirs</span></p>
+                <p><strong class="text-white">Style :</strong> <span id="sum-ambiance">Poétique & Intimiste</span></p>
+                <p><strong class="text-white">Niveau :</strong> <span id="sum-level">Interactif</span></p>
+              </div>
+              <ul id="sum-modules-list" class="space-y-1 pt-2 border-t border-white/10">
+                <!-- Modules list -->
+              </ul>
+            </div>
+
           </div>
 
         </div>
@@ -469,22 +614,22 @@
                 Association LE MONDE AIME (Loi 1901)
               </span>
               <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                Soutenir nos initiatives d'expérimentation créative
+                Soutenir LE MONDE AIME
               </h2>
               <p class="text-sm text-muted-foreground leading-relaxed">
-                L'association <strong class="text-white">LE MONDE AIME</strong> développe des programmes d'accès à la culture numérique, des outils de mémoire citoyenne et des ateliers ouverts d'art technologique.
+                Vous pouvez soutenir librement les actions portées par l'association <strong>LE MONDE AIME</strong> pour l'expérimentation créative, l'accès à la culture numérique et la préservation de la mémoire citoyenne.
               </p>
               <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 text-xs text-muted-foreground space-y-2">
-                <p><strong class="text-white">Transparence & Indépendance :</strong> Ce soutien associatif est entièrement volontaire et distinct des prestations de création sur mesure de BYAIME. Aucun don n'est exigé pour faire une demande de projet.</p>
+                <p><strong class="text-white">Séparation stricte & Indépendance :</strong> Ce soutien associatif est un don volontaire et indépendant de toute prestation sur mesure BYAIME. Il ne constitue ni le prix ni une condition d'accès à la conception d'un mini-site.</p>
                 <p class="text-[11px] text-gray-400 italic">
-                  Note d'information : Le statut d'intérêt général ouvrant droit à rescrit fiscal est en cours d'instruction administrative. Par respect scrupuleux de la loi, aucune promesse de déduction fiscale n'est formulée tant que la confirmation officielle n'est pas finalisée.
+                  Information légale : L'éligibilité fiscale et les conditions d'émission de reçus fiscaux sont en cours d'instruction administrative. Aucune promesse de déduction fiscale n'est formulée tant que la confirmation officielle n'est pas sécurisée.
                 </p>
               </div>
             </div>
 
             <!-- Donation Interactive Module -->
             <div class="lg:col-span-5 bg-zinc-950 p-6 rounded-2xl border border-white/10 space-y-4">
-              <p class="text-xs font-semibold uppercase tracking-wider text-white">Choisir votre soutien</p>
+              <p class="text-xs font-semibold uppercase tracking-wider text-white">Choisir votre soutien associatif</p>
               
               <div class="grid grid-cols-2 gap-2.5">
                 <button type="button" data-donation-amount="20" class="py-2.5 px-3 rounded-xl border border-border bg-white/5 text-xs font-medium text-muted-foreground hover:text-white transition-all">
@@ -530,7 +675,7 @@
             BYAIME
           </a>
           <p class="mt-4 text-sm text-muted-foreground max-w-md leading-relaxed">
-            Startup créative et technologique fondée par <strong>Matt Mez</strong>. Conception d'univers numériques sur mesure pour les événements et projets qui sortent des standards.
+            Studio créatif et technologique fondé par <strong>Matt Mez</strong>. Conception d'univers numériques sur mesure pour les événements et projets qui sortent des standards.
           </p>
         </div>
 
@@ -539,7 +684,7 @@
           <ul class="mt-4 space-y-2.5 text-sm text-muted-foreground">
             <li><a href="/" class="hover:text-white transition-colors">Accueil</a></li>
             <li><a href="/a-propos" class="hover:text-white transition-colors">À propos</a></li>
-            <li><a href="/projets" class="hover:text-white transition-colors">Galerie d'expériences</a></li>
+            <li><a href="/projets" class="hover:text-white transition-colors">Projets</a></li>
             <li><a href="/projet" class="hover:text-white transition-colors">Imaginer mon projet</a></li>
           </ul>
         </div>
@@ -547,7 +692,7 @@
         <div>
           <p class="text-xs font-semibold uppercase tracking-wider text-white">Engagement</p>
           <ul class="mt-4 space-y-2.5 text-sm text-muted-foreground">
-            <li><a href="#soutien" class="hover:text-white transition-colors">Soutenir LE MONDE AIME</a></li>
+            <li><a href="/projet#soutien" class="hover:text-white transition-colors">Soutenir LE MONDE AIME</a></li>
             <li><button type="button" data-open-dialog="modal-legal" class="hover:text-white transition-colors text-left">Mentions légales & CGU</button></li>
             <li><button type="button" data-open-dialog="modal-privacy" class="hover:text-white transition-colors text-left">Confidentialité</button></li>
           </ul>
