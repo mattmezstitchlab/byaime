@@ -1,5 +1,5 @@
-/* ===== BYAIME — Studio & Moteur de Conception d'Expériences AIME — main.js ===== */
-/* Phase 4: Project Model, Module Registry, Scoring Engine, Live Proposal V2, Exploration Mode, Preview Mode & Cahier des Charges */
+/* ===== BYAIME — AIME Engine V1 (Stable) — main.js ===== */
+/* Core Experience Design Engine & UI Controller */
 
 (function () {
   'use strict';
@@ -7,45 +7,10 @@
   // Mark JS as available
   document.documentElement.classList.add('js');
 
-  // ===== Internal Analytics Hook =====
-  window.trackBYAIME = function (eventName, eventData) {
-    var payload = {
-      event: eventName,
-      data: eventData || {},
-      timestamp: new Date().toISOString()
-    };
-    if (window.BYAIME_DEBUG) {
-      console.log('[BYAIME Analytics]', payload);
-    }
-    try {
-      window.dispatchEvent(new CustomEvent('byaime_event', { detail: payload }));
-    } catch (e) {}
-  };
+  // =========================================================================
+  // 1. AIME ENGINE V1 — COUCHE LOGIQUE & MODÈLE CENTRAL
+  // =========================================================================
 
-  // ===== LocalStorage Manager =====
-  var STORAGE_KEY = 'byaime_project_model_v2';
-  var BYAIME_Storage = {
-    save: function (model) {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(model));
-      } catch (e) {}
-    },
-    load: function () {
-      try {
-        var raw = localStorage.getItem(STORAGE_KEY);
-        return raw ? JSON.parse(raw) : null;
-      } catch (e) {
-        return null;
-      }
-    },
-    clear: function () {
-      try {
-        localStorage.removeItem(STORAGE_KEY);
-      } catch (e) {}
-    }
-  };
-
-  // ===== BIBLIOTHÈQUE INTERNE DE MODULES BYAIME =====
   var moduleRegistry = {
     timeline: {
       id: 'timeline',
@@ -147,7 +112,7 @@
       id: 'providers',
       name: 'Prestataires & Guide Hébergements',
       category: 'Logistique',
-      description: 'Recommandations d\'hôtels, navettes, coiffeurs et prestataires du mariage.',
+      description: 'Recommandations d\'hôtels, navettes, coiffeurs et prestataires de l\'événement.',
       whyRecommended: 'Offre une expérience 5 étoiles aux invités venant de loin.',
       icon: '🏨',
       compatibleEvents: ['mariage', 'festival', 'evenement', 'professionnel'],
@@ -337,7 +302,6 @@
     }
   };
 
-  // ===== PRESETS & RÈGLES DE SUGGESTIONS PAR DÉFAUT =====
   var defaultPresets = {
     mariage: {
       type: 'mariage',
@@ -352,7 +316,7 @@
       pages: ['Accueil', 'Programme', 'Invités & Tables', 'Musique', 'Galerie & Souvenirs', 'Guide pratique'],
       alternatives: [
         {
-          name: 'Version 01 • L\'expérience Élégante & Épurée',
+          name: 'Version 01 • L\'Épure & L\'Intime',
           ambiance: 'minimaliste',
           level: 'minimal',
           title: 'L\'Épure & L\'Intime',
@@ -360,7 +324,7 @@
           modules: ['countdown', 'rsvp', 'timeline', 'map', 'contact']
         },
         {
-          name: 'Version 02 • Le Mariage Vivant & Participatif',
+          name: 'Version 02 • Le Mariage Vivant',
           ambiance: 'poetique',
           level: 'interactif',
           title: 'Le Grand Jour — L\'expérience vivante',
@@ -368,12 +332,12 @@
           modules: ['timeline', 'rsvp', 'guests', 'tables', 'music', 'gallery', 'guestbook', 'map']
         },
         {
-          name: 'Version 03 • Le Mariage Immersif & Spatial',
+          name: 'Version 03 • L\'Union Céleste Immersive',
           ambiance: 'cinematique',
           level: 'immersif',
           title: 'L\'Astral & L\'Union Céleste',
           signature: 'Univers WebGL avec ciel étoilé interactif, livre d\'or vocal et galerie haute fidélité.',
-          modules: ['countdown', 'timeline', 'rsvp', 'guests', 'tables', 'music', 'gallery', 'guestbook', 'memories', 'map', 'notifications', 'privateSpace']
+          modules: ['countdown', 'timeline', 'rsvp', 'guests', 'tables', 'music', 'gallery', 'guestbook', 'memories', 'map', 'notifications', 'privateSpace', 'contact']
         }
       ]
     },
@@ -425,7 +389,7 @@
       artDirection: 'Contraste affirmé, micro-animations festives et élégantes, typographie expressive.',
       signatureInteraction: 'Une capsule temporelle interactive à énigmes révélant les étapes de la fête au fil des jours.',
       defaultModules: ['countdown', 'memories', 'rsvp', 'music', 'gallery', 'video', 'map', 'contact'],
-      pages: ['Accueil & Décompte', 'Frise des 40 ans', 'Playlist collaborative', 'Cagnotte', 'Vidéos surprises'],
+      pages: ['Accueil & Décompte', 'Frise des années', 'Playlist collaborative', 'Cagnotte', 'Vidéos surprises'],
       alternatives: [
         {
           name: 'Version 01 • L\'Invitation Chic',
@@ -444,7 +408,7 @@
           modules: ['countdown', 'memories', 'rsvp', 'music', 'gallery', 'video', 'map', 'contact']
         },
         {
-          name: 'Version 03 • L\'Expérience Surprise Totale',
+          name: 'Version 03 • L\'Odyssée Secrète',
           ambiance: 'cinematique',
           level: 'immersif',
           title: 'L\'Odyssée Secrète',
@@ -520,7 +484,7 @@
           modules: ['program', 'artists', 'map', 'agenda', 'tickets', 'notifications', 'music', 'contact']
         },
         {
-          name: 'Version 03 • La Totale Scénique',
+          name: 'Version 03 • Le Pavillon Festivalier 360°',
           ambiance: 'cinematique',
           level: 'immersif',
           title: 'Le Pavillon Festivalier 360°',
@@ -558,7 +522,7 @@
           modules: ['artists', 'music', 'audio', 'gallery', 'guestbook', 'contact']
         },
         {
-          name: 'Version 03 • L\'Expérience Générative',
+          name: 'Version 03 • La Scénographie Totale',
           ambiance: 'cinematique',
           level: 'immersif',
           title: 'La Scénographie Totale',
@@ -596,7 +560,7 @@
           modules: ['testimonials', 'impact', 'donations', 'memories', 'gallery', 'contact']
         },
         {
-          name: 'Version 03 • La Communauté Engagée',
+          name: 'Version 03 • La Tribune Ouverte',
           ambiance: 'vibrante',
           level: 'immersif',
           title: 'La Tribune Ouverte',
@@ -610,7 +574,7 @@
       categoryName: 'Projet Professionnel & Lancement',
       badge: 'Vitrine Singulière & Expérience',
       suggestedTitle: 'Le Lancement Singulier — Vitrine d\'Impact',
-      subtitle: 'Une présentation de produit ou d\'initiative sans aucun temps de chargement.',
+      subtitle: 'Une présentation d\'initiative sans aucun temps de chargement.',
       description: 'Programme des keynotes, fiches intervenants et inscriptions VIP fluides.',
       artDirection: 'Statutaire, typographie de caractère, fluidité chirurgicale.',
       signatureInteraction: 'Une expérience de présentation sans friction ni temps de chargement.',
@@ -721,149 +685,598 @@
     }
   };
 
-  // ===== MOTEUR DE COMPATIBILITÉ & SCORING DES MODULES =====
-  function calculateModuleScores(event, intentions, audience, level, ambiance) {
-    var scores = {};
-    var allKeys = Object.keys(moduleRegistry);
+  // =========================================================================
+  // 2. AIME ENGINE — MÉTHODES CENTRALES & CONTRATS ARCHITECTURAUX
+  // =========================================================================
 
-    allKeys.forEach(function (modId) {
-      var mod = moduleRegistry[modId];
-      var score = 30; // base score
+  window.AIME_Engine = {
+    version: '1.0.0-stable',
+    moduleRegistry: moduleRegistry,
+    presets: defaultPresets,
 
-      // Event compatibility
-      if (mod.compatibleEvents.indexOf(event) !== -1) {
-        score += 40;
-      }
+    // Factory: Créer une instance propre de projectModel
+    createProjectModel: function (initialData) {
+      initialData = initialData || {};
+      var baseType = initialData.type || 'mariage';
+      var preset = defaultPresets[baseType] || defaultPresets.mariage;
 
-      // Intentions relevance
-      if (intentions.indexOf('Organiser') !== -1 && ['timeline', 'rsvp', 'tables', 'map', 'program'].indexOf(modId) !== -1) score += 20;
-      if (intentions.indexOf('Émouvoir') !== -1 && ['guestbook', 'memories', 'music', 'audio', 'tributes', 'testimonials'].indexOf(modId) !== -1) score += 25;
-      if (intentions.indexOf('Partager') !== -1 && ['gallery', 'music', 'guestbook', 'video'].indexOf(modId) !== -1) score += 20;
-      if (intentions.indexOf('Créer des souvenirs') !== -1 && ['gallery', 'guestbook', 'memories', 'tributes'].indexOf(modId) !== -1) score += 25;
-      if (intentions.indexOf('Rassembler') !== -1 && ['guests', 'map', 'donations', 'impact'].indexOf(modId) !== -1) score += 15;
-      if (intentions.indexOf('Informer') !== -1 && ['program', 'map', 'providers', 'notifications', 'agenda'].indexOf(modId) !== -1) score += 20;
+      return {
+        id: 'byaime_proj_' + Math.random().toString(36).substr(2, 9),
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        identity: {
+          firstName: initialData.firstName || '',
+          lastName: initialData.lastName || '',
+          email: initialData.email || '',
+          phone: initialData.phone || '',
+          projectName: initialData.projectName || ''
+        },
+        event: {
+          type: baseType,
+          date: initialData.date || '',
+          location: initialData.location || '',
+          audience: initialData.audience || 'Mes proches'
+        },
+        intentions: initialData.intentions || ['Organiser', 'Partager', 'Créer des souvenirs'],
+        experience: {
+          atmosphere: initialData.atmosphere || 'poetique',
+          level: initialData.level || 'interactif'
+        },
+        modules: (initialData.modules || preset.defaultModules).slice(),
+        architecture: {
+          pages: preset.pages.slice(),
+          navigation: preset.pages.slice(0, 4),
+          features: []
+        },
+        concept: {
+          title: preset.suggestedTitle,
+          subtitle: preset.subtitle,
+          description: preset.description,
+          artDirection: preset.artDirection,
+          signatureInteraction: preset.signatureInteraction
+        },
+        message: initialData.message || '',
+        status: 'draft',
+        support: {
+          clicked: false,
+          amount: 50
+        }
+      };
+    },
 
-      // Audience relevance
-      if (audience === 'Un public' || audience === 'Une communauté') {
-        if (['agenda', 'artists', 'tickets', 'notifications', 'map'].indexOf(modId) !== -1) score += 15;
-      }
-      if (audience === 'Mes proches' || audience === 'Ma famille') {
-        if (['guestbook', 'memories', 'gallery', 'tables', 'tributes'].indexOf(modId) !== -1) score += 15;
-      }
+    // Moteur de scoring et de recommandation de modules (Isolé & Déterministe)
+    recommendModules: function (projectModel) {
+      var eventType = projectModel.event.type || 'mariage';
+      var intentions = projectModel.intentions || [];
+      var audience = projectModel.event.audience || '';
+      var level = projectModel.experience.level || 'interactif';
 
-      // Experience level boost
-      if (level === 'immersif') {
-        if (['music', 'audio', 'video', 'countdown', 'notifications', 'guestbook'].indexOf(modId) !== -1) score += 15;
-      }
-      if (level === 'minimal') {
-        if (['notifications', 'video', 'providers'].indexOf(modId) !== -1) score -= 20;
-      }
+      var scores = {};
+      var allKeys = Object.keys(moduleRegistry);
 
-      scores[modId] = Math.min(100, Math.max(0, score));
-    });
+      allKeys.forEach(function (modId) {
+        var mod = moduleRegistry[modId];
+        var score = 30; // base score
 
-    return scores;
-  }
+        // Compatibilité événementielle
+        if (mod.compatibleEvents.indexOf(eventType) !== -1) {
+          score += 40;
+        }
 
-  // ===== ABSTRACTION GÉNÉRATION D'EXPÉRIENCE : generateExperience(projectModel) =====
-  window.generateExperience = function (model) {
-    var preset = defaultPresets[model.event.type] || defaultPresets.mariage;
-    
-    return {
-      id: model.id,
-      theme: model.experience.atmosphere || 'poetique',
-      level: model.experience.level || 'interactif',
-      meta: {
-        title: model.concept.title || preset.suggestedTitle,
-        subtitle: model.concept.subtitle || preset.subtitle,
-        description: model.concept.description || preset.description,
-        artDirection: model.concept.artDirection || preset.artDirection,
-        signatureInteraction: model.concept.signatureInteraction || preset.signatureInteraction
+        // Pertinence des intentions
+        if (intentions.indexOf('Organiser') !== -1 && ['timeline', 'rsvp', 'tables', 'map', 'program'].indexOf(modId) !== -1) score += 20;
+        if (intentions.indexOf('Émouvoir') !== -1 && ['guestbook', 'memories', 'music', 'audio', 'tributes', 'testimonials'].indexOf(modId) !== -1) score += 25;
+        if (intentions.indexOf('Partager') !== -1 && ['gallery', 'music', 'guestbook', 'video'].indexOf(modId) !== -1) score += 20;
+        if (intentions.indexOf('Créer des souvenirs') !== -1 && ['gallery', 'guestbook', 'memories', 'tributes'].indexOf(modId) !== -1) score += 25;
+        if (intentions.indexOf('Rassembler') !== -1 && ['guests', 'map', 'donations', 'impact'].indexOf(modId) !== -1) score += 15;
+        if (intentions.indexOf('Informer') !== -1 && ['program', 'map', 'providers', 'notifications', 'agenda'].indexOf(modId) !== -1) score += 20;
+
+        // Poids audience
+        if (audience === 'Un public' || audience === 'Une communauté') {
+          if (['agenda', 'artists', 'tickets', 'notifications', 'map'].indexOf(modId) !== -1) score += 15;
+        }
+        if (audience === 'Mes proches' || audience === 'Ma famille') {
+          if (['guestbook', 'memories', 'gallery', 'tables', 'tributes'].indexOf(modId) !== -1) score += 15;
+        }
+
+        // Poids niveau d'expérience
+        if (level === 'immersif') {
+          if (['music', 'audio', 'video', 'countdown', 'notifications', 'guestbook'].indexOf(modId) !== -1) score += 15;
+        }
+        if (level === 'minimal') {
+          if (['notifications', 'video', 'providers'].indexOf(modId) !== -1) score -= 20;
+        }
+
+        scores[modId] = Math.min(100, Math.max(0, score));
+      });
+
+      return {
+        scores: scores,
+        allCompatible: allKeys.filter(function (id) {
+          return moduleRegistry[id].compatibleEvents.indexOf(eventType) !== -1;
+        })
+      };
+    },
+
+    // Point d'entrée officiel de génération de l'expérience : generateExperience(projectModel)
+    generateExperience: function (projectModel) {
+      var preset = defaultPresets[projectModel.event.type] || defaultPresets.mariage;
+
+      return {
+        id: 'exp_' + (projectModel.id || 'default'),
+        theme: projectModel.experience.atmosphere || 'poetique',
+        atmosphere: projectModel.experience.atmosphere || 'poetique',
+        level: projectModel.experience.level || 'interactif',
+        meta: {
+          title: projectModel.concept.title || preset.suggestedTitle,
+          subtitle: projectModel.concept.subtitle || preset.subtitle,
+          description: projectModel.concept.description || preset.description,
+          artDirection: projectModel.concept.artDirection || preset.artDirection,
+          signatureInteraction: projectModel.concept.signatureInteraction || preset.signatureInteraction
+        },
+        pages: (projectModel.architecture && projectModel.architecture.pages) ? projectModel.architecture.pages : preset.pages,
+        navigation: (projectModel.architecture && projectModel.architecture.navigation) ? projectModel.architecture.navigation : preset.pages.slice(0, 4),
+        modules: (projectModel.modules || []).map(function (mId) {
+          return moduleRegistry[mId] || { id: mId, name: mId, icon: '✨', category: 'Général', description: '' };
+        }),
+        contentSlots: [
+          { slotId: 'hero_title', type: 'text', value: projectModel.concept.title || preset.suggestedTitle },
+          { slotId: 'hero_subtitle', type: 'text', value: projectModel.concept.subtitle || preset.subtitle },
+          { slotId: 'timeline_block', type: 'timeline', enabled: (projectModel.modules || []).indexOf('timeline') !== -1 },
+          { slotId: 'music_block', type: 'audio', enabled: (projectModel.modules || []).indexOf('music') !== -1 || (projectModel.modules || []).indexOf('audio') !== -1 },
+          { slotId: 'gallery_block', type: 'gallery', enabled: (projectModel.modules || []).indexOf('gallery') !== -1 },
+          { slotId: 'guestbook_block', type: 'guestbook', enabled: (projectModel.modules || []).indexOf('guestbook') !== -1 || (projectModel.modules || []).indexOf('testimonials') !== -1 }
+        ],
+        interactions: {
+          signature: projectModel.concept.signatureInteraction || preset.signatureInteraction,
+          hasAudio: (projectModel.modules || []).indexOf('music') !== -1 || (projectModel.modules || []).indexOf('audio') !== -1,
+          hasRSVP: (projectModel.modules || []).indexOf('rsvp') !== -1,
+          hasInteractiveTimeline: (projectModel.modules || []).indexOf('timeline') !== -1
+        },
+        mediaSlots: {
+          heroImage: 'Votre photo principale ici',
+          audioTrack: 'Votre musique ici',
+          galleryPlaceholders: ['Votre photo ici', 'Vos souvenirs ici', 'Vos invités ici']
+        }
+      };
+    },
+
+    // Builder du Cahier des Charges
+    buildCahierDesCharges: function (model, experience) {
+      experience = experience || this.generateExperience(model);
+      var modNames = (model.modules || []).map(function (mId) {
+        var m = moduleRegistry[mId];
+        return m ? m.name : mId;
+      });
+
+      var plainText = '==================================================\n' +
+        '# CAHIER DES CHARGES BYAIME — PROJET SUR MESURE\n' +
+        '==================================================\n\n' +
+        'NOM DU PROJET : ' + (model.identity.projectName || model.concept.title) + '\n' +
+        'DATE DE CRÉATION : ' + new Date(model.createdAt || Date.now()).toLocaleDateString('fr-FR') + '\n\n' +
+        '## 01 — INTENTION\n' +
+        (model.intentions.join(', ') || 'Création d\'un univers numérique singulier') + '\n\n' +
+        '## 02 — PUBLIC & DESTINATAIRES\n' +
+        model.event.audience + '\n\n' +
+        '## 03 — ÉVÉNEMENT & CONTEXTE\n' +
+        'Type : ' + model.event.type + '\n' +
+        'Date estimée : ' + (model.event.date || 'Non spécifiée') + '\n' +
+        'Localisation : ' + (model.event.location || 'Non spécifiée') + '\n\n' +
+        '## 04 — EXPÉRIENCE SOUHAITÉE\n' +
+        model.concept.description + '\n\n' +
+        '## 05 — DIRECTION ARTISTIQUE\n' +
+        'Ambiance : ' + model.experience.atmosphere + '\n' +
+        'Niveau d\'interactivité : ' + model.experience.level + '\n' +
+        'Notes esthétiques : ' + model.concept.artDirection + '\n\n' +
+        '## 06 — ARCHITECTURE DU MINI-SITE\n' +
+        (experience.pages || []).map(function (p, i) { return (i + 1) + '. ' + p; }).join('\n') + '\n\n' +
+        '## 07 — MODULES RETENUS (' + model.modules.length + ')\n' +
+        modNames.map(function (n) { return '• ' + n; }).join('\n') + '\n\n' +
+        '## 08 — INTERACTION SIGNATURE\n' +
+        model.concept.signatureInteraction + '\n\n' +
+        '## 09 — CONTENUS NÉCESSAIRES\n' +
+        '• Photographies & archives\n• Textes & récits\n• Extraits sonores ou musiques de référence\n\n' +
+        '## 10 — CONTACT & PROCHAINE ÉTAPE\n' +
+        'Contact : ' + model.identity.firstName + ' ' + model.identity.lastName + ' (' + model.identity.email + ')\n' +
+        'Session de cadrage et modélisation du prototype interactif avec Matt Mez.';
+
+      return {
+        plainText: plainText,
+        model: model,
+        experience: experience
+      };
+    },
+
+    // Contrats & Stubs d'extension pour la future couche IA (Phase 5)
+    contracts: {
+      // Stub: Future Intent Agent parser (Raw text -> StructuredIntent)
+      parseStructuredIntent: function (rawTextInput) {
+        return {
+          eventType: 'mariage',
+          audience: 'Mes proches',
+          intentions: ['Organiser', 'Partager'],
+          atmosphere: 'poetique',
+          constraints: [],
+          desiredExperience: rawTextInput || ''
+        };
       },
-      pages: model.architecture.pages || preset.pages,
-      navigation: model.architecture.navigation || preset.pages.slice(0, 4),
-      modules: model.modules.map(function (mId) {
-        return moduleRegistry[mId] || { id: mId, name: mId, icon: '✨' };
-      }),
-      contentBlocks: [
-        { type: 'hero', title: model.concept.title, subtitle: model.concept.subtitle },
-        { type: 'timeline', enabled: model.modules.indexOf('timeline') !== -1 },
-        { type: 'music', enabled: model.modules.indexOf('music') !== -1 },
-        { type: 'gallery', enabled: model.modules.indexOf('gallery') !== -1 },
-        { type: 'guestbook', enabled: model.modules.indexOf('guestbook') !== -1 }
-      ],
-      interactions: {
-        signature: model.concept.signatureInteraction,
-        hasAudio: model.modules.indexOf('music') !== -1 || model.modules.indexOf('audio') !== -1,
-        hasRSVP: model.modules.indexOf('rsvp') !== -1
-      },
-      mediaSlots: {
-        heroImage: 'Votre photo principale ici',
-        audioTrack: 'Votre musique ici',
-        galleryPlaceholders: ['Votre photo ici', 'Vos souvenirs ici', 'Vos invités ici']
+      // Stub: Future AI Proposal Applier
+      applyAIProposal: function (projectModel, aiProposal) {
+        if (!aiProposal) return projectModel;
+        var updated = Object.assign({}, projectModel);
+        if (aiProposal.title) updated.concept.title = aiProposal.title;
+        if (aiProposal.artDirection) updated.concept.artDirection = aiProposal.artDirection;
+        if (aiProposal.modules) updated.modules = aiProposal.modules.slice();
+        updated.updatedAt = new Date().toISOString();
+        return updated;
       }
-    };
+    }
   };
 
-  // ===== CONFIGURATEUR INTELLIGENT (MVP /projet) =====
+  // Exposer generateExperience globalement pour compatibilité
+  window.generateExperience = window.AIME_Engine.generateExperience;
+
+  // =========================================================================
+  // 3. UI ANIMATIONS & NAVIGATION COMMUNE
+  // =========================================================================
+
+  // Hero Ring Glow
+  (function () {
+    var glow = document.getElementById('overlap-glow');
+    if (!glow || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var speed1 = 2 * Math.PI / 20;
+    var speed2 = -2 * Math.PI / 28;
+    var overlapCenter = 185;
+    var range = 30;
+
+    function tick(ts) {
+      var t = ts / 1000;
+      var knob1x = 110 + 95 * Math.sin(speed1 * t);
+      var knob2x = 260 + 95 * Math.sin(speed2 * t);
+      var s1 = Math.max(0, 1 - Math.abs(knob1x - overlapCenter) / range);
+      var s2 = Math.max(0, 1 - Math.abs(knob2x - overlapCenter) / range);
+
+      glow.setAttribute('opacity', s1 * s2 * 0.12);
+      requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  })();
+
+  // Gradient Scroll Expand
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var containers = [
+      document.getElementById('hero-gradient-wrap'),
+      document.getElementById('team-gradient-wrap'),
+      document.getElementById('pricing-gradient-wrap'),
+      document.getElementById('lab-gradient-wrap'),
+      document.getElementById('association-gradient-wrap')
+    ].filter(Boolean);
+
+    if (!containers.length) return;
+    var targetMaxWidth = 1152;
+
+    function update() {
+      var scrollY = window.scrollY || window.pageYOffset;
+      var vw = window.innerWidth;
+
+      containers.forEach(function (wrap) {
+        var box = wrap.querySelector('div');
+        if (!box) return;
+        var elTop = wrap.offsetTop;
+        var startScroll = Math.max(0, elTop - window.innerHeight);
+        var endScroll = elTop;
+        var range = endScroll - startScroll;
+
+        if (range <= 0) return;
+
+        var progress = Math.min(1, Math.max(0, (scrollY - startScroll) / range));
+        var currentWidth = targetMaxWidth + (vw - targetMaxWidth) * progress;
+        wrap.style.maxWidth = currentWidth + 'px';
+
+        var radius = (1 - progress) * 16;
+        box.style.borderRadius = radius + 'px';
+      });
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  })();
+
+  // Background Image Fade
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var boxes = document.querySelectorAll('[data-fade-bg]');
+    if (!boxes.length) return;
+
+    function update() {
+      var vh = window.innerHeight;
+      boxes.forEach(function (box) {
+        var rect = box.getBoundingClientRect();
+        var bg = box.querySelector('[style*="opacity"]');
+        if (!bg) return;
+        var progress = Math.min(1, Math.max(0, (vh - rect.top) / (rect.bottom - rect.top)));
+        bg.style.opacity = 0.05 + progress * 0.95;
+      });
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  })();
+
+  // Navbar Shrink
+  (function () {
+    var nav = document.getElementById('main-nav');
+    var header = document.getElementById('main-header');
+    if (!nav || !header) return;
+
+    var scrolled = false;
+    function check() {
+      var isScrolled = window.scrollY > 20;
+      if (isScrolled !== scrolled) {
+        scrolled = isScrolled;
+        if (scrolled) {
+          nav.classList.remove('pt-12', 'pb-0');
+          nav.classList.add('py-4');
+          header.style.borderBottomColor = 'var(--color-border)';
+        } else {
+          nav.classList.remove('py-4');
+          nav.classList.add('pt-12', 'pb-0');
+          header.style.borderBottomColor = 'transparent';
+        }
+      }
+    }
+
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  })();
+
+  // Mobile Menu & Modals
+  document.addEventListener('DOMContentLoaded', function () {
+    // Mobile Nav
+    var menuButton = document.getElementById('mobile-menu-button');
+    var mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener('click', function () {
+        var isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', String(!isOpen));
+        mobileMenu.classList.toggle('hidden', isOpen);
+        mobileMenu.setAttribute('aria-hidden', String(isOpen));
+        if (!isOpen) {
+          var firstLink = mobileMenu.querySelector('a');
+          if (firstLink) firstLink.focus();
+        }
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menuButton.setAttribute('aria-expanded', 'false');
+          mobileMenu.classList.add('hidden');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+        });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+          menuButton.setAttribute('aria-expanded', 'false');
+          mobileMenu.classList.add('hidden');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+          menuButton.focus();
+        }
+      });
+    }
+
+    // Scroll Animations (IntersectionObserver)
+    var animatedElements = document.querySelectorAll('[data-animate]');
+    if (animatedElements.length && 'IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      animatedElements.forEach(function (el) { observer.observe(el); });
+    } else {
+      animatedElements.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+
+    // Dialogs
+    document.querySelectorAll('[data-open-dialog]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.getAttribute('data-open-dialog');
+        var dialog = document.getElementById(id);
+        if (dialog) {
+          dialog.showModal();
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-close-dialog]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var dialog = btn.closest('dialog');
+        if (dialog) dialog.close();
+      });
+    });
+
+    document.querySelectorAll('dialog').forEach(function (dialog) {
+      dialog.addEventListener('click', function (e) {
+        if (e.target === dialog) dialog.close();
+      });
+      dialog.addEventListener('close', function () {
+        document.body.style.overflow = '';
+      });
+    });
+  });
+
+  // =========================================================================
+  // 4. PROTOTYPES INTERACTIFS DE LA GALERIE (/projets & Accueil)
+  // =========================================================================
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // 1. Timeline Interactive
+    document.querySelectorAll('[data-interactive-timeline]').forEach(function (timeline) {
+      var steps = timeline.querySelectorAll('[data-timeline-step]');
+      var infoDisplay = timeline.querySelector('[data-timeline-info]');
+
+      steps.forEach(function (step) {
+        step.addEventListener('click', function () {
+          steps.forEach(function (s) {
+            s.classList.remove('bg-pink-500/20', 'border-pink-500', 'text-white', 'scale-105');
+            s.classList.add('bg-white/5', 'border-white/10', 'text-muted-foreground');
+          });
+          step.classList.remove('bg-white/5', 'border-white/10', 'text-muted-foreground');
+          step.classList.add('bg-pink-500/20', 'border-pink-500', 'text-white', 'scale-105');
+
+          var title = step.getAttribute('data-timeline-title');
+          var time = step.getAttribute('data-timeline-time');
+          var desc = step.getAttribute('data-timeline-desc');
+
+          if (infoDisplay) {
+            infoDisplay.innerHTML = '<div class="flex justify-between items-baseline"><span class="font-semibold text-white">' + title + '</span><span class="font-mono text-pink-300 text-xs">' + time + '</span></div><p class="text-xs text-muted-foreground mt-1">' + desc + '</p>';
+          }
+        });
+      });
+    });
+
+    // 2. Lecteur Audio Interactif
+    document.querySelectorAll('[data-interactive-player]').forEach(function (player) {
+      var playBtn = player.querySelector('[data-player-toggle]');
+      var statusText = player.querySelector('[data-player-status]');
+      var bars = player.querySelectorAll('.bar-1, .bar-2, .bar-3, .bar-4, .bar-5');
+      var isPlaying = true;
+
+      if (playBtn) {
+        playBtn.addEventListener('click', function () {
+          isPlaying = !isPlaying;
+          if (isPlaying) {
+            playBtn.innerHTML = '<svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+            if (statusText) statusText.textContent = 'En lecture';
+            bars.forEach(function (b) { b.style.animationPlayState = 'running'; });
+          } else {
+            playBtn.innerHTML = '<svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+            if (statusText) statusText.textContent = 'En pause';
+            bars.forEach(function (b) { b.style.animationPlayState = 'paused'; });
+          }
+        });
+      }
+    });
+
+    // 3. Recherche Invités & Table
+    document.querySelectorAll('[data-guest-lookup]').forEach(function (widget) {
+      var input = widget.querySelector('[data-guest-input]');
+      var result = widget.querySelector('[data-guest-result]');
+      var guestsDatabase = [
+        { name: 'Claire', table: 'Table Orion (Place 1)' },
+        { name: 'Antoine', table: 'Table Orion (Place 2)' },
+        { name: 'Camille', table: 'Table Cassiopée (Place 4)' },
+        { name: 'Sophie', table: 'Table Pégase (Place 3)' },
+        { name: 'Thomas', table: 'Table Cassiopée (Place 5)' }
+      ];
+
+      if (input && result) {
+        input.addEventListener('input', function () {
+          var query = input.value.trim().toLowerCase();
+          if (!query) {
+            result.innerHTML = '<p class="text-xs text-muted-foreground italic">Tapez un prénom pour tester la recherche d\'invité...</p>';
+            return;
+          }
+          var match = guestsDatabase.find(function (g) {
+            return g.name.toLowerCase().indexOf(query) !== -1;
+          });
+          if (match) {
+            result.innerHTML = '<div class="flex justify-between items-center p-2 rounded-lg bg-white/10 text-xs"><span class="text-white font-medium">' + match.name + '</span><span class="text-pink-300 font-mono">' + match.table + '</span></div>';
+          } else {
+            result.innerHTML = '<p class="text-xs text-muted-foreground">Aucun invité trouvé pour "' + query + '".</p>';
+          }
+        });
+      }
+    });
+
+    // 4. Bougie Mémorielle
+    document.querySelectorAll('[data-candle-widget]').forEach(function (widget) {
+      var candleBtn = widget.querySelector('[data-candle-btn]');
+      var countEl = widget.querySelector('[data-candle-count]');
+      var candleFlame = widget.querySelector('[data-candle-flame]');
+      var count = 312;
+      var hasLit = false;
+
+      if (candleBtn && countEl) {
+        candleBtn.addEventListener('click', function () {
+          if (!hasLit) {
+            hasLit = true;
+            count++;
+            countEl.textContent = count + ' pensées déposées';
+            candleBtn.textContent = '✓ Pensée déposée avec douceur';
+            candleBtn.classList.add('bg-amber-500/20', 'text-amber-300', 'border-amber-400');
+            if (candleFlame) {
+              candleFlame.classList.remove('opacity-40');
+              candleFlame.classList.add('opacity-100', 'animate-pulse');
+            }
+          }
+        });
+      }
+    });
+
+    // 5. Filtres Galerie Projets
+    var filterButtons = document.querySelectorAll('[data-filter-btn]');
+    var projectCards = document.querySelectorAll('[data-project-category]');
+
+    if (filterButtons.length && projectCards.length) {
+      filterButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var targetCat = btn.getAttribute('data-filter-btn');
+
+          filterButtons.forEach(function (b) {
+            b.classList.remove('bg-white', 'text-black');
+            b.classList.add('bg-white/5', 'text-muted-foreground');
+          });
+          btn.classList.remove('bg-white/5', 'text-muted-foreground');
+          btn.classList.add('bg-white', 'text-black');
+
+          projectCards.forEach(function (card) {
+            var cardCats = (card.getAttribute('data-project-category') || '').split(' ');
+            if (targetCat === 'all' || cardCats.indexOf(targetCat) !== -1) {
+              card.style.display = '';
+              card.classList.add('is-visible');
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    }
+  });
+
+  // =========================================================================
+  // 5. CONTROLLER CONFIGURATEUR INTELLIGENT (/projet)
+  // =========================================================================
+
   document.addEventListener('DOMContentLoaded', function () {
     var configContainer = document.getElementById('byaime-configurator');
     if (!configContainer) return;
 
-    // Initialize Project Model (Single Source of Truth)
-    var projectModel = {
-      id: 'byaime_proj_' + Math.random().toString(36).substr(2, 9),
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      identity: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        projectName: ''
-      },
-      event: {
-        type: 'mariage',
-        date: '',
-        location: '',
-        audience: 'Mes proches'
-      },
-      intentions: ['Organiser', 'Partager', 'Créer des souvenirs'],
-      experience: {
-        atmosphere: 'poetique',
-        level: 'interactif'
-      },
-      modules: ['timeline', 'rsvp', 'guests', 'tables', 'music', 'gallery', 'guestbook', 'map'],
-      architecture: {
-        pages: ['Accueil', 'Programme', 'Invités & Tables', 'Musique', 'Galerie & Souvenirs', 'Guide pratique'],
-        navigation: ['Accueil', 'Programme', 'Invités', 'Souvenirs'],
-        features: []
-      },
-      concept: {
-        title: 'Le Grand Jour — L\'expérience vivante',
-        subtitle: 'Un univers numérique poétique et vivant pour les futurs mariés.',
-        description: 'Un sanctuaire intime sous un ciel étoilé interactif avec synchronisation du jour J et boîte à souvenirs audio.',
-        artDirection: 'Tons chauds, typographie raffinée, constellation céleste interactive, ambiance sonore douce.',
-        signatureInteraction: 'Une Timeline vivante synchronisée qui transforme chaque moment du mariage en expérience partagée.'
-      },
-      message: '',
-      status: 'draft',
-      support: {
-        clicked: false,
-        amount: 50
-      }
-    };
-
+    // Initialiser le modèle central via la factory AIME Engine
+    var projectModel = window.AIME_Engine.createProjectModel();
     var currentStep = 1;
     var totalSteps = 5;
 
-    // Check URL Template Parameter (ex: /projet?template=mariage)
+    // Détection du paramètre URL ?template=...
     var urlParams = new URLSearchParams(window.location.search);
     var templateParam = urlParams.get('template');
     if (templateParam && defaultPresets[templateParam]) {
       applyPresetToModel(templateParam);
     } else {
-      // Check local storage draft
+      // Reprise éventuelle depuis localStorage
       var savedDraft = BYAIME_Storage.load();
       if (savedDraft && savedDraft.event && savedDraft.event.type) {
         var resumeBanner = document.getElementById('cfg-resume-banner');
@@ -890,7 +1303,6 @@
       }
     }
 
-    // Apply a Preset to Model
     function applyPresetToModel(presetKey) {
       var preset = defaultPresets[presetKey] || defaultPresets.mariage;
       projectModel.event.type = preset.type;
@@ -906,39 +1318,31 @@
       syncModelToUI();
     }
 
-    // Sync Model to Input Checkboxes/Radios
     function syncModelToUI() {
-      // Step 1 Event type
       var radioType = configContainer.querySelector('input[name="event-type"][value="' + projectModel.event.type + '"]');
       if (radioType) radioType.checked = true;
 
-      // Step 2 Audience
       var radioAud = configContainer.querySelector('input[name="cfg-audience"][value="' + projectModel.event.audience + '"]');
       if (radioAud) radioAud.checked = true;
 
-      // Step 3 Intentions
       configContainer.querySelectorAll('input[name="cfg-intentions"]').forEach(function (cb) {
-        cb.checked = projectModel.intentions.indexOf(cb.value) !== -1;
+        cb.checked = (projectModel.intentions || []).indexOf(cb.value) !== -1;
       });
 
-      // Step 5 Level
       var radioLevel = configContainer.querySelector('input[name="cfg-level"][value="' + projectModel.experience.level + '"]');
       if (radioLevel) radioLevel.checked = true;
 
-      // Ambiance select
       var ambSelect = document.getElementById('synth-ambiance-select');
       if (ambSelect) ambSelect.value = projectModel.experience.atmosphere || 'poetique';
 
-      // Level select
       var lvlSelect = document.getElementById('synth-level-select');
       if (lvlSelect) lvlSelect.value = projectModel.experience.level || 'interactif';
     }
 
-    // Recalculate and Render Live Proposal V2
+    // Recalcul de la Live Proposal V2
     function recalculateLiveProposal() {
       var preset = defaultPresets[projectModel.event.type] || defaultPresets.mariage;
 
-      // Update Title & Badge
       var synthTitle = document.getElementById('synth-project-title');
       var synthBadge = document.getElementById('synth-project-badge');
       var synthIntentSummary = document.getElementById('synth-intent-summary');
@@ -952,13 +1356,13 @@
       if (synthTitle) synthTitle.textContent = projectModel.concept.title || preset.suggestedTitle;
       if (synthBadge) synthBadge.textContent = preset.badge;
       if (synthIntentSummary) {
-        synthIntentSummary.textContent = 'Pour ' + projectModel.event.audience.toLowerCase() + ' • ' + (projectModel.intentions.join(', ') || 'Expérience singulière');
+        synthIntentSummary.textContent = 'Pour ' + (projectModel.event.audience || '').toLowerCase() + ' • ' + (projectModel.intentions.join(', ') || 'Expérience singulière');
       }
       if (synthExpDesc) synthExpDesc.textContent = projectModel.concept.description || preset.description;
       if (synthArtDesc) synthArtDesc.textContent = projectModel.concept.artDirection || preset.artDirection;
       if (synthSignature) synthSignature.textContent = projectModel.concept.signatureInteraction || preset.signatureInteraction;
 
-      // Render Architecture List
+      // Architecture
       if (synthArchList) {
         synthArchList.innerHTML = '';
         (projectModel.architecture.pages || preset.pages).forEach(function (pageName) {
@@ -969,7 +1373,7 @@
         });
       }
 
-      // Render Active Clickable Module Chips with Inspector trigger
+      // Modules Actifs (Cliquables vers l'inspecteur)
       if (synthActiveModules) {
         synthActiveModules.innerHTML = '';
         projectModel.modules.forEach(function (mId) {
@@ -979,13 +1383,11 @@
           chip.innerHTML = '<span class="text-[11px]">' + (mod.icon || '✨') + ' ' + mod.name + '</span>' +
             '<button type="button" class="tag-remove-btn" title="Retirer ce module" aria-label="Retirer ' + mod.name + '">×</button>';
 
-          // Inspector on chip click
           chip.addEventListener('click', function (e) {
             if (e.target.tagName.toLowerCase() === 'button') return;
             openModuleInspector(mod, true);
           });
 
-          // Remove on cross click
           var removeBtn = chip.querySelector('button');
           removeBtn.addEventListener('click', function (e) {
             e.stopPropagation();
@@ -998,22 +1400,16 @@
         });
       }
 
-      // Render Available Modules to Add with Scoring
+      // Modules Disponibles via le moteur de scoring
       if (synthAddModules) {
         synthAddModules.innerHTML = '';
-        var scores = calculateModuleScores(
-          projectModel.event.type,
-          projectModel.intentions,
-          projectModel.event.audience,
-          projectModel.experience.level,
-          projectModel.experience.atmosphere
-        );
+        var recommendation = window.AIME_Engine.recommendModules(projectModel);
+        var scores = recommendation.scores;
 
         var unselectedKeys = Object.keys(moduleRegistry).filter(function (mId) {
           return projectModel.modules.indexOf(mId) === -1 && moduleRegistry[mId].compatibleEvents.indexOf(projectModel.event.type) !== -1;
         });
 
-        // Sort by score
         unselectedKeys.sort(function (a, b) { return scores[b] - scores[a]; });
 
         if (unselectedKeys.length === 0) {
@@ -1038,37 +1434,12 @@
         }
       }
 
-      // Render Summary View
-      var sumType = document.getElementById('sum-type');
-      var sumAudience = document.getElementById('sum-audience');
-      var sumIntentions = document.getElementById('sum-intentions');
-      var sumAmbiance = document.getElementById('sum-ambiance');
-      var sumLevel = document.getElementById('sum-level');
-      var sumModulesList = document.getElementById('sum-modules-list');
-
-      if (sumType) sumType.textContent = preset.categoryName;
-      if (sumAudience) sumAudience.textContent = projectModel.event.audience;
-      if (sumIntentions) sumIntentions.textContent = projectModel.intentions.join(', ') || 'Non spécifié';
-      if (sumAmbiance) sumAmbiance.textContent = projectModel.experience.atmosphere;
-      if (sumLevel) sumLevel.textContent = projectModel.experience.level;
-
-      if (sumModulesList) {
-        sumModulesList.innerHTML = '';
-        projectModel.modules.forEach(function (mId) {
-          var mod = moduleRegistry[mId] || { name: mId };
-          var li = document.createElement('li');
-          li.className = 'text-xs text-muted-foreground flex items-center gap-2';
-          li.innerHTML = '<span class="text-emerald-400">✓</span><span>' + mod.name + '</span>';
-          sumModulesList.appendChild(li);
-        });
-      }
-
-      // Save to localStorage
+      // Sauvegarde dans localStorage
       projectModel.updatedAt = new Date().toISOString();
       BYAIME_Storage.save(projectModel);
     }
 
-    // Open Module Inspector Popup/Modal
+    // Inspecteur de Module (Dialog)
     function openModuleInspector(mod, isCurrentlyActive) {
       var dialog = document.getElementById('modal-module-inspector');
       if (!dialog) return;
@@ -1082,7 +1453,7 @@
       if (titleEl) titleEl.textContent = (mod.icon || '✨') + ' ' + mod.name;
       if (catEl) catEl.textContent = mod.category || 'Module BYAIME';
       if (descEl) descEl.textContent = mod.description || 'Module d\'expérience sur mesure.';
-      if (whyEl) whyEl.textContent = mod.whyRecommended || 'Recommandé par notre moteur pour sublimer votre intention.';
+      if (whyEl) whyEl.textContent = mod.whyRecommended || 'Recommandé par le moteur AIME.';
 
       if (toggleBtn) {
         if (isCurrentlyActive) {
@@ -1109,21 +1480,14 @@
       dialog.showModal();
     }
 
-    // Step 4 Dynamic Checkboxes populated with scores
+    // Étape 4 Checkboxes avec scores
     function renderStep4Checkboxes() {
       var container = document.getElementById('step4-tools-checkboxes');
       if (!container) return;
 
-      var preset = defaultPresets[projectModel.event.type] || defaultPresets.mariage;
       container.innerHTML = '';
-
-      var scores = calculateModuleScores(
-        projectModel.event.type,
-        projectModel.intentions,
-        projectModel.event.audience,
-        projectModel.experience.level,
-        projectModel.experience.atmosphere
-      );
+      var recommendation = window.AIME_Engine.recommendModules(projectModel);
+      var scores = recommendation.scores;
 
       var compatibleKeys = Object.keys(moduleRegistry).filter(function (mId) {
         return moduleRegistry[mId].compatibleEvents.indexOf(projectModel.event.type) !== -1;
@@ -1155,7 +1519,7 @@
       });
     }
 
-    // Step Navigation
+    // Navigation des étapes
     function goToStep(targetStep) {
       if (targetStep < 1 || targetStep > totalSteps) return;
       currentStep = targetStep;
@@ -1187,27 +1551,20 @@
 
       var pBar = document.getElementById('cfg-progress-bar');
       if (pBar) {
-        var pct = ((currentStep - 1) / (totalSteps - 1)) * 100;
-        pBar.style.width = Math.max(8, pct) + '%';
+        pBar.style.width = Math.max(8, ((currentStep - 1) / (totalSteps - 1)) * 100) + '%';
       }
 
       var prevBtn = document.getElementById('cfg-prev-btn');
       var nextBtn = document.getElementById('cfg-next-btn');
 
       if (prevBtn) {
-        if (currentStep === 1) {
-          prevBtn.classList.add('opacity-0', 'pointer-events-none');
-        } else {
-          prevBtn.classList.remove('opacity-0', 'pointer-events-none');
-        }
+        if (currentStep === 1) prevBtn.classList.add('opacity-0', 'pointer-events-none');
+        else prevBtn.classList.remove('opacity-0', 'pointer-events-none');
       }
 
       if (nextBtn) {
-        if (currentStep === totalSteps) {
-          nextBtn.textContent = 'Transmettre mon projet à Matt Mez →';
-        } else {
-          nextBtn.textContent = 'Étape suivante →';
-        }
+        if (currentStep === totalSteps) nextBtn.textContent = 'Transmettre mon projet à Matt Mez →';
+        else nextBtn.textContent = 'Étape suivante →';
       }
 
       if (currentStep === 4) {
@@ -1219,7 +1576,7 @@
       configContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // Step 1 Event Type Change
+    // Listeners des choix
     configContainer.querySelectorAll('input[name="event-type"]').forEach(function (radio) {
       radio.addEventListener('change', function () {
         applyPresetToModel(radio.value);
@@ -1228,7 +1585,6 @@
       });
     });
 
-    // Step 2 Audience Change
     configContainer.querySelectorAll('input[name="cfg-audience"]').forEach(function (radio) {
       radio.addEventListener('change', function () {
         projectModel.event.audience = radio.value;
@@ -1236,7 +1592,6 @@
       });
     });
 
-    // Step 3 Intentions Change
     configContainer.querySelectorAll('input[name="cfg-intentions"]').forEach(function (cb) {
       cb.addEventListener('change', function () {
         var list = [];
@@ -1248,7 +1603,6 @@
       });
     });
 
-    // Step 5 Level Change
     configContainer.querySelectorAll('input[name="cfg-level"]').forEach(function (radio) {
       radio.addEventListener('change', function () {
         projectModel.experience.level = radio.value;
@@ -1256,7 +1610,6 @@
       });
     });
 
-    // Ambiance Dropdown Switcher
     var ambSelect = document.getElementById('synth-ambiance-select');
     if (ambSelect) {
       ambSelect.addEventListener('change', function () {
@@ -1265,7 +1618,6 @@
       });
     }
 
-    // Level Dropdown Switcher
     var lvlSelect = document.getElementById('synth-level-select');
     if (lvlSelect) {
       lvlSelect.addEventListener('change', function () {
@@ -1274,7 +1626,7 @@
       });
     }
 
-    // Exploration Mode (3 Alternatives)
+    // Mode Exploration
     var exploreBtn = document.getElementById('btn-explore-alternatives');
     if (exploreBtn) {
       exploreBtn.addEventListener('click', function () {
@@ -1286,7 +1638,7 @@
           container.innerHTML = '';
           var preset = defaultPresets[projectModel.event.type] || defaultPresets.mariage;
 
-          preset.alternatives.forEach(function (alt, idx) {
+          preset.alternatives.forEach(function (alt) {
             var card = document.createElement('div');
             card.className = 'p-5 rounded-2xl bg-black border border-white/10 glow-card hover:border-white/30 transition-all space-y-3';
             card.innerHTML = '<div class="flex justify-between items-baseline"><span class="text-xs font-mono text-emerald-400">' + alt.name + '</span>' +
@@ -1319,16 +1671,15 @@
       });
     }
 
-    // PREVIEW MODE ("Voir une première version")
+    // Mode Preview
     var previewBtn = document.getElementById('btn-open-preview-mode');
     if (previewBtn) {
       previewBtn.addEventListener('click', function () {
         var dialog = document.getElementById('modal-preview-experience');
         if (!dialog) return;
 
-        var exp = window.generateExperience(projectModel);
+        var exp = window.AIME_Engine.generateExperience(projectModel);
 
-        // Populate Preview Dialog
         var prevTitle = document.getElementById('prev-exp-title');
         var prevSub = document.getElementById('prev-exp-subtitle');
         var prevNav = document.getElementById('prev-exp-nav');
@@ -1353,7 +1704,6 @@
       });
     }
 
-    // Edit button inside Preview (Loop back to configurator)
     var editFromPrevBtn = document.getElementById('btn-edit-from-preview');
     if (editFromPrevBtn) {
       editFromPrevBtn.addEventListener('click', function () {
@@ -1363,18 +1713,15 @@
       });
     }
 
-    // Next / Prev Buttons
+    // Boutons Next / Prev
     var nBtn = document.getElementById('cfg-next-btn');
     var pBtn = document.getElementById('cfg-prev-btn');
 
     if (nBtn) {
       nBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        if (currentStep < totalSteps) {
-          goToStep(currentStep + 1);
-        } else {
-          submitProjectWorkflow();
-        }
+        if (currentStep < totalSteps) goToStep(currentStep + 1);
+        else submitProjectWorkflow();
       });
     }
 
@@ -1385,7 +1732,7 @@
       });
     }
 
-    // Submit Project Workflow
+    // Soumission & Génération du Cahier des charges
     function submitProjectWorkflow() {
       var fn = (document.getElementById('cfg-contact-first') || {}).value || '';
       var ln = (document.getElementById('cfg-contact-last') || {}).value || '';
@@ -1416,11 +1763,10 @@
       projectModel.status = 'ready';
       projectModel.updatedAt = new Date().toISOString();
 
-      submitProject(projectModel);
+      handleProjectSubmission(projectModel);
     }
 
-    // Submission and Specifications generator
-    function submitProject(model) {
+    function handleProjectSubmission(model) {
       window.trackBYAIME('project_submitted', { id: model.id, type: model.event.type });
 
       var formWrap = document.getElementById('cfg-form-wrapper');
@@ -1442,98 +1788,53 @@
         if (confTitle) confTitle.textContent = model.concept.title;
         if (confModules) confModules.textContent = model.modules.length;
 
-        // Build Spec Document String
-        var specText = buildCahierDesChargesText(model);
+        var exp = window.AIME_Engine.generateExperience(model);
+        var specResult = window.AIME_Engine.buildCahierDesCharges(model, exp);
+        var specText = specResult.plainText;
 
-        // Mailto formatted link
         var mailSubject = encodeURIComponent('[BYAIME Conception] Nouveau Projet : ' + (model.identity.projectName || model.concept.title));
         if (confMailto) {
           confMailto.href = 'mailto:contact@byaime.com?subject=' + mailSubject + '&body=' + encodeURIComponent(specText);
         }
 
-        // Copy specs button
         if (confCopy) {
-          confCopy.addEventListener('click', function () {
+          confCopy.onclick = function () {
             navigator.clipboard.writeText(specText).then(function () {
               confCopy.textContent = '✓ Cahier des charges copié !';
-              setTimeout(function () { confCopy.textContent = 'Copier la synthèse complète'; }, 3000);
+              setTimeout(function () { confCopy.textContent = 'Copier la synthèse'; }, 3000);
             });
-          });
+          };
         }
 
-        // Download JSON specs button
         if (confDownload) {
-          confDownload.addEventListener('click', function () {
-            var blob = new Blob([JSON.stringify(model, null, 2)], { type: 'application/json' });
+          confDownload.onclick = function () {
+            var blob = new Blob([JSON.stringify({ projectModel: model, experienceModel: exp }, null, 2)], { type: 'application/json' });
             var url = URL.createObjectURL(blob);
             var a = document.createElement('a');
             a.href = url;
             a.download = 'BYAIME-Projet-' + (model.identity.firstName || 'CahierDesCharges') + '.json';
             a.click();
             URL.revokeObjectURL(url);
-          });
+          };
         }
 
-        // Open Recap Modal
         if (confRecapBtn) {
-          confRecapBtn.addEventListener('click', function () {
-            openCahierDesChargesModal(model);
-          });
+          confRecapBtn.onclick = function () {
+            openCahierDesChargesModal(model, exp);
+          };
         }
 
         readyWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }
 
-    // Build Formatted Text for Cahier des Charges
-    function buildCahierDesChargesText(model) {
-      var modNames = model.modules.map(function (mId) {
-        var m = moduleRegistry[mId];
-        return m ? m.name : mId;
-      });
-
-      return '==================================================\n' +
-        '# CAHIER DES CHARGES BYAIME — PROJET SUR MESURE\n' +
-        '==================================================\n\n' +
-        'NOM DU PROJET : ' + (model.identity.projectName || model.concept.title) + '\n' +
-        'DATE DE CRÉATION : ' + new Date().toLocaleDateString('fr-FR') + '\n\n' +
-        '## 01 — INTENTION\n' +
-        (model.intentions.join(', ') || 'Création d\'un univers numérique singulier') + '\n\n' +
-        '## 02 — PUBLIC & DESTINATAIRES\n' +
-        model.event.audience + '\n\n' +
-        '## 03 — ÉVÉNEMENT & CONTEXTE\n' +
-        'Type : ' + model.event.type + '\n' +
-        'Date estimée : ' + (model.event.date || 'Non spécifiée') + '\n' +
-        'Localisation : ' + (model.event.location || 'Non spécifiée') + '\n\n' +
-        '## 04 — EXPÉRIENCE SOUHAITÉE\n' +
-        model.concept.description + '\n\n' +
-        '## 05 — DIRECTION ARTISTIQUE\n' +
-        'Ambiance : ' + model.experience.atmosphere + '\n' +
-        'Niveau d\'interactivité : ' + model.experience.level + '\n' +
-        'Notes esthétiques : ' + model.concept.artDirection + '\n\n' +
-        '## 06 — ARCHITECTURE DU MINI-SITE\n' +
-        (model.architecture.pages || []).map(function (p, i) { return (i + 1) + '. ' + p; }).join('\n') + '\n\n' +
-        '## 07 — MODULES RETENUS (' + model.modules.length + ')\n' +
-        modNames.map(function (n) { return '• ' + n; }).join('\n') + '\n\n' +
-        '## 08 — INTERACTION SIGNATURE\n' +
-        model.concept.signatureInteraction + '\n\n' +
-        '## 09 — CONTACT & COORDONNÉES\n' +
-        'Contact : ' + model.identity.firstName + ' ' + model.identity.lastName + '\n' +
-        'E-mail : ' + model.identity.email + '\n' +
-        'Téléphone : ' + (model.identity.phone || 'Non précisé') + '\n' +
-        'Message : ' + (model.message || 'Aucun') + '\n\n' +
-        '## 10 — PROCHAINE ÉTAPE\n' +
-        'Session de cadrage et modélisation du prototype interactif avec Matt Mez.';
-    }
-
-    // Open Cahier des Charges Modal
-    function openCahierDesChargesModal(model) {
+    function openCahierDesChargesModal(model, exp) {
       var dialog = document.getElementById('modal-cahier-des-charges');
       if (!dialog) return;
 
       var docContainer = document.getElementById('recap-doc-container');
       if (docContainer) {
-        var modNames = model.modules.map(function (mId) {
+        var modNames = (model.modules || []).map(function (mId) {
           var m = moduleRegistry[mId];
           return m ? m.name : mId;
         });
@@ -1564,12 +1865,15 @@
       dialog.showModal();
     }
 
-    // Initialize
+    // Initialisation
     recalculateLiveProposal();
     window.trackBYAIME('project_started', {});
   });
 
-  // ===== MODULE SOUTIEN ASSOCIATIF LE MONDE AIME =====
+  // =========================================================================
+  // 6. MODULE SOUTIEN ASSOCIATIF LE MONDE AIME
+  // =========================================================================
+
   document.addEventListener('DOMContentLoaded', function () {
     var donationContainer = document.getElementById('association-donation-module');
     if (!donationContainer) return;
@@ -1616,7 +1920,7 @@
         e.preventDefault();
         window.trackBYAIME('support_clicked', { amount: (displayAmount ? displayAmount.textContent : '50 €') });
         var current = displayAmount ? displayAmount.textContent : '50 €';
-        alert('Merci pour votre intérêt envers l\'association LE MONDE AIME !\n\nVotre intention de soutien pour un montant de ' + current + ' a été enregistrée. Le module de paiement sécurisé officiel sera ouvert très prochainement lors de la publication du compte associatif.');
+        alert('Merci pour votre intérêt envers l\'association LE MONDE AIME !\n\nVotre intention de soutien pour un montant de ' + current + ' a été enregistrée. Le module officiel sera ouvert très prochainement lors de la publication du compte associatif.');
       });
     }
   });
