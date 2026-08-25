@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth">
+<html lang="fr" style="scroll-behavior: smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Core — AI Consulting that builds, not just advises</title>
-  <meta name="description" content="Core is a two-person AI consultancy. We find the real problems, quantify them, and build working solutions. No slide decks — working prototypes.">
+  <title>BYAIME — Conseil et conception IA : de l'analyse aux solutions concrètes</title>
+  <meta name="description" content="BYAIME est un studio de conseil et d'ingénierie IA. Nous identifions les véritables blocages, les quantifions et déployons des solutions concrètes et opérationnelles.">
 
   <!-- Favicon (replace with your own) -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><circle cx='12' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/><circle cx='20' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/></svg>">
@@ -13,16 +13,16 @@
   <link rel="manifest" href="manifest.json">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Core — AI Consulting that builds, not just advises">
-  <meta property="og:description" content="Core is a two-person AI consultancy. We find the real problems, quantify them, and build working solutions.">
+  <meta property="og:title" content="BYAIME — Conseil et conception IA : de l'analyse aux solutions concrètes">
+  <meta property="og:description" content="Studio de conseil et d'ingénierie IA. Nous identifions les véritables blocages, les quantifions et déployons des solutions concrètes et opérationnelles.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://example.com">
   <meta property="og:image" content="https://example.com/img/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Core — AI Consulting that builds, not just advises">
-  <meta name="twitter:description" content="Core is a two-person AI consultancy. We find the real problems, quantify them, and build working solutions.">
+  <meta name="twitter:title" content="BYAIME — Conseil et conception IA : de l'analyse aux solutions concrètes">
+  <meta name="twitter:description" content="Studio de conseil et d'ingénierie IA. Nous identifions les véritables blocages, les quantifions et déployons des solutions concrètes et opérationnelles.">
   <meta name="twitter:image" content="https://example.com/img/og-image.png">
 
   <!-- Structured Data -->
@@ -30,13 +30,13 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Core",
+    "name": "BYAIME",
     "url": "https://example.com",
-    "description": "AI consulting that builds, not just advises.",
+    "description": "Conseil et conception IA qui déploie des solutions concrètes et mesurables.",
     "logo": "https://example.com/img/og-image.png",
     "founder": [
-      { "@type": "Person", "name": "Lisa Bergmann", "jobTitle": "Co-founder & CTO" },
-      { "@type": "Person", "name": "Sarah Chen", "jobTitle": "Co-founder & CEO" }
+      { "@type": "Person", "name": "Lisa Bergmann", "jobTitle": "Co-fondatrice & Directrice technique" },
+      { "@type": "Person", "name": "Sarah Chen", "jobTitle": "Co-fondatrice & Directrice générale" }
     ]
   }
   </script>
@@ -59,7 +59,7 @@
 
   <!-- Skip to content -->
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md">
-    Skip to content
+    Aller au contenu principal
   </a>
 
   <!-- ===== Navigation ===== -->
@@ -68,24 +68,24 @@
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight">
         <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1"/></svg>
-        Core
+        BYAIME
       </a>
 
       <!-- Desktop links (centered) -->
-      <div class="hidden items-center gap-8 md:flex absolute left-1/2 -translate-x-1/2">
-        <a href="#about" class="text-sm text-muted-foreground hover:text-foreground transition-colors">About</a>
-        <a href="#features" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Approach</a>
-        <a href="#team" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Team</a>
-        <a href="#pricing" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
+      <div class="hidden items-center gap-6 lg:gap-8 md:flex absolute left-1/2 -translate-x-1/2">
+        <a href="#about" class="text-sm text-muted-foreground hover:text-foreground transition-colors">À propos</a>
+        <a href="#features" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Notre approche</a>
+        <a href="#team" class="text-sm text-muted-foreground hover:text-foreground transition-colors">L'équipe</a>
+        <a href="#pricing" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Tarifs</a>
         <a href="#contact" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</a>
       </div>
 
       <!-- CTA Button -->
-      <a href="#contact" class="hidden md:inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-medium text-black hover:bg-white/90 transition-opacity">Talk to us</a>
+      <a href="#contact" class="hidden md:inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-medium text-black hover:bg-white/90 transition-opacity">Nous contacter</a>
 
       <!-- Mobile menu button -->
       <button id="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" class="flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors md:hidden">
-        <span class="sr-only">Open menu</span>
+        <span class="sr-only">Ouvrir le menu</span>
         <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
       </button>
     </nav>
@@ -93,10 +93,10 @@
     <!-- Mobile menu -->
     <div id="mobile-menu" aria-hidden="true" class="hidden border-t border-border bg-background px-6 py-4 md:hidden">
       <div class="flex flex-col gap-4">
-        <a href="#about" class="text-sm text-muted-foreground hover:text-foreground transition-colors">About</a>
-        <a href="#features" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Approach</a>
-        <a href="#team" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Team</a>
-        <a href="#pricing" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
+        <a href="#about" class="text-sm text-muted-foreground hover:text-foreground transition-colors">À propos</a>
+        <a href="#features" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Notre approche</a>
+        <a href="#team" class="text-sm text-muted-foreground hover:text-foreground transition-colors">L'équipe</a>
+        <a href="#pricing" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Tarifs</a>
         <a href="#contact" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</a>
       </div>
     </div>
@@ -110,12 +110,12 @@
       <div class="mx-auto max-w-5xl px-6">
         <div class="grid grid-cols-1 lg:grid-cols-3" data-animate>
           <div class="lg:col-span-2">
-            <span class="inline-block rounded-full border border-white/30 px-4 py-1.5 text-xs font-medium tracking-wide mb-6">AI Consulting</span>
+            <span class="inline-block rounded-full border border-white/30 px-4 py-1.5 text-xs font-medium tracking-wide mb-6">Conseil & Solutions IA</span>
             <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">
-              We find the problem. We build the fix. We prove it works.
+              Identifier le problème. Concevoir la solution. Prouver son efficacité.
             </h1>
             <p class="mt-6 max-w-xl text-lg text-muted-foreground">
-              Core is a two-person AI consultancy that goes deep into organizations, identifies the real bottlenecks, and delivers working solutions — not slide decks.
+              BYAIME est un studio de conseil et d'ingénierie IA qui s'immerge au cœur de vos organisations, identifie les véritables blocages et déploie des solutions fonctionnelles — pas de simples présentations.
             </p>
           </div>
         </div>
@@ -165,7 +165,7 @@
       <div class="mx-auto max-w-5xl px-6">
         <div class="mt-12 grid gap-8 md:mt-16 md:grid-cols-3 md:gap-12" data-animate data-delay="2">
           <div>
-            <h2 class="text-2xl font-medium tracking-tight sm:text-3xl">A new kind of consulting</h2>
+            <h2 class="text-2xl font-medium tracking-tight sm:text-3xl">Une nouvelle approche du conseil</h2>
             <div class="mt-6 flex items-center">
               <img src="img/teammember11.webp" alt="Lisa Bergmann" width="1024" height="1024" loading="lazy" class="h-12 w-12 rounded-full object-cover ring-2 ring-background">
               <img src="img/teammember3.webp" alt="Sarah Chen" width="1024" height="1024" loading="lazy" class="h-12 w-12 rounded-full object-cover ring-2 ring-background -ml-3">
@@ -173,13 +173,13 @@
           </div>
           <div class="md:col-span-2">
             <p class="text-lg font-medium text-foreground leading-relaxed">
-              Most consultants tell you what's wrong. We show you it's fixed.
+              La plupart des consultants vous disent ce qui ne va pas. Nous vous montrons que c'est résolu.
             </p>
             <p class="mt-4 text-muted-foreground leading-relaxed">
-              Core was founded by Lisa Bergmann and Sarah Chen — a technologist who thinks in products and a strategist who thinks in systems. Two very different minds, united by a shared obsession: understanding users and leveraging AI to solve real problems.
+              BYAIME a été fondé par Lisa Bergmann et Sarah Chen — une ingénieure dotée d'une vision produit et une stratège rompue à l'analyse des systèmes. Deux profils complémentaires, animés par une exigence commune : comprendre les utilisateurs et exploiter le plein potentiel de l'IA pour résoudre des défis concrets.
             </p>
             <p class="mt-4 text-muted-foreground leading-relaxed">
-              We work across department lines. We quantify what others describe with adjectives. And when we find the biggest lever, we don't hand you a report — we build the solution, deploy it, and prove it works. Then we hand it over.
+              Nous intervenons au-delà des silos organisationnels. Nous quantifions avec rigueur ce que d'autres décrivent par des approximations. Et lorsque nous identifions le levier le plus stratégique, nous ne nous contentons pas d'un rapport : nous concevons la solution, la déployons et mesurons son efficacité avant de vous la transmettre.
             </p>
           </div>
         </div>
@@ -187,7 +187,7 @@
     </section>
 
     <!-- ===== Trust / Logo Bar ===== -->
-    <section aria-label="Trusted by leading companies" class="border-y border-border py-[calc(24px+4vh)]">
+    <section aria-label="Entreprises partenaires" class="border-y border-border py-[calc(24px+4vh)]">
       <div class="mx-auto max-w-5xl px-6">
         <div class="grid grid-cols-3 text-foreground" data-animate="fade">
           <!-- Arcline -->
@@ -225,34 +225,34 @@
         <!-- Row 1: Text left, Image right — Team Activity -->
         <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16" data-animate>
           <div>
-            <p class="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Discover</p>
-            <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Find the problems nobody can name</h2>
-            <p class="mt-4 text-muted-foreground leading-relaxed">We cut across departments, hierarchies, and silos. Not the usual top-down workshop, but real immersion: talking to teams, observing processes, analyzing data. We surface the problems that everyone feels but nobody can articulate.</p>
+            <p class="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Explorer</p>
+            <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Révéler les blocages que personne n'arrive à nommer</h2>
+            <p class="mt-4 text-muted-foreground leading-relaxed">Nous traversons les départements, les hiérarchies et les silos. Loin des ateliers descendants habituels, nous privilégions une immersion réelle : échanger avec les équipes opérationnelles, analyser les processus, sonder les flux de données. Nous mettons en lumière les frictions que chacun ressent sans toujours parvenir à les formuler.</p>
           </div>
           <div class="relative rounded-2xl overflow-hidden h-80 md:h-96 flex items-center justify-center p-6 bg-black" data-fade-bg>
             <div class="absolute inset-0 transition-opacity duration-100" style="background: url('img/floral1.webp') center/cover no-repeat; opacity: 0.05"></div>
             <div class="relative w-full max-w-[260px]">
               <div class="rounded-2xl bg-background p-5 border border-white/10">
                 <div class="flex items-center justify-between mb-5">
-                  <span class="text-[11px] font-semibold text-gray-100">Team Activity</span>
-                  <span class="text-[10px] text-gray-500">Live</span>
+                  <span class="text-[11px] font-semibold text-gray-100">Activité de l'équipe</span>
+                  <span class="text-[10px] text-gray-500">En direct</span>
                 </div>
                 <div class="space-y-4">
                   <div class="flex items-start gap-3">
                     <div class="mt-0.5 h-5 w-5 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0"><div class="h-1.5 w-1.5 rounded-full bg-emerald-500"></div></div>
-                    <div><p class="text-[11px] font-medium text-gray-200">Deploy <span class="text-gray-500 font-normal">v2.4.1</span> succeeded</p><p class="text-[9px] text-gray-500 mt-0.5">2 min ago</p></div>
+                    <div><p class="text-[11px] font-medium text-gray-200">Déploiement <span class="text-gray-500 font-normal">v2.4.1</span> réussi</p><p class="text-[9px] text-gray-500 mt-0.5">Il y a 2 min</p></div>
                   </div>
                   <div class="flex items-start gap-3">
                     <div class="mt-0.5 h-5 w-5 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0"><div class="h-1.5 w-1.5 rounded-full bg-blue-500"></div></div>
-                    <div><p class="text-[11px] font-medium text-gray-200">PR #218 merged to <span class="font-mono text-[10px] bg-white/10 rounded px-1">main</span></p><p class="text-[9px] text-gray-500 mt-0.5">8 min ago</p></div>
+                    <div><p class="text-[11px] font-medium text-gray-200">PR #218 fusionnée dans <span class="font-mono text-[10px] bg-white/10 rounded px-1">main</span></p><p class="text-[9px] text-gray-500 mt-0.5">Il y a 8 min</p></div>
                   </div>
                   <div class="flex items-start gap-3">
                     <div class="mt-0.5 h-5 w-5 rounded-full bg-amber-500/10 flex items-center justify-center flex-shrink-0"><div class="h-1.5 w-1.5 rounded-full bg-amber-500"></div></div>
-                    <div><p class="text-[11px] font-medium text-gray-200">Build queued — <span class="text-gray-500 font-normal">staging</span></p><p class="text-[9px] text-gray-500 mt-0.5">12 min ago</p></div>
+                    <div><p class="text-[11px] font-medium text-gray-200">Build en attente — <span class="text-gray-500 font-normal">staging</span></p><p class="text-[9px] text-gray-500 mt-0.5">Il y a 12 min</p></div>
                   </div>
                   <div class="flex items-start gap-3">
                     <div class="mt-0.5 h-5 w-5 rounded-full bg-violet-500/10 flex items-center justify-center flex-shrink-0"><div class="h-1.5 w-1.5 rounded-full bg-violet-500"></div></div>
-                    <div><p class="text-[11px] font-medium text-gray-200">New comment on <span class="text-gray-500 font-normal">#214</span></p><p class="text-[9px] text-gray-500 mt-0.5">25 min ago</p></div>
+                    <div><p class="text-[11px] font-medium text-gray-200">Nouveau commentaire sur <span class="text-gray-500 font-normal">#214</span></p><p class="text-[9px] text-gray-500 mt-0.5">Il y a 25 min</p></div>
                   </div>
                 </div>
               </div>
@@ -267,46 +267,46 @@
             <div class="relative w-full max-w-[260px]">
               <div class="rounded-2xl bg-background p-5 border border-white/10">
                 <div class="flex items-center justify-between mb-2">
-                  <span class="text-[11px] font-semibold text-gray-100">Uptime</span>
-                  <span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[9px] font-semibold text-emerald-400">Healthy</span>
+                  <span class="text-[11px] font-semibold text-gray-100">Disponibilité</span>
+                  <span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[9px] font-semibold text-emerald-400">Opérationnel</span>
                 </div>
-                <p class="text-3xl font-bold text-gray-100 tracking-tight">99.98<span class="text-lg text-gray-500">%</span></p>
-                <p class="text-[10px] text-gray-500 mt-1">Last 90 days</p>
+                <p class="text-3xl font-bold text-gray-100 tracking-tight">99,98<span class="text-lg text-gray-500">%</span></p>
+                <p class="text-[10px] text-gray-500 mt-1">90 derniers jours</p>
                 <div class="mt-4 flex gap-[3px]">
                   <div class="h-6 w-full rounded-sm bg-emerald-500"></div><div class="h-6 w-full rounded-sm bg-emerald-500"></div><div class="h-6 w-full rounded-sm bg-emerald-500"></div><div class="h-6 w-full rounded-sm bg-emerald-500"></div><div class="h-6 w-full rounded-sm bg-emerald-500"></div><div class="h-6 w-full rounded-sm bg-emerald-500"></div><div class="h-6 w-full rounded-sm bg-amber-400"></div><div class="h-6 w-full rounded-sm bg-emerald-500"></div><div class="h-6 w-full rounded-sm bg-emerald-500"></div><div class="h-6 w-full rounded-sm bg-emerald-500"></div><div class="h-6 w-full rounded-sm bg-emerald-500"></div><div class="h-6 w-full rounded-sm bg-emerald-500"></div><div class="h-6 w-full rounded-sm bg-emerald-500"></div><div class="h-6 w-full rounded-sm bg-emerald-500"></div>
                 </div>
                 <div class="mt-3 grid grid-cols-3 gap-2">
-                  <div class="rounded-lg bg-white/5 p-2 text-center"><p class="text-xs font-bold text-gray-100">42ms</p><p class="text-[9px] text-gray-500">Avg latency</p></div>
-                  <div class="rounded-lg bg-white/5 p-2 text-center"><p class="text-xs font-bold text-gray-100">2.1M</p><p class="text-[9px] text-gray-500">Requests</p></div>
+                  <div class="rounded-lg bg-white/5 p-2 text-center"><p class="text-xs font-bold text-gray-100">42 ms</p><p class="text-[9px] text-gray-500">Latence moy.</p></div>
+                  <div class="rounded-lg bg-white/5 p-2 text-center"><p class="text-xs font-bold text-gray-100">2,1 M</p><p class="text-[9px] text-gray-500">Requêtes</p></div>
                   <div class="rounded-lg bg-white/5 p-2 text-center"><p class="text-xs font-bold text-gray-100">0</p><p class="text-[9px] text-gray-500">Incidents</p></div>
                 </div>
               </div>
             </div>
           </div>
           <div>
-            <p class="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Quantify</p>
-            <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Make every problem measurable</h2>
-            <p class="mt-4 text-muted-foreground leading-relaxed">Gut feelings don't survive budget meetings. We quantify and qualify every problem we find. What does it cost the business? How many people does it affect? Where's the biggest lever? Data-driven prioritization, not PowerPoint intuition.</p>
+            <p class="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Qualifier</p>
+            <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Rendre chaque enjeu mesurable</h2>
+            <p class="mt-4 text-muted-foreground leading-relaxed">Les intuitions ne suffisent pas lors des arbitrages stratégiques. Nous quantifions et qualifions chaque opportunité et chaque point de friction. Quel en est l'impact réel sur l'activité ? Combien de collaborateurs ou d'utilisateurs sont concernés ? Où se situe le plus fort retour sur investissement ? Une priorisation méthodique guidée par la valeur, et non par de simples suppositions.</p>
           </div>
         </div>
 
         <!-- Row 3: Text left, Image right — Spend Breakdown -->
         <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16" data-animate>
           <div>
-            <p class="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Build</p>
-            <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Ship the solution, prove it works</h2>
-            <p class="mt-4 text-muted-foreground leading-relaxed">This is where we're different. We don't stop at recommendations. We design the solution, build it, deploy it, and measure the results. Prototype, pilot, proof. Only then do we hand it over. No "you should probably do X" — we do X.</p>
+            <p class="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Concevoir</p>
+            <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Déployer la solution, prouver ses résultats</h2>
+            <p class="mt-4 text-muted-foreground leading-relaxed">C'est ici que réside notre engagement. Nous ne nous arrêtons pas aux recommandations théoriques. Nous concevons la solution, la développons, la déployons en conditions réelles et mesurons son efficacité. Prototype, pilote, validation concrète. C'est seulement ensuite que nous assurons la passation. Pas de simples conseils : nous passons à l'action.</p>
           </div>
           <div class="relative rounded-2xl overflow-hidden h-80 md:h-96 flex items-center justify-center p-6 bg-black" data-fade-bg>
             <div class="absolute inset-0 transition-opacity duration-100" style="background: url('img/floral7.webp') center/cover no-repeat; opacity: 0.05"></div>
             <div class="relative w-full max-w-[260px]">
               <div class="rounded-2xl bg-background p-5 border border-white/10">
                 <div class="flex items-center justify-between mb-1">
-                  <span class="text-[11px] font-semibold text-gray-100">Monthly Spend</span>
-                  <span class="text-[10px] text-gray-500">Apr 2026</span>
+                  <span class="text-[11px] font-semibold text-gray-100">Dépenses mensuelles</span>
+                  <span class="text-[10px] text-gray-500">Avr. 2026</span>
                 </div>
                 <div class="flex items-baseline gap-2">
-                  <span class="text-2xl font-bold text-gray-100 tracking-tight">$4,280</span>
+                  <span class="text-2xl font-bold text-gray-100 tracking-tight">4 280 $</span>
                   <span class="text-[10px] text-emerald-400 font-semibold">-12%</span>
                 </div>
                 <div class="mt-4 h-3 w-full rounded-full bg-white/10 flex overflow-hidden">
@@ -316,10 +316,10 @@
                   <div class="h-full bg-gray-600 rounded-r-full" style="width: 10%"></div>
                 </div>
                 <div class="mt-4 space-y-2.5">
-                  <div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="h-2 w-2 rounded-full bg-white"></div><span class="text-[10px] text-gray-400">Compute</span></div><span class="text-[11px] font-semibold text-gray-100">$1,926</span></div>
-                  <div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="h-2 w-2 rounded-full bg-gray-400"></div><span class="text-[10px] text-gray-400">Bandwidth</span></div><span class="text-[11px] font-semibold text-gray-100">$1,198</span></div>
-                  <div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="h-2 w-2 rounded-full bg-gray-500"></div><span class="text-[10px] text-gray-400">Storage</span></div><span class="text-[11px] font-semibold text-gray-100">$728</span></div>
-                  <div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="h-2 w-2 rounded-full bg-gray-600"></div><span class="text-[10px] text-gray-400">Other</span></div><span class="text-[11px] font-semibold text-gray-100">$428</span></div>
+                  <div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="h-2 w-2 rounded-full bg-white"></div><span class="text-[10px] text-gray-400">Calcul</span></div><span class="text-[11px] font-semibold text-gray-100">1 926 $</span></div>
+                  <div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="h-2 w-2 rounded-full bg-gray-400"></div><span class="text-[10px] text-gray-400">Bande passante</span></div><span class="text-[11px] font-semibold text-gray-100">1 198 $</span></div>
+                  <div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="h-2 w-2 rounded-full bg-gray-500"></div><span class="text-[10px] text-gray-400">Stockage</span></div><span class="text-[11px] font-semibold text-gray-100">728 $</span></div>
+                  <div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="h-2 w-2 rounded-full bg-gray-600"></div><span class="text-[10px] text-gray-400">Autres</span></div><span class="text-[11px] font-semibold text-gray-100">428 $</span></div>
                 </div>
               </div>
             </div>
@@ -341,8 +341,8 @@
             <!-- Heading -->
             <div class="flex items-center">
               <div>
-                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Our founding duo</h2>
-                <p class="mt-4 text-white/70 leading-relaxed">A technologist who thinks like a designer and a strategist who thinks in systems. Different expertise, shared obsession.</p>
+                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Le binôme fondateur</h2>
+                <p class="mt-4 text-white/70 leading-relaxed">Une ingénieure à la sensibilité produit et une stratège de la vision d'ensemble. Des compétences complémentaires pour une exigence partagée.</p>
               </div>
             </div>
             <!-- Lisa -->
@@ -351,8 +351,8 @@
               <div class="bg-white aspect-square overflow-hidden"><img src="img/teammember11.webp" alt="Lisa Bergmann" width="1024" height="1024" loading="lazy" class="w-full h-full object-cover"></div>
               <div class="p-8 md:p-10">
                 <p class="text-sm font-semibold">Lisa Bergmann</p>
-                <p class="text-sm text-muted-foreground">Co-founder & CTO</p>
-                <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Engineer with a rare eye for product design. Builds systems and interfaces in the same breath. Ex Vercel.</p>
+                <p class="text-sm text-muted-foreground">Co-fondatrice & Directrice technique</p>
+                <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Ingénieure dotée d'une solide culture design. Conçoit architectures et interfaces avec la même rigueur. Anciennement chez Vercel.</p>
                 <a href="#" class="mt-3 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
                   <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                   LinkedIn
@@ -366,8 +366,8 @@
               <div class="bg-white aspect-square overflow-hidden"><img src="img/teammember3.webp" alt="Sarah Chen" width="1024" height="1024" loading="lazy" class="w-full h-full object-cover"></div>
               <div class="p-8 md:p-10">
                 <p class="text-sm font-semibold">Sarah Chen</p>
-                <p class="text-sm text-muted-foreground">Co-founder & CEO</p>
-                <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Strategist who reads business models like source code. Spots where companies leak value. Ex Stripe.</p>
+                <p class="text-sm text-muted-foreground">Co-fondatrice & Directrice générale</p>
+                <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Stratège analysant les modèles économiques comme du code source. Identifie les leviers de valeur inexploités. Anciennement chez Stripe.</p>
                 <a href="#" class="mt-3 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
                   <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                   LinkedIn
@@ -388,9 +388,9 @@
         <div class="grid grid-cols-1 md:grid-cols-2" style="gap: 6rem">
           <!-- Left: Sticky heading -->
           <div class="md:sticky md:top-32 md:self-start">
-            <span class="inline-block rounded-full border border-white/30 px-4 py-1.5 text-xs font-medium tracking-wide mb-6">Our Story</span>
-            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">From a shared frustration to a new kind of firm</h2>
-            <p class="mt-4 text-muted-foreground leading-relaxed">Lisa and Sarah kept running into the same problem — consultants who diagnosed but never built. In 2024 they decided to do it differently.</p>
+            <span class="inline-block rounded-full border border-white/30 px-4 py-1.5 text-xs font-medium tracking-wide mb-6">Notre parcours</span>
+            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">D'un constat partagé à un nouveau modèle d'intervention</h2>
+            <p class="mt-4 text-muted-foreground leading-relaxed">Lisa et Sarah faisaient constamment le même constat : des conseils qui posent des diagnostics sans jamais rien concevoir ni déployer. En 2024, elles ont décidé de créer une alternative concrète.</p>
           </div>
           <!-- Right: Timeline -->
           <div class="relative" style="padding-left: 2rem">
@@ -402,8 +402,8 @@
                 <div style="width: 11px; height: 11px; border-radius: 50%; background: white; box-shadow: 0 0 8px rgba(255,255,255,0.6), 0 0 20px rgba(255,255,255,0.3); animation: timeline-pulse 2s ease-in-out infinite"></div>
               </div>
               <p class="text-sm font-medium text-muted-foreground">2026</p>
-              <h3 class="mt-3 text-base font-semibold">AI-native from day one</h3>
-              <p class="mt-1 text-sm text-muted-foreground leading-relaxed">Every engagement now starts with AI-assisted discovery. We cut diagnostic time in half and deliver prototypes in weeks, not months.</p>
+              <h3 class="mt-3 text-base font-semibold">Une approche nativement IA</h3>
+              <p class="mt-1 text-sm text-muted-foreground leading-relaxed">Chaque mission intègre désormais des méthodes d'exploration assistées par l'IA. Nous réduisons de moitié les temps de diagnostic et livrons des prototypes fonctionnels en quelques semaines.</p>
             </div>
             <!-- 2025 -->
             <div class="relative pb-16" data-animate>
@@ -411,8 +411,8 @@
                 <div style="width: 11px; height: 11px; border-radius: 50%; background: var(--color-muted-foreground)"></div>
               </div>
               <p class="text-sm font-medium text-muted-foreground">2025</p>
-              <h3 class="mt-3 text-base font-semibold">First enterprise clients</h3>
-              <p class="mt-1 text-sm text-muted-foreground leading-relaxed">Word spread. Two Fortune 500 companies brought us in to untangle cross-departmental workflows that had stalled for years.</p>
+              <h3 class="mt-3 text-base font-semibold">Premiers grands comptes</h3>
+              <p class="mt-1 text-sm text-muted-foreground leading-relaxed">Le bouche-à-oreille opère. Deux entreprises de premier plan nous sollicitent pour dénouer des processus transverses bloqués depuis plusieurs années.</p>
             </div>
             <!-- 2024 -->
             <div class="relative pb-16" data-animate>
@@ -420,8 +420,8 @@
                 <div style="width: 11px; height: 11px; border-radius: 50%; background: var(--color-muted-foreground)"></div>
               </div>
               <p class="text-sm font-medium text-muted-foreground">2024</p>
-              <h3 class="mt-3 text-base font-semibold">Core is founded</h3>
-              <p class="mt-1 text-sm text-muted-foreground leading-relaxed">Lisa and Sarah leave their roles to build the consultancy they always wished existed. First client within three weeks — a logistics company bleeding money on manual processes.</p>
+              <h3 class="mt-3 text-base font-semibold">Fondation de la structure</h3>
+              <p class="mt-1 text-sm text-muted-foreground leading-relaxed">Lisa et Sarah quittent leurs fonctions pour créer le studio qu'elles ont toujours voulu voir exister. Premier client signé en trois semaines : une entreprise de logistique confrontée à des coûts opérationnels majeurs.</p>
             </div>
             <!-- 2022 -->
             <div class="relative pb-16" data-animate>
@@ -429,8 +429,8 @@
                 <div style="width: 11px; height: 11px; border-radius: 50%; background: var(--color-muted-foreground)"></div>
               </div>
               <p class="text-sm font-medium text-muted-foreground">2022</p>
-              <h3 class="mt-3 text-base font-semibold">The frustration crystallizes</h3>
-              <p class="mt-1 text-sm text-muted-foreground leading-relaxed">Both independently hit the same wall: brilliant consultants who delivered decks, not outcomes. They start talking about what "consulting that actually ships" would look like.</p>
+              <h3 class="mt-3 text-base font-semibold">Le déclic</h3>
+              <p class="mt-1 text-sm text-muted-foreground leading-relaxed">Toutes deux font le même constat : des experts brillants pour produire des présentations, mais absents sur l'exécution. Elles imaginent alors un accompagnement résolument orienté vers les résultats opérationnels.</p>
             </div>
             <!-- 2018 -->
             <div class="relative" data-animate>
@@ -438,8 +438,8 @@
                 <div style="width: 11px; height: 11px; border-radius: 50%; background: var(--color-border)"></div>
               </div>
               <p class="text-sm font-medium text-muted-foreground">2018</p>
-              <h3 class="mt-3 text-base font-semibold">Lisa and Sarah meet</h3>
-              <p class="mt-1 text-sm text-muted-foreground leading-relaxed">A conference talk on developer experience sparks a conversation that never really ends. Different worlds — infrastructure and strategy — but the same conviction: build for users, not for org charts.</p>
+              <h3 class="mt-3 text-base font-semibold">Rencontre de Lisa et Sarah</h3>
+              <p class="mt-1 text-sm text-muted-foreground leading-relaxed">Une conférence sur l'expérience développeur initie un échange décisif. Deux visions complémentaires — infrastructure et stratégie — avec une même conviction : concevoir pour les utilisateurs finaux, et non pour des organigrammes.</p>
             </div>
           </div>
         </div>
@@ -457,36 +457,36 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-animate>
             <!-- Heading -->
             <div>
-              <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Simple, transparent pricing</h2>
-              <p class="mt-4 text-white/70 leading-relaxed">No hourly billing, no scope creep surprises. You know what you're paying before we start.</p>
+              <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Des tarifs simples et transparents</h2>
+              <p class="mt-4 text-white/70 leading-relaxed">Aucune facturation à l'heure, aucune mauvaise surprise de périmètre. Vous connaissez votre investissement exact avant le démarrage.</p>
             </div>
             <!-- Sprint Week -->
             <div>
             <div class="rounded-2xl bg-black overflow-hidden border border-border" style="background-image: radial-gradient(80% 50% at 50% 0%, rgb(26,26,26) 0%, transparent 70%)">
               <div style="padding: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.1)">
-                <p class="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Sprint Week</p>
+                <p class="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Semaine Sprint</p>
                 <div class="mt-4" style="display: flex; align-items: baseline; gap: 0.25rem">
-                  <span class="text-4xl font-bold tracking-tight">$20,000</span>
-                  <span class="text-sm text-muted-foreground">/ week</span>
+                  <span class="text-4xl font-bold tracking-tight">20 000 $</span>
+                  <span class="text-sm text-muted-foreground">/ semaine</span>
                 </div>
-                <p class="mt-3 text-sm text-muted-foreground leading-relaxed">One focused week. One specific problem. We go from discovery to a working prototype, delivered Friday.</p>
+                <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Une semaine intensive. Un problème ciblé. Nous passons de l'analyse initiale à un prototype fonctionnel, livré le vendredi.</p>
               </div>
               <div style="padding: 2rem 2.5rem">
                 <ul style="display: flex; flex-direction: column; gap: 0.75rem; list-style: none; padding: 0; margin: 0">
                   <li class="text-sm text-muted-foreground" style="display: flex; align-items: center; gap: 0.75rem">
                     <svg style="width: 1rem; height: 1rem; flex-shrink: 0; color: white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-                    Lisa & Sarah, full week
+                    Lisa & Sarah dédiées toute la semaine
                   </li>
                   <li class="text-sm text-muted-foreground" style="display: flex; align-items: center; gap: 0.75rem">
                     <svg style="width: 1rem; height: 1rem; flex-shrink: 0; color: white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-                    Working prototype delivered
+                    Prototype fonctionnel livré et validé
                   </li>
                   <li class="text-sm text-muted-foreground" style="display: flex; align-items: center; gap: 0.75rem">
                     <svg style="width: 1rem; height: 1rem; flex-shrink: 0; color: white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-                    Full handover & documentation
+                    Passation complète & documentation
                   </li>
                 </ul>
-                <a href="#contact" class="mt-6 inline-flex items-center rounded-full border border-white/30 px-5 py-2 text-sm font-medium text-white hover:bg-white/10 transition-colors" style="display: inline-flex">Book a sprint</a>
+                <a href="#contact" class="mt-6 inline-flex items-center rounded-full border border-white/30 px-5 py-2 text-sm font-medium text-white hover:bg-white/10 transition-colors" style="display: inline-flex">Réserver un sprint</a>
               </div>
             </div>
             </div>
@@ -494,40 +494,40 @@
             <div class="md:pb-12">
             <div class="rounded-2xl bg-black overflow-hidden border border-border" style="background-image: radial-gradient(80% 50% at 50% 0%, rgb(26,26,26) 0%, transparent 70%)">
               <div style="padding: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.1)">
-                <p class="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Custom Engagement</p>
+                <p class="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Accompagnement sur mesure</p>
                 <div class="mt-4">
-                  <span class="text-4xl font-bold tracking-tight">Let's talk</span>
+                  <span class="text-4xl font-bold tracking-tight">Sur devis</span>
                 </div>
-                <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Larger problems need more time. We scope custom engagements tailored to your organization — from two-week deep dives to quarter-long transformations.</p>
+                <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Les défis d'envergure demandent un cadre adapté. Nous concevons des missions sur mesure — de l'immersion de deux semaines aux transformations trimestrielles.</p>
               </div>
               <div style="padding: 2rem 2.5rem">
                 <ul style="display: flex; flex-direction: column; gap: 0.75rem; list-style: none; padding: 0; margin: 0">
                   <li class="text-sm text-muted-foreground" style="display: flex; align-items: center; gap: 0.75rem">
                     <svg style="width: 1rem; height: 1rem; flex-shrink: 0; color: white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-                    Scoped to your specific challenge
+                    Cadrage dédié à votre problématique
                   </li>
                   <li class="text-sm text-muted-foreground" style="display: flex; align-items: center; gap: 0.75rem">
                     <svg style="width: 1rem; height: 1rem; flex-shrink: 0; color: white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-                    Multi-week or multi-month timelines
+                    Calendrier sur plusieurs semaines ou mois
                   </li>
                   <li class="text-sm text-muted-foreground" style="display: flex; align-items: center; gap: 0.75rem">
                     <svg style="width: 1rem; height: 1rem; flex-shrink: 0; color: white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-                    Cross-department discovery included
+                    Immersion et diagnostic transverse inclus
                   </li>
                   <li class="text-sm text-muted-foreground" style="display: flex; align-items: center; gap: 0.75rem">
                     <svg style="width: 1rem; height: 1rem; flex-shrink: 0; color: white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-                    Production-ready solutions, not reports
+                    Solutions prêtes pour la production
                   </li>
                   <li class="text-sm text-muted-foreground" style="display: flex; align-items: center; gap: 0.75rem">
                     <svg style="width: 1rem; height: 1rem; flex-shrink: 0; color: white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-                    On-site or remote — we adapt to you
+                    Sur site ou à distance selon vos besoins
                   </li>
                   <li class="text-sm text-muted-foreground" style="display: flex; align-items: center; gap: 0.75rem">
                     <svg style="width: 1rem; height: 1rem; flex-shrink: 0; color: white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-                    Full handover, documentation & training
+                    Passation complète, documentation & formation
                   </li>
                 </ul>
-                <a href="#contact" class="mt-8 inline-flex items-center rounded-full border border-white/30 px-5 py-2 text-sm font-medium text-white hover:bg-white/10 transition-colors" style="display: inline-flex">Get in touch</a>
+                <a href="#contact" class="mt-8 inline-flex items-center rounded-full border border-white/30 px-5 py-2 text-sm font-medium text-white hover:bg-white/10 transition-colors" style="display: inline-flex">Nous contacter</a>
               </div>
             </div>
             </div>
@@ -541,28 +541,28 @@
     <!-- ===== Contact ===== -->
     <section id="contact" class="py-[calc(48px+8vh)]">
       <div id="contact-card" class="relative mx-auto max-w-2xl text-center rounded-2xl bg-black border border-border p-8 md:p-12" style="box-shadow: 0 -20px 50px -15px rgba(255,255,255,0.05); background-image: radial-gradient(80% 50% at 50% 0%, rgb(26,26,26) 0%, transparent 70%)" data-animate>
-          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Let's talk</h2>
-          <p class="mt-4 text-lg text-muted-foreground">Tell us what's not working. We'll tell you if we can help — honestly and quickly.</p>
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Échangeons sur votre projet</h2>
+          <p class="mt-4 text-lg text-muted-foreground">Expliquez-nous vos points de friction. Nous vous dirons rapidement et en toute franchise comment nous pouvons intervenir.</p>
           <form class="mt-10 space-y-6" action="#" method="post">
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
-                <label for="first-name" class="block text-sm font-medium">First name</label>
-                <input id="first-name" name="first-name" type="text" required placeholder="Jane" class="mt-2 w-full rounded-md border border-border bg-background px-4 py-3 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground">
+                <label for="first-name" class="block text-sm font-medium">Prénom</label>
+                <input id="first-name" name="first-name" type="text" required placeholder="Camille" class="mt-2 w-full rounded-md border border-border bg-background px-4 py-3 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground">
               </div>
               <div>
-                <label for="last-name" class="block text-sm font-medium">Last name</label>
-                <input id="last-name" name="last-name" type="text" required placeholder="Smith" class="mt-2 w-full rounded-md border border-border bg-background px-4 py-3 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground">
+                <label for="last-name" class="block text-sm font-medium">Nom</label>
+                <input id="last-name" name="last-name" type="text" required placeholder="Dupont" class="mt-2 w-full rounded-md border border-border bg-background px-4 py-3 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground">
               </div>
             </div>
             <div>
-              <label for="email" class="block text-sm font-medium">Email</label>
-              <input id="email" name="email" type="email" required placeholder="you@company.com" class="mt-2 w-full rounded-md border border-border bg-background px-4 py-3 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground">
+              <label for="email" class="block text-sm font-medium">E-mail</label>
+              <input id="email" name="email" type="email" required placeholder="vous@entreprise.com" class="mt-2 w-full rounded-md border border-border bg-background px-4 py-3 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground">
             </div>
             <div>
               <label for="message" class="block text-sm font-medium">Message</label>
-              <textarea id="message" name="message" rows="4" required placeholder="Tell us about your project..." class="mt-2 w-full rounded-md border border-border bg-background px-4 py-3 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground resize-y"></textarea>
+              <textarea id="message" name="message" rows="4" required placeholder="Décrivez votre projet ou vos enjeux..." class="mt-2 w-full rounded-md border border-border bg-background px-4 py-3 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground resize-y"></textarea>
             </div>
-            <button type="submit" class="rounded-full bg-white px-6 py-3 text-sm font-medium text-black hover:bg-white/90 transition-opacity">Send message</button>
+            <button type="submit" class="rounded-full bg-white px-6 py-3 text-sm font-medium text-black hover:bg-white/90 transition-opacity">Envoyer le message</button>
           </form>
       </div>
     </section>
@@ -577,30 +577,30 @@
         <div>
           <a href="/" class="flex items-center gap-2 text-lg font-bold tracking-tight">
             <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1"/></svg>
-            Core
+            BYAIME
           </a>
-          <p class="mt-2 text-sm text-muted-foreground">AI consulting that builds, not just advises.</p>
+          <p class="mt-2 text-sm text-muted-foreground">Conseil et conception IA axés sur des solutions concrètes.</p>
         </div>
         <!-- Legal links -->
         <div class="flex items-center gap-6 text-sm text-muted-foreground">
-          <button type="button" data-open-dialog="modal-legal" class="hover:text-foreground transition-colors">Legal</button>
-          <button type="button" data-open-dialog="modal-privacy" class="hover:text-foreground transition-colors">Privacy</button>
+          <button type="button" data-open-dialog="modal-legal" class="hover:text-foreground transition-colors">Mentions légales</button>
+          <button type="button" data-open-dialog="modal-privacy" class="hover:text-foreground transition-colors">Confidentialité</button>
         </div>
         <!-- Social -->
         <div>
-          <p class="text-sm font-semibold">Connect</p>
+          <p class="text-sm font-semibold">Suivez-nous</p>
           <div class="mt-3 flex gap-4">
             <a href="#" class="inline-flex items-center justify-center w-11 h-11 rounded-md text-muted-foreground hover:text-foreground transition-colors" aria-label="GitHub">
               <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
             </a>
-            <a href="#" class="inline-flex items-center justify-center w-11 h-11 rounded-md text-muted-foreground hover:text-foreground transition-colors" aria-label="Email">
+            <a href="#" class="inline-flex items-center justify-center w-11 h-11 rounded-md text-muted-foreground hover:text-foreground transition-colors" aria-label="E-mail">
               <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
             </a>
           </div>
         </div>
       </div>
       <div class="mt-12 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-        <p>Made by <a href="https://templatedeck.com" class="hover:text-foreground transition-colors">templatedeck.com</a></p>
+        <p>Conçu par <a href="https://templatedeck.com" class="hover:text-foreground transition-colors">templatedeck.com</a></p>
       </div>
     </div>
   </footer>
@@ -608,32 +608,32 @@
   <!-- ===== Legal Modal ===== -->
   <dialog id="modal-legal" class="rounded-2xl bg-background text-foreground" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 3rem); max-width: 42rem; max-height: 80vh; padding: 0; overflow: hidden; border: none; font-size: 1rem">
     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 3rem; flex-shrink: 0">
-      <h2 style="font-size: 1.5rem; font-weight: 700">Legal Notice</h2>
-      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Close">
+      <h2 style="font-size: 1.5rem; font-weight: 700">Mentions légales & CGU</h2>
+      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
         <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
     <div style="overflow-y: auto; padding: 2rem 3rem 3rem; display: flex; flex-direction: column; gap: 2rem">
       <div>
-        <h3 style="font-size: 1.25rem; font-weight: 600">Terms of Service</h3>
+        <h3 style="font-size: 1.25rem; font-weight: 600">Conditions Générales d'Utilisation</h3>
         <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem; line-height: 1.75; color: var(--color-muted-foreground)">
-          <p>By accessing and using the Core platform ("Service"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, you may not use the Service.</p>
-          <h4 style="font-weight: 600; color: var(--color-foreground); padding-top: 0.5rem">1. Account Registration</h4>
-          <p>You must provide accurate and complete information when creating an account. You are responsible for maintaining the security of your account credentials and for all activities that occur under your account.</p>
-          <h4 style="font-weight: 600; color: var(--color-foreground); padding-top: 0.5rem">2. Acceptable Use</h4>
-          <p>You agree not to use the Service for any unlawful purpose or in any way that could damage, disable, or impair the Service. You may not attempt to gain unauthorized access to any part of the Service or its related systems.</p>
-          <h4 style="font-weight: 600; color: var(--color-foreground); padding-top: 0.5rem">3. Payment Terms</h4>
-          <p>Paid plans are billed in advance on a monthly or annual basis. All fees are non-refundable except as expressly stated in our refund policy. We reserve the right to change pricing with 30 days notice.</p>
-          <h4 style="font-weight: 600; color: var(--color-foreground); padding-top: 0.5rem">4. Termination</h4>
-          <p>Either party may terminate this agreement at any time. Upon termination, your right to use the Service will immediately cease. We will make your data available for export for 30 days after termination.</p>
+          <p>En accédant au site et aux services de BYAIME (le « Service »), vous acceptez d'être lié par les présentes Conditions Générales d'Utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser le Service.</p>
+          <h4 style="font-weight: 600; color: var(--color-foreground); padding-top: 0.5rem">1. Accès et inscription</h4>
+          <p>Vous vous engagez à fournir des informations exactes et complètes lors de tout échange ou création de compte. Vous êtes responsable du maintien de la confidentialité de vos identifiants et de toutes les activités effectuées sous votre compte.</p>
+          <h4 style="font-weight: 600; color: var(--color-foreground); padding-top: 0.5rem">2. Utilisation acceptable</h4>
+          <p>Vous acceptez de ne pas utiliser le Service à des fins illicites ou susceptibles d'altérer, désactiver ou surcharger nos infrastructures. Toute tentative d'accès non autorisé est strictement interdite.</p>
+          <h4 style="font-weight: 600; color: var(--color-foreground); padding-top: 0.5rem">3. Modalités d'engagement et tarifs</h4>
+          <p>Les prestations et sprints sont facturés selon les modalités convenues lors de la commande. Les tarifs sont susceptibles d'évoluer avec un préavis écrit de 30 jours pour les engagements récurrents.</p>
+          <h4 style="font-weight: 600; color: var(--color-foreground); padding-top: 0.5rem">4. Résiliation</h4>
+          <p>Chaque partie peut mettre fin à la relation contractuelle selon les conditions convenues au contrat. En cas de résiliation, vos données restent disponibles pour exportation pendant une période de 30 jours.</p>
         </div>
       </div>
       <hr style="border-color: var(--color-border)">
       <div>
-        <h3 style="font-size: 1.25rem; font-weight: 600">Imprint</h3>
+        <h3 style="font-size: 1.25rem; font-weight: 600">Informations légales</h3>
         <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem; line-height: 1.75; color: var(--color-muted-foreground)">
-          <p><strong style="color: var(--color-foreground)">Core Inc.</strong><br>123 Innovation Drive<br>San Francisco, CA 94105<br>United States</p>
-          <p><strong style="color: var(--color-foreground)">Contact:</strong> hello@acme.example<br><strong style="color: var(--color-foreground)">Registration:</strong> Delaware, USA — File No. 12345678</p>
+          <p><strong style="color: var(--color-foreground)">BYAIME</strong><br>Paris, France</p>
+          <p><strong style="color: var(--color-foreground)">Contact :</strong> contact@byaime.com<br><strong style="color: var(--color-foreground)">Hébergement :</strong> Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis</p>
         </div>
       </div>
     </div>
@@ -642,19 +642,19 @@
   <!-- ===== Privacy Modal ===== -->
   <dialog id="modal-privacy" class="rounded-2xl bg-background text-foreground" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 3rem); max-width: 42rem; max-height: 80vh; padding: 0; overflow: hidden; border: none; font-size: 1rem">
     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 3rem; flex-shrink: 0">
-      <h2 style="font-size: 1.5rem; font-weight: 700">Privacy Policy</h2>
-      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Close">
+      <h2 style="font-size: 1.5rem; font-weight: 700">Politique de confidentialité</h2>
+      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
         <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
     <div style="overflow-y: auto; padding: 2rem 3rem 3rem; display: flex; flex-direction: column; gap: 1rem; line-height: 1.75; color: var(--color-muted-foreground)">
-      <p>Your privacy matters to us. This policy explains what data we collect, why we collect it, and how you can manage your information.</p>
-      <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--color-foreground); padding-top: 0.5rem">Data We Collect</h3>
-      <p>We collect information you provide directly (name, email, payment details) and data generated through your use of the Service (usage logs, device information, IP addresses).</p>
-      <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--color-foreground); padding-top: 0.5rem">How We Use Your Data</h3>
-      <p>We use your data to provide and improve the Service, process payments, send important notifications, and comply with legal obligations. We never sell your personal data to third parties.</p>
-      <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--color-foreground); padding-top: 0.5rem">Your Rights</h3>
-      <p>You have the right to access, correct, or delete your personal data at any time. You can export all your data from the dashboard or contact our support team for assistance.</p>
+      <p>La protection de vos données personnelles est au cœur de nos engagements. Cette politique détaille les données que nous collectons, leurs finalités et la façon dont vous pouvez exercer vos droits.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--color-foreground); padding-top: 0.5rem">Données collectées</h3>
+      <p>Nous collectons les données fournies volontairement via nos formulaires de contact (nom, prénom, e-mail, message) ainsi que les données techniques de navigation nécessaires au bon fonctionnement du site (adresse IP anonymisée, journaux de connexion).</p>
+      <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--color-foreground); padding-top: 0.5rem">Utilisation de vos données</h3>
+      <p>Vos données sont exclusivement utilisées pour traiter vos demandes, assurer le suivi de nos échanges professionnels et respecter nos obligations légales. Nous ne commercialisons ni ne transmettons aucune donnée personnelle à des tiers.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--color-foreground); padding-top: 0.5rem">Vos droits</h3>
+      <p>Conformément au RGPD et aux lois relatives à la protection des données, vous disposez à tout moment d'un droit d'accès, de rectification, de portabilité et de suppression de vos données personnelles. Vous pouvez nous contacter pour toute demande relative à vos données.</p>
     </div>
   </dialog>
 
