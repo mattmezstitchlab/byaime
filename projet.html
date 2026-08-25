@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Imaginer mon projet — Moteur de Conception AIME | BYAIME</title>
-  <meta name="description" content="Racontez votre idée ou configurez l'univers numérique sur mesure de votre événement. Agent AIME INTENT et moteur de conception d'expériences par Matt Mez.">
+  <meta name="description" content="Racontez votre idée ou configurez l'univers numérique sur mesure de votre événement. Agents AIME INTENT et AIME CONCEPT pour générer des directions créatives originales.">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><circle cx='12' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/><circle cx='20' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/></svg>">
@@ -14,7 +14,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Imaginer mon projet — Moteur de Conception AIME | BYAIME">
-  <meta property="og:description" content="Racontez votre idée ou configurez l'univers numérique sur mesure de votre événement avec l'agent AIME INTENT et Matt Mez.">
+  <meta property="og:description" content="Racontez votre idée ou configurez l'univers numérique sur mesure de votre événement avec les agents AIME et Matt Mez.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://example.com/projet">
   <meta property="og:image" content="https://example.com/img/og-image.png">
@@ -79,14 +79,14 @@
         <div class="max-w-3xl" data-animate>
           <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium tracking-wide mb-6 bg-white/[0.03]">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            Moteur AIME • Studio de Conception
+            Moteur AIME • Studio de Conception Multi-Agents
           </span>
           <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-white leading-[1.15]">
             Donnons vie à l'univers numérique <br class="hidden sm:inline">
             <span class="text-gradient">de votre événement.</span>
           </h1>
           <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
-            Exprimez librement votre vision ou configurez étape par étape les modules de votre expérience. Notre moteur structure vos intentions en une proposition concrète.
+            Exprimez librement votre vision ou configurez étape par étape les modules de votre expérience. Nos agents AIME INTENT et AIME CONCEPT imaginent pour vous des directions créatives singulières.
           </p>
 
           <!-- Mode Selector Tabs (Mode IA vs Mode Configurer) -->
@@ -124,13 +124,15 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 
-          <!-- Left Column (Switches between Intent Form & Step Configurator) -->
+          <!-- Left Column (Switches between Intent Form, Concepts Stage & Step Configurator) -->
           <div class="lg:col-span-7 space-y-8">
 
             <!-- ========================================================= -->
-            <!-- MODE 02 — RACONTER MON IDÉE (AGENT AIME INTENT) -->
+            <!-- MODE 02 — RACONTER MON IDÉE (AGENT AIME INTENT & CONCEPT) -->
             <!-- ========================================================= -->
             <div id="section-aime-intent" class="space-y-6" data-animate>
+              
+              <!-- 1. Textarea Input Card -->
               <div class="p-6 md:p-8 rounded-3xl bg-black border border-white/10 glow-card space-y-6">
                 <div>
                   <div class="flex items-center gap-2">
@@ -143,7 +145,6 @@
                   </p>
                 </div>
 
-                <!-- Textarea -->
                 <div>
                   <label for="aime-intent-input" class="sr-only">Votre intention</label>
                   <textarea id="aime-intent-input" rows="6" placeholder="Par exemple :
@@ -154,7 +155,6 @@ Mais vous pouvez aussi simplement écrire :
 'Je ne sais pas exactement ce que je veux.'" class="w-full text-sm rounded-2xl border border-white/15 bg-white/[0.02] p-4 text-white placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-white resize-y leading-relaxed font-sans"></textarea>
                 </div>
 
-                <!-- Inspiration Chips -->
                 <div class="space-y-2">
                   <p class="text-[11px] text-muted-foreground">Exemples d'intentions (cliquez pour tester) :</p>
                   <div class="flex flex-wrap gap-1.5">
@@ -173,7 +173,6 @@ Mais vous pouvez aussi simplement écrire :
                   </div>
                 </div>
 
-                <!-- Submit Button -->
                 <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <button id="btn-submit-intent" type="button" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
                     ✦ Imaginer mon expérience →
@@ -183,16 +182,14 @@ Mais vous pouvez aussi simplement écrire :
                   </p>
                 </div>
 
-                <!-- Loading State -->
                 <div id="aime-intent-loading" class="hidden p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center space-y-3">
                   <div class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 animate-pulse">
                     <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
                   </div>
                   <p class="text-xs font-medium text-white">AIME INTENT analyse votre intention...</p>
-                  <p class="text-[11px] text-muted-foreground">Extraction des objectifs, de l'ambiance et des modules adaptés.</p>
+                  <p class="text-[11px] text-muted-foreground">Extraction des objectifs, de l'ambiance et des signaux clés.</p>
                 </div>
 
-                <!-- Fallback Box (If API key is not configured or fails) -->
                 <div id="aime-intent-error" class="hidden p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-xs space-y-3">
                   <p class="font-semibold text-amber-300 flex items-center gap-2">
                     <span>⚠️</span> <span id="aime-intent-error-msg">Je n'ai pas pu analyser votre idée pour le moment.</span>
@@ -207,7 +204,7 @@ Mais vous pouvez aussi simplement écrire :
                   </div>
                 </div>
 
-                <!-- HUMAN VALIDATION CARD ("Voilà ce que j'ai compris de votre projet") -->
+                <!-- HUMAN VALIDATION CARD -->
                 <div id="aime-intent-validation" class="hidden p-6 md:p-8 rounded-3xl bg-zinc-950 border border-emerald-500/30 shadow-2xl space-y-6">
                   <div class="flex items-center justify-between border-b border-white/10 pb-3">
                     <span class="text-xs font-mono text-emerald-400">Étape de Validation Humaine</span>
@@ -219,7 +216,6 @@ Mais vous pouvez aussi simplement écrire :
                     <p id="val-intent-summary" class="text-xs text-muted-foreground mt-1 leading-relaxed"></p>
                   </div>
 
-                  <!-- Grid Understanding Composition -->
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                     <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 space-y-1">
                       <span class="text-[10px] uppercase font-semibold text-muted-foreground">Type d'événement détecté :</span>
@@ -242,18 +238,13 @@ Mais vous pouvez aussi simplement écrire :
                     </div>
                   </div>
 
-                  <!-- Signals & Constraints -->
                   <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 space-y-1.5">
                     <span class="text-[10px] uppercase font-semibold text-muted-foreground">Signaux & Particularités remarqués :</span>
                     <div id="val-intent-signals" class="flex flex-wrap gap-1 pt-1"></div>
                   </div>
 
-                  <!-- Missing Questions Section -->
-                  <div id="val-missing-questions" class="space-y-3 p-4 rounded-xl bg-white/[0.02] border border-white/10">
-                    <!-- Populated dynamically -->
-                  </div>
+                  <div id="val-missing-questions" class="space-y-3 p-4 rounded-xl bg-white/[0.02] border border-white/10"></div>
 
-                  <!-- Validation Actions -->
                   <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
                     <button id="btn-validate-intent-yes" type="button" class="w-full sm:w-auto px-6 py-3 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
                       ✓ Oui, c'est bien ça →
@@ -261,6 +252,31 @@ Mais vous pouvez aussi simplement écrire :
                     <button id="btn-modify-intent" type="button" class="w-full sm:w-auto px-5 py-2.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
                       ✎ Modifier les éléments
                     </button>
+                  </div>
+                </div>
+
+                <!-- 2. AIME CONCEPT LOADING STAGE -->
+                <div id="aime-concept-generating-stage" class="hidden p-8 rounded-3xl bg-zinc-950 border border-white/10 text-center space-y-4">
+                  <div class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white animate-pulse">
+                    <span class="text-base">✦</span>
+                  </div>
+                  <h3 class="text-base font-bold text-white tracking-tight">AIME imagine trois directions pour votre projet...</h3>
+                  <p class="text-xs text-muted-foreground max-w-md mx-auto leading-relaxed">
+                    Création de métaphores directrices, de directions artistiques et d'interactions signatures divergentes.
+                  </p>
+                </div>
+
+                <!-- 3. AIME CONCEPT 3 PROPOSALS STAGE -->
+                <div id="aime-concept-proposals-stage" class="hidden space-y-6">
+                  <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                    <div>
+                      <span class="text-xs font-mono text-emerald-400">Agent AIME CONCEPT</span>
+                      <h3 class="text-xl font-bold text-white tracking-tight mt-0.5">Trois directions créatives pour votre projet</h3>
+                    </div>
+                  </div>
+
+                  <div id="concept-cards-grid" class="grid grid-cols-1 gap-4">
+                    <!-- Populated dynamically with 3 Divergent Concept Cards -->
                   </div>
                 </div>
 
@@ -272,7 +288,6 @@ Mais vous pouvez aussi simplement écrire :
             <!-- ========================================================= -->
             <div id="section-configurator-manual" class="hidden space-y-6">
 
-              <!-- Progress Steps Bar -->
               <div class="mb-4" data-animate>
                 <div class="w-full bg-white/10 h-1 rounded-full overflow-hidden mb-4">
                   <div id="cfg-progress-bar" class="bg-white h-full transition-all duration-500 rounded-full" style="width: 20%"></div>
@@ -501,9 +516,7 @@ Mais vous pouvez aussi simplement écrire :
                     <p class="text-xs text-muted-foreground mt-1">Modules suggérés automatiquement avec score de pertinence :</p>
                   </div>
 
-                  <div id="step4-tools-checkboxes" class="space-y-2.5">
-                    <!-- Injected by JavaScript dynamically with scoring -->
-                  </div>
+                  <div id="step4-tools-checkboxes" class="space-y-2.5"></div>
                 </div>
 
                 <!-- ÉTAPE 5 : Niveau d'expérience & Contact réel -->
@@ -697,17 +710,13 @@ Mais vous pouvez aussi simplement écrire :
               <!-- Active Clickable Modules with Inspector -->
               <div class="space-y-2">
                 <p class="text-[11px] font-semibold text-white">Modules Actifs (Cliquez pour inspecter ou retirer) :</p>
-                <div id="synth-active-modules" class="flex flex-wrap gap-1.5">
-                  <!-- Injected by JS -->
-                </div>
+                <div id="synth-active-modules" class="flex flex-wrap gap-1.5"></div>
               </div>
 
               <!-- Available Modules to Add (+) -->
               <div class="space-y-2 pt-2 border-t border-white/10">
                 <p class="text-[11px] font-semibold text-white">Ajouter des modules recommandés :</p>
-                <div id="synth-available-modules" class="flex flex-wrap gap-1.5">
-                  <!-- Injected by JS -->
-                </div>
+                <div id="synth-available-modules" class="flex flex-wrap gap-1.5"></div>
               </div>
 
               <!-- Signature Interaction -->
@@ -728,6 +737,9 @@ Mais vous pouvez aussi simplement écrire :
                 </button>
                 <button id="btn-explore-alternatives" type="button" class="w-full py-2 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all flex items-center justify-center gap-1.5">
                   <span>✦ Explorer d'autres idées</span>
+                </button>
+                <button id="btn-explore-concepts-again" type="button" class="w-full py-1.5 text-[11px] text-muted-foreground hover:text-white transition-colors text-center">
+                  ← Revoir les 3 directions AIME CONCEPT
                 </button>
               </div>
 
@@ -838,7 +850,66 @@ Mais vous pouvez aussi simplement écrire :
     </div>
   </dialog>
 
-  <!-- ===== MODALE 2 : MODE EXPLORATION (3 ALTERNATIVES) ===== -->
+  <!-- ===== MODALE 2 : DÉTAIL D'UN CONCEPT AIME CONCEPT ===== -->
+  <dialog id="modal-concept-detail" class="rounded-3xl bg-zinc-950 text-foreground border border-white/10" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 44rem; max-height: 85vh; padding: 0; overflow: hidden; font-size: 1rem">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.25rem 1.75rem; flex-shrink: 0">
+      <div>
+        <span class="text-[10px] font-mono text-emerald-400 uppercase">Fiche Direction Créative AIME</span>
+        <h3 id="det-concept-name" class="text-lg font-bold text-white mt-0.5">Nom du Concept</h3>
+        <p id="det-concept-tagline" class="text-xs text-pink-300 font-mono"></p>
+      </div>
+      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
+        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div style="overflow-y: auto; padding: 1.5rem 1.75rem; display: flex; flex-direction: column; gap: 1.25rem">
+      <div>
+        <span class="text-[10px] uppercase font-semibold text-muted-foreground">Résumé narratif :</span>
+        <p id="det-concept-summary" class="text-xs text-white mt-1 leading-relaxed"></p>
+      </div>
+
+      <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1.5">
+        <span class="text-[10px] uppercase font-semibold text-emerald-400">Métaphore Directrice :</span>
+        <p id="det-concept-metaphor" class="text-xs text-gray-200"></p>
+      </div>
+
+      <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1.5">
+        <span class="text-[10px] uppercase font-semibold text-white">Direction Artistique & Lumière :</span>
+        <p id="det-concept-art" class="text-xs text-muted-foreground leading-relaxed"></p>
+      </div>
+
+      <div class="space-y-1.5">
+        <span class="text-[10px] uppercase font-semibold text-white">Architecture & Arborescence proposée :</span>
+        <ul id="det-concept-arch" class="space-y-1"></ul>
+      </div>
+
+      <div class="space-y-1.5">
+        <span class="text-[10px] uppercase font-semibold text-white">Modules recommandés :</span>
+        <div id="det-concept-modules" class="grid grid-cols-2 gap-2"></div>
+      </div>
+
+      <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+        <span class="text-[10px] uppercase font-semibold text-emerald-400">Interaction Signature :</span>
+        <p id="det-concept-signature" class="text-xs text-white leading-relaxed font-medium"></p>
+      </div>
+
+      <div class="p-3 rounded-xl bg-white/[0.02] text-xs text-muted-foreground">
+        <strong class="text-white">Pourquoi cette idée correspond :</strong>
+        <p id="det-concept-why" class="mt-0.5 italic"></p>
+      </div>
+
+      <div class="pt-3 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <button id="btn-select-this-concept" type="button" class="w-full sm:w-auto px-6 py-3 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
+          ✓ Je préfère cette direction →
+        </button>
+        <button type="button" data-close-dialog class="w-full sm:w-auto px-5 py-2.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
+          ← Retour aux 3 idées
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ===== MODALE 3 : MODE EXPLORATION (3 ALTERNATIVES) ===== -->
   <dialog id="modal-explore-alternatives" class="rounded-3xl bg-zinc-950 text-foreground border border-white/10" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 46rem; max-height: 85vh; padding: 0; overflow: hidden; font-size: 1rem">
     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2rem; flex-shrink: 0">
       <div>
@@ -849,12 +920,10 @@ Mais vous pouvez aussi simplement écrire :
         <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
-    <div style="overflow-y: auto; padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 1rem" id="explore-alternatives-container">
-      <!-- Injected by JS (3 Alternatives) -->
-    </div>
+    <div style="overflow-y: auto; padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 1rem" id="explore-alternatives-container"></div>
   </dialog>
 
-  <!-- ===== MODALE 3 : PREVIEW MODE (PROTOTYPE DU MINI-SITE) ===== -->
+  <!-- ===== MODALE 4 : PREVIEW MODE (PROTOTYPE DU MINI-SITE) ===== -->
   <dialog id="modal-preview-experience" class="rounded-3xl bg-black text-foreground border border-white/20 shadow-2xl" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 54rem; max-height: 90vh; padding: 0; overflow: hidden; font-size: 1rem">
     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1rem 1.5rem; background: rgba(255,255,255,0.03); flex-shrink: 0">
       <div class="flex items-center gap-2">
@@ -930,7 +999,7 @@ Mais vous pouvez aussi simplement écrire :
     </div>
   </dialog>
 
-  <!-- ===== MODALE 4 : CAHIER DES CHARGES OFFICIEL ===== -->
+  <!-- ===== MODALE 5 : CAHIER DES CHARGES OFFICIEL ===== -->
   <dialog id="modal-cahier-des-charges" class="rounded-3xl bg-zinc-950 text-foreground border border-white/10" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 48rem; max-height: 85vh; padding: 0; overflow: hidden; font-size: 1rem">
     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.25rem 2rem; flex-shrink: 0">
       <h3 class="text-base font-bold text-white">Cahier des Charges — Synthèse Officielle</h3>

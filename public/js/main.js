@@ -1,5 +1,5 @@
-/* ===== BYAIME — AIME Engine V1 + AIME INTENT Agent (Phase 5.0) — main.js ===== */
-/* Core Experience Design Engine, AIME INTENT AI Agent, Interactive Prototypes & UI Controller */
+/* ===== BYAIME — AIME Engine V1 + AIME INTENT & AIME CONCEPT (Phase 5.1) — main.js ===== */
+/* Core Experience Design Engine, Multi-Agent Creative Generation (AIME INTENT & AIME CONCEPT), Interactive Prototypes & UI Controller */
 
 (function () {
   'use strict';
@@ -356,28 +356,40 @@
       pages: ['Accueil', 'Programme', 'Invités & Tables', 'Musique', 'Galerie & Souvenirs', 'Guide pratique'],
       alternatives: [
         {
-          name: 'Version 01 • L\'Épure & L\'Intime',
-          ambiance: 'minimaliste',
-          level: 'minimal',
-          title: 'L\'Épure & L\'Intime',
-          signature: 'Un mini-site d\'une grande sobriété avec compte à rebours et RSVP instantané.',
-          modules: ['countdown', 'rsvp', 'timeline', 'map', 'contact']
+          id: 'concept_01',
+          name: 'La Partition Vivante',
+          tagline: 'Votre union orchestrée comme une composition musicale.',
+          summary: 'Une scénographie poétique où chaque temps fort est associé à une ambiance sonore dédiée et un livre d\'or vocal.',
+          metaphor: { name: 'Partition musicale', description: 'Chaque invité et moment forment une note de l\'harmonie générale.' },
+          creativeDirection: { atmosphere: 'poetique', keywords: ['musique', 'harmonie', 'sensibilité'], artDirection: 'Tons chauds, ondes sonores interactives, typographie délicate.' },
+          architecture: { pages: ['Prélude', 'Mouvements du Jour J', 'Voix des Invités', 'Archives'], navigation: ['Prélude', 'Mouvements', 'Voix'] },
+          recommendedModules: [{ id: 'music' }, { id: 'timeline' }, { id: 'guestbook' }, { id: 'gallery' }, { id: 'rsvp' }],
+          signatureInteraction: { name: 'Livre d\'or vocal en vinyle interactif', description: 'Les messages des proches deviennent des microsillons audios interactifs.' },
+          whyItFits: 'Sublime l\'importance de la musique et l\'émotion des proches.'
         },
         {
-          name: 'Version 02 • Le Mariage Vivant',
-          ambiance: 'poetique',
-          level: 'interactif',
-          title: 'Le Grand Jour — L\'expérience vivante',
-          signature: 'Une Timeline vivante avec plan de table interactif et boîte à musique partagée.',
-          modules: ['timeline', 'rsvp', 'guests', 'tables', 'music', 'gallery', 'guestbook', 'map']
+          id: 'concept_02',
+          name: 'Constellation des Proches',
+          tagline: 'Les invités et les moments reliés sous un ciel vivant.',
+          summary: 'Un espace en mode nuit où les convives découvrent leur place au sein d\'une constellation interactive.',
+          metaphor: { name: 'Ciel étoilé', description: 'Chaque personne est une étoile qui éclaire le parcours des mariés.' },
+          creativeDirection: { atmosphere: 'cinematique', keywords: ['nuit', 'lumière', 'étoiles'], artDirection: 'Clair-obscur céleste, fond noir profond et particules lumineuses.' },
+          architecture: { pages: ['Accueil Céleste', 'Plan Astral', 'Programme', 'Galerie'], navigation: ['Accueil', 'Plan Astral', 'Programme'] },
+          recommendedModules: [{ id: 'tables' }, { id: 'guests' }, { id: 'countdown' }, { id: 'timeline' }, { id: 'gallery' }],
+          signatureInteraction: { name: 'Plan de table sous forme de constellation', description: 'Recherche spatiale où chaque table illumine ses étoiles convives.' },
+          whyItFits: 'Idéal pour faire voyager les proches venant de loin.'
         },
         {
-          name: 'Version 03 • L\'Union Céleste Immersive',
-          ambiance: 'cinematique',
-          level: 'immersif',
-          title: 'L\'Astral & L\'Union Céleste',
-          signature: 'Univers WebGL avec ciel étoilé interactif, livre d\'or vocal et galerie haute fidélité.',
-          modules: ['countdown', 'timeline', 'rsvp', 'guests', 'tables', 'music', 'gallery', 'guestbook', 'memories', 'map', 'notifications', 'privateSpace', 'contact']
+          id: 'concept_03',
+          name: 'Le Grand Jour — Timeline Vivante',
+          tagline: 'La journée entière devient l\'interface vivante.',
+          summary: 'Une expérience d\'une grande fluidité où le programme se synchronise en direct le jour J avec RSVP 1-clic.',
+          metaphor: { name: 'Fil conducteur', description: 'Le déroulé temporel devient le sanctuaire d\'information et de partage.' },
+          creativeDirection: { atmosphere: 'elegante', keywords: ['fluidité', 'timing', 'élégance'], artDirection: 'Typographie statutaire, contrastes nets, responsive ultra-rapide.' },
+          architecture: { pages: ['Accueil', 'Timeline en direct', 'RSVP & Guide', 'Galerie'], navigation: ['Accueil', 'Timeline', 'RSVP'] },
+          recommendedModules: [{ id: 'timeline' }, { id: 'rsvp' }, { id: 'map' }, { id: 'notifications' }, { id: 'gallery' }],
+          signatureInteraction: { name: 'Synchronisation horaire en direct le Jour J', description: 'Le mini-site met en valeur le temps fort en cours sans intervention.' },
+          whyItFits: 'Offre une coordination sans faille et sans stress.'
         }
       ]
     },
@@ -394,28 +406,40 @@
       pages: ['Espace de Recueillement', 'Biographie & Hommage', 'Programme & Retransmission', 'Témoignages', 'Archives de vie'],
       alternatives: [
         {
-          name: 'Version 01 • Recueillement Sobre',
-          ambiance: 'minimaliste',
-          level: 'minimal',
-          title: 'Le Mémorial Intime',
-          signature: 'Une page sobre avec biographie, pensées et livret téléchargeable.',
-          modules: ['tributes', 'testimonials', 'contact']
+          id: 'concept_01',
+          name: 'Le Mémorial Intime & Pensées',
+          tagline: 'Un recueillement sobre et d\'une infinie délicatesse.',
+          summary: 'Une page apaisante avec biographie, bougies virtuelles et retransmission audio discrète.',
+          metaphor: { name: 'Sanctuaire de lumière', description: 'Une flamme perpétuelle qui rassemble les cœurs.' },
+          creativeDirection: { atmosphere: 'poetique', keywords: ['lumière', 'douceur', 'mémoire'], artDirection: 'Clair-obscur doux, lumière dorée de bougie et typographie sobre.' },
+          architecture: { pages: ['Recueillement', 'Hommage', 'Témoignages'], navigation: ['Recueillement', 'Hommage', 'Témoignages'] },
+          recommendedModules: [{ id: 'tributes' }, { id: 'testimonials' }, { id: 'audio' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Bougies virtuelles partagées', description: 'Chaque proche allume une pensée qui s\'inscrit dans le registre mémoriel.' },
+          whyItFits: 'Permet aux proches éloignés de s\'unir au recueillement.'
         },
         {
-          name: 'Version 02 • La Trace Vivante',
-          ambiance: 'poetique',
-          level: 'interactif',
-          title: 'La Trace & Le Souvenir',
-          signature: 'Retransmission audio discrète, bougies virtuelles et recueil d\'anecdotes.',
-          modules: ['program', 'tributes', 'testimonials', 'gallery', 'music', 'audio', 'memories', 'contact']
+          id: 'concept_02',
+          name: 'L\'Arbre des Mémoires',
+          tagline: 'Chaque témoignage devient une branche de transmission.',
+          summary: 'Un espace de transmission où les anecdotes familiales et les photos d\'époque forment un héritage vivant.',
+          metaphor: { name: 'Arbre des générations', description: 'La mémoire continue de grandir grâce aux récits transmis.' },
+          creativeDirection: { atmosphere: 'minimaliste', keywords: ['racines', 'héritage', 'transmission'], artDirection: 'Fonds profonds, respiration généreuse, contrastes doux.' },
+          architecture: { pages: ['Biographie', 'Mémoires & Récits', 'Archives Familiales', 'Livret PDF'], navigation: ['Biographie', 'Récits', 'Archives'] },
+          recommendedModules: [{ id: 'memories' }, { id: 'tributes' }, { id: 'testimonials' }, { id: 'gallery' }],
+          signatureInteraction: { name: 'Livret mémoriel haute fidélité imprimable', description: 'Génération automatique d\'un document PDF relié conservant tous les récits.' },
+          whyItFits: 'Préserve les histoires précieuses pour les générations futures.'
         },
         {
-          name: 'Version 03 • Mémorial Héritage & Archives',
-          ambiance: 'elegante',
-          level: 'immersif',
-          title: 'L\'Héritage d\'une Vie',
-          signature: 'Archives orales restaurées, arbre des mémoires et livret d\'art imprimable.',
-          modules: ['program', 'tributes', 'testimonials', 'gallery', 'music', 'audio', 'memories', 'privateSpace', 'contact']
+          id: 'concept_03',
+          name: 'La Voix & Le Souvenir',
+          tagline: 'L\'archive sonore et mémorielle préservée pour toujours.',
+          summary: 'Un espace centré sur les voix, les musiques chères et la captation de la cérémonie.',
+          metaphor: { name: 'Résonance', description: 'La voix et les sons comme vecteurs intemporels de présence.' },
+          creativeDirection: { atmosphere: 'elegante', keywords: ['voix', 'présence', 'apaisement'], artDirection: 'Design épuré, lecteur audio contemplatif et respect total.' },
+          architecture: { pages: ['Accueil', 'Enregistrements', 'Programme', 'Condoléances'], navigation: ['Accueil', 'Enregistrements', 'Condoléances'] },
+          recommendedModules: [{ id: 'audio' }, { id: 'music' }, { id: 'program' }, { id: 'testimonials' }],
+          signatureInteraction: { name: 'Retransmission sonore spatiale haute qualité', description: 'Écoute apaisée et archivage des pièces musicales significatives.' },
+          whyItFits: 'Offre une présence réconfortante et digne.'
         }
       ]
     },
@@ -432,28 +456,40 @@
       pages: ['Accueil & Décompte', 'Frise des années', 'Playlist collaborative', 'Cagnotte', 'Vidéos surprises'],
       alternatives: [
         {
-          name: 'Version 01 • L\'Invitation Chic',
-          ambiance: 'elegante',
-          level: 'minimal',
-          title: 'La Célébration',
-          signature: 'Invitation élégante avec RSVP et détails d\'accès.',
-          modules: ['rsvp', 'map', 'countdown', 'contact']
+          id: 'concept_01',
+          name: 'La Capsule Temporelle',
+          tagline: 'Les 40 années célébrées comme une aventure à étapes.',
+          summary: 'Un mini-site cinématique à énigmes débloquant des indices chaque semaine pour révéler le lieu secret.',
+          metaphor: { name: 'Capsule temporelle', description: 'Le passé et le futur réunis dans un coffre-fort interactif.' },
+          creativeDirection: { atmosphere: 'cinematique', keywords: ['suspense', 'rétrospective', 'surprise'], artDirection: 'Typographie rétro-futuriste, décompte géant et énigmes animées.' },
+          architecture: { pages: ['Décompte', 'Frise des 40 ans', 'Vidéos secrètes', 'Playlist'], navigation: ['Décompte', 'Frise', 'Playlist'] },
+          recommendedModules: [{ id: 'countdown' }, { id: 'memories' }, { id: 'video' }, { id: 'music' }, { id: 'rsvp' }],
+          signatureInteraction: { name: 'Énigme de déverrouillage du lieu secret', description: 'Les invités découvrent des indices progressifs jusqu\'au jour J.' },
+          whyItFits: 'Crée une émulation collective extraordinaire.'
         },
         {
-          name: 'Version 02 • La Capsule Temporelle',
-          ambiance: 'vibrante',
-          level: 'interactif',
-          title: 'Capsule Temporelle — La Rétrospective',
-          signature: 'Énigmes progressives pour révéler le lieu et playlist collaborative.',
-          modules: ['countdown', 'memories', 'rsvp', 'music', 'gallery', 'video', 'map', 'contact']
+          id: 'concept_02',
+          name: 'Le Mur des Complices',
+          tagline: 'La communauté des amis au cœur de la fête.',
+          summary: 'Un trombinoscope interactif avec anecdotes drôles, playlist collective et cagnotte élégante sans frais tiers.',
+          metaphor: { name: 'Mosaïque d\'amitié', description: 'Chaque proche compose une pièce du grand portrait.' },
+          creativeDirection: { atmosphere: 'vibrante', keywords: ['amitié', 'énergie', 'complices'], artDirection: 'Contrastes vifs, cartes de profils interactives et rythme festif.' },
+          architecture: { pages: ['Accueil', 'Les Complices', 'Boîte à Sons', 'Cagnotte & RSVP'], navigation: ['Accueil', 'Complices', 'Boîte à Sons'] },
+          recommendedModules: [{ id: 'guests' }, { id: 'music' }, { id: 'gallery' }, { id: 'rsvp' }, { id: 'map' }],
+          signatureInteraction: { name: 'Boîte à musique collaborative en temps réel', description: 'Les invités votent pour les morceaux de la soirée.' },
+          whyItFits: 'Fédère l\'énergie de tous les groupes d\'amis.'
         },
         {
-          name: 'Version 03 • L\'Odyssée Secrète',
-          ambiance: 'cinematique',
-          level: 'immersif',
-          title: 'L\'Odyssée Secrète',
-          signature: 'Micro-jeu de piste en ligne, trombinoscope animé et coffre de messages secrets.',
-          modules: ['countdown', 'memories', 'rsvp', 'guests', 'music', 'gallery', 'video', 'map', 'privateSpace', 'contact']
+          id: 'concept_03',
+          name: 'L\'Écrin Anniversaire',
+          tagline: 'La célébration élégante d\'un cap d\'exception.',
+          summary: 'Une invitation raffinée avec galerie rétrospective haute définition et livre d\'or vocal.',
+          metaphor: { name: 'Livre d\'or de prestige', description: 'Un témoignage élégant du chemin parcouru.' },
+          creativeDirection: { atmosphere: 'elegante', keywords: ['prestige', 'élégance', 'douceur'], artDirection: 'Noir profond, typographie statutaire et dorures subtiles.' },
+          architecture: { pages: ['Invitation', 'Rétrospective', 'Dépôt de vœux', 'RSVP'], navigation: ['Invitation', 'Rétrospective', 'RSVP'] },
+          recommendedModules: [{ id: 'rsvp' }, { id: 'guestbook' }, { id: 'memories' }, { id: 'map' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Livre d\'or vocal intimiste', description: 'Messages vocaux personnels enregistrés en 1 clic.' },
+          whyItFits: 'Parfait pour une célébration intime et chaleureuse.'
         }
       ]
     },
@@ -470,28 +506,40 @@
       pages: ['Accueil', 'Programme dynamique', 'Intervenants & Artistes', 'Plan des scènes', 'Mon Agenda'],
       alternatives: [
         {
-          name: 'Version 01 • Guide Essentiel',
-          ambiance: 'minimaliste',
-          level: 'minimal',
-          title: 'Le Guide Événement',
-          signature: 'Programme clair et plan d\'accès immédiat.',
-          modules: ['program', 'map', 'tickets', 'contact']
+          id: 'concept_01',
+          name: 'Le Pavillon Numérique',
+          tagline: 'L\'extension digitale fluide de votre scénographie physique.',
+          summary: 'Une application web ultra-légère fonctionnant à 100% hors-ligne pour orienter et immerger les visiteurs.',
+          metaphor: { name: 'Pavillon interactif', description: 'Un point de repère accessible dans la poche de chacun.' },
+          creativeDirection: { atmosphere: 'cinematique', keywords: ['vitesse', 'clarté', 'immersion'], artDirection: 'Design épuré, contraste fort et lisibilité optimale en plein soleil.' },
+          architecture: { pages: ['Programme en direct', 'Carte interactive', 'Artistes', 'Mon Agenda'], navigation: ['Programme', 'Carte', 'Artistes'] },
+          recommendedModules: [{ id: 'program' }, { id: 'map' }, { id: 'agenda' }, { id: 'artists' }, { id: 'notifications' }],
+          signatureInteraction: { name: 'Agenda personnalisé hors-ligne', description: 'L\'utilisateur compose son planning personnel conservé sans réseau.' },
+          whyItFits: 'Zéro friction logistique pour les grands événements.'
         },
         {
-          name: 'Version 02 • Le Pavillon Vivant',
-          ambiance: 'cinematique',
-          level: 'interactif',
-          title: 'Le Pavillon Numérique — Guide Vivant',
-          signature: 'Filtres par scène, mode hors-ligne et agenda personnalisé.',
-          modules: ['program', 'artists', 'map', 'agenda', 'tickets', 'notifications', 'contact']
+          id: 'concept_02',
+          name: 'La Scène Hybride',
+          tagline: 'Connecter le public sur place et les participants à distance.',
+          summary: 'Une plateforme dynamique avec retransmission audio/vidéo des keynotes et questions en direct.',
+          metaphor: { name: 'Agora sans frontières', description: 'Le dialogue ouvert entre la salle et le monde.' },
+          creativeDirection: { atmosphere: 'vibrante', keywords: ['interactivité', 'live', 'dynamisme'], artDirection: 'Composants dynamiques, indicateurs live et typographie moderne.' },
+          architecture: { pages: ['Live Stream', 'Programme', 'Intervenants', 'Ressources'], navigation: ['Live', 'Programme', 'Intervenants'] },
+          recommendedModules: [{ id: 'program' }, { id: 'audio' }, { id: 'artists' }, { id: 'tickets' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Questions & Réactions en direct', description: 'Interaction fluide du public avec les intervenants sans création de compte.' },
+          whyItFits: 'Idéal pour les conventions, lancements et rencontres culturelles.'
         },
         {
-          name: 'Version 03 • L\'Immersion 360°',
-          ambiance: 'vibrante',
-          level: 'immersif',
-          title: 'La Scénographie Événementielle',
-          signature: 'Flux en direct, podcasts des coulisses et alertes SMS.',
-          modules: ['program', 'artists', 'map', 'agenda', 'tickets', 'audio', 'gallery', 'notifications', 'contact']
+          id: 'concept_03',
+          name: 'Le Guide Minimaliste',
+          tagline: 'L\'information essentielle livrée en moins de 200 ms.',
+          summary: 'Une fiche événement épurée avec accès direct aux horaires, aux billets et à l\'itinéraire.',
+          metaphor: { name: 'Boussole', description: 'Droit au but, sans artifice.' },
+          creativeDirection: { atmosphere: 'minimaliste', keywords: ['rapidité', 'efficacité', 'sobriété'], artDirection: 'Fond noir pur, typographie Geist Mono et réactivité totale.' },
+          architecture: { pages: ['Accès & Billets', 'Horaires', 'Lieu'], navigation: ['Accès', 'Horaires', 'Lieu'] },
+          recommendedModules: [{ id: 'program' }, { id: 'tickets' }, { id: 'map' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Affichage instantané sans traceurs', description: 'Chargement en un clin d\'œil sur n\'importe quel smartphone.' },
+          whyItFits: 'Parfait pour un événement qui privilégie la simplicité absolue.'
         }
       ]
     },
@@ -508,28 +556,40 @@
       pages: ['Line-up', 'Planning par scènes', 'Carte géolocalisée', 'Mon Festival', 'Infos pratiques'],
       alternatives: [
         {
-          name: 'Version 01 • Line-up & Billetterie',
-          ambiance: 'minimaliste',
-          level: 'minimal',
-          title: 'Le Pass Festival',
-          signature: 'Accès rapide aux horaires et billetterie.',
-          modules: ['program', 'tickets', 'map', 'contact']
+          id: 'concept_01',
+          name: 'Live & Offline',
+          tagline: 'L\'expérience festivalière complète qui fonctionne sans réseau.',
+          summary: 'Line-up immersif, carte des scènes géolocalisée et alertes en direct pour ne rater aucun set.',
+          metaphor: { name: 'Boussole festivalière', description: 'Le guide complet toujours disponible en plein air.' },
+          creativeDirection: { atmosphere: 'vibrante', keywords: ['plein air', 'musique', 'autonomie'], artDirection: 'Contrastes néon sur fond sombre, navigation au pouce optimisée.' },
+          architecture: { pages: ['Line-up', 'Scènes & Carte', 'Mon Planning', 'Billets'], navigation: ['Line-up', 'Carte', 'Planning'] },
+          recommendedModules: [{ id: 'program' }, { id: 'artists' }, { id: 'map' }, { id: 'agenda' }, { id: 'notifications' }],
+          signatureInteraction: { name: 'Mode Offline PWA automatique', description: 'L\'application reste 100% fonctionnelle au cœur du festival.' },
+          whyItFits: 'Répond aux contraintes réelles des festivals en plein air.'
         },
         {
-          name: 'Version 02 • Live & Offline',
-          ambiance: 'vibrante',
-          level: 'interactif',
-          title: 'L\'Expérience Festival — Live & Offline',
-          signature: 'Carte interactive et favoris hors-ligne.',
-          modules: ['program', 'artists', 'map', 'agenda', 'tickets', 'notifications', 'music', 'contact']
+          id: 'concept_02',
+          name: 'La Boîte à Sons du Festival',
+          tagline: 'L\'univers des artistes à écouter avant et pendant l\'événement.',
+          summary: 'Des fiches artistes immersives intégrant des extraits musicaux et des podcasts exclusifs.',
+          metaphor: { name: 'Scène sonore', description: 'Une immersion auditive dans la programmation.' },
+          creativeDirection: { atmosphere: 'cinematique', keywords: ['sound', 'découverte', 'artistes'], artDirection: 'Sound design réactif, typographie affirmée.' },
+          architecture: { pages: ['Artistes & Sons', 'Programmation', 'Billetterie'], navigation: ['Artistes', 'Programmation', 'Billets'] },
+          recommendedModules: [{ id: 'artists' }, { id: 'music' }, { id: 'audio' }, { id: 'program' }, { id: 'tickets' }],
+          signatureInteraction: { name: 'Player d\'extraits des artistes en 1-clic', description: 'Découverte fluide de la programmation musicale.' },
+          whyItFits: 'Met en valeur les talents et stimule la billetterie.'
         },
         {
-          name: 'Version 03 • Le Pavillon Festivalier 360°',
-          ambiance: 'cinematique',
-          level: 'immersif',
-          title: 'Le Pavillon Festivalier 360°',
-          signature: 'Boîte à sons d\'artistes, notifications géolocalisées et galerie photo live.',
-          modules: ['program', 'artists', 'map', 'agenda', 'tickets', 'notifications', 'music', 'gallery', 'contact']
+          id: 'concept_03',
+          name: 'Le Pass Événement',
+          tagline: 'La clarté absolue pour les festivaliers pressés.',
+          summary: 'Accès ultra-rapide aux horaires de passage et à la billetterie intégrée.',
+          metaphor: { name: 'Pass VIP', description: 'Toute l\'information essentielle au creux de la main.' },
+          creativeDirection: { atmosphere: 'minimaliste', keywords: ['direct', 'efficace', 'léger'], artDirection: 'Grille chirurgicale et rapidité extrême.' },
+          architecture: { pages: ['Horaires de passage', 'Carte des accès', 'Billets'], navigation: ['Horaires', 'Carte', 'Billets'] },
+          recommendedModules: [{ id: 'program' }, { id: 'tickets' }, { id: 'map' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Filtre instantané par scène', description: 'Sélection immédiate des concerts par lieu et tranche horaire.' },
+          whyItFits: 'Efficacité maximale sans fioritures.'
         }
       ]
     },
@@ -546,28 +606,40 @@
       pages: ['Scénographie', 'Exploration des œuvres', 'Notes d\'intention', 'Livre d\'or'],
       alternatives: [
         {
-          name: 'Version 01 • Le Portfolio d\'Artiste',
-          ambiance: 'minimaliste',
-          level: 'minimal',
-          title: 'L\'Atelier Virtuel',
-          signature: 'Présentation épurée des pièces et biographie.',
-          modules: ['gallery', 'artists', 'contact']
+          id: 'concept_01',
+          name: 'Matière & Lumière',
+          tagline: 'Une scénographie en clair-obscur où chaque œuvre réagit au visiteur.',
+          summary: 'Une exploration contemplative plein écran avec sound design réactif et podcasts d\'intention.',
+          metaphor: { name: 'Clair-obscur sensoriel', description: 'La lumière et le son sculptent l\'espace numérique.' },
+          creativeDirection: { atmosphere: 'poetique', keywords: ['texture', 'lumière', 'son'], artDirection: 'Fond noir profond, zoom haute fidélité sur les matières.' },
+          architecture: { pages: ['Scénographie', 'Œuvres & Textures', 'Notes d\'artiste', 'Livre d\'or'], navigation: ['Scénographie', 'Œuvres', 'Notes'] },
+          recommendedModules: [{ id: 'artists' }, { id: 'gallery' }, { id: 'music' }, { id: 'audio' }, { id: 'guestbook' }],
+          signatureInteraction: { name: 'Sound design réactif au pointeur', description: 'L\'univers sonore s\'adapte aux mouvements d\'exploration de l\'œuvre.' },
+          whyItFits: 'Respecte la matérialité et la poésie de la démarche artistique.'
         },
         {
-          name: 'Version 02 • Matière & Lumière',
-          ambiance: 'poetique',
-          level: 'interactif',
-          title: 'Matière & Lumière — Scénographie Numérique',
-          signature: 'Sound design immersif et podcasts de notes d\'intention.',
-          modules: ['artists', 'music', 'audio', 'gallery', 'guestbook', 'contact']
+          id: 'concept_02',
+          name: 'L\'Atelier & Le Processus',
+          tagline: 'Dévoiler les coulisses de la création et les carnets d\'esquisses.',
+          summary: 'Un voyage intime dans le processus créatif, de la première esquisse à l\'œuvre finale.',
+          metaphor: { name: 'Carnet d\'atelier', description: 'L\'intimité de l\'acte créateur partagée avec les amateurs d\'art.' },
+          creativeDirection: { atmosphere: 'minimaliste', keywords: ['coulisses', 'esquisses', 'authenticité'], artDirection: 'Typographie d\'auteur, annotations manuscrites numérisées.' },
+          architecture: { pages: ['Le Processus', 'Carnets d\'esquisses', 'Pièces Finales', 'Contact Artiste'], navigation: ['Processus', 'Carnets', 'Pièces'] },
+          recommendedModules: [{ id: 'memories' }, { id: 'gallery' }, { id: 'audio' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Comparateur interactif Esquisse vs Œuvre finale', description: 'Slider interactif pour observer l\'évolution de la pièce.' },
+          whyItFits: 'Crée un lien profond entre le collectionneur et l\'artiste.'
         },
         {
-          name: 'Version 03 • La Scénographie Totale',
-          ambiance: 'cinematique',
-          level: 'immersif',
-          title: 'La Scénographie Totale',
-          signature: 'Interactions visuelles réactives au pointeur et acquisition en direct.',
-          modules: ['artists', 'music', 'audio', 'gallery', 'guestbook', 'privateSpace', 'contact']
+          id: 'concept_03',
+          name: 'La Galerie d\'Acquisition Directe',
+          tagline: 'Présentation de prestige et liaison directe avec les collectionneurs.',
+          summary: 'Une vitrine statutaire pour valoriser les pièces maîtresses et faciliter les acquisitions sans intermédiaire.',
+          metaphor: { name: 'Salon privé', description: 'Un écrin confidentiel pour présenter des pièces rares.' },
+          creativeDirection: { atmosphere: 'elegante', keywords: ['prestige', 'collection', 'singularité'], artDirection: 'Typographie luxueuse, fiches d\'œuvres détaillées.' },
+          architecture: { pages: ['Collection', 'Fiches d\'œuvres', 'Notes critiques', 'Acquisition'], navigation: ['Collection', 'Fiches', 'Acquisition'] },
+          recommendedModules: [{ id: 'gallery' }, { id: 'artists' }, { id: 'privateSpace' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Fiche d\'œuvre interactive haute résolution', description: 'Certificat d\'authenticité numérique et contact privé.' },
+          whyItFits: 'Positionnement haut de gamme pour les artistes et galeries.'
         }
       ]
     },
@@ -584,28 +656,40 @@
       pages: ['Notre Mission', 'Récits de bénéficiaires', 'Impact mesuré', 'Soutenir & Adhérer', 'Manifeste'],
       alternatives: [
         {
-          name: 'Version 01 • La Vitrine Solidaire',
-          ambiance: 'minimaliste',
-          level: 'minimal',
-          title: 'Le Manifeste Citoyen',
-          signature: 'Présentation des missions et module d\'adhésion.',
-          modules: ['donations', 'contact']
+          id: 'concept_01',
+          name: 'Récits & Impact Vivant',
+          tagline: 'Donner la parole aux personnes qui vivent la mission au quotidien.',
+          summary: 'Un storytelling immersif à la première personne avec infographies d\'impact en direct.',
+          metaphor: { name: 'Voix plurielles', description: 'Le témoignage humain comme moteur de prise de conscience.' },
+          creativeDirection: { atmosphere: 'libre', keywords: ['humanité', 'récits', 'impact'], artDirection: 'Visuels chaleureux, typographie éditoriale claire et citations fortes.' },
+          architecture: { pages: ['Les Récits', 'Impact Concret', 'Manifeste', 'Agir & Soutenir'], navigation: ['Récits', 'Impact', 'Agir'] },
+          recommendedModules: [{ id: 'testimonials' }, { id: 'impact' }, { id: 'donations' }, { id: 'memories' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Visualiseur d\'impact citoyen en temps réel', description: 'Chaque soutien est relié à une action concrète de terrain.' },
+          whyItFits: 'Crée une adhésion sincère et transparente.'
         },
         {
-          name: 'Version 02 • Récits & Impact',
-          ambiance: 'libre',
-          level: 'interactif',
-          title: 'Plateforme d\'Engagement & Récits Vivants',
-          signature: 'Visualiseur d\'impact en direct et récits vivants.',
-          modules: ['testimonials', 'impact', 'donations', 'memories', 'gallery', 'contact']
+          id: 'concept_02',
+          name: 'Le Manifeste Citoyen',
+          tagline: 'Une tribune claire et percutante pour mobiliser.',
+          summary: 'Une mise en page éditoriale affirmée articulant les arguments clés et les appels à l\'action.',
+          metaphor: { name: 'Manifeste ouvert', description: 'Un appel clair qui invite à s\'engager.' },
+          creativeDirection: { atmosphere: 'vibrante', keywords: ['mobilisation', 'action', 'clarté'], artDirection: 'Titres percutants, contrastes marqués et lecture rythmée.' },
+          architecture: { pages: ['Le Manifeste', 'Les Chiffres', 'Rejoindre le mouvement'], navigation: ['Manifeste', 'Chiffres', 'Rejoindre'] },
+          recommendedModules: [{ id: 'impact' }, { id: 'donations' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Signature du manifeste et mur des soutiens', description: 'Compteur dynamique des citoyens engagés.' },
+          whyItFits: 'Mobilisation rapide pour les campagnes d\'impact.'
         },
         {
-          name: 'Version 03 • La Tribune Ouverte',
-          ambiance: 'vibrante',
-          level: 'immersif',
-          title: 'La Tribune Ouverte',
-          signature: 'Mur des contributeurs, podcasts et carte des actions de terrain.',
-          modules: ['testimonials', 'impact', 'donations', 'memories', 'gallery', 'audio', 'map', 'contact']
+          id: 'concept_03',
+          name: 'L\'Observatoire de Terrain',
+          tagline: 'Cartographier les actions concrètes et les avancées.',
+          summary: 'Une carte interactive des actions menées sur le terrain avec fiches de résultats vérifiés.',
+          metaphor: { name: 'Cartographie d\'action', description: 'La preuve par la géographie et les actes.' },
+          creativeDirection: { atmosphere: 'minimaliste', keywords: ['terrain', 'preuve', 'transparence'], artDirection: 'Infographies cartographiques, données claires et sobriété.' },
+          architecture: { pages: ['Carte des actions', 'Résultats', 'Soutenir une action locale'], navigation: ['Carte', 'Résultats', 'Soutenir'] },
+          recommendedModules: [{ id: 'map' }, { id: 'impact' }, { id: 'donations' }, { id: 'gallery' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Carte interactive des projets financés', description: 'Exploration géographique des réalisations de l\'association.' },
+          whyItFits: 'Garantit une transparence absolue pour les donateurs.'
         }
       ]
     },
@@ -622,28 +706,40 @@
       pages: ['Initiative', 'Keynotes & Programme', 'Intervenants', 'Inscriptions VIP', 'Partenaires'],
       alternatives: [
         {
-          name: 'Version 01 • Invitation VIP',
-          ambiance: 'elegante',
-          level: 'minimal',
-          title: 'L\'Avant-Première',
-          signature: 'Invitation confidentielle avec RSVP sécurisé.',
-          modules: ['rsvp', 'program', 'contact']
+          id: 'concept_01',
+          name: 'La Vitrine d\'Impact',
+          tagline: 'Une présentation chirurgicale et statutaire de votre initiative.',
+          summary: 'Un mini-site ultra-rapide avec fiches intervenants et inscriptions VIP intégrées.',
+          metaphor: { name: 'Écrin professionnel', description: 'L\'élégance et la précision au service du projet.' },
+          creativeDirection: { atmosphere: 'elegante', keywords: ['précision', 'statutaire', 'lancement'], artDirection: 'Typographie soignée, contrastes sombres et clarté des messages.' },
+          architecture: { pages: ['L\'Initiative', 'Programme des Keynotes', 'Intervenants', 'Inscription VIP'], navigation: ['Initiative', 'Programme', 'Inscription'] },
+          recommendedModules: [{ id: 'program' }, { id: 'artists' }, { id: 'rsvp' }, { id: 'tickets' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Accréditation VIP sans friction', description: 'Génération instantanée du pass d\'accès.' },
+          whyItFits: 'Idéal pour les lancements prestigieux.'
         },
         {
-          name: 'Version 02 • Le Lancement Vivant',
-          ambiance: 'cinematique',
-          level: 'interactif',
-          title: 'Le Lancement Singulier — Vitrine d\'Impact',
-          signature: 'Fiches intervenants, billetterie fluide et cartographie des lieux.',
-          modules: ['program', 'artists', 'rsvp', 'tickets', 'map', 'contact']
+          id: 'concept_02',
+          name: 'L\'Événement Hybride & Live',
+          tagline: 'Retransmission et interactions en direct pour le public distant.',
+          summary: 'Une interface connectée combinant diffusion audio/vidéo et networking.',
+          metaphor: { name: 'Agora connectée', description: 'Le pont numérique entre le lieu physique et les participants distants.' },
+          creativeDirection: { atmosphere: 'cinematique', keywords: ['live', 'hybride', 'connexion'], artDirection: 'Composants interactifs live et sound design discret.' },
+          architecture: { pages: ['Live Stream', 'Keynotes', 'Espace Partenaires', 'Replay'], navigation: ['Live', 'Keynotes', 'Partenaires'] },
+          recommendedModules: [{ id: 'audio' }, { id: 'program' }, { id: 'artists' }, { id: 'privateSpace' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Diffusion haute fidélité avec espace questions', description: 'Interaction en direct sans application lourde.' },
+          whyItFits: 'Élargit l\'audience sans compromis technique.'
         },
         {
-          name: 'Version 03 • L\'Expérience Hybride',
-          ambiance: 'vibrante',
-          level: 'immersif',
-          title: 'L\'Immersion Keynote',
-          signature: 'Retransmission audio/vidéo, notifications et espace privé partenaires.',
-          modules: ['program', 'artists', 'rsvp', 'tickets', 'map', 'audio', 'notifications', 'privateSpace', 'contact']
+          id: 'concept_03',
+          name: 'Le Livre Blanc Interactif',
+          tagline: 'Transformer une vision stratégique en expérience immersive.',
+          summary: 'Une narration interactive décomposant les piliers de votre projet avec infographies animées.',
+          metaphor: { name: 'Manifeste stratégique', description: 'La démonstration par le design et la donnée.' },
+          creativeDirection: { atmosphere: 'minimaliste', keywords: ['vision', 'stratégie', 'données'], artDirection: 'Design monochrome, typographie monospace et graphiques vectoriels.' },
+          architecture: { pages: ['La Vision', 'Les Piliers', 'Données & Preuves', 'Prise de Contact'], navigation: ['Vision', 'Piliers', 'Contact'] },
+          recommendedModules: [{ id: 'impact' }, { id: 'program' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Explorateur interactif de données clés', description: 'Visualisation fluide des métriques du projet.' },
+          whyItFits: 'Convainc les partenaires et investisseurs exigeants.'
         }
       ]
     },
@@ -660,28 +756,40 @@
       pages: ['Accueil', 'Déroulé', 'Dispositif Signature', 'Souvenirs', 'Contact'],
       alternatives: [
         {
-          name: 'Version 01 • La Vitrine Poétique',
-          ambiance: 'poetique',
-          level: 'minimal',
-          title: 'L\'Écho Numérique',
-          signature: 'Une présence sobre et raffinée.',
-          modules: ['music', 'gallery', 'contact']
+          id: 'concept_01',
+          name: 'L\'Écho Poétique',
+          tagline: 'Une création intime façonnée pour votre intention.',
+          summary: 'Un sanctuaire sur mesure avec musique, galerie et livre d\'or vocal.',
+          metaphor: { name: 'Écrin personnel', description: 'Un sanctuaire préservé pour votre projet.' },
+          creativeDirection: { atmosphere: 'poetique', keywords: ['intimité', 'poésie', 'sur-mesure'], artDirection: 'Tons chauds, éclairage feutré et typographie sensible.' },
+          architecture: { pages: ['Accueil', 'L\'Expérience', 'Souvenirs', 'Contact'], navigation: ['Accueil', 'Expérience', 'Contact'] },
+          recommendedModules: [{ id: 'music' }, { id: 'gallery' }, { id: 'guestbook' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Dispositif sonore et visuel sur mesure', description: 'Création interactive originale façonnée pour vous.' },
+          whyItFits: 'S\'adapte à toutes les intentions délicates.'
         },
         {
-          name: 'Version 02 • Le Laboratoire d\'Interaction',
-          ambiance: 'cinematique',
-          level: 'interactif',
-          title: 'Univers Numérique Sur Mesure',
-          signature: 'Dispositif interactif conçu de zéro.',
-          modules: ['timeline', 'music', 'gallery', 'guestbook', 'map', 'contact']
+          id: 'concept_02',
+          name: 'Le Laboratoire d\'Interaction',
+          tagline: 'Une expérience audacieuse pensée hors des sentiers battus.',
+          summary: 'Micro-interactions réactives au curseur, timeline vivante et scénographie sur mesure.',
+          metaphor: { name: 'Laboratoire créatif', description: 'L\'exploration de nouvelles formes de narration.' },
+          creativeDirection: { atmosphere: 'cinematique', keywords: ['audace', 'interaction', 'nouveauté'], artDirection: 'Contrastes marqués, typographie affirmée et fluidité.' },
+          architecture: { pages: ['Entrée', 'Interaction', 'Programme', 'Archives'], navigation: ['Entrée', 'Interaction', 'Archives'] },
+          recommendedModules: [{ id: 'timeline' }, { id: 'countdown' }, { id: 'gallery' }, { id: 'map' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Scénographie interactive générative', description: 'Animations fluides réactives aux mouvements de l\'utilisateur.' },
+          whyItFits: 'Pour les projets qui refusent les standards.'
         },
         {
-          name: 'Version 03 • L\'Œuvre Complète',
-          ambiance: 'libre',
-          level: 'immersif',
-          title: 'La Scénographie Ouverte',
-          signature: 'Expérience multi-dimensionnelle et archivage pérenne.',
-          modules: ['timeline', 'music', 'gallery', 'guestbook', 'map', 'audio', 'video', 'privateSpace', 'contact']
+          id: 'concept_03',
+          name: 'L\'Archive Perpétuelle',
+          tagline: 'Un monument numérique pour traverser le temps.',
+          summary: 'Un espace autonome pérenne garantissant la sauvegarde de votre moment.',
+          metaphor: { name: 'Archive éternelle', description: 'Un héritage préservé sans dépendance.' },
+          creativeDirection: { atmosphere: 'elegante', keywords: ['pérennité', 'mémoire', 'transmission'], artDirection: 'Fonds profonds, élégance statutaire et sobriété.' },
+          architecture: { pages: ['Mémorial', 'Chronologie', 'Témoignages', 'Archives'], navigation: ['Mémorial', 'Chronologie', 'Archives'] },
+          recommendedModules: [{ id: 'memories' }, { id: 'gallery' }, { id: 'guestbook' }, { id: 'audio' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Export autonome téléchargeable pour l\'avenir', description: 'L\'archive reste consultable dans 20 ans.' },
+          whyItFits: 'Une pérennité totale garantie.'
         }
       ]
     },
@@ -698,28 +806,40 @@
       pages: ['Exploration', 'Moodboard', 'Prototypage', 'Contact'],
       alternatives: [
         {
-          name: 'Version 01 • L\'Ébauche Essentielle',
-          ambiance: 'minimaliste',
-          level: 'minimal',
-          title: 'Première Ébauche',
-          signature: 'Cadrage des besoins essentiels.',
-          modules: ['gallery', 'contact']
+          id: 'concept_01',
+          name: 'L\'Atelier de Co-Création',
+          tagline: 'Partir de votre intuition et la modeler ensemble.',
+          summary: 'Un cadrage créatif personnel avec Matt Mez pour explorer les pistes possibles.',
+          metaphor: { name: 'Esquisse ouverte', description: 'L\'intuition qui prend forme pas à pas.' },
+          creativeDirection: { atmosphere: 'poetique', keywords: ['écoute', 'intuition', 'co-création'], artDirection: 'Ambiance atelier, typographie manuscrite et écoute.' },
+          architecture: { pages: ['L\'Intuition', 'Pistes Créatives', 'Échange'], navigation: ['Intuition', 'Pistes', 'Échange'] },
+          recommendedModules: [{ id: 'gallery' }, { id: 'music' }, { id: 'guestbook' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Session d\'exploration en tête-à-tête', description: 'Dialogue direct pour poser les bases de l\'univers.' },
+          whyItFits: 'Idéal quand l\'envie est là mais pas encore la forme.'
         },
         {
-          name: 'Version 02 • L\'Exploration Guidée',
-          ambiance: 'poetique',
-          level: 'interactif',
-          title: 'Exploration Conceptuelle — Laboratoire BYAIME',
-          signature: 'Prototypage rapide et définition des modules.',
-          modules: ['timeline', 'music', 'gallery', 'guestbook', 'contact']
+          id: 'concept_02',
+          name: 'Le Moodboard Interactif',
+          tagline: 'Explorer plusieurs pistes visuelles et sonores avant de choisir.',
+          summary: 'Un prototype évolutif permettant de tester des ambiances et des typographies en direct.',
+          metaphor: { name: 'Palette vivante', description: 'Tester pour ressentir ce qui résonne.' },
+          creativeDirection: { atmosphere: 'libre', keywords: ['palette', 'essais', 'ressenti'], artDirection: 'Ambiance adaptable au gré de vos inspirations.' },
+          architecture: { pages: ['Moodboard', 'Ambiances', 'Modules Test'], navigation: ['Moodboard', 'Ambiances'] },
+          recommendedModules: [{ id: 'music' }, { id: 'gallery' }, { id: 'countdown' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Sélecteur interactif d\'ambiances sensorielles', description: 'Testez différentes palettes et sound designs en 1 clic.' },
+          whyItFits: 'Permet de visualiser concrètement avant de trancher.'
         },
         {
-          name: 'Version 03 • Le Sanctuaire Complet',
-          ambiance: 'cinematique',
-          level: 'immersif',
-          title: 'L\'Expérience Intégrale',
-          signature: 'Architecture narrative et sound design sur mesure.',
-          modules: ['timeline', 'music', 'gallery', 'guestbook', 'map', 'audio', 'contact']
+          id: 'concept_03',
+          name: 'L\'Immersion Totale',
+          tagline: 'Faire confiance à la créativité du studio pour une surprise totale.',
+          summary: 'BYAIME prend en charge l\'intégralité de la direction artistique et technique.',
+          metaphor: { name: 'Carte blanche', description: 'Laisser l\'artisan imaginer une œuvre complète.' },
+          creativeDirection: { atmosphere: 'cinematique', keywords: ['carte blanche', 'audace', 'surprise'], artDirection: 'Direction artistique immersive et soignée.' },
+          architecture: { pages: ['L\'Expérience', 'Le Déroulé', 'Souvenirs'], navigation: ['Expérience', 'Déroulé', 'Souvenirs'] },
+          recommendedModules: [{ id: 'timeline' }, { id: 'music' }, { id: 'gallery' }, { id: 'guestbook' }, { id: 'map' }, { id: 'contact' }],
+          signatureInteraction: { name: 'Scénographie surprise livrée clé en main', description: 'Une création complète pensée pour émerveiller vos proches.' },
+          whyItFits: 'Pour ceux qui veulent se laisser surprendre et émerveiller.'
         }
       ]
     }
@@ -730,7 +850,7 @@
   // =========================================================================
 
   window.AIME_Engine = {
-    version: '1.1.0-intent-ready',
+    version: '1.2.0-concept-ready',
     moduleRegistry: moduleRegistry,
     presets: defaultPresets,
 
@@ -774,6 +894,11 @@
           description: preset.description,
           artDirection: preset.artDirection,
           signatureInteraction: preset.signatureInteraction
+        },
+        conceptExploration: {
+          selectedId: 'concept_01',
+          proposals: preset.alternatives ? preset.alternatives.slice() : [],
+          generatedAt: new Date().toISOString()
         },
         message: initialData.message || '',
         status: 'draft',
@@ -952,14 +1077,13 @@
         updated.concept.description = structuredIntent.summary;
       }
 
-      // Recommandation intelligente des modules pour ce profil
+      // Recommandation intelligente des modules
       var rec = this.recommendModules(updated);
       var sortedKeys = Object.keys(rec.scores).filter(function (k) {
         return moduleRegistry[k].compatibleEvents.indexOf(eventType) !== -1;
       });
       sortedKeys.sort(function (a, b) { return rec.scores[b] - rec.scores[a]; });
 
-      // Conserver les modules essentiels ayant un score élevé
       updated.modules = sortedKeys.slice(0, 7);
       updated.architecture.pages = preset.pages.slice();
       updated.architecture.navigation = preset.pages.slice(0, 4);
@@ -967,9 +1091,69 @@
       updated.concept.subtitle = preset.subtitle;
       updated.concept.signatureInteraction = preset.signatureInteraction;
       updated.concept.artDirection = preset.artDirection;
+      updated.conceptExploration = {
+        selectedId: 'concept_01',
+        proposals: preset.alternatives ? preset.alternatives.slice() : [],
+        generatedAt: new Date().toISOString()
+      };
       updated.message = structuredIntent.rawIntent || existingProjectModel.message || '';
       updated.updatedAt = new Date().toISOString();
 
+      return updated;
+    },
+
+    // Application d'un Concept Proposal issu de AIME CONCEPT dans le projectModel
+    applyConceptProposal: function (conceptProposal, projectModel) {
+      if (!conceptProposal) return projectModel;
+      var updated = Object.assign({}, projectModel);
+
+      updated.concept = {
+        title: conceptProposal.name || updated.concept.title,
+        subtitle: conceptProposal.tagline || updated.concept.subtitle,
+        description: conceptProposal.summary || updated.concept.description,
+        artDirection: (conceptProposal.creativeDirection && conceptProposal.creativeDirection.artDirection)
+          ? conceptProposal.creativeDirection.artDirection
+          : updated.concept.artDirection,
+        signatureInteraction: (conceptProposal.signatureInteraction && conceptProposal.signatureInteraction.name)
+          ? conceptProposal.signatureInteraction.name + (conceptProposal.signatureInteraction.description ? ' — ' + conceptProposal.signatureInteraction.description : '')
+          : updated.concept.signatureInteraction
+      };
+
+      if (conceptProposal.creativeDirection && conceptProposal.creativeDirection.atmosphere) {
+        updated.experience = Object.assign({}, updated.experience, {
+          atmosphere: conceptProposal.creativeDirection.atmosphere
+        });
+      }
+
+      if (conceptProposal.architecture && Array.isArray(conceptProposal.architecture.pages) && conceptProposal.architecture.pages.length > 0) {
+        updated.architecture = {
+          pages: conceptProposal.architecture.pages.slice(),
+          navigation: (conceptProposal.architecture.navigation && conceptProposal.architecture.navigation.length > 0)
+            ? conceptProposal.architecture.navigation.slice()
+            : conceptProposal.architecture.pages.slice(0, 4),
+          features: []
+        };
+      }
+
+      if (Array.isArray(conceptProposal.recommendedModules) && conceptProposal.recommendedModules.length > 0) {
+        var newModIds = conceptProposal.recommendedModules.map(function (m) {
+          return typeof m === 'string' ? m : (m && m.id ? m.id : null);
+        }).filter(function (id) {
+          return id && moduleRegistry[id];
+        });
+
+        if (newModIds.length > 0) {
+          updated.modules = newModIds;
+        }
+      }
+
+      if (!updated.conceptExploration) {
+        updated.conceptExploration = { selectedId: conceptProposal.id, proposals: [], generatedAt: new Date().toISOString() };
+      } else {
+        updated.conceptExploration.selectedId = conceptProposal.id;
+      }
+
+      updated.updatedAt = new Date().toISOString();
       return updated;
     },
 
@@ -1008,6 +1192,53 @@
           message: 'Impossible de contacter le service AIME INTENT. Vérifiez votre connexion ou passez par le configurateur manuel.'
         };
       }
+    },
+
+    // Client pour appeler l'agent AIME CONCEPT (/api/aime-concept)
+    callAimeConceptAgent: async function (structuredIntent, projectModel) {
+      window.trackBYAIME('aime_concept_started', { eventType: (structuredIntent.eventType || {}).value });
+
+      try {
+        var payload = {
+          structuredIntent: structuredIntent,
+          eventType: (structuredIntent.eventType && structuredIntent.eventType.value) ? structuredIntent.eventType.value : projectModel.event.type,
+          intentions: structuredIntent.intentions ? structuredIntent.intentions.map(function (i) { return i.value || i; }) : projectModel.intentions,
+          audience: (structuredIntent.audience && structuredIntent.audience.value) ? structuredIntent.audience.value : projectModel.event.audience,
+          signals: structuredIntent.signals || [],
+          constraints: structuredIntent.constraints || [],
+          summary: structuredIntent.summary || projectModel.concept.description || ''
+        };
+
+        var response = await fetch('/api/aime-concept', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        var result = await response.json();
+
+        if (!response.ok || !result.success) {
+          window.trackBYAIME('aime_concept_failed', { error: result.error || 'HTTP_' + response.status });
+          return {
+            success: false,
+            error: result.error || 'SERVER_ERROR',
+            message: result.message || 'Le service AIME CONCEPT est temporairement indisponible.'
+          };
+        }
+
+        window.trackBYAIME('aime_concept_success', { count: (result.data.concepts || []).length });
+        return {
+          success: true,
+          concepts: result.data.concepts
+        };
+      } catch (err) {
+        window.trackBYAIME('aime_concept_failed', { error: 'NETWORK_ERROR' });
+        return {
+          success: false,
+          error: 'NETWORK_ERROR',
+          message: 'Impossible de contacter le service AIME CONCEPT.'
+        };
+      }
     }
   };
 
@@ -1015,7 +1246,7 @@
   window.generateExperience = window.AIME_Engine.generateExperience;
 
   // =========================================================================
-  // 4. UI ANIMATIONS & CONTROLLERS (Navigation, Modales, Prototypes)
+  // 4. UI ANIMATIONS & CONTROLLERS COMMUNE (Navigation, Modales, Prototypes)
   // =========================================================================
 
   // Hero Ring Glow
@@ -1134,7 +1365,7 @@
     check();
   })();
 
-  // Navigation, Scroll Animations & Modals
+  // Mobile Menu, Animations, Modales
   document.addEventListener('DOMContentLoaded', function () {
     var menuButton = document.getElementById('mobile-menu-button');
     var mobileMenu = document.getElementById('mobile-menu');
@@ -1321,7 +1552,7 @@
       }
     });
 
-    // Projets filter
+    // Filtres Galerie Projets
     var filterButtons = document.querySelectorAll('[data-filter-btn]');
     var projectCards = document.querySelectorAll('[data-project-category]');
 
@@ -1352,20 +1583,20 @@
   });
 
   // =========================================================================
-  // 5. PAGE /projet — DEUX PARCOURS : AIME INTENT (IA) & CONFIGURATEUR
+  // 5. PAGE /projet — DEUX PARCOURS & MULTI-AGENTS (AIME INTENT & CONCEPT)
   // =========================================================================
 
   document.addEventListener('DOMContentLoaded', function () {
     var configContainer = document.getElementById('byaime-configurator');
     if (!configContainer) return;
 
-    // Modèle central de données
     var projectModel = window.AIME_Engine.createProjectModel();
     var currentStep = 1;
     var totalSteps = 5;
     var activeIntentData = null;
+    var activeConceptProposals = [];
 
-    // Mode Toggle Elements (Mode 1: Configurer | Mode 2: Raconter mon idée)
+    // Mode Toggle Elements
     var tabIntentBtn = document.getElementById('tab-mode-intent');
     var tabManualBtn = document.getElementById('tab-mode-manual');
     var sectionIntent = document.getElementById('section-aime-intent');
@@ -1407,9 +1638,8 @@
     var templateParam = urlParams.get('template');
     if (templateParam && defaultPresets[templateParam]) {
       applyPresetToModel(templateParam);
-      switchMode('manual'); // direct template jumps directly to manual / customized view
+      switchMode('manual');
     } else {
-      // LocalStorage Draft
       var savedDraft = BYAIME_Storage.load();
       if (savedDraft && savedDraft.event && savedDraft.event.type) {
         var resumeBanner = document.getElementById('cfg-resume-banner');
@@ -1445,7 +1675,7 @@
     var intentErrorMsg = document.getElementById('aime-intent-error-msg');
     var intentValidationBox = document.getElementById('aime-intent-validation');
 
-    // Quick Inspiration Chips
+    // Inspiration Chips
     document.querySelectorAll('[data-intent-example]').forEach(function (chip) {
       chip.addEventListener('click', function () {
         var text = chip.getAttribute('data-intent-example');
@@ -1465,7 +1695,6 @@
           return;
         }
 
-        // Show loading state
         if (intentLoading) intentLoading.classList.remove('hidden');
         if (intentErrorBox) intentErrorBox.classList.add('hidden');
         if (intentValidationBox) intentValidationBox.classList.add('hidden');
@@ -1480,7 +1709,6 @@
           activeIntentData = result.data;
           renderHumanValidationStep(result.data);
         } else {
-          // Fallback state
           if (intentErrorBox && intentErrorMsg) {
             intentErrorMsg.textContent = result.message || 'Le service IA n\'a pas pu analyser votre texte pour le moment.';
             intentErrorBox.classList.remove('hidden');
@@ -1489,7 +1717,6 @@
       });
     }
 
-    // Fallback switch to manual button
     var fallbackManualBtn = document.getElementById('btn-fallback-manual');
     if (fallbackManualBtn) {
       fallbackManualBtn.addEventListener('click', function () {
@@ -1569,13 +1796,15 @@
       intentValidationBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    // Action 1: "Oui, c'est bien ça" -> Merge & Generate
+    // Validation Humaine -> Lancer AIME CONCEPT (Génération des 3 Directions Créatives)
     var btnValidateIntent = document.getElementById('btn-validate-intent-yes');
+    var conceptLoadingStage = document.getElementById('aime-concept-generating-stage');
+    var conceptPresentationStage = document.getElementById('aime-concept-proposals-stage');
+
     if (btnValidateIntent) {
-      btnValidateIntent.addEventListener('click', function () {
+      btnValidateIntent.addEventListener('click', async function () {
         if (!activeIntentData) return;
 
-        // Collect optional questions
         var extraAnswers = [];
         if (intentValidationBox) {
           intentValidationBox.querySelectorAll('input[data-extra-q]').forEach(function (inp) {
@@ -1586,20 +1815,154 @@
           activeIntentData.rawIntent = (activeIntentData.rawIntent || '') + '\nPrécisions : ' + extraAnswers.join(', ');
         }
 
-        // Merge into projectModel
+        // Merge initial intent into projectModel
         projectModel = window.AIME_Engine.mergeStructuredIntentIntoProject(activeIntentData, projectModel);
-        syncModelToUI();
-        recalculateLiveProposal();
-
         window.trackBYAIME('aime_intent_validated', { type: projectModel.event.type });
 
-        // Switch smoothly to manual customized view and scroll to proposal
-        switchMode('manual');
-        goToStep(5); // Jump directly to the final summary & contact step
+        // Show concept generation loading animation
+        if (intentValidationBox) intentValidationBox.classList.add('hidden');
+        if (conceptLoadingStage) conceptLoadingStage.classList.remove('hidden');
+        if (conceptPresentationStage) conceptPresentationStage.classList.add('hidden');
+
+        // Call AIME CONCEPT Agent
+        var conceptResult = await window.AIME_Engine.callAimeConceptAgent(activeIntentData, projectModel);
+
+        if (conceptLoadingStage) conceptLoadingStage.classList.add('hidden');
+
+        if (conceptResult.success && Array.isArray(conceptResult.concepts) && conceptResult.concepts.length > 0) {
+          activeConceptProposals = conceptResult.concepts;
+        } else {
+          // Fallback to default presets alternatives
+          var preset = defaultPresets[projectModel.event.type] || defaultPresets.mariage;
+          activeConceptProposals = preset.alternatives || [];
+        }
+
+        // Render the 3 Divergent Creative Concept Cards
+        renderCreativeConceptCards(activeConceptProposals);
       });
     }
 
-    // Action 2: "Modifier" -> Pre-fill manual configurator
+    // Rendu des 3 Cartes de Directions Créatives (AIME CONCEPT)
+    function renderCreativeConceptCards(proposals) {
+      if (!conceptPresentationStage) return;
+
+      var cardsContainer = document.getElementById('concept-cards-grid');
+      if (cardsContainer) {
+        cardsContainer.innerHTML = '';
+
+        proposals.slice(0, 3).forEach(function (concept, idx) {
+          var card = document.createElement('div');
+          card.className = 'p-6 rounded-3xl bg-zinc-950 border border-white/10 glow-card hover:border-white/30 transition-all flex flex-col justify-between space-y-4';
+          
+          var metName = (concept.metaphor && concept.metaphor.name) ? concept.metaphor.name : 'Direction ' + (idx + 1);
+          var sigName = (concept.signatureInteraction && concept.signatureInteraction.name) ? concept.signatureInteraction.name : 'Dispositif Signature';
+
+          card.innerHTML = '<div>' +
+            '<div class="flex justify-between items-baseline mb-3">' +
+            '<span class="text-xs font-mono font-bold text-emerald-400">0' + (idx + 1) + '</span>' +
+            '<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white uppercase">' + (concept.creativeDirection ? concept.creativeDirection.atmosphere : 'poétique') + '</span>' +
+            '</div>' +
+            '<h4 class="text-lg font-bold text-white tracking-tight">' + concept.name + '</h4>' +
+            '<p class="text-xs text-pink-300 font-mono mt-1 italic">' + concept.tagline + '</p>' +
+            '<p class="text-xs text-muted-foreground mt-3 leading-relaxed">' + concept.summary + '</p>' +
+            '<div class="mt-4 pt-3 border-t border-white/5 space-y-2 text-[11px] text-gray-300">' +
+            '<p><strong class="text-white">Métaphore :</strong> ' + metName + '</p>' +
+            '<p><strong class="text-white">Signature :</strong> ' + sigName + '</p>' +
+            '</div>' +
+            '</div>' +
+            '<div class="pt-4 border-t border-white/10 flex items-center gap-2">' +
+            '<button type="button" class="btn-explore-concept flex-1 py-2.5 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all">Explorer cette direction →</button>' +
+            '</div>';
+
+          var exploreBtn = card.querySelector('.btn-explore-concept');
+          exploreBtn.addEventListener('click', function () {
+            openConceptDetailModal(concept);
+          });
+
+          cardsContainer.appendChild(card);
+        });
+      }
+
+      conceptPresentationStage.classList.remove('hidden');
+      conceptPresentationStage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Fiche Détaillée d'une Direction Créative (Modal Inspector)
+    function openConceptDetailModal(concept) {
+      var dialog = document.getElementById('modal-concept-detail');
+      if (!dialog) return;
+
+      var nameEl = document.getElementById('det-concept-name');
+      var tagEl = document.getElementById('det-concept-tagline');
+      var sumEl = document.getElementById('det-concept-summary');
+      var metEl = document.getElementById('det-concept-metaphor');
+      var artEl = document.getElementById('det-concept-art');
+      var archEl = document.getElementById('det-concept-arch');
+      var modsEl = document.getElementById('det-concept-modules');
+      var sigEl = document.getElementById('det-concept-signature');
+      var whyEl = document.getElementById('det-concept-why');
+      var selectBtn = document.getElementById('btn-select-this-concept');
+
+      if (nameEl) nameEl.textContent = concept.name;
+      if (tagEl) tagEl.textContent = concept.tagline;
+      if (sumEl) sumEl.textContent = concept.summary;
+      if (metEl) metEl.textContent = (concept.metaphor && concept.metaphor.name) ? concept.metaphor.name + ' — ' + (concept.metaphor.description || '') : 'Métaphore directrice de l\'expérience';
+      if (artEl) artEl.textContent = (concept.creativeDirection && concept.creativeDirection.artDirection) ? concept.creativeDirection.artDirection : 'Direction artistique sur mesure.';
+      
+      if (archEl) {
+        archEl.innerHTML = '';
+        var pagesList = (concept.architecture && Array.isArray(concept.architecture.pages)) ? concept.architecture.pages : ['Accueil', 'Programme', 'Invités', 'Souvenirs'];
+        pagesList.forEach(function (p) {
+          var li = document.createElement('li');
+          li.className = 'text-xs text-muted-foreground flex items-center gap-2';
+          li.innerHTML = '<span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>' + p + '</span>';
+          archEl.appendChild(li);
+        });
+      }
+
+      if (modsEl) {
+        modsEl.innerHTML = '';
+        var modsList = Array.isArray(concept.recommendedModules) ? concept.recommendedModules : [];
+        modsList.forEach(function (m) {
+          var mId = typeof m === 'string' ? m : (m && m.id ? m.id : null);
+          var reason = (m && m.reason) ? m.reason : '';
+          var modObj = moduleRegistry[mId] || { name: mId, icon: '✨' };
+          var div = document.createElement('div');
+          div.className = 'p-2 rounded-lg bg-white/5 text-xs';
+          div.innerHTML = '<div class="flex items-center gap-1.5 text-white font-medium"><span>' + (modObj.icon || '✨') + '</span><span>' + modObj.name + '</span></div>' +
+            (reason ? '<p class="text-[10px] text-muted-foreground mt-0.5">' + reason + '</p>' : '');
+          modsEl.appendChild(div);
+        });
+      }
+
+      if (sigEl) {
+        sigEl.textContent = (concept.signatureInteraction && concept.signatureInteraction.name)
+          ? concept.signatureInteraction.name + (concept.signatureInteraction.description ? ' — ' + concept.signatureInteraction.description : '')
+          : 'Interaction signature originale.';
+      }
+
+      if (whyEl) whyEl.textContent = concept.whyItFits || 'Cette direction valorise parfaitement votre intention de départ.';
+
+      if (selectBtn) {
+        selectBtn.onclick = function () {
+          // Apply concept to projectModel
+          projectModel = window.AIME_Engine.applyConceptProposal(concept, projectModel);
+          syncModelToUI();
+          recalculateLiveProposal();
+
+          dialog.close();
+          window.trackBYAIME('aime_concept_selected', { name: concept.name });
+
+          // Smoothly switch to proposal view
+          switchMode('manual');
+          goToStep(5);
+        };
+      }
+
+      dialog.showModal();
+    }
+
+    // Action Modifier depuis Intent -> Configurator
     var btnModifyIntent = document.getElementById('btn-modify-intent');
     if (btnModifyIntent) {
       btnModifyIntent.addEventListener('click', function () {
@@ -1614,22 +1977,21 @@
       });
     }
 
-    // Manuel Configurator Handlers
-    function applyPresetToModel(presetKey) {
-      var preset = defaultPresets[presetKey] || defaultPresets.mariage;
-      projectModel.event.type = preset.type;
-      projectModel.concept.title = preset.suggestedTitle;
-      projectModel.concept.subtitle = preset.subtitle;
-      projectModel.concept.description = preset.description;
-      projectModel.concept.artDirection = preset.artDirection;
-      projectModel.concept.signatureInteraction = preset.signatureInteraction;
-      projectModel.modules = preset.defaultModules.slice();
-      projectModel.architecture.pages = preset.pages.slice();
-      projectModel.architecture.navigation = preset.pages.slice(0, 4);
-      projectModel.updatedAt = new Date().toISOString();
-      syncModelToUI();
+    // Bouton de retour aux 3 concepts
+    var btnReturnToConcepts = document.getElementById('btn-explore-concepts-again');
+    if (btnReturnToConcepts) {
+      btnReturnToConcepts.addEventListener('click', function () {
+        if (activeConceptProposals && activeConceptProposals.length > 0) {
+          switchMode('intent');
+          if (conceptPresentationStage) {
+            conceptPresentationStage.classList.remove('hidden');
+            conceptPresentationStage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
     }
 
+    // Manuel Configurator Handlers
     function recalculateLiveProposal() {
       var preset = defaultPresets[projectModel.event.type] || defaultPresets.mariage;
 
@@ -1908,7 +2270,7 @@
       });
     }
 
-    // Mode Exploration
+    // Mode Exploration (3 Alternatives)
     var exploreBtn = document.getElementById('btn-explore-alternatives');
     if (exploreBtn) {
       exploreBtn.addEventListener('click', function () {
@@ -1924,25 +2286,17 @@
             var card = document.createElement('div');
             card.className = 'p-5 rounded-2xl bg-black border border-white/10 glow-card hover:border-white/30 transition-all space-y-3';
             card.innerHTML = '<div class="flex justify-between items-baseline"><span class="text-xs font-mono text-emerald-400">' + alt.name + '</span>' +
-              '<span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-white/10 text-white">' + alt.ambiance + '</span></div>' +
+              '<span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-white/10 text-white">' + (alt.creativeDirection ? alt.creativeDirection.atmosphere : alt.ambiance) + '</span></div>' +
               '<h4 class="text-base font-bold text-white">' + alt.title + '</h4>' +
-              '<p class="text-xs text-muted-foreground">' + alt.signature + '</p>' +
-              '<div class="flex flex-wrap gap-1 pt-1">' + alt.modules.map(function (m) {
-                var mod = moduleRegistry[m] || { name: m };
-                return '<span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-gray-300">' + mod.name + '</span>';
-              }).join('') + '</div>' +
+              '<p class="text-xs text-muted-foreground">' + (alt.summary || alt.signature) + '</p>' +
               '<button type="button" class="w-full mt-2 py-2 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all">Je préfère cette version →</button>';
 
             var chooseBtn = card.querySelector('button');
             chooseBtn.addEventListener('click', function () {
-              projectModel.concept.title = alt.title;
-              projectModel.concept.signatureInteraction = alt.signature;
-              projectModel.experience.atmosphere = alt.ambiance;
-              projectModel.experience.level = alt.level;
-              projectModel.modules = alt.modules.slice();
+              projectModel = window.AIME_Engine.applyConceptProposal(alt, projectModel);
               dialog.close();
               recalculateLiveProposal();
-              window.trackBYAIME('project_alternative_chosen', { title: alt.title });
+              window.trackBYAIME('project_alternative_chosen', { title: alt.title || alt.name });
             });
 
             container.appendChild(card);

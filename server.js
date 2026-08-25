@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 const aimeIntentHandler = require('./api/aime-intent.js');
+const aimeConceptHandler = require('./api/aime-concept.js');
 
 const PORT = process.env.PORT || 3000;
 const ROOT = path.resolve(__dirname);
@@ -27,8 +28,8 @@ const server = http.createServer(async (req, res) => {
   const parsedUrl = url.parse(req.url, true);
   let pathname = parsedUrl.pathname;
 
-  // Handle Serverless API endpoint
-  if (pathname === '/api/aime-intent') {
+  // Handle Serverless API endpoints
+  if (pathname === '/api/aime-intent' || pathname === '/api/aime-concept') {
     let body = '';
     req.on('data', chunk => { body += chunk; });
     req.on('end', async () => {
@@ -38,14 +39,17 @@ const server = http.createServer(async (req, res) => {
         req.body = {};
       }
 
-      // Mock response helpers for Vercel handler compatibility
       res.status = (code) => { res.statusCode = code; return res; };
       res.json = (data) => {
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
         res.end(JSON.stringify(data));
       };
 
-      await aimeIntentHandler(req, res);
+      if (pathname === '/api/aime-intent') {
+        await aimeIntentHandler(req, res);
+      } else {
+        await aimeConceptHandler(req, res);
+      }
     });
     return;
   }
@@ -53,20 +57,16 @@ const server = http.createServer(async (req, res) => {
   // Handle Static Files & Clean URLs
   let filePath = path.join(ROOT, pathname);
 
-  // If path ends with /, look for index.html
   if (pathname.endsWith('/')) {
     filePath = path.join(filePath, 'index.html');
   }
 
-  // Check if direct file exists
   if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
-    // Try clean URL (.html)
     if (fs.existsSync(filePath + '.html')) {
       filePath = filePath + '.html';
     } else if (fs.existsSync(path.join(filePath, 'index.html'))) {
       filePath = path.join(filePath, 'index.html');
     } else {
-      // 404 fallback
       filePath = path.join(ROOT, '404.html');
       res.statusCode = 404;
     }

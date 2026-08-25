@@ -5,8 +5,8 @@
   "description": "BYAIME — Studio créatif et technologique d'expériences numériques sur mesure.",
   "scripts": {
     "dev": "concurrently \"npm run watch\" \"npm run serve\"",
-    "build": "tailwindcss -i css/input.css -o css/styles.css --minify && terser js/main.js -o js/main.min.js -c -m",
-    "watch": "tailwindcss -i css/input.css -o css/styles.css --watch",
+    "build": "./node_modules/.bin/tailwindcss -i css/input.css -o css/styles.css --minify && ./node_modules/.bin/terser js/main.js -o js/main.min.js -c -m",
+    "watch": "./node_modules/.bin/tailwindcss -i css/input.css -o css/styles.css --watch",
     "serve": "node server.js",
     "start": "node server.js"
   },
