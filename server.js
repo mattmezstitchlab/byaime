@@ -5,6 +5,7 @@ const path = require('path');
 const url = require('url');
 const aimeIntentHandler = require('./api/aime-intent.js');
 const aimeConceptHandler = require('./api/aime-concept.js');
+const aimeArchitectHandler = require('./api/aime-architect.js');
 
 const PORT = process.env.PORT || 3000;
 const ROOT = path.resolve(__dirname);
@@ -29,7 +30,7 @@ const server = http.createServer(async (req, res) => {
   let pathname = parsedUrl.pathname;
 
   // Handle Serverless API endpoints
-  if (pathname === '/api/aime-intent' || pathname === '/api/aime-concept') {
+  if (pathname === '/api/aime-intent' || pathname === '/api/aime-concept' || pathname === '/api/aime-architect') {
     let body = '';
     req.on('data', chunk => { body += chunk; });
     req.on('end', async () => {
@@ -47,8 +48,10 @@ const server = http.createServer(async (req, res) => {
 
       if (pathname === '/api/aime-intent') {
         await aimeIntentHandler(req, res);
-      } else {
+      } else if (pathname === '/api/aime-concept') {
         await aimeConceptHandler(req, res);
+      } else {
+        await aimeArchitectHandler(req, res);
       }
     });
     return;

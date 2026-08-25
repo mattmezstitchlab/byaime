@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Imaginer mon projet — Moteur de Conception AIME | BYAIME</title>
-  <meta name="description" content="Racontez votre idée ou configurez l'univers numérique sur mesure de votre événement. Agents AIME INTENT et AIME CONCEPT pour générer des directions créatives originales.">
+  <meta name="description" content="Racontez votre idée ou configurez l'univers numérique sur mesure de votre événement. Agents AIME INTENT, CONCEPT et ARCHITECT pour générer des directions créatives et un Experience Blueprint complet.">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><circle cx='12' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/><circle cx='20' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/></svg>">
@@ -79,17 +79,16 @@
         <div class="max-w-3xl" data-animate>
           <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium tracking-wide mb-6 bg-white/[0.03]">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            Moteur AIME • Studio de Conception Multi-Agents
+            Moteur AIME • Studio Multi-Agents (Intent × Concept × Architect)
           </span>
           <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-white leading-[1.15]">
             Donnons vie à l'univers numérique <br class="hidden sm:inline">
             <span class="text-gradient">de votre événement.</span>
           </h1>
           <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
-            Exprimez librement votre vision ou configurez étape par étape les modules de votre expérience. Nos agents AIME INTENT et AIME CONCEPT imaginent pour vous des directions créatives singulières.
+            Exprimez librement votre vision ou configurez étape par étape les modules de votre expérience. Nos agents AIME INTENT, CONCEPT et ARCHITECT structurent vos intentions en un blueprint d'expérience complet.
           </p>
 
-          <!-- Mode Selector Tabs (Mode IA vs Mode Configurer) -->
           <div class="mt-8 inline-flex p-1 rounded-full bg-white/5 border border-white/10" role="tablist">
             <button id="tab-mode-intent" type="button" class="px-6 py-2.5 rounded-full text-xs font-bold transition-all bg-white text-black shadow-md">
               ✦ Raconter mon idée
@@ -124,15 +123,11 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 
-          <!-- Left Column (Switches between Intent Form, Concepts Stage & Step Configurator) -->
+          <!-- Left Column -->
           <div class="lg:col-span-7 space-y-8">
 
-            <!-- ========================================================= -->
-            <!-- MODE 02 — RACONTER MON IDÉE (AGENT AIME INTENT & CONCEPT) -->
-            <!-- ========================================================= -->
+            <!-- MODE 02 — RACONTER MON IDÉE (AIME INTENT & CONCEPT) -->
             <div id="section-aime-intent" class="space-y-6" data-animate>
-              
-              <!-- 1. Textarea Input Card -->
               <div class="p-6 md:p-8 rounded-3xl bg-black border border-white/10 glow-card space-y-6">
                 <div>
                   <div class="flex items-center gap-2">
@@ -255,7 +250,7 @@ Mais vous pouvez aussi simplement écrire :
                   </div>
                 </div>
 
-                <!-- 2. AIME CONCEPT LOADING STAGE -->
+                <!-- AIME CONCEPT LOADING STAGE -->
                 <div id="aime-concept-generating-stage" class="hidden p-8 rounded-3xl bg-zinc-950 border border-white/10 text-center space-y-4">
                   <div class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white animate-pulse">
                     <span class="text-base">✦</span>
@@ -266,7 +261,7 @@ Mais vous pouvez aussi simplement écrire :
                   </p>
                 </div>
 
-                <!-- 3. AIME CONCEPT 3 PROPOSALS STAGE -->
+                <!-- AIME CONCEPT 3 PROPOSALS STAGE -->
                 <div id="aime-concept-proposals-stage" class="hidden space-y-6">
                   <div class="flex items-center justify-between border-b border-white/10 pb-3">
                     <div>
@@ -275,17 +270,13 @@ Mais vous pouvez aussi simplement écrire :
                     </div>
                   </div>
 
-                  <div id="concept-cards-grid" class="grid grid-cols-1 gap-4">
-                    <!-- Populated dynamically with 3 Divergent Concept Cards -->
-                  </div>
+                  <div id="concept-cards-grid" class="grid grid-cols-1 gap-4"></div>
                 </div>
 
               </div>
             </div>
 
-            <!-- ========================================================= -->
             <!-- MODE 01 — CONFIGURATEUR MANUEL CLASSIQUE -->
-            <!-- ========================================================= -->
             <div id="section-configurator-manual" class="hidden space-y-6">
 
               <div class="mb-4" data-animate>
@@ -733,7 +724,7 @@ Mais vous pouvez aussi simplement écrire :
               <!-- Actions: Exploration Mode & Preview Mode -->
               <div class="pt-2 border-t border-white/10 space-y-2">
                 <button id="btn-open-preview-mode" type="button" class="w-full py-2.5 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all flex items-center justify-center gap-2 glow-subtle">
-                  <span>👁️ Voir une première version (Prototype)</span>
+                  <span>👁️ Voir une première version (Prototype & Blueprint)</span>
                 </button>
                 <button id="btn-explore-alternatives" type="button" class="w-full py-2 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all flex items-center justify-center gap-1.5">
                   <span>✦ Explorer d'autres idées</span>
@@ -750,7 +741,7 @@ Mais vous pouvez aussi simplement écrire :
               <span class="text-[10px] font-mono uppercase text-emerald-400">Démonstration AIME</span>
               <h4 class="text-xs font-bold text-white">Ce que vous voyez est déjà une démonstration d'AIME</h4>
               <p class="text-[11px] text-muted-foreground leading-relaxed">
-                AIME ne commence pas par un template. AIME commence par une intention. Il cherche à comprendre ce que vous voulez faire vivre, puis construit progressivement une expérience sur mesure autour de cette intention.
+                AIME ne commence pas par un template. AIME commence par une intention. Il cherche à comprendre ce que vous voulez faire vivre, imagine 3 directions singulières, puis construit un blueprint d'expérience complet.
               </p>
             </div>
 
@@ -923,16 +914,26 @@ Mais vous pouvez aussi simplement écrire :
     <div style="overflow-y: auto; padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 1rem" id="explore-alternatives-container"></div>
   </dialog>
 
-  <!-- ===== MODALE 4 : PREVIEW MODE (PROTOTYPE DU MINI-SITE) ===== -->
-  <dialog id="modal-preview-experience" class="rounded-3xl bg-black text-foreground border border-white/20 shadow-2xl" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 54rem; max-height: 90vh; padding: 0; overflow: hidden; font-size: 1rem">
-    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1rem 1.5rem; background: rgba(255,255,255,0.03); flex-shrink: 0">
-      <div class="flex items-center gap-2">
-        <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="text-xs font-mono text-white">Prévisualisation Interactive du Mini-Site</span>
+  <!-- ===== MODALE 4 : PREVIEW MODE & EXPERIENCE BLUEPRINT (AIME ARCHITECT) ===== -->
+  <dialog id="modal-preview-experience" class="rounded-3xl bg-black text-foreground border border-white/20 shadow-2xl" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 58rem; max-height: 92vh; padding: 0; overflow: hidden; font-size: 1rem">
+    <!-- Top Bar with Viewport & Architecture Switcher -->
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.03); flex-shrink: 0">
+      <div class="flex items-center gap-3">
+        <div class="inline-flex p-0.5 rounded-full bg-white/10 border border-white/10 text-xs">
+          <button id="tab-prev-render" type="button" class="px-3 py-1 rounded-full bg-white text-black font-bold text-xs transition-all">
+            👁️ Rendu Interactif
+          </button>
+          <button id="tab-prev-blueprint" type="button" class="px-3 py-1 rounded-full text-muted-foreground hover:text-white text-xs transition-all">
+            📐 Blueprint & Wireframes (AIME ARCHITECT)
+          </button>
+          <button id="tab-prev-devices" type="button" class="px-3 py-1 rounded-full text-muted-foreground hover:text-white text-xs transition-all">
+            📱 Vue Mobile 375px
+          </button>
+        </div>
       </div>
       <div class="flex items-center gap-3">
-        <button id="btn-edit-from-preview" type="button" class="px-4 py-1.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
-          ✎ Modifier mon expérience
+        <button id="btn-edit-from-preview" type="button" class="px-3.5 py-1.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
+          ✎ Modifier
         </button>
         <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
           <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -940,7 +941,8 @@ Mais vous pouvez aussi simplement écrire :
       </div>
     </div>
 
-    <div style="overflow-y: auto; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 3rem">
+    <!-- View 1: Interactive Prototype Render -->
+    <div id="prev-view-render" style="overflow-y: auto; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 2.5rem; margin: 0 auto; transition: max-width 0.3s ease">
       <div class="flex justify-between items-center border-b border-white/10 pb-4">
         <span class="text-sm font-bold text-white flex items-center gap-2">
           <svg width="20" height="14" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -949,7 +951,7 @@ Mais vous pouvez aussi simplement écrire :
         <div id="prev-exp-nav" class="flex gap-4"></div>
       </div>
 
-      <div class="text-center max-w-xl mx-auto space-y-3 py-6">
+      <div class="text-center max-w-xl mx-auto space-y-3 py-4">
         <span class="text-[10px] uppercase font-mono px-3 py-1 rounded-full bg-white/10 text-white">Expérience en Direct</span>
         <h2 id="prev-exp-subtitle" class="text-2xl font-bold text-white">Un univers numérique poétique et vivant</h2>
         <p class="text-xs text-muted-foreground">Bienvenue dans l'espace interactif créé sur mesure pour cet événement singulier.</p>
@@ -996,6 +998,11 @@ Mais vous pouvez aussi simplement écrire :
         </div>
         <span class="text-emerald-400 font-mono text-xs">BYAIME Engine</span>
       </div>
+    </div>
+
+    <!-- View 2: Experience Blueprint & Wireframes (AIME ARCHITECT) -->
+    <div id="prev-view-blueprint" class="hidden" style="overflow-y: auto; padding: 2rem" id="preview-blueprint-container">
+      <div id="preview-blueprint-content" class="space-y-6"></div>
     </div>
   </dialog>
 
