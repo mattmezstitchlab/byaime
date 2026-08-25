@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Imaginer mon projet — Moteur de Conception AIME | BYAIME</title>
-  <meta name="description" content="Définissez en quelques étapes l'univers numérique sur mesure de votre événement. Moteur de suggestion conceptuelle en temps réel et transmission directe à Matt Mez.">
+  <meta name="description" content="Racontez votre idée ou configurez l'univers numérique sur mesure de votre événement. Agent AIME INTENT et moteur de conception d'expériences par Matt Mez.">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><circle cx='12' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/><circle cx='20' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/></svg>">
@@ -14,7 +14,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Imaginer mon projet — Moteur de Conception AIME | BYAIME">
-  <meta property="og:description" content="Configurez l'univers numérique sur mesure de votre événement avec Matt Mez. Prévisualisation conceptuelle interactive en direct.">
+  <meta property="og:description" content="Racontez votre idée ou configurez l'univers numérique sur mesure de votre événement avec l'agent AIME INTENT et Matt Mez.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://example.com/projet">
   <meta property="og:image" content="https://example.com/img/og-image.png">
@@ -73,7 +73,7 @@
 
   <main id="main">
 
-    <!-- ===== Hero Configurateur ===== -->
+    <!-- ===== Hero & Mode Switcher ===== -->
     <section class="py-[calc(32px+4vh)]">
       <div class="mx-auto max-w-5xl px-6">
         <div class="max-w-3xl" data-animate>
@@ -86,13 +86,23 @@
             <span class="text-gradient">de votre événement.</span>
           </h1>
           <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
-            Parcourez 5 étapes simples. Notre moteur génère en temps réel une proposition conceptuelle sur mesure, personnalisable en direct avant de produire votre cahier des charges.
+            Exprimez librement votre vision ou configurez étape par étape les modules de votre expérience. Notre moteur structure vos intentions en une proposition concrète.
           </p>
+
+          <!-- Mode Selector Tabs (Mode IA vs Mode Configurer) -->
+          <div class="mt-8 inline-flex p-1 rounded-full bg-white/5 border border-white/10" role="tablist">
+            <button id="tab-mode-intent" type="button" class="px-6 py-2.5 rounded-full text-xs font-bold transition-all bg-white text-black shadow-md">
+              ✦ Raconter mon idée
+            </button>
+            <button id="tab-mode-manual" type="button" class="px-6 py-2.5 rounded-full text-xs font-medium transition-all text-muted-foreground hover:text-white">
+              Configurer mon projet
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Configurateur MVP ===== -->
+    <!-- ===== Main Workspace ===== -->
     <section id="byaime-configurator" class="py-8 border-t border-border">
       <div class="mx-auto max-w-5xl px-6">
         
@@ -112,342 +122,479 @@
           </div>
         </div>
 
-        <!-- Progress Steps Bar -->
-        <div class="mb-10" data-animate>
-          <div class="w-full bg-white/10 h-1 rounded-full overflow-hidden mb-6">
-            <div id="cfg-progress-bar" class="bg-white h-full transition-all duration-500 rounded-full" style="width: 20%"></div>
-          </div>
-          <div class="grid grid-cols-5 gap-2 text-center text-xs">
-            <div data-step-indicator="1" class="p-2 rounded-lg border border-white text-white bg-white/10 font-medium transition-all">
-              1. Créer
-            </div>
-            <div data-step-indicator="2" class="p-2 rounded-lg border border-border text-muted-foreground transition-all">
-              2. Pour qui
-            </div>
-            <div data-step-indicator="3" class="p-2 rounded-lg border border-border text-muted-foreground transition-all">
-              3. Intention
-            </div>
-            <div data-step-indicator="4" class="p-2 rounded-lg border border-border text-muted-foreground transition-all">
-              4. Outils
-            </div>
-            <div data-step-indicator="5" class="p-2 rounded-lg border border-border text-muted-foreground transition-all">
-              5. Niveau & Contact
-            </div>
-          </div>
-        </div>
-
-        <!-- Two Columns : Form Flow on Left, Live Generative Proposal on Right -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 
-          <!-- Left Column: Form Content -->
-          <div class="lg:col-span-7">
-            <div id="cfg-form-wrapper" class="p-6 md:p-8 rounded-3xl bg-black border border-white/10 glow-card" data-animate>
+          <!-- Left Column (Switches between Intent Form & Step Configurator) -->
+          <div class="lg:col-span-7 space-y-8">
 
-              <!-- ÉTAPE 1 : Qu'aimeriez-vous créer ? -->
-              <div data-step-content="1" class="space-y-6">
+            <!-- ========================================================= -->
+            <!-- MODE 02 — RACONTER MON IDÉE (AGENT AIME INTENT) -->
+            <!-- ========================================================= -->
+            <div id="section-aime-intent" class="space-y-6" data-animate>
+              <div class="p-6 md:p-8 rounded-3xl bg-black border border-white/10 glow-card space-y-6">
                 <div>
-                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 01 • L'Événement</p>
-                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Qu'aimeriez-vous créer ?</h2>
-                  <p class="text-xs text-muted-foreground mt-1">Sélectionnez la nature de votre moment singulier :</p>
-                </div>
-
-                <div class="space-y-2.5">
-                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
-                    <div class="flex items-center gap-3">
-                      <input type="radio" name="event-type" value="mariage" checked class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <span class="text-sm font-medium text-white">Mariage</span>
-                    </div>
-                    <span class="text-xs text-pink-300 font-mono">Amour</span>
-                  </label>
-
-                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
-                    <div class="flex items-center gap-3">
-                      <input type="radio" name="event-type" value="ceremonie" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <span class="text-sm font-medium text-white">Cérémonie d'adieu / Hommage</span>
-                    </div>
-                    <span class="text-xs text-amber-300 font-mono">Mémoire</span>
-                  </label>
-
-                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
-                    <div class="flex items-center gap-3">
-                      <input type="radio" name="event-type" value="anniversaire" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <span class="text-sm font-medium text-white">Anniversaire & Cap de vie</span>
-                    </div>
-                    <span class="text-xs text-cyan-300 font-mono">Célébration</span>
-                  </label>
-
-                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
-                    <div class="flex items-center gap-3">
-                      <input type="radio" name="event-type" value="evenement" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <span class="text-sm font-medium text-white">Événement culturel</span>
-                    </div>
-                    <span class="text-xs text-violet-300 font-mono">Culture</span>
-                  </label>
-
-                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
-                    <div class="flex items-center gap-3">
-                      <input type="radio" name="event-type" value="festival" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <span class="text-sm font-medium text-white">Festival & Grand rassemblement</span>
-                    </div>
-                    <span class="text-xs text-purple-300 font-mono">Festival</span>
-                  </label>
-
-                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
-                    <div class="flex items-center gap-3">
-                      <input type="radio" name="event-type" value="artistique" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <span class="text-sm font-medium text-white">Projet artistique & Performance</span>
-                    </div>
-                    <span class="text-xs text-emerald-300 font-mono">Art</span>
-                  </label>
-
-                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
-                    <div class="flex items-center gap-3">
-                      <input type="radio" name="event-type" value="association" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <span class="text-sm font-medium text-white">Association & Cause solidaire</span>
-                    </div>
-                    <span class="text-xs text-blue-300 font-mono">Cause</span>
-                  </label>
-
-                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
-                    <div class="flex items-center gap-3">
-                      <input type="radio" name="event-type" value="professionnel" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <span class="text-sm font-medium text-white">Projet professionnel & Lancement</span>
-                    </div>
-                    <span class="text-xs text-orange-300 font-mono">Pro</span>
-                  </label>
-
-                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
-                    <div class="flex items-center gap-3">
-                      <input type="radio" name="event-type" value="autre" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <span class="text-sm font-medium text-white">Autre projet singulier</span>
-                    </div>
-                    <span class="text-xs text-gray-400 font-mono">Sur mesure</span>
-                  </label>
-
-                  <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
-                    <div class="flex items-center gap-3">
-                      <input type="radio" name="event-type" value="indecis" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <span class="text-sm font-medium text-white">Je ne sais pas encore</span>
-                    </div>
-                    <span class="text-xs text-muted-foreground font-mono">Exploration</span>
-                  </label>
-                </div>
-              </div>
-
-              <!-- ÉTAPE 2 : Pour qui ? -->
-              <div data-step-content="2" class="hidden space-y-6">
-                <div>
-                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 02 • Le Public</p>
-                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Pour qui imaginez-vous ce mini-site ?</h2>
-                  <p class="text-xs text-muted-foreground mt-1">Précisez qui seront les visiteurs et participants privilégiés :</p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
-                    <input type="radio" name="cfg-audience" value="Moi" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                    <span class="text-xs font-medium text-white">Moi</span>
-                  </label>
-
-                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
-                    <input type="radio" name="cfg-audience" value="Ma famille" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                    <span class="text-xs font-medium text-white">Ma famille</span>
-                  </label>
-
-                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
-                    <input type="radio" name="cfg-audience" value="Mes proches" checked class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                    <span class="text-xs font-medium text-white">Mes proches</span>
-                  </label>
-
-                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
-                    <input type="radio" name="cfg-audience" value="Une communauté" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                    <span class="text-xs font-medium text-white">Une communauté</span>
-                  </label>
-
-                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
-                    <input type="radio" name="cfg-audience" value="Une association" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                    <span class="text-xs font-medium text-white">Une association</span>
-                  </label>
-
-                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
-                    <input type="radio" name="cfg-audience" value="Une entreprise" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                    <span class="text-xs font-medium text-white">Une entreprise</span>
-                  </label>
-
-                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
-                    <input type="radio" name="cfg-audience" value="Un public" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                    <span class="text-xs font-medium text-white">Un public</span>
-                  </label>
-
-                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
-                    <input type="radio" name="cfg-audience" value="Autre" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                    <span class="text-xs font-medium text-white">Autre</span>
-                  </label>
-                </div>
-              </div>
-
-              <!-- ÉTAPE 3 : Que voulez-vous faire vivre ? -->
-              <div data-step-content="3" class="hidden space-y-6">
-                <div>
-                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 03 • L'Intention</p>
-                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Que voulez-vous faire vivre ?</h2>
-                  <p class="text-xs text-muted-foreground mt-1">Sélectionnez une ou plusieurs intentions majeures :</p>
-                </div>
-
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
-                    <input type="checkbox" name="cfg-intentions" value="Organiser" checked class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
-                    <span>Organiser</span>
-                  </label>
-                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
-                    <input type="checkbox" name="cfg-intentions" value="Inviter" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
-                    <span>Inviter</span>
-                  </label>
-                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
-                    <input type="checkbox" name="cfg-intentions" value="Partager" checked class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
-                    <span>Partager</span>
-                  </label>
-                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
-                    <input type="checkbox" name="cfg-intentions" value="Rassembler" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
-                    <span>Rassembler</span>
-                  </label>
-                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
-                    <input type="checkbox" name="cfg-intentions" value="Émouvoir" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
-                    <span>Émouvoir</span>
-                  </label>
-                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
-                    <input type="checkbox" name="cfg-intentions" value="Informer" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
-                    <span>Informer</span>
-                  </label>
-                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
-                    <input type="checkbox" name="cfg-intentions" value="Créer des souvenirs" checked class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
-                    <span>Créer des souvenirs</span>
-                  </label>
-                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
-                    <input type="checkbox" name="cfg-intentions" value="Faire participer" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
-                    <span>Faire participer</span>
-                  </label>
-                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
-                    <input type="checkbox" name="cfg-intentions" value="Raconter une histoire" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
-                    <span>Raconter une histoire</span>
-                  </label>
-                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
-                    <input type="checkbox" name="cfg-intentions" value="Coordonner" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
-                    <span>Coordonner</span>
-                  </label>
-                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
-                    <input type="checkbox" name="cfg-intentions" value="Créer une expérience" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
-                    <span>Créer une expérience</span>
-                  </label>
-                  <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
-                    <input type="checkbox" name="cfg-intentions" value="Autre" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
-                    <span>Autre</span>
-                  </label>
-                </div>
-              </div>
-
-              <!-- ÉTAPE 4 : Quels outils vous intéressent ? -->
-              <div data-step-content="4" class="hidden space-y-6">
-                <div>
-                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 04 • Les Outils</p>
-                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Quels outils vous intéressent ?</h2>
-                  <p class="text-xs text-muted-foreground mt-1">Modules suggérés automatiquement avec score de pertinence :</p>
-                </div>
-
-                <div id="step4-tools-checkboxes" class="space-y-2.5">
-                  <!-- Injected by JavaScript dynamically with scoring -->
-                </div>
-              </div>
-
-              <!-- ÉTAPE 5 : Niveau d'expérience & Contact réel -->
-              <div data-step-content="5" class="hidden space-y-6">
-                <div>
-                  <p class="text-xs font-mono text-muted-foreground uppercase">Étape 05 • Niveau & Coordonnées</p>
-                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Quel niveau d'expérience imaginez-vous ?</h2>
-                </div>
-
-                <!-- Niveau d'expérience -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
-                    <input type="radio" name="cfg-level" value="minimal" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                    <p class="text-xs font-bold text-white mt-1">MINIMAL</p>
-                    <p class="text-[11px] text-muted-foreground">Un mini-site élégant et soigné.</p>
-                  </label>
-                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
-                    <input type="radio" name="cfg-level" value="interactif" checked class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                    <p class="text-xs font-bold text-white mt-1">INTERACTIF</p>
-                    <p class="text-[11px] text-muted-foreground">Un mini-site avec outils et interactions.</p>
-                  </label>
-                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
-                    <input type="radio" name="cfg-level" value="immersif" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                    <p class="text-xs font-bold text-white mt-1">IMMERSIF</p>
-                    <p class="text-[11px] text-muted-foreground">Une véritable expérience numérique totale.</p>
-                  </label>
-                  <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
-                    <input type="radio" name="cfg-level" value="indecis" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                    <p class="text-xs font-bold text-white mt-1">JE NE SAIS PAS</p>
-                    <p class="text-[11px] text-muted-foreground">« Imaginez pour moi. »</p>
-                  </label>
-                </div>
-
-                <!-- Coordonnées et projet -->
-                <div class="pt-6 border-t border-white/10 space-y-4">
-                  <h3 class="text-base font-bold text-white">Vos coordonnées pour la transmission</h3>
-                  
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label for="cfg-contact-first" class="block text-xs text-white mb-1">Prénom *</label>
-                      <input id="cfg-contact-first" type="text" required placeholder="Camille" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
-                    </div>
-                    <div>
-                      <label for="cfg-contact-last" class="block text-xs text-white mb-1">Nom</label>
-                      <input id="cfg-contact-last" type="text" placeholder="Dupont" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
-                    </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-mono text-emerald-400">Agent AIME INTENT</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded bg-white/10 text-muted-foreground font-mono">Compréhension de Langage Naturel</span>
                   </div>
+                  <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Parlez-nous simplement de votre idée.</h2>
+                  <p class="text-xs text-muted-foreground mt-1 leading-relaxed">
+                    Vous n'avez pas besoin de savoir ce que vous voulez construire. Décrivez ce que vous imaginez, ce que vous voulez faire vivre ou même simplement ce que vous ressentez.
+                  </p>
+                </div>
 
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label for="cfg-contact-email" class="block text-xs text-white mb-1">E-mail *</label>
-                      <input id="cfg-contact-email" type="email" required placeholder="camille@domaine.com" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
-                    </div>
-                    <div>
-                      <label for="cfg-contact-phone" class="block text-xs text-white mb-1">Téléphone (facultatif)</label>
-                      <input id="cfg-contact-phone" type="tel" placeholder="06 12 34 56 78" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
-                    </div>
+                <!-- Textarea -->
+                <div>
+                  <label for="aime-intent-input" class="sr-only">Votre intention</label>
+                  <textarea id="aime-intent-input" rows="6" placeholder="Par exemple :
+
+Nous nous marions l'année prochaine et nous aimerions quelque chose de différent d'un simple site de mariage. Nous aimons la musique, nos proches viennent de plusieurs pays et nous aimerions que chacun puisse participer au souvenir de cette journée.
+
+Mais vous pouvez aussi simplement écrire :
+'Je ne sais pas exactement ce que je veux.'" class="w-full text-sm rounded-2xl border border-white/15 bg-white/[0.02] p-4 text-white placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-white resize-y leading-relaxed font-sans"></textarea>
+                </div>
+
+                <!-- Inspiration Chips -->
+                <div class="space-y-2">
+                  <p class="text-[11px] text-muted-foreground">Exemples d'intentions (cliquez pour tester) :</p>
+                  <div class="flex flex-wrap gap-1.5">
+                    <button type="button" data-intent-example="Nous organisons un mariage intimiste en Provence l'été prochain pour 80 personnes. Nous voulons une ambiance poétique sous les étoiles, avec une belle playlist participative, une timeline vivante et un livre d'or vocal." class="text-[11px] px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-white transition-all">
+                      ✦ Mariage intimiste & musique
+                    </button>
+                    <button type="button" data-intent-example="Notre grand-père est décédé et nous aimerions créer un mémorial sobre et digne où nos proches dispersés dans le monde puissent écouter la cérémonie et déposer leurs pensées." class="text-[11px] px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-white transition-all">
+                      ✦ Hommage mémoriel doux
+                    </button>
+                    <button type="button" data-intent-example="Je fête mes 40 ans et nous voulons créer une capsule temporelle interactive avec des énigmes pour révéler le lieu secret et récolter des vidéos surprises des amis." class="text-[11px] px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-white transition-all">
+                      ✦ Anniversaire surprise 40 ans
+                    </button>
+                    <button type="button" data-intent-example="Je ne sais absolument pas ce que je veux, mais j'aimerais créer quelque chose d'unique et d'émouvant pour rassembler les gens que j'aime." class="text-[11px] px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-white transition-all">
+                      ✦ Exploration libre
+                    </button>
                   </div>
+                </div>
 
-                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div>
-                      <label for="cfg-contact-projname" class="block text-xs text-white mb-1">Nom du projet</label>
-                      <input id="cfg-contact-projname" type="text" placeholder="Ex: Mariage C&A" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
-                    </div>
-                    <div>
-                      <label for="cfg-contact-date" class="block text-xs text-white mb-1">Date estimée</label>
-                      <input id="cfg-contact-date" type="text" placeholder="Ex: Été 2026" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
-                    </div>
-                    <div>
-                      <label for="cfg-contact-loc" class="block text-xs text-white mb-1">Localisation</label>
-                      <input id="cfg-contact-loc" type="text" placeholder="Ex: Provence / Paris" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
-                    </div>
+                <!-- Submit Button -->
+                <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <button id="btn-submit-intent" type="button" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
+                    ✦ Imaginer mon expérience →
+                  </button>
+                  <p class="text-[11px] text-muted-foreground">
+                    Confidentialité respectée • Aucune donnée vendue
+                  </p>
+                </div>
+
+                <!-- Loading State -->
+                <div id="aime-intent-loading" class="hidden p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center space-y-3">
+                  <div class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 animate-pulse">
+                    <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+                  </div>
+                  <p class="text-xs font-medium text-white">AIME INTENT analyse votre intention...</p>
+                  <p class="text-[11px] text-muted-foreground">Extraction des objectifs, de l'ambiance et des modules adaptés.</p>
+                </div>
+
+                <!-- Fallback Box (If API key is not configured or fails) -->
+                <div id="aime-intent-error" class="hidden p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-xs space-y-3">
+                  <p class="font-semibold text-amber-300 flex items-center gap-2">
+                    <span>⚠️</span> <span id="aime-intent-error-msg">Je n'ai pas pu analyser votre idée pour le moment.</span>
+                  </p>
+                  <p class="text-muted-foreground leading-relaxed">
+                    Vous pouvez réessayer ou passer directement par notre configurateur manuel sans perdre votre texte.
+                  </p>
+                  <div class="flex flex-wrap gap-2 pt-1">
+                    <button id="btn-fallback-manual" type="button" class="px-4 py-2 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90">
+                      Configurer mon projet manuellement →
+                    </button>
+                  </div>
+                </div>
+
+                <!-- HUMAN VALIDATION CARD ("Voilà ce que j'ai compris de votre projet") -->
+                <div id="aime-intent-validation" class="hidden p-6 md:p-8 rounded-3xl bg-zinc-950 border border-emerald-500/30 shadow-2xl space-y-6">
+                  <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                    <span class="text-xs font-mono text-emerald-400">Étape de Validation Humaine</span>
+                    <span class="text-[10px] text-muted-foreground font-mono">Humain > IA</span>
                   </div>
 
                   <div>
-                    <label for="cfg-contact-message" class="block text-xs text-white mb-1">Message libre (optionnel)</label>
-                    <textarea id="cfg-contact-message" rows="2" placeholder="Précisez toute envie particulière..." class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white resize-y"></textarea>
+                    <h3 class="text-lg font-bold text-white tracking-tight">Voilà ce que j'ai compris de votre projet :</h3>
+                    <p id="val-intent-summary" class="text-xs text-muted-foreground mt-1 leading-relaxed"></p>
+                  </div>
+
+                  <!-- Grid Understanding Composition -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 space-y-1">
+                      <span class="text-[10px] uppercase font-semibold text-muted-foreground">Type d'événement détecté :</span>
+                      <p id="val-intent-type" class="font-bold text-white font-mono"></p>
+                    </div>
+
+                    <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 space-y-1">
+                      <span class="text-[10px] uppercase font-semibold text-muted-foreground">Public & Destinataires :</span>
+                      <p id="val-intent-audience" class="font-medium text-white"></p>
+                    </div>
+
+                    <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 space-y-1 sm:col-span-2">
+                      <span class="text-[10px] uppercase font-semibold text-muted-foreground">Ce que vous souhaitez faire vivre :</span>
+                      <div id="val-intent-intentions" class="flex flex-wrap gap-1.5 pt-1"></div>
+                    </div>
+
+                    <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 space-y-1 sm:col-span-2">
+                      <span class="text-[10px] uppercase font-semibold text-muted-foreground">Ambiance & Niveau suggérés :</span>
+                      <div id="val-intent-experience" class="flex flex-wrap gap-2 pt-1"></div>
+                    </div>
+                  </div>
+
+                  <!-- Signals & Constraints -->
+                  <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 space-y-1.5">
+                    <span class="text-[10px] uppercase font-semibold text-muted-foreground">Signaux & Particularités remarqués :</span>
+                    <div id="val-intent-signals" class="flex flex-wrap gap-1 pt-1"></div>
+                  </div>
+
+                  <!-- Missing Questions Section -->
+                  <div id="val-missing-questions" class="space-y-3 p-4 rounded-xl bg-white/[0.02] border border-white/10">
+                    <!-- Populated dynamically -->
+                  </div>
+
+                  <!-- Validation Actions -->
+                  <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+                    <button id="btn-validate-intent-yes" type="button" class="w-full sm:w-auto px-6 py-3 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
+                      ✓ Oui, c'est bien ça →
+                    </button>
+                    <button id="btn-modify-intent" type="button" class="w-full sm:w-auto px-5 py-2.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
+                      ✎ Modifier les éléments
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- MODE 01 — CONFIGURATEUR MANUEL CLASSIQUE -->
+            <!-- ========================================================= -->
+            <div id="section-configurator-manual" class="hidden space-y-6">
+
+              <!-- Progress Steps Bar -->
+              <div class="mb-4" data-animate>
+                <div class="w-full bg-white/10 h-1 rounded-full overflow-hidden mb-4">
+                  <div id="cfg-progress-bar" class="bg-white h-full transition-all duration-500 rounded-full" style="width: 20%"></div>
+                </div>
+                <div class="grid grid-cols-5 gap-1.5 text-center text-xs">
+                  <div data-step-indicator="1" class="p-2 rounded-lg border border-white text-white bg-white/10 font-medium transition-all">
+                    1. Créer
+                  </div>
+                  <div data-step-indicator="2" class="p-2 rounded-lg border border-border text-muted-foreground transition-all">
+                    2. Pour qui
+                  </div>
+                  <div data-step-indicator="3" class="p-2 rounded-lg border border-border text-muted-foreground transition-all">
+                    3. Intention
+                  </div>
+                  <div data-step-indicator="4" class="p-2 rounded-lg border border-border text-muted-foreground transition-all">
+                    4. Outils
+                  </div>
+                  <div data-step-indicator="5" class="p-2 rounded-lg border border-border text-muted-foreground transition-all">
+                    5. Contact
                   </div>
                 </div>
               </div>
 
-              <!-- Navigation Buttons -->
-              <div class="pt-6 border-t border-border flex items-center justify-between">
-                <button id="cfg-prev-btn" type="button" class="px-5 py-2.5 rounded-full border border-border text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/5 transition-all opacity-0 pointer-events-none">
-                  ← Étape précédente
-                </button>
+              <div id="cfg-form-wrapper" class="p-6 md:p-8 rounded-3xl bg-black border border-white/10 glow-card" data-animate>
 
-                <button id="cfg-next-btn" type="button" class="px-6 py-3 rounded-full bg-white text-xs font-semibold text-black hover:bg-white/90 transition-all glow-subtle">
-                  Étape suivante →
-                </button>
+                <!-- ÉTAPE 1 : Qu'aimeriez-vous créer ? -->
+                <div data-step-content="1" class="space-y-6">
+                  <div>
+                    <p class="text-xs font-mono text-muted-foreground uppercase">Étape 01 • L'Événement</p>
+                    <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Qu'aimeriez-vous créer ?</h2>
+                    <p class="text-xs text-muted-foreground mt-1">Sélectionnez la nature de votre moment singulier :</p>
+                  </div>
+
+                  <div class="space-y-2.5">
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                      <div class="flex items-center gap-3">
+                        <input type="radio" name="event-type" value="mariage" checked class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                        <span class="text-sm font-medium text-white">Mariage</span>
+                      </div>
+                      <span class="text-xs text-pink-300 font-mono">Amour</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                      <div class="flex items-center gap-3">
+                        <input type="radio" name="event-type" value="ceremonie" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                        <span class="text-sm font-medium text-white">Cérémonie d'adieu / Hommage</span>
+                      </div>
+                      <span class="text-xs text-amber-300 font-mono">Mémoire</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                      <div class="flex items-center gap-3">
+                        <input type="radio" name="event-type" value="anniversaire" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                        <span class="text-sm font-medium text-white">Anniversaire & Cap de vie</span>
+                      </div>
+                      <span class="text-xs text-cyan-300 font-mono">Célébration</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                      <div class="flex items-center gap-3">
+                        <input type="radio" name="event-type" value="evenement" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                        <span class="text-sm font-medium text-white">Événement culturel</span>
+                      </div>
+                      <span class="text-xs text-violet-300 font-mono">Culture</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                      <div class="flex items-center gap-3">
+                        <input type="radio" name="event-type" value="festival" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                        <span class="text-sm font-medium text-white">Festival & Grand rassemblement</span>
+                      </div>
+                      <span class="text-xs text-purple-300 font-mono">Festival</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                      <div class="flex items-center gap-3">
+                        <input type="radio" name="event-type" value="artistique" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                        <span class="text-sm font-medium text-white">Projet artistique & Performance</span>
+                      </div>
+                      <span class="text-xs text-emerald-300 font-mono">Art</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                      <div class="flex items-center gap-3">
+                        <input type="radio" name="event-type" value="association" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                        <span class="text-sm font-medium text-white">Association & Cause solidaire</span>
+                      </div>
+                      <span class="text-xs text-blue-300 font-mono">Cause</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                      <div class="flex items-center gap-3">
+                        <input type="radio" name="event-type" value="professionnel" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                        <span class="text-sm font-medium text-white">Projet professionnel & Lancement</span>
+                      </div>
+                      <span class="text-xs text-orange-300 font-mono">Pro</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                      <div class="flex items-center gap-3">
+                        <input type="radio" name="event-type" value="autre" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                        <span class="text-sm font-medium text-white">Autre projet singulier</span>
+                      </div>
+                      <span class="text-xs text-gray-400 font-mono">Sur mesure</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                      <div class="flex items-center gap-3">
+                        <input type="radio" name="event-type" value="indecis" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                        <span class="text-sm font-medium text-white">Je ne sais pas encore</span>
+                      </div>
+                      <span class="text-xs text-muted-foreground font-mono">Exploration</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- ÉTAPE 2 : Pour qui ? -->
+                <div data-step-content="2" class="hidden space-y-6">
+                  <div>
+                    <p class="text-xs font-mono text-muted-foreground uppercase">Étape 02 • Le Public</p>
+                    <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Pour qui imaginez-vous ce mini-site ?</h2>
+                    <p class="text-xs text-muted-foreground mt-1">Précisez qui seront les visiteurs et participants privilégiés :</p>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                      <input type="radio" name="cfg-audience" value="Moi" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <span class="text-xs font-medium text-white">Moi</span>
+                    </label>
+                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                      <input type="radio" name="cfg-audience" value="Ma famille" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <span class="text-xs font-medium text-white">Ma famille</span>
+                    </label>
+                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                      <input type="radio" name="cfg-audience" value="Mes proches" checked class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <span class="text-xs font-medium text-white">Mes proches</span>
+                    </label>
+                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                      <input type="radio" name="cfg-audience" value="Une communauté" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <span class="text-xs font-medium text-white">Une communauté</span>
+                    </label>
+                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                      <input type="radio" name="cfg-audience" value="Une association" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <span class="text-xs font-medium text-white">Une association</span>
+                    </label>
+                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                      <input type="radio" name="cfg-audience" value="Une entreprise" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <span class="text-xs font-medium text-white">Une entreprise</span>
+                    </label>
+                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                      <input type="radio" name="cfg-audience" value="Un public" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <span class="text-xs font-medium text-white">Un public</span>
+                    </label>
+                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-3">
+                      <input type="radio" name="cfg-audience" value="Autre" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <span class="text-xs font-medium text-white">Autre</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- ÉTAPE 3 : Que voulez-vous faire vivre ? -->
+                <div data-step-content="3" class="hidden space-y-6">
+                  <div>
+                    <p class="text-xs font-mono text-muted-foreground uppercase">Étape 03 • L'Intention</p>
+                    <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Que voulez-vous faire vivre ?</h2>
+                    <p class="text-xs text-muted-foreground mt-1">Sélectionnez une ou plusieurs intentions majeures :</p>
+                  </div>
+
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                    <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                      <input type="checkbox" name="cfg-intentions" value="Organiser" checked class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                      <span>Organiser</span>
+                    </label>
+                    <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                      <input type="checkbox" name="cfg-intentions" value="Inviter" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                      <span>Inviter</span>
+                    </label>
+                    <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                      <input type="checkbox" name="cfg-intentions" value="Partager" checked class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                      <span>Partager</span>
+                    </label>
+                    <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                      <input type="checkbox" name="cfg-intentions" value="Rassembler" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                      <span>Rassembler</span>
+                    </label>
+                    <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                      <input type="checkbox" name="cfg-intentions" value="Émouvoir" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                      <span>Émouvoir</span>
+                    </label>
+                    <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                      <input type="checkbox" name="cfg-intentions" value="Informer" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                      <span>Informer</span>
+                    </label>
+                    <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                      <input type="checkbox" name="cfg-intentions" value="Créer des souvenirs" checked class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                      <span>Créer des souvenirs</span>
+                    </label>
+                    <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                      <input type="checkbox" name="cfg-intentions" value="Faire participer" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                      <span>Faire participer</span>
+                    </label>
+                    <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                      <input type="checkbox" name="cfg-intentions" value="Raconter une histoire" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                      <span>Raconter une histoire</span>
+                    </label>
+                    <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                      <input type="checkbox" name="cfg-intentions" value="Coordonner" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                      <span>Coordonner</span>
+                    </label>
+                    <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                      <input type="checkbox" name="cfg-intentions" value="Créer une expérience" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                      <span>Créer une expérience</span>
+                    </label>
+                    <label class="p-3 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer flex items-center gap-2.5 text-xs text-white">
+                      <input type="checkbox" name="cfg-intentions" value="Autre" class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
+                      <span>Autre</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- ÉTAPE 4 : Quels outils vous intéressent ? -->
+                <div data-step-content="4" class="hidden space-y-6">
+                  <div>
+                    <p class="text-xs font-mono text-muted-foreground uppercase">Étape 04 • Les Outils</p>
+                    <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Quels outils vous intéressent ?</h2>
+                    <p class="text-xs text-muted-foreground mt-1">Modules suggérés automatiquement avec score de pertinence :</p>
+                  </div>
+
+                  <div id="step4-tools-checkboxes" class="space-y-2.5">
+                    <!-- Injected by JavaScript dynamically with scoring -->
+                  </div>
+                </div>
+
+                <!-- ÉTAPE 5 : Niveau d'expérience & Contact réel -->
+                <div data-step-content="5" class="hidden space-y-6">
+                  <div>
+                    <p class="text-xs font-mono text-muted-foreground uppercase">Étape 05 • Niveau & Coordonnées</p>
+                    <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Quel niveau d'expérience imaginez-vous ?</h2>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
+                      <input type="radio" name="cfg-level" value="minimal" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <p class="text-xs font-bold text-white mt-1">MINIMAL</p>
+                      <p class="text-[11px] text-muted-foreground">Un mini-site élégant et soigné.</p>
+                    </label>
+                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
+                      <input type="radio" name="cfg-level" value="interactif" checked class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <p class="text-xs font-bold text-white mt-1">INTERACTIF</p>
+                      <p class="text-[11px] text-muted-foreground">Un mini-site avec outils et interactions.</p>
+                    </label>
+                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
+                      <input type="radio" name="cfg-level" value="immersif" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <p class="text-xs font-bold text-white mt-1">IMMERSIF</p>
+                      <p class="text-[11px] text-muted-foreground">Une véritable expérience numérique totale.</p>
+                    </label>
+                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
+                      <input type="radio" name="cfg-level" value="indecis" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <p class="text-xs font-bold text-white mt-1">JE NE SAIS PAS</p>
+                      <p class="text-[11px] text-muted-foreground">« Imaginez pour moi. »</p>
+                    </label>
+                  </div>
+
+                  <div class="pt-6 border-t border-white/10 space-y-4">
+                    <h3 class="text-base font-bold text-white">Vos coordonnées pour la transmission</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <label for="cfg-contact-first" class="block text-xs text-white mb-1">Prénom *</label>
+                        <input id="cfg-contact-first" type="text" required placeholder="Camille" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                      </div>
+                      <div>
+                        <label for="cfg-contact-last" class="block text-xs text-white mb-1">Nom</label>
+                        <input id="cfg-contact-last" type="text" placeholder="Dupont" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                      </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <label for="cfg-contact-email" class="block text-xs text-white mb-1">E-mail *</label>
+                        <input id="cfg-contact-email" type="email" required placeholder="camille@domaine.com" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                      </div>
+                      <div>
+                        <label for="cfg-contact-phone" class="block text-xs text-white mb-1">Téléphone (facultatif)</label>
+                        <input id="cfg-contact-phone" type="tel" placeholder="06 12 34 56 78" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                      </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <div>
+                        <label for="cfg-contact-projname" class="block text-xs text-white mb-1">Nom du projet</label>
+                        <input id="cfg-contact-projname" type="text" placeholder="Ex: Mariage C&A" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                      </div>
+                      <div>
+                        <label for="cfg-contact-date" class="block text-xs text-white mb-1">Date estimée</label>
+                        <input id="cfg-contact-date" type="text" placeholder="Ex: Été 2026" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                      </div>
+                      <div>
+                        <label for="cfg-contact-loc" class="block text-xs text-white mb-1">Localisation</label>
+                        <input id="cfg-contact-loc" type="text" placeholder="Ex: Provence / Paris" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                      </div>
+                    </div>
+
+                    <div>
+                      <label for="cfg-contact-message" class="block text-xs text-white mb-1">Message libre (optionnel)</label>
+                      <textarea id="cfg-contact-message" rows="2" placeholder="Précisez toute envie particulière..." class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white resize-y"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="pt-6 border-t border-border flex items-center justify-between">
+                  <button id="cfg-prev-btn" type="button" class="px-5 py-2.5 rounded-full border border-border text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/5 transition-all opacity-0 pointer-events-none">
+                    ← Étape précédente
+                  </button>
+
+                  <button id="cfg-next-btn" type="button" class="px-6 py-3 rounded-full bg-white text-xs font-semibold text-black hover:bg-white/90 transition-all glow-subtle">
+                    Étape suivante →
+                  </button>
+                </div>
+
               </div>
-
             </div>
 
             <!-- SUCCESS & READY TO SUBMIT WRAPPER -->
@@ -709,7 +856,6 @@
 
   <!-- ===== MODALE 3 : PREVIEW MODE (PROTOTYPE DU MINI-SITE) ===== -->
   <dialog id="modal-preview-experience" class="rounded-3xl bg-black text-foreground border border-white/20 shadow-2xl" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 54rem; max-height: 90vh; padding: 0; overflow: hidden; font-size: 1rem">
-    <!-- Top Preview Bar -->
     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1rem 1.5rem; background: rgba(255,255,255,0.03); flex-shrink: 0">
       <div class="flex items-center gap-2">
         <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -725,20 +871,15 @@
       </div>
     </div>
 
-    <!-- Mini-site Viewport -->
     <div style="overflow-y: auto; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 3rem">
-      <!-- Mini-site Header & Nav -->
       <div class="flex justify-between items-center border-b border-white/10 pb-4">
         <span class="text-sm font-bold text-white flex items-center gap-2">
           <svg width="20" height="14" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/></svg>
           <span id="prev-exp-title">Le Grand Jour</span>
         </span>
-        <div id="prev-exp-nav" class="flex gap-4">
-          <!-- Injected nav items -->
-        </div>
+        <div id="prev-exp-nav" class="flex gap-4"></div>
       </div>
 
-      <!-- Mini-site Hero -->
       <div class="text-center max-w-xl mx-auto space-y-3 py-6">
         <span class="text-[10px] uppercase font-mono px-3 py-1 rounded-full bg-white/10 text-white">Expérience en Direct</span>
         <h2 id="prev-exp-subtitle" class="text-2xl font-bold text-white">Un univers numérique poétique et vivant</h2>
@@ -748,7 +889,6 @@
         </div>
       </div>
 
-      <!-- Placeholder Interactive Timeline -->
       <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 space-y-3">
         <div class="flex justify-between items-center">
           <span class="text-xs font-bold text-white">Programme Interactif en Direct</span>
@@ -762,7 +902,6 @@
         </div>
       </div>
 
-      <!-- Placeholder Modules (Music, Gallery, Guestbook) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
         <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 space-y-2">
           <span class="font-bold text-white">🎵 Votre Musique ici</span>
@@ -781,7 +920,6 @@
         </div>
       </div>
 
-      <!-- Signature Interaction Showcase -->
       <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex justify-between items-center text-xs">
         <div>
           <span class="font-semibold text-white">Interaction Signature :</span>
@@ -805,9 +943,7 @@
         </button>
       </div>
     </div>
-    <div style="overflow-y: auto; padding: 2rem" id="recap-doc-container">
-      <!-- Injected by JS -->
-    </div>
+    <div style="overflow-y: auto; padding: 2rem" id="recap-doc-container"></div>
   </dialog>
 
   <!-- ===== Footer ===== -->
@@ -837,7 +973,7 @@
         <div>
           <p class="text-xs font-semibold uppercase tracking-wider text-white">Engagement</p>
           <ul class="mt-4 space-y-2.5 text-sm text-muted-foreground">
-            <li><a href="#soutien" class="hover:text-white transition-colors">Soutenir LE MONDE AIME</a></li>
+            <li><a href="/projet#soutien" class="hover:text-white transition-colors">Soutenir LE MONDE AIME</a></li>
             <li><button type="button" data-open-dialog="modal-legal" class="hover:text-white transition-colors text-left">Mentions légales & CGU</button></li>
             <li><button type="button" data-open-dialog="modal-privacy" class="hover:text-white transition-colors text-left">Confidentialité</button></li>
           </ul>
@@ -851,7 +987,7 @@
     </div>
   </footer>
 
-  <!-- Modals Légales & Confidentialité -->
+  <!-- Modals -->
   <dialog id="modal-legal" class="rounded-2xl bg-background text-foreground" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 3rem); max-width: 42rem; max-height: 80vh; padding: 0; overflow: hidden; border: none; font-size: 1rem">
     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2.5rem; flex-shrink: 0">
       <h2 style="font-size: 1.25rem; font-weight: 700">Mentions légales & Cadre d'Engagement</h2>

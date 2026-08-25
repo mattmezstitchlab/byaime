@@ -1,5 +1,5 @@
-/* ===== BYAIME — AIME Engine V1 (Stable) — main.js ===== */
-/* Core Experience Design Engine & UI Controller */
+/* ===== BYAIME — AIME Engine V1 + AIME INTENT Agent (Phase 5.0) — main.js ===== */
+/* Core Experience Design Engine, AIME INTENT AI Agent, Interactive Prototypes & UI Controller */
 
 (function () {
   'use strict';
@@ -8,7 +8,47 @@
   document.documentElement.classList.add('js');
 
   // =========================================================================
-  // 1. AIME ENGINE V1 — COUCHE LOGIQUE & MODÈLE CENTRAL
+  // 1. ANALYTICS & LOCAL STORAGE
+  // =========================================================================
+
+  window.trackBYAIME = function (eventName, eventData) {
+    var payload = {
+      event: eventName,
+      data: eventData || {},
+      timestamp: new Date().toISOString()
+    };
+    if (window.BYAIME_DEBUG) {
+      console.log('[BYAIME Analytics]', payload);
+    }
+    try {
+      window.dispatchEvent(new CustomEvent('byaime_event', { detail: payload }));
+    } catch (e) {}
+  };
+
+  var STORAGE_KEY = 'byaime_project_model_v2';
+  var BYAIME_Storage = {
+    save: function (model) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(model));
+      } catch (e) {}
+    },
+    load: function () {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        return null;
+      }
+    },
+    clear: function () {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch (e) {}
+    }
+  };
+
+  // =========================================================================
+  // 2. AIME ENGINE V1 — COUCHE LOGIQUE, MODULES & MODÈLE CENTRAL
   // =========================================================================
 
   var moduleRegistry = {
@@ -686,11 +726,11 @@
   };
 
   // =========================================================================
-  // 2. AIME ENGINE — MÉTHODES CENTRALES & CONTRATS ARCHITECTURAUX
+  // 3. AIME ENGINE — MÉTHODES CENTRALES & CONTRATS ARCHITECTURAUX
   // =========================================================================
 
   window.AIME_Engine = {
-    version: '1.0.0-stable',
+    version: '1.1.0-intent-ready',
     moduleRegistry: moduleRegistry,
     presets: defaultPresets,
 
@@ -756,14 +796,12 @@
 
       allKeys.forEach(function (modId) {
         var mod = moduleRegistry[modId];
-        var score = 30; // base score
+        var score = 30;
 
-        // Compatibilité événementielle
         if (mod.compatibleEvents.indexOf(eventType) !== -1) {
           score += 40;
         }
 
-        // Pertinence des intentions
         if (intentions.indexOf('Organiser') !== -1 && ['timeline', 'rsvp', 'tables', 'map', 'program'].indexOf(modId) !== -1) score += 20;
         if (intentions.indexOf('Émouvoir') !== -1 && ['guestbook', 'memories', 'music', 'audio', 'tributes', 'testimonials'].indexOf(modId) !== -1) score += 25;
         if (intentions.indexOf('Partager') !== -1 && ['gallery', 'music', 'guestbook', 'video'].indexOf(modId) !== -1) score += 20;
@@ -771,7 +809,6 @@
         if (intentions.indexOf('Rassembler') !== -1 && ['guests', 'map', 'donations', 'impact'].indexOf(modId) !== -1) score += 15;
         if (intentions.indexOf('Informer') !== -1 && ['program', 'map', 'providers', 'notifications', 'agenda'].indexOf(modId) !== -1) score += 20;
 
-        // Poids audience
         if (audience === 'Un public' || audience === 'Une communauté') {
           if (['agenda', 'artists', 'tickets', 'notifications', 'map'].indexOf(modId) !== -1) score += 15;
         }
@@ -779,7 +816,6 @@
           if (['guestbook', 'memories', 'gallery', 'tables', 'tributes'].indexOf(modId) !== -1) score += 15;
         }
 
-        // Poids niveau d'expérience
         if (level === 'immersif') {
           if (['music', 'audio', 'video', 'countdown', 'notifications', 'guestbook'].indexOf(modId) !== -1) score += 15;
         }
@@ -887,37 +923,99 @@
       };
     },
 
-    // Contrats & Stubs d'extension pour la future couche IA (Phase 5)
-    contracts: {
-      // Stub: Future Intent Agent parser (Raw text -> StructuredIntent)
-      parseStructuredIntent: function (rawTextInput) {
-        return {
-          eventType: 'mariage',
-          audience: 'Mes proches',
-          intentions: ['Organiser', 'Partager'],
-          atmosphere: 'poetique',
-          constraints: [],
-          desiredExperience: rawTextInput || ''
+    // Fusion propre d'un StructuredIntent dans projectModel (Règle HUMAIN > IA)
+    mergeStructuredIntentIntoProject: function (structuredIntent, existingProjectModel) {
+      existingProjectModel = existingProjectModel || this.createProjectModel();
+      var eventType = (structuredIntent.eventType && structuredIntent.eventType.value) ? structuredIntent.eventType.value : existingProjectModel.event.type;
+      var preset = defaultPresets[eventType] || defaultPresets.mariage;
+
+      var updated = Object.assign({}, existingProjectModel);
+      updated.event = Object.assign({}, existingProjectModel.event, {
+        type: eventType,
+        audience: (structuredIntent.audience && structuredIntent.audience.value) ? structuredIntent.audience.value : existingProjectModel.event.audience
+      });
+
+      if (Array.isArray(structuredIntent.intentions) && structuredIntent.intentions.length > 0) {
+        updated.intentions = structuredIntent.intentions.map(function (i) {
+          return typeof i === 'string' ? i : i.value;
+        }).filter(Boolean);
+      }
+
+      if (structuredIntent.experience) {
+        updated.experience = {
+          atmosphere: structuredIntent.experience.atmosphere || existingProjectModel.experience.atmosphere || 'poetique',
+          level: structuredIntent.experience.level || existingProjectModel.experience.level || 'interactif'
         };
-      },
-      // Stub: Future AI Proposal Applier
-      applyAIProposal: function (projectModel, aiProposal) {
-        if (!aiProposal) return projectModel;
-        var updated = Object.assign({}, projectModel);
-        if (aiProposal.title) updated.concept.title = aiProposal.title;
-        if (aiProposal.artDirection) updated.concept.artDirection = aiProposal.artDirection;
-        if (aiProposal.modules) updated.modules = aiProposal.modules.slice();
-        updated.updatedAt = new Date().toISOString();
-        return updated;
+      }
+
+      if (structuredIntent.summary) {
+        updated.concept.description = structuredIntent.summary;
+      }
+
+      // Recommandation intelligente des modules pour ce profil
+      var rec = this.recommendModules(updated);
+      var sortedKeys = Object.keys(rec.scores).filter(function (k) {
+        return moduleRegistry[k].compatibleEvents.indexOf(eventType) !== -1;
+      });
+      sortedKeys.sort(function (a, b) { return rec.scores[b] - rec.scores[a]; });
+
+      // Conserver les modules essentiels ayant un score élevé
+      updated.modules = sortedKeys.slice(0, 7);
+      updated.architecture.pages = preset.pages.slice();
+      updated.architecture.navigation = preset.pages.slice(0, 4);
+      updated.concept.title = preset.suggestedTitle;
+      updated.concept.subtitle = preset.subtitle;
+      updated.concept.signatureInteraction = preset.signatureInteraction;
+      updated.concept.artDirection = preset.artDirection;
+      updated.message = structuredIntent.rawIntent || existingProjectModel.message || '';
+      updated.updatedAt = new Date().toISOString();
+
+      return updated;
+    },
+
+    // Client pour appeler l'agent AIME INTENT (/api/aime-intent)
+    callAimeIntentAgent: async function (rawText) {
+      window.trackBYAIME('aime_intent_submitted', { length: (rawText || '').length });
+
+      try {
+        var response = await fetch('/api/aime-intent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: rawText })
+        });
+
+        var result = await response.json();
+
+        if (!response.ok || !result.success) {
+          window.trackBYAIME('aime_intent_failed', { error: result.error || 'HTTP_' + response.status });
+          return {
+            success: false,
+            error: result.error || 'SERVER_ERROR',
+            message: result.message || 'Le service AIME INTENT est temporairement indisponible.'
+          };
+        }
+
+        window.trackBYAIME('aime_intent_success', { eventType: (result.data.eventType || {}).value });
+        return {
+          success: true,
+          data: result.data
+        };
+      } catch (err) {
+        window.trackBYAIME('aime_intent_failed', { error: 'NETWORK_ERROR' });
+        return {
+          success: false,
+          error: 'NETWORK_ERROR',
+          message: 'Impossible de contacter le service AIME INTENT. Vérifiez votre connexion ou passez par le configurateur manuel.'
+        };
       }
     }
   };
 
-  // Exposer generateExperience globalement pour compatibilité
+  // Exposer generateExperience globalement
   window.generateExperience = window.AIME_Engine.generateExperience;
 
   // =========================================================================
-  // 3. UI ANIMATIONS & NAVIGATION COMMUNE
+  // 4. UI ANIMATIONS & CONTROLLERS (Navigation, Modales, Prototypes)
   // =========================================================================
 
   // Hero Ring Glow
@@ -1036,9 +1134,8 @@
     check();
   })();
 
-  // Mobile Menu & Modals
+  // Navigation, Scroll Animations & Modals
   document.addEventListener('DOMContentLoaded', function () {
-    // Mobile Nav
     var menuButton = document.getElementById('mobile-menu-button');
     var mobileMenu = document.getElementById('mobile-menu');
 
@@ -1072,7 +1169,7 @@
       });
     }
 
-    // Scroll Animations (IntersectionObserver)
+    // Scroll animations
     var animatedElements = document.querySelectorAll('[data-animate]');
     if (animatedElements.length && 'IntersectionObserver' in window) {
       var observer = new IntersectionObserver(function (entries) {
@@ -1118,12 +1215,9 @@
     });
   });
 
-  // =========================================================================
-  // 4. PROTOTYPES INTERACTIFS DE LA GALERIE (/projets & Accueil)
-  // =========================================================================
-
+  // Prototypes interactifs
   document.addEventListener('DOMContentLoaded', function () {
-    // 1. Timeline Interactive
+    // Timeline
     document.querySelectorAll('[data-interactive-timeline]').forEach(function (timeline) {
       var steps = timeline.querySelectorAll('[data-timeline-step]');
       var infoDisplay = timeline.querySelector('[data-timeline-info]');
@@ -1148,7 +1242,7 @@
       });
     });
 
-    // 2. Lecteur Audio Interactif
+    // Player
     document.querySelectorAll('[data-interactive-player]').forEach(function (player) {
       var playBtn = player.querySelector('[data-player-toggle]');
       var statusText = player.querySelector('[data-player-status]');
@@ -1171,7 +1265,7 @@
       }
     });
 
-    // 3. Recherche Invités & Table
+    // Guest lookup
     document.querySelectorAll('[data-guest-lookup]').forEach(function (widget) {
       var input = widget.querySelector('[data-guest-input]');
       var result = widget.querySelector('[data-guest-result]');
@@ -1202,7 +1296,7 @@
       }
     });
 
-    // 4. Bougie Mémorielle
+    // Candle
     document.querySelectorAll('[data-candle-widget]').forEach(function (widget) {
       var candleBtn = widget.querySelector('[data-candle-btn]');
       var countEl = widget.querySelector('[data-candle-count]');
@@ -1227,7 +1321,7 @@
       }
     });
 
-    // 5. Filtres Galerie Projets
+    // Projets filter
     var filterButtons = document.querySelectorAll('[data-filter-btn]');
     var projectCards = document.querySelectorAll('[data-project-category]');
 
@@ -1258,25 +1352,64 @@
   });
 
   // =========================================================================
-  // 5. CONTROLLER CONFIGURATEUR INTELLIGENT (/projet)
+  // 5. PAGE /projet — DEUX PARCOURS : AIME INTENT (IA) & CONFIGURATEUR
   // =========================================================================
 
   document.addEventListener('DOMContentLoaded', function () {
     var configContainer = document.getElementById('byaime-configurator');
     if (!configContainer) return;
 
-    // Initialiser le modèle central via la factory AIME Engine
+    // Modèle central de données
     var projectModel = window.AIME_Engine.createProjectModel();
     var currentStep = 1;
     var totalSteps = 5;
+    var activeIntentData = null;
 
-    // Détection du paramètre URL ?template=...
+    // Mode Toggle Elements (Mode 1: Configurer | Mode 2: Raconter mon idée)
+    var tabIntentBtn = document.getElementById('tab-mode-intent');
+    var tabManualBtn = document.getElementById('tab-mode-manual');
+    var sectionIntent = document.getElementById('section-aime-intent');
+    var sectionManual = document.getElementById('section-configurator-manual');
+
+    function switchMode(mode) {
+      if (mode === 'intent') {
+        if (tabIntentBtn) {
+          tabIntentBtn.classList.add('bg-white', 'text-black');
+          tabIntentBtn.classList.remove('bg-transparent', 'text-muted-foreground');
+        }
+        if (tabManualBtn) {
+          tabManualBtn.classList.remove('bg-white', 'text-black');
+          tabManualBtn.classList.add('bg-transparent', 'text-muted-foreground');
+        }
+        if (sectionIntent) sectionIntent.classList.remove('hidden');
+        if (sectionManual) sectionManual.classList.add('hidden');
+        window.trackBYAIME('aime_intent_started', {});
+      } else {
+        if (tabManualBtn) {
+          tabManualBtn.classList.add('bg-white', 'text-black');
+          tabManualBtn.classList.remove('bg-transparent', 'text-muted-foreground');
+        }
+        if (tabIntentBtn) {
+          tabIntentBtn.classList.remove('bg-white', 'text-black');
+          tabIntentBtn.classList.add('bg-transparent', 'text-muted-foreground');
+        }
+        if (sectionManual) sectionManual.classList.remove('hidden');
+        if (sectionIntent) sectionIntent.classList.add('hidden');
+        window.trackBYAIME('project_manual_mode_selected', {});
+      }
+    }
+
+    if (tabIntentBtn) tabIntentBtn.addEventListener('click', function () { switchMode('intent'); });
+    if (tabManualBtn) tabManualBtn.addEventListener('click', function () { switchMode('manual'); });
+
+    // Detection URL template
     var urlParams = new URLSearchParams(window.location.search);
     var templateParam = urlParams.get('template');
     if (templateParam && defaultPresets[templateParam]) {
       applyPresetToModel(templateParam);
+      switchMode('manual'); // direct template jumps directly to manual / customized view
     } else {
-      // Reprise éventuelle depuis localStorage
+      // LocalStorage Draft
       var savedDraft = BYAIME_Storage.load();
       if (savedDraft && savedDraft.event && savedDraft.event.type) {
         var resumeBanner = document.getElementById('cfg-resume-banner');
@@ -1291,6 +1424,7 @@
               syncModelToUI();
               resumeBanner.classList.add('hidden');
               recalculateLiveProposal();
+              switchMode('manual');
             });
           }
           if (restartBtn) {
@@ -1303,6 +1437,184 @@
       }
     }
 
+    // AIME INTENT — Formulaire & Événements
+    var intentInput = document.getElementById('aime-intent-input');
+    var intentSubmitBtn = document.getElementById('btn-submit-intent');
+    var intentLoading = document.getElementById('aime-intent-loading');
+    var intentErrorBox = document.getElementById('aime-intent-error');
+    var intentErrorMsg = document.getElementById('aime-intent-error-msg');
+    var intentValidationBox = document.getElementById('aime-intent-validation');
+
+    // Quick Inspiration Chips
+    document.querySelectorAll('[data-intent-example]').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var text = chip.getAttribute('data-intent-example');
+        if (intentInput) {
+          intentInput.value = text;
+          intentInput.focus();
+        }
+      });
+    });
+
+    if (intentSubmitBtn) {
+      intentSubmitBtn.addEventListener('click', async function () {
+        var text = intentInput ? intentInput.value.trim() : '';
+        if (!text) {
+          alert('Veuillez décrire en quelques mots ce que vous souhaitez faire vivre.');
+          if (intentInput) intentInput.focus();
+          return;
+        }
+
+        // Show loading state
+        if (intentLoading) intentLoading.classList.remove('hidden');
+        if (intentErrorBox) intentErrorBox.classList.add('hidden');
+        if (intentValidationBox) intentValidationBox.classList.add('hidden');
+        intentSubmitBtn.disabled = true;
+
+        var result = await window.AIME_Engine.callAimeIntentAgent(text);
+
+        if (intentLoading) intentLoading.classList.add('hidden');
+        intentSubmitBtn.disabled = false;
+
+        if (result.success && result.data) {
+          activeIntentData = result.data;
+          renderHumanValidationStep(result.data);
+        } else {
+          // Fallback state
+          if (intentErrorBox && intentErrorMsg) {
+            intentErrorMsg.textContent = result.message || 'Le service IA n\'a pas pu analyser votre texte pour le moment.';
+            intentErrorBox.classList.remove('hidden');
+          }
+        }
+      });
+    }
+
+    // Fallback switch to manual button
+    var fallbackManualBtn = document.getElementById('btn-fallback-manual');
+    if (fallbackManualBtn) {
+      fallbackManualBtn.addEventListener('click', function () {
+        if (intentInput && intentInput.value) {
+          projectModel.message = intentInput.value.trim();
+        }
+        window.trackBYAIME('aime_intent_manual_fallback', {});
+        switchMode('manual');
+      });
+    }
+
+    // Rendu de l'Étape de Validation Humaine ("Voilà ce que j'ai compris de votre projet")
+    function renderHumanValidationStep(data) {
+      if (!intentValidationBox) return;
+
+      var valSummary = document.getElementById('val-intent-summary');
+      var valType = document.getElementById('val-intent-type');
+      var valAudience = document.getElementById('val-intent-audience');
+      var valIntentions = document.getElementById('val-intent-intentions');
+      var valExperience = document.getElementById('val-intent-experience');
+      var valSignals = document.getElementById('val-intent-signals');
+      var valQuestionsContainer = document.getElementById('val-missing-questions');
+
+      if (valSummary) valSummary.textContent = data.summary || 'Votre intention a été analysée avec soin.';
+      if (valType) valType.textContent = (data.eventType && data.eventType.value) ? data.eventType.value.toUpperCase() : 'SUR MESURE';
+      if (valAudience) valAudience.textContent = (data.audience && data.audience.value) ? data.audience.value : 'Mes proches';
+
+      if (valIntentions) {
+        valIntentions.innerHTML = '';
+        (data.intentions || []).forEach(function (intItem) {
+          var span = document.createElement('span');
+          span.className = 'px-2.5 py-1 rounded-full bg-white/10 text-white font-medium text-xs border border-white/10';
+          span.textContent = intItem.value || intItem;
+          valIntentions.appendChild(span);
+        });
+      }
+
+      if (valExperience) {
+        var atmo = (data.experience && data.experience.atmosphere) ? data.experience.atmosphere : 'poetique';
+        var lvl = (data.experience && data.experience.level) ? data.experience.level : 'interactif';
+        valExperience.innerHTML = '<span class="px-2.5 py-1 rounded-full bg-white/10 text-pink-300 font-mono text-xs">' + atmo + '</span>' +
+          '<span class="px-2.5 py-1 rounded-full bg-white/10 text-emerald-300 font-mono text-xs">' + lvl + '</span>';
+      }
+
+      if (valSignals) {
+        valSignals.innerHTML = '';
+        var signalsList = (data.signals || []).concat(data.constraints || []);
+        if (signalsList.length === 0) {
+          valSignals.innerHTML = '<span class="text-xs text-muted-foreground italic">Aucune contrainte particulière signalée.</span>';
+        } else {
+          signalsList.forEach(function (sig) {
+            var chip = document.createElement('span');
+            chip.className = 'text-[11px] px-2 py-0.5 rounded bg-white/5 text-gray-300';
+            chip.textContent = '• ' + sig;
+            valSignals.appendChild(chip);
+          });
+        }
+      }
+
+      if (valQuestionsContainer) {
+        valQuestionsContainer.innerHTML = '';
+        if (Array.isArray(data.missingInformation) && data.missingInformation.length > 0) {
+          data.missingInformation.forEach(function (q, idx) {
+            var div = document.createElement('div');
+            div.className = 'space-y-1 text-xs';
+            div.innerHTML = '<label class="block text-white font-medium">' + q.question + '</label>' +
+              '<input type="text" data-extra-q="' + idx + '" placeholder="Votre réponse (optionnel)..." class="w-full text-xs rounded-xl border border-border bg-black px-3 py-2 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-white">';
+            valQuestionsContainer.appendChild(div);
+          });
+          valQuestionsContainer.classList.remove('hidden');
+        } else {
+          valQuestionsContainer.classList.add('hidden');
+        }
+      }
+
+      intentValidationBox.classList.remove('hidden');
+      intentValidationBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Action 1: "Oui, c'est bien ça" -> Merge & Generate
+    var btnValidateIntent = document.getElementById('btn-validate-intent-yes');
+    if (btnValidateIntent) {
+      btnValidateIntent.addEventListener('click', function () {
+        if (!activeIntentData) return;
+
+        // Collect optional questions
+        var extraAnswers = [];
+        if (intentValidationBox) {
+          intentValidationBox.querySelectorAll('input[data-extra-q]').forEach(function (inp) {
+            if (inp.value.trim()) extraAnswers.push(inp.value.trim());
+          });
+        }
+        if (extraAnswers.length > 0) {
+          activeIntentData.rawIntent = (activeIntentData.rawIntent || '') + '\nPrécisions : ' + extraAnswers.join(', ');
+        }
+
+        // Merge into projectModel
+        projectModel = window.AIME_Engine.mergeStructuredIntentIntoProject(activeIntentData, projectModel);
+        syncModelToUI();
+        recalculateLiveProposal();
+
+        window.trackBYAIME('aime_intent_validated', { type: projectModel.event.type });
+
+        // Switch smoothly to manual customized view and scroll to proposal
+        switchMode('manual');
+        goToStep(5); // Jump directly to the final summary & contact step
+      });
+    }
+
+    // Action 2: "Modifier" -> Pre-fill manual configurator
+    var btnModifyIntent = document.getElementById('btn-modify-intent');
+    if (btnModifyIntent) {
+      btnModifyIntent.addEventListener('click', function () {
+        if (activeIntentData) {
+          projectModel = window.AIME_Engine.mergeStructuredIntentIntoProject(activeIntentData, projectModel);
+          syncModelToUI();
+          recalculateLiveProposal();
+        }
+        window.trackBYAIME('aime_intent_modified', {});
+        switchMode('manual');
+        goToStep(1);
+      });
+    }
+
+    // Manuel Configurator Handlers
     function applyPresetToModel(presetKey) {
       var preset = defaultPresets[presetKey] || defaultPresets.mariage;
       projectModel.event.type = preset.type;
@@ -1318,28 +1630,6 @@
       syncModelToUI();
     }
 
-    function syncModelToUI() {
-      var radioType = configContainer.querySelector('input[name="event-type"][value="' + projectModel.event.type + '"]');
-      if (radioType) radioType.checked = true;
-
-      var radioAud = configContainer.querySelector('input[name="cfg-audience"][value="' + projectModel.event.audience + '"]');
-      if (radioAud) radioAud.checked = true;
-
-      configContainer.querySelectorAll('input[name="cfg-intentions"]').forEach(function (cb) {
-        cb.checked = (projectModel.intentions || []).indexOf(cb.value) !== -1;
-      });
-
-      var radioLevel = configContainer.querySelector('input[name="cfg-level"][value="' + projectModel.experience.level + '"]');
-      if (radioLevel) radioLevel.checked = true;
-
-      var ambSelect = document.getElementById('synth-ambiance-select');
-      if (ambSelect) ambSelect.value = projectModel.experience.atmosphere || 'poetique';
-
-      var lvlSelect = document.getElementById('synth-level-select');
-      if (lvlSelect) lvlSelect.value = projectModel.experience.level || 'interactif';
-    }
-
-    // Recalcul de la Live Proposal V2
     function recalculateLiveProposal() {
       var preset = defaultPresets[projectModel.event.type] || defaultPresets.mariage;
 
@@ -1362,7 +1652,6 @@
       if (synthArtDesc) synthArtDesc.textContent = projectModel.concept.artDirection || preset.artDirection;
       if (synthSignature) synthSignature.textContent = projectModel.concept.signatureInteraction || preset.signatureInteraction;
 
-      // Architecture
       if (synthArchList) {
         synthArchList.innerHTML = '';
         (projectModel.architecture.pages || preset.pages).forEach(function (pageName) {
@@ -1373,7 +1662,6 @@
         });
       }
 
-      // Modules Actifs (Cliquables vers l'inspecteur)
       if (synthActiveModules) {
         synthActiveModules.innerHTML = '';
         projectModel.modules.forEach(function (mId) {
@@ -1400,7 +1688,6 @@
         });
       }
 
-      // Modules Disponibles via le moteur de scoring
       if (synthAddModules) {
         synthAddModules.innerHTML = '';
         var recommendation = window.AIME_Engine.recommendModules(projectModel);
@@ -1434,12 +1721,10 @@
         }
       }
 
-      // Sauvegarde dans localStorage
       projectModel.updatedAt = new Date().toISOString();
       BYAIME_Storage.save(projectModel);
     }
 
-    // Inspecteur de Module (Dialog)
     function openModuleInspector(mod, isCurrentlyActive) {
       var dialog = document.getElementById('modal-module-inspector');
       if (!dialog) return;
@@ -1480,7 +1765,6 @@
       dialog.showModal();
     }
 
-    // Étape 4 Checkboxes avec scores
     function renderStep4Checkboxes() {
       var container = document.getElementById('step4-tools-checkboxes');
       if (!container) return;
@@ -1519,7 +1803,6 @@
       });
     }
 
-    // Navigation des étapes
     function goToStep(targetStep) {
       if (targetStep < 1 || targetStep > totalSteps) return;
       currentStep = targetStep;
@@ -1576,7 +1859,6 @@
       configContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // Listeners des choix
     configContainer.querySelectorAll('input[name="event-type"]').forEach(function (radio) {
       radio.addEventListener('change', function () {
         applyPresetToModel(radio.value);
@@ -1732,7 +2014,6 @@
       });
     }
 
-    // Soumission & Génération du Cahier des charges
     function submitProjectWorkflow() {
       var fn = (document.getElementById('cfg-contact-first') || {}).value || '';
       var ln = (document.getElementById('cfg-contact-last') || {}).value || '';
@@ -1867,7 +2148,6 @@
 
     // Initialisation
     recalculateLiveProposal();
-    window.trackBYAIME('project_started', {});
   });
 
   // =========================================================================
