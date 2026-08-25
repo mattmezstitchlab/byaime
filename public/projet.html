@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Imaginer mon projet — Configurateur d'Univers Numérique | BYAIME</title>
+  <title>Imaginer mon projet — Moteur de Conception AIME | BYAIME</title>
   <meta name="description" content="Définissez en quelques étapes l'univers numérique sur mesure de votre événement. Moteur de suggestion conceptuelle en temps réel et transmission directe à Matt Mez.">
 
   <!-- Favicon -->
@@ -13,7 +13,7 @@
   <link rel="manifest" href="/manifest.json">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Imaginer mon projet — Configurateur d'Univers Numérique | BYAIME">
+  <meta property="og:title" content="Imaginer mon projet — Moteur de Conception AIME | BYAIME">
   <meta property="og:description" content="Configurez l'univers numérique sur mesure de votre événement avec Matt Mez. Prévisualisation conceptuelle interactive en direct.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://example.com/projet">
@@ -23,8 +23,8 @@
   <link rel="stylesheet" href="/css/styles.css">
   <style>
     dialog[open] { display: flex; flex-direction: column; animation: modal-in 0.25s ease-out; }
-    dialog::backdrop { background: rgba(0,0,0,0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); animation: backdrop-in 0.25s ease-out; }
-    @keyframes modal-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    dialog::backdrop { background: rgba(0,0,0,0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); animation: backdrop-in 0.25s ease-out; }
+    @keyframes modal-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
     @keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
   </style>
   <script src="/js/main.js" defer></script>
@@ -79,14 +79,14 @@
         <div class="max-w-3xl" data-animate>
           <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium tracking-wide mb-6 bg-white/[0.03]">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            Moteur AIME • Configurateur Conversationnel de Projet
+            Moteur AIME • Studio de Conception
           </span>
           <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-white leading-[1.15]">
             Donnons vie à l'univers numérique <br class="hidden sm:inline">
             <span class="text-gradient">de votre événement.</span>
           </h1>
           <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
-            Parcourez 5 étapes simples et rapides. Notre moteur génère en direct une proposition conceptuelle sur mesure, que vous pouvez ajuster en temps réel avant de la transmettre à Matt Mez.
+            Parcourez 5 étapes simples. Notre moteur génère en temps réel une proposition conceptuelle sur mesure, personnalisable en direct avant de produire votre cahier des charges.
           </p>
         </div>
       </div>
@@ -350,11 +350,11 @@
                 <div>
                   <p class="text-xs font-mono text-muted-foreground uppercase">Étape 04 • Les Outils</p>
                   <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Quels outils vous intéressent ?</h2>
-                  <p class="text-xs text-muted-foreground mt-1">Modules suggérés automatiquement selon vos choix (cochage libre) :</p>
+                  <p class="text-xs text-muted-foreground mt-1">Modules suggérés automatiquement avec score de pertinence :</p>
                 </div>
 
                 <div id="step4-tools-checkboxes" class="space-y-2.5">
-                  <!-- Injected by JavaScript dynamically -->
+                  <!-- Injected by JavaScript dynamically with scoring -->
                 </div>
               </div>
 
@@ -399,8 +399,8 @@
                       <input id="cfg-contact-first" type="text" required placeholder="Camille" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
                     </div>
                     <div>
-                      <label for="cfg-contact-last" class="block text-xs text-white mb-1">Nom *</label>
-                      <input id="cfg-contact-last" type="text" required placeholder="Dupont" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                      <label for="cfg-contact-last" class="block text-xs text-white mb-1">Nom</label>
+                      <input id="cfg-contact-last" type="text" placeholder="Dupont" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
                     </div>
                   </div>
 
@@ -434,11 +434,6 @@
                     <label for="cfg-contact-message" class="block text-xs text-white mb-1">Message libre (optionnel)</label>
                     <textarea id="cfg-contact-message" rows="2" placeholder="Précisez toute envie particulière..." class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white resize-y"></textarea>
                   </div>
-
-                  <label class="flex items-center gap-2.5 text-xs text-white cursor-pointer pt-1">
-                    <input id="cfg-contact-callback" type="checkbox" checked class="rounded border-border text-white focus:ring-white bg-black h-4 w-4">
-                    <span>Je souhaite être recontacté(e) par Matt Mez pour échanger sur ce projet.</span>
-                  </label>
                 </div>
               </div>
 
@@ -475,15 +470,18 @@
 
               <div class="space-y-3 pt-2">
                 <a id="conf-mailto-link" href="#" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
-                  ✉️ Envoyer les spécifications par E-mail à Matt Mez →
+                  ✉️ Ouvrir mon application e-mail pour transmettre à Matt Mez →
                 </a>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <button id="conf-open-recap-btn" type="button" class="w-full py-2.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
+                    📄 Voir le cahier des charges
+                  </button>
                   <button id="conf-copy-btn" type="button" class="w-full py-2.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
-                    Copier la synthèse complète
+                    Copier la synthèse
                   </button>
                   <button id="conf-download-btn" type="button" class="w-full py-2.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
-                    Télécharger la configuration JSON
+                    Télécharger JSON
                   </button>
                 </div>
               </div>
@@ -494,60 +492,64 @@
           <!-- Right Column: Live Suggestion Proposal & Customizer Studio -->
           <div class="lg:col-span-5 sticky top-28 space-y-6">
             
-            <!-- Live Synthesis Card -->
+            <!-- Live Synthesis Card (Fiche Projet V2) -->
             <div class="rounded-3xl bg-zinc-950 p-6 md:p-8 border border-white/10 shadow-2xl relative overflow-hidden space-y-6" data-animate data-delay="1">
               <div class="absolute top-0 right-0 p-4 opacity-15 pointer-events-none">
                 <svg width="60" height="40" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1"/></svg>
               </div>
 
-              <!-- Header -->
+              <!-- Header & Concept Title -->
               <div>
                 <span id="synth-project-badge" class="inline-block rounded-full bg-white/10 px-3 py-1 text-[10px] font-mono text-white mb-2">
                   Univers Amour & Célébration
                 </span>
-                <p class="text-[11px] uppercase tracking-wider text-muted-foreground">Voici ce que BYAIME imagine pour vous :</p>
+                <p class="text-[10px] uppercase tracking-wider text-muted-foreground">Voici ce que BYAIME imagine pour vous :</p>
                 <h3 id="synth-project-title" class="text-xl font-bold text-white tracking-tight mt-1">
                   Le Grand Jour — L'expérience vivante
                 </h3>
+                <p id="synth-intent-summary" class="text-xs text-pink-300 font-mono mt-1">
+                  Pour mes proches • Organiser, Partager, Créer des souvenirs
+                </p>
               </div>
 
-              <!-- Live Adjusters (Ambiance & Level) -->
-              <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
-                <p class="text-[11px] font-semibold text-white">Personnaliser en direct :</p>
-                
-                <div class="grid grid-cols-2 gap-2">
-                  <div>
-                    <label for="synth-ambiance-select" class="block text-[10px] text-muted-foreground mb-1">Ambiance :</label>
-                    <select id="synth-ambiance-select" class="w-full text-xs rounded-lg border border-border bg-black text-white p-1.5 focus:outline-none">
-                      <option value="poetique">Poétique</option>
-                      <option value="minimaliste">Minimaliste</option>
-                      <option value="cinematique">Cinématique</option>
-                      <option value="vibrante">Vibrante</option>
-                      <option value="elegante">Élégante</option>
-                      <option value="libre">Libre</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label for="synth-level-select" class="block text-[10px] text-muted-foreground mb-1">Niveau :</label>
-                    <select id="synth-level-select" class="w-full text-xs rounded-lg border border-border bg-black text-white p-1.5 focus:outline-none">
-                      <option value="minimal">Minimal</option>
-                      <option value="interactif" selected>Interactif</option>
-                      <option value="immersif">Immersif</option>
-                      <option value="indecis">Sur mesure</option>
-                    </select>
-                  </div>
-                </div>
-
-                <p id="synth-art-desc" class="text-[11px] text-muted-foreground italic leading-relaxed pt-1">
+              <!-- Experience & Art Direction -->
+              <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2.5">
+                <p class="text-[11px] font-semibold text-white">Expérience & Direction :</p>
+                <p id="synth-exp-desc" class="text-xs text-muted-foreground leading-relaxed">
+                  Un sanctuaire intime sous un ciel étoilé interactif avec synchronisation du jour J et boîte à souvenirs audio.
+                </p>
+                <p id="synth-art-desc" class="text-[11px] text-gray-400 italic leading-relaxed pt-1 border-t border-white/5">
                   Tons chauds, typographie raffinée, constellation céleste interactive, ambiance sonore douce.
                 </p>
               </div>
 
-              <!-- Active Modules with Removal (×) -->
-              <div class="space-y-2">
-                <div class="flex items-center justify-between">
-                  <p class="text-[11px] font-semibold text-white">Modules Actifs (Cliquez sur × pour retirer) :</p>
+              <!-- Quick Modifiers (Ambiance & Level) -->
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label for="synth-ambiance-select" class="block text-[10px] text-muted-foreground mb-1">Ambiance :</label>
+                  <select id="synth-ambiance-select" class="w-full text-xs rounded-lg border border-border bg-black text-white p-1.5 focus:outline-none">
+                    <option value="poetique">Poétique</option>
+                    <option value="minimaliste">Minimaliste</option>
+                    <option value="cinematique">Cinématique</option>
+                    <option value="vibrante">Vibrante</option>
+                    <option value="elegante">Élégante</option>
+                    <option value="libre">Libre</option>
+                  </select>
                 </div>
+                <div>
+                  <label for="synth-level-select" class="block text-[10px] text-muted-foreground mb-1">Niveau :</label>
+                  <select id="synth-level-select" class="w-full text-xs rounded-lg border border-border bg-black text-white p-1.5 focus:outline-none">
+                    <option value="minimal">Minimal</option>
+                    <option value="interactif" selected>Interactif</option>
+                    <option value="immersif">Immersif</option>
+                    <option value="indecis">Sur mesure</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Active Clickable Modules with Inspector -->
+              <div class="space-y-2">
+                <p class="text-[11px] font-semibold text-white">Modules Actifs (Cliquez pour inspecter ou retirer) :</p>
                 <div id="synth-active-modules" class="flex flex-wrap gap-1.5">
                   <!-- Injected by JS -->
                 </div>
@@ -555,18 +557,10 @@
 
               <!-- Available Modules to Add (+) -->
               <div class="space-y-2 pt-2 border-t border-white/10">
-                <p class="text-[11px] font-semibold text-white">Ajouter d'autres modules suggérés :</p>
+                <p class="text-[11px] font-semibold text-white">Ajouter des modules recommandés :</p>
                 <div id="synth-available-modules" class="flex flex-wrap gap-1.5">
                   <!-- Injected by JS -->
                 </div>
-              </div>
-
-              <!-- Architecture list -->
-              <div class="space-y-2 pt-2 border-t border-white/10">
-                <p class="text-[11px] font-semibold text-white">Architecture Recommandée :</p>
-                <ul id="synth-arch-list" class="space-y-1">
-                  <!-- Injected by JS -->
-                </ul>
               </div>
 
               <!-- Signature Interaction -->
@@ -580,21 +574,25 @@
                 </p>
               </div>
 
+              <!-- Actions: Exploration Mode & Preview Mode -->
+              <div class="pt-2 border-t border-white/10 space-y-2">
+                <button id="btn-open-preview-mode" type="button" class="w-full py-2.5 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all flex items-center justify-center gap-2 glow-subtle">
+                  <span>👁️ Voir une première version (Prototype)</span>
+                </button>
+                <button id="btn-explore-alternatives" type="button" class="w-full py-2 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all flex items-center justify-center gap-1.5">
+                  <span>✦ Explorer d'autres idées</span>
+                </button>
+              </div>
+
             </div>
 
-            <!-- Summary Review Box -->
-            <div class="rounded-2xl bg-black p-5 border border-white/10 text-xs space-y-3">
-              <p class="font-bold text-white uppercase tracking-wider text-[10px]">Synthèse du Projet</p>
-              <div class="space-y-1.5 text-muted-foreground">
-                <p><strong class="text-white">Type :</strong> <span id="sum-type">Mariage</span></p>
-                <p><strong class="text-white">Public :</strong> <span id="sum-audience">Mes proches</span></p>
-                <p><strong class="text-white">Intention :</strong> <span id="sum-intentions">Organiser + Partager + Créer des souvenirs</span></p>
-                <p><strong class="text-white">Style :</strong> <span id="sum-ambiance">Poétique & Intimiste</span></p>
-                <p><strong class="text-white">Niveau :</strong> <span id="sum-level">Interactif</span></p>
-              </div>
-              <ul id="sum-modules-list" class="space-y-1 pt-2 border-t border-white/10">
-                <!-- Modules list -->
-              </ul>
+            <!-- Section Éditoriale Démonstration d'AIME -->
+            <div class="rounded-2xl bg-black p-5 border border-white/10 text-xs space-y-2.5">
+              <span class="text-[10px] font-mono uppercase text-emerald-400">Démonstration AIME</span>
+              <h4 class="text-xs font-bold text-white">Ce que vous voyez est déjà une démonstration d'AIME</h4>
+              <p class="text-[11px] text-muted-foreground leading-relaxed">
+                AIME ne commence pas par un template. AIME commence par une intention. Il cherche à comprendre ce que vous voulez faire vivre, puis construit progressivement une expérience sur mesure autour de cette intention.
+              </p>
             </div>
 
           </div>
@@ -665,6 +663,153 @@
 
   </main>
 
+  <!-- ===== MODALE 1 : INSPECTEUR DE MODULE ===== -->
+  <dialog id="modal-module-inspector" class="rounded-3xl bg-zinc-950 text-foreground border border-white/10" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 32rem; max-height: 80vh; padding: 0; overflow: hidden; font-size: 1rem">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.25rem 1.75rem; flex-shrink: 0">
+      <div>
+        <span id="insp-mod-cat" class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white">Module BYAIME</span>
+        <h3 id="insp-mod-title" class="text-base font-bold text-white mt-1">Timeline du Jour J</h3>
+      </div>
+      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
+        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div style="overflow-y: auto; padding: 1.5rem 1.75rem; display: flex; flex-direction: column; gap: 1.25rem">
+      <div>
+        <p class="text-[10px] uppercase font-semibold text-muted-foreground">Description :</p>
+        <p id="insp-mod-desc" class="text-xs text-white mt-0.5 leading-relaxed"></p>
+      </div>
+      <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+        <p class="text-[10px] uppercase font-semibold text-emerald-400">Pourquoi BYAIME le recommande :</p>
+        <p id="insp-mod-why" class="text-xs text-muted-foreground mt-0.5 leading-relaxed"></p>
+      </div>
+      <div class="pt-2">
+        <button id="insp-mod-toggle-btn" type="button" class="w-full py-2.5 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all">
+          Modifier
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ===== MODALE 2 : MODE EXPLORATION (3 ALTERNATIVES) ===== -->
+  <dialog id="modal-explore-alternatives" class="rounded-3xl bg-zinc-950 text-foreground border border-white/10" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 46rem; max-height: 85vh; padding: 0; overflow: hidden; font-size: 1rem">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2rem; flex-shrink: 0">
+      <div>
+        <span class="text-[10px] font-mono text-emerald-400 uppercase">Moteur de Déclinaisons AIME</span>
+        <h3 class="text-lg font-bold text-white mt-0.5">Explorer d'autres idées conceptuelles</h3>
+      </div>
+      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
+        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div style="overflow-y: auto; padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 1rem" id="explore-alternatives-container">
+      <!-- Injected by JS (3 Alternatives) -->
+    </div>
+  </dialog>
+
+  <!-- ===== MODALE 3 : PREVIEW MODE (PROTOTYPE DU MINI-SITE) ===== -->
+  <dialog id="modal-preview-experience" class="rounded-3xl bg-black text-foreground border border-white/20 shadow-2xl" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 54rem; max-height: 90vh; padding: 0; overflow: hidden; font-size: 1rem">
+    <!-- Top Preview Bar -->
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1rem 1.5rem; background: rgba(255,255,255,0.03); flex-shrink: 0">
+      <div class="flex items-center gap-2">
+        <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-xs font-mono text-white">Prévisualisation Interactive du Mini-Site</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="btn-edit-from-preview" type="button" class="px-4 py-1.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
+          ✎ Modifier mon expérience
+        </button>
+        <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
+          <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mini-site Viewport -->
+    <div style="overflow-y: auto; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 3rem">
+      <!-- Mini-site Header & Nav -->
+      <div class="flex justify-between items-center border-b border-white/10 pb-4">
+        <span class="text-sm font-bold text-white flex items-center gap-2">
+          <svg width="20" height="14" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span id="prev-exp-title">Le Grand Jour</span>
+        </span>
+        <div id="prev-exp-nav" class="flex gap-4">
+          <!-- Injected nav items -->
+        </div>
+      </div>
+
+      <!-- Mini-site Hero -->
+      <div class="text-center max-w-xl mx-auto space-y-3 py-6">
+        <span class="text-[10px] uppercase font-mono px-3 py-1 rounded-full bg-white/10 text-white">Expérience en Direct</span>
+        <h2 id="prev-exp-subtitle" class="text-2xl font-bold text-white">Un univers numérique poétique et vivant</h2>
+        <p class="text-xs text-muted-foreground">Bienvenue dans l'espace interactif créé sur mesure pour cet événement singulier.</p>
+        <div class="pt-2">
+          <span class="inline-block px-4 py-2 rounded-full bg-white text-xs font-bold text-black">Confirmer ma présence (RSVP)</span>
+        </div>
+      </div>
+
+      <!-- Placeholder Interactive Timeline -->
+      <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 space-y-3">
+        <div class="flex justify-between items-center">
+          <span class="text-xs font-bold text-white">Programme Interactif en Direct</span>
+          <span class="text-[10px] text-emerald-400 font-mono">Synchronisé</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2 text-center text-xs">
+          <div class="p-2.5 rounded-lg bg-white/10 border border-white/20 text-white font-medium">11:00 • Début</div>
+          <div class="p-2.5 rounded-lg bg-white/5 text-muted-foreground">12:30 • Cocktail</div>
+          <div class="p-2.5 rounded-lg bg-white/5 text-muted-foreground">19:30 • Dîner</div>
+          <div class="p-2.5 rounded-lg bg-white/5 text-muted-foreground">22:30 • Soirée</div>
+        </div>
+      </div>
+
+      <!-- Placeholder Modules (Music, Gallery, Guestbook) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 space-y-2">
+          <span class="font-bold text-white">🎵 Votre Musique ici</span>
+          <p class="text-muted-foreground text-[11px]">Lecteur ambiant spatialisé diffusant votre sélection.</p>
+          <div class="p-2 rounded bg-white/5 text-[10px] font-mono text-gray-300">Track 01 — Ambiance Céleste</div>
+        </div>
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 space-y-2">
+          <span class="font-bold text-white">📸 Vos Photos ici</span>
+          <p class="text-muted-foreground text-[11px]">Galerie collaborative haute fidélité pour les invités.</p>
+          <div class="p-2 rounded bg-white/5 text-[10px] font-mono text-emerald-400">Dépôt live activé</div>
+        </div>
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 space-y-2">
+          <span class="font-bold text-white">🎙️ Vos Témoignages ici</span>
+          <p class="text-muted-foreground text-[11px]">Livre d'or vocal et messages des proches.</p>
+          <div class="p-2 rounded bg-white/5 text-[10px] font-mono text-gray-300">Enregistrement vocal 1-clic</div>
+        </div>
+      </div>
+
+      <!-- Signature Interaction Showcase -->
+      <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex justify-between items-center text-xs">
+        <div>
+          <span class="font-semibold text-white">Interaction Signature :</span>
+          <p id="prev-exp-signature" class="text-muted-foreground text-[11px] mt-0.5"></p>
+        </div>
+        <span class="text-emerald-400 font-mono text-xs">BYAIME Engine</span>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ===== MODALE 4 : CAHIER DES CHARGES OFFICIEL ===== -->
+  <dialog id="modal-cahier-des-charges" class="rounded-3xl bg-zinc-950 text-foreground border border-white/10" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 48rem; max-height: 85vh; padding: 0; overflow: hidden; font-size: 1rem">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.25rem 2rem; flex-shrink: 0">
+      <h3 class="text-base font-bold text-white">Cahier des Charges — Synthèse Officielle</h3>
+      <div class="flex items-center gap-2">
+        <button id="recap-print-btn" type="button" class="px-3.5 py-1.5 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all">
+          🖨️ Imprimer / PDF
+        </button>
+        <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
+          <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+    <div style="overflow-y: auto; padding: 2rem" id="recap-doc-container">
+      <!-- Injected by JS -->
+    </div>
+  </dialog>
+
   <!-- ===== Footer ===== -->
   <footer class="border-t border-border py-16 bg-black/60">
     <div class="mx-auto max-w-5xl px-6">
@@ -692,7 +837,7 @@
         <div>
           <p class="text-xs font-semibold uppercase tracking-wider text-white">Engagement</p>
           <ul class="mt-4 space-y-2.5 text-sm text-muted-foreground">
-            <li><a href="/projet#soutien" class="hover:text-white transition-colors">Soutenir LE MONDE AIME</a></li>
+            <li><a href="#soutien" class="hover:text-white transition-colors">Soutenir LE MONDE AIME</a></li>
             <li><button type="button" data-open-dialog="modal-legal" class="hover:text-white transition-colors text-left">Mentions légales & CGU</button></li>
             <li><button type="button" data-open-dialog="modal-privacy" class="hover:text-white transition-colors text-left">Confidentialité</button></li>
           </ul>
@@ -706,7 +851,7 @@
     </div>
   </footer>
 
-  <!-- Modals -->
+  <!-- Modals Légales & Confidentialité -->
   <dialog id="modal-legal" class="rounded-2xl bg-background text-foreground" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 3rem); max-width: 42rem; max-height: 80vh; padding: 0; overflow: hidden; border: none; font-size: 1rem">
     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2.5rem; flex-shrink: 0">
       <h2 style="font-size: 1.25rem; font-weight: 700">Mentions légales & Cadre d'Engagement</h2>
