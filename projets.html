@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="fr" style="scroll-behavior: smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie d'Expériences & Prototypes — BYAIME</title>
+  <meta name="description" content="Découvrez nos mini-sites, sanctuaires digitaux et scénographies interactives sur mesure pour mariages singuliers, cérémonies d'adieu, anniversaires et événements culturels.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><circle cx='12' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/><circle cx='20' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/></svg>">
+  <link rel="apple-touch-icon" href="img/og-image.png">
+  <link rel="canonical" href="https://example.com/projets">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Galerie d'Expériences & Prototypes — BYAIME">
+  <meta property="og:description" content="Explorez nos créations d'univers numériques sur mesure pour les événements et projets qui sortent des standards.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/projets">
+  <meta property="og:image" content="https://example.com/img/og-image.png">
+
+  <link rel="preload" href="/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    dialog[open] { display: flex; flex-direction: column; animation: modal-in 0.25s ease-out; }
+    dialog::backdrop { background: rgba(0,0,0,0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); animation: backdrop-in 0.25s ease-out; }
+    @keyframes modal-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    @keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+  <script src="/js/main.js" defer></script>
+</head>
+<body class="font-sans antialiased text-foreground bg-background">
+
+  <!-- Skip link -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md">
+    Aller au contenu principal
+  </a>
+
+  <!-- ===== Navigation ===== -->
+  <header id="main-header" class="sticky top-0 z-40 w-full bg-background/80 backdrop-blur-md transition-[border-color] duration-300" style="border-bottom: 1px solid transparent">
+    <nav id="main-nav" class="relative mx-auto flex max-w-5xl items-center justify-between px-6 pt-12 pb-0 transition-[padding] duration-300">
+      <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight">
+        <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1"/></svg>
+        BYAIME
+      </a>
+
+      <div class="hidden items-center gap-6 lg:gap-8 md:flex absolute left-1/2 -translate-x-1/2">
+        <a href="/" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Accueil</a>
+        <a href="/a-propos" class="text-sm text-muted-foreground hover:text-foreground transition-colors">À propos</a>
+        <a href="/projets" class="text-sm text-foreground font-medium transition-colors">Galerie d'expériences</a>
+        <a href="/projet" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Imaginer mon projet</a>
+      </div>
+
+      <a href="/projet" class="hidden md:inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-medium text-black hover:bg-white/90 transition-all glow-subtle">
+        Imaginer mon projet
+      </a>
+
+      <button id="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" class="flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors md:hidden">
+        <span class="sr-only">Ouvrir le menu</span>
+        <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" aria-hidden="true" class="hidden border-t border-border bg-background px-6 py-4 md:hidden">
+      <div class="flex flex-col gap-4">
+        <a href="/" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Accueil</a>
+        <a href="/a-propos" class="text-sm text-muted-foreground hover:text-foreground transition-colors">À propos</a>
+        <a href="/projets" class="text-sm text-foreground font-medium transition-colors">Galerie d'expériences</a>
+        <a href="/projet" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Imaginer mon projet</a>
+        <a href="/projet" class="mt-2 inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black">
+          Imaginer mon projet
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== Hero Galerie ===== -->
+    <section class="py-[calc(32px+5vh)]">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="max-w-3xl" data-animate>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium tracking-wide mb-6 bg-white/[0.03]">
+            Études de Cas & Prototypes
+          </span>
+          <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-white leading-[1.15]">
+            Des univers sculptés pour <br class="hidden sm:inline">
+            <span class="text-gradient">des événements hors standards.</span>
+          </h1>
+          <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
+            Chaque création BYAIME est pensée comme une scénographie numérique interactive complète. Découvrez ci-dessous les problèmes résolus, les concepts développés et les résultats concrets.
+          </p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="mt-10 flex flex-wrap gap-2.5 items-center pt-6 border-t border-border" data-animate data-delay="1">
+          <button type="button" data-filter-btn="all" class="rounded-full bg-white px-4 py-2 text-xs font-medium text-black transition-all">
+            Tous les univers
+          </button>
+          <button type="button" data-filter-btn="mariage" class="rounded-full bg-white/5 px-4 py-2 text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
+            Mariages singuliers
+          </button>
+          <button type="button" data-filter-btn="hommage" class="rounded-full bg-white/5 px-4 py-2 text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
+            Cérémonies & Hommages
+          </button>
+          <button type="button" data-filter-btn="anniversaire" class="rounded-full bg-white/5 px-4 py-2 text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
+            Anniversaires & Caps
+          </button>
+          <button type="button" data-filter-btn="culture" class="rounded-full bg-white/5 px-4 py-2 text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
+            Événements & Festivals
+          </button>
+          <button type="button" data-filter-btn="art" class="rounded-full bg-white/5 px-4 py-2 text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
+            Art & Performance
+          </button>
+          <button type="button" data-filter-btn="association" class="rounded-full bg-white/5 px-4 py-2 text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
+            Causes & Associations
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Les 6 Projets Immersifs ===== -->
+    <section class="py-12 border-t border-border">
+      <div class="mx-auto max-w-5xl px-6 space-y-24">
+
+        <!-- Projet 1 : Mariage Astral -->
+        <article class="p-8 md:p-12 rounded-3xl bg-black border border-white/10 glow-card" data-project-category="mariage" data-animate>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div class="lg:col-span-7 space-y-6">
+              <div class="flex items-center gap-3">
+                <span class="rounded-full border border-pink-500/30 bg-pink-500/10 px-3 py-1 text-xs text-pink-300 font-mono">Mariage Singulier</span>
+                <span class="text-xs text-muted-foreground">Création 2026</span>
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                « L'Astral & L'Intime » — L'Union sous les constellations
+              </h2>
+              
+              <div class="space-y-4 text-sm leading-relaxed text-muted-foreground">
+                <p><strong class="text-white">Le Problème :</strong> Les futurs mariés refusaient les sites de mariage génériques et commerciaux qui inondent les invités de bannières publicitaires et imposent des formulaires rigides.</p>
+                <p><strong class="text-white">L'Idée :</strong> Un sanctuaire numérique poétique en mode nuit, où chaque invité découvre son invitation personnalisée au cœur d'une carte céleste interactive animée.</p>
+                <p><strong class="text-white">L'Expérience :</strong> Timeline vivante mise à jour en direct pendant la journée, RSVP en 1 clic sans mot de passe, musique d'ambiance composée pour l'occasion, et boîte à souvenirs audio pour déposer des vœux vocaux.</p>
+                <p><strong class="text-white">Outils & Dispositifs imaginés :</strong> Ciel étoilé WebGL interactif, mini-lecteur audio spatial, plan de table animé, système de collecte photo haute fidélité avec modération douce.</p>
+                <p><strong class="text-emerald-400">Le Résultat :</strong> 100% des 140 invités ont utilisé la plateforme le soir même, 320 photos déposées et une archive interactive conservée à vie.</p>
+              </div>
+
+              <div class="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4">
+                <a href="/projet" class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs font-medium text-black hover:bg-white/90 transition-all">
+                  Imaginer un projet similaire →
+                </a>
+              </div>
+            </div>
+
+            <!-- UI Prototype Preview -->
+            <div class="lg:col-span-5">
+              <div class="rounded-2xl bg-zinc-950 p-5 border border-white/10 shadow-2xl space-y-4">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                  <div>
+                    <p class="text-xs font-semibold text-white">Claire & Antoine</p>
+                    <p class="text-[10px] text-pink-400 font-mono">12 Septembre • Domaine Céleste</p>
+                  </div>
+                  <span class="px-2 py-0.5 rounded bg-pink-500/20 text-pink-300 text-[10px]">RSVP Validé</span>
+                </div>
+                
+                <div class="p-3 rounded-xl bg-white/5 border border-white/5 space-y-2">
+                  <div class="flex justify-between text-xs text-white">
+                    <span>Programme du Jour J</span>
+                    <span class="text-pink-300 font-mono">18:30</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-[11px] text-muted-foreground">
+                    <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                    <span>Cérémonie Laïque sous la verrière</span>
+                  </div>
+                </div>
+
+                <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+                  <p class="text-[10px] text-muted-foreground mb-1">Ambiance Sonore du Couple</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-mono text-white flex items-center gap-2">
+                      <span class="flex gap-0.5 items-end h-3">
+                        <span class="w-0.5 bg-pink-400 bar-1"></span>
+                        <span class="w-0.5 bg-pink-400 bar-2"></span>
+                        <span class="w-0.5 bg-pink-400 bar-3"></span>
+                      </span>
+                      Nocturne N°2 — Mix Live
+                    </span>
+                    <span class="text-[10px] text-muted-foreground">03:45</span>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 text-center text-xs">
+                  <div class="p-2.5 rounded-lg bg-white/5">
+                    <p class="font-bold text-white">Table Orion</p>
+                    <p class="text-[10px] text-muted-foreground">Place N°4</p>
+                  </div>
+                  <div class="p-2.5 rounded-lg bg-white/5">
+                    <p class="font-bold text-white">Galerie Live</p>
+                    <p class="text-[10px] text-pink-300">Dépôt Ouvert</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projet 2 : Cérémonie d'Adieu -->
+        <article class="p-8 md:p-12 rounded-3xl bg-black border border-white/10 glow-card" data-project-category="hommage" data-animate>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div class="lg:col-span-7 space-y-6">
+              <div class="flex items-center gap-3">
+                <span class="rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs text-amber-300 font-mono">Cérémonie & Hommage</span>
+                <span class="text-xs text-muted-foreground">Création 2026</span>
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                « La Trace & Le Souvenir » — Mémorial et recueillement intime
+              </h2>
+              
+              <div class="space-y-4 text-sm leading-relaxed text-muted-foreground">
+                <p><strong class="text-white">Le Problème :</strong> Une famille souhaitait honorer la mémoire d'un grand-parent aimé dont les proches étaient dispersés sur trois continents, sans passer par les plateformes de pompes funèbres froides et marchandes.</p>
+                <p><strong class="text-white">L'Idée :</strong> Un espace de mémoire sobre, élégant et apaisant, conçu comme un livre de vie numérique où chaque mot et chaque souvenir trouvent une place sacrée.</p>
+                <p><strong class="text-white">L'Expérience :</strong> Retransmission sonore de la cérémonie en direct pour les proches éloignés, bougies virtuelles déposées avec des pensées personnelles, et recueil d'anecdotes familiales illustrées.</p>
+                <p><strong class="text-white">Outils & Dispositifs imaginés :</strong> Module de condoléances modéré avec douceur, lecteur d'enregistrements audio d'époque, génération d'un livret PDF haute définition relié pour les enfants.</p>
+                <p><strong class="text-emerald-400">Le Résultat :</strong> Plus de 350 personnes recueillies en simultané, 80 témoignages précieux sauvegardés et transmis aux générations futures.</p>
+              </div>
+
+              <div class="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4">
+                <a href="/projet" class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs font-medium text-black hover:bg-white/90 transition-all">
+                  Imaginer un projet similaire →
+                </a>
+              </div>
+            </div>
+
+            <!-- UI Prototype Preview -->
+            <div class="lg:col-span-5">
+              <div class="rounded-2xl bg-zinc-950 p-5 border border-white/10 shadow-2xl space-y-4">
+                <div class="text-center py-2 border-b border-white/10">
+                  <div class="inline-block h-3 w-3 rounded-full bg-amber-400/80 animate-pulse mb-2"></div>
+                  <p class="text-sm font-semibold text-white">En Mémoire de Henri (1942 — 2026)</p>
+                  <p class="text-[10px] text-muted-foreground font-mono">Espace de Recueillement Familial</p>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-white/5 border border-white/5 text-xs space-y-2">
+                  <p class="italic text-gray-300">« Son amour des grands espaces et sa bienveillance continueront d'éclairer nos pas. »</p>
+                  <p class="text-[10px] text-amber-300 text-right">— La famille & les petits-enfants</p>
+                </div>
+
+                <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 text-xs">
+                  <div>
+                    <p class="font-medium text-white">Cérémonie d'Adieu</p>
+                    <p class="text-[10px] text-muted-foreground">Retransmission Audio HD</p>
+                  </div>
+                  <span class="px-2 py-1 rounded bg-amber-500/20 text-amber-300 text-[10px] font-mono">Enregistrée</span>
+                </div>
+
+                <div class="p-3 rounded-xl bg-white/5 flex items-center justify-between text-xs">
+                  <span class="text-muted-foreground">Bougies allumées</span>
+                  <span class="text-white font-bold flex items-center gap-1.5">
+                    <span class="h-2 w-2 rounded-full bg-amber-400"></span>
+                    312 pensées déposées
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projet 3 : Anniversaire Capsule Temporelle -->
+        <article class="p-8 md:p-12 rounded-3xl bg-black border border-white/10 glow-card" data-project-category="anniversaire" data-animate>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div class="lg:col-span-7 space-y-6">
+              <div class="flex items-center gap-3">
+                <span class="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300 font-mono">Anniversaire & Célébration</span>
+                <span class="text-xs text-muted-foreground">Création 2026</span>
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                « Capsule Temporelle 40 » — L'Aventure des 40 ans
+              </h2>
+              
+              <div class="space-y-4 text-sm leading-relaxed text-muted-foreground">
+                <p><strong class="text-white">Le Problème :</strong> Un groupe d'amis organisait une fête surprise pour les 40 ans d'une amie et voulait créer une attente électrisante sans fuiter le lieu secret.</p>
+                <p><strong class="text-white">L'Idée :</strong> Un mini-site cinématique à énigmes, se déverrouillant par étapes chaque semaine menant au grand soir.</p>
+                <p><strong class="text-white">L'Expérience :</strong> Rétrospective interactive des 40 années avec photos d'enfance animées, compte à rebours immersif, dépôt secret de messages vidéos et playlist participative.</p>
+                <p><strong class="text-white">Outils & Dispositifs imaginés :</strong> Mécanisme de coffre-fort numérique, passerelle de cagnotte sans commission abusive, interface d'administration discrète pour les organisateurs.</p>
+                <p><strong class="text-emerald-400">Le Résultat :</strong> Une émulation extraordinaire parmi les 80 invités et une surprise totale le jour de la fête.</p>
+              </div>
+
+              <div class="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4">
+                <a href="/projet" class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs font-medium text-black hover:bg-white/90 transition-all">
+                  Imaginer un projet similaire →
+                </a>
+              </div>
+            </div>
+
+            <!-- UI Prototype Preview -->
+            <div class="lg:col-span-5">
+              <div class="rounded-2xl bg-zinc-950 p-5 border border-white/10 shadow-2xl space-y-4">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                  <span class="text-xs font-semibold text-white">Julie • 40 Ans</span>
+                  <span class="text-[10px] text-cyan-400 font-mono">J-7 avant révélation</span>
+                </div>
+
+                <div class="p-4 rounded-xl bg-white/5 border border-white/5 text-center">
+                  <p class="text-[10px] uppercase tracking-wider text-muted-foreground">Indice N°3 Débloqué</p>
+                  <p class="text-xs font-mono text-cyan-300 mt-1">« Entre les collines et la lumière dorée... »</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                  <div class="p-2.5 rounded-lg bg-white/5">
+                    <p class="text-[10px] text-muted-foreground">Vidéos secrètes</p>
+                    <p class="font-bold text-white">28 capsules</p>
+                  </div>
+                  <div class="p-2.5 rounded-lg bg-white/5">
+                    <p class="text-[10px] text-muted-foreground">Cagnotte commune</p>
+                    <p class="font-bold text-emerald-400">100% atteinte</p>
+                  </div>
+                </div>
+
+                <div class="p-2.5 rounded-lg bg-white/5 flex items-center justify-between text-xs">
+                  <span class="text-muted-foreground">Playlist collaborative</span>
+                  <span class="text-white font-mono">142 titres ajoutés</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projet 4 : Événement Culturel -->
+        <article class="p-8 md:p-12 rounded-3xl bg-black border border-white/10 glow-card" data-project-category="culture" data-animate>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div class="lg:col-span-7 space-y-6">
+              <div class="flex items-center gap-3">
+                <span class="rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs text-violet-300 font-mono">Festival & Culture</span>
+                <span class="text-xs text-muted-foreground">Création 2026</span>
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                « Pavillon Éphémère » — Scénographie numérique d'un festival
+              </h2>
+              
+              <div class="space-y-4 text-sm leading-relaxed text-muted-foreground">
+                <p><strong class="text-white">Le Problème :</strong> Les festivals d'art contemporain et de musique souffrent souvent d'applications mobiles lourdes que personne ne télécharge ou de sites web impraticables sur réseau mobile saturé.</p>
+                <p><strong class="text-white">L'Idée :</strong> Une Progressive Web App (PWA) ultra-rapide qui se charge en un clin d'œil et fonctionne même en mode hors-ligne complet.</p>
+                <p><strong class="text-white">L'Expérience :</strong> Programme dynamique mis à jour en direct, alertes discrètes pour les performances surprises, carte interactive des lieux et fiches d'artistes immersives.</p>
+                <p><strong class="text-white">Outils & Dispositifs imaginés :</strong> Carte vectorielle interactive ultra-légère, système de favoris hors-ligne, billetterie express intégrée.</p>
+                <p><strong class="text-emerald-400">Le Résultat :</strong> 8 500 festivaliers connectés, 0 crash serveur, temps de chargement moyen de 180 ms sur réseau saturé.</p>
+              </div>
+
+              <div class="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4">
+                <a href="/projet" class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs font-medium text-black hover:bg-white/90 transition-all">
+                  Imaginer un projet similaire →
+                </a>
+              </div>
+            </div>
+
+            <!-- UI Prototype Preview -->
+            <div class="lg:col-span-5">
+              <div class="rounded-2xl bg-zinc-950 p-5 border border-white/10 shadow-2xl space-y-4">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                  <span class="text-xs font-semibold text-white">Pavillon Numérique</span>
+                  <span class="text-[10px] text-violet-300 font-mono">Nuit Blanche 2026</span>
+                </div>
+
+                <div class="p-3 rounded-xl bg-white/5 border border-white/5 space-y-1.5">
+                  <div class="flex justify-between text-xs">
+                    <span class="text-white font-medium">Scène A • Agora</span>
+                    <span class="text-emerald-400 text-[10px]">En cours</span>
+                  </div>
+                  <p class="text-[11px] text-muted-foreground">Installation Sonore Réactive — Collectif Echo</p>
+                </div>
+
+                <div class="p-3 rounded-xl bg-white/5 border border-white/5 space-y-1.5">
+                  <div class="flex justify-between text-xs">
+                    <span class="text-white font-medium">Scène B • Cloître</span>
+                    <span class="text-muted-foreground text-[10px]">22:15</span>
+                  </div>
+                  <p class="text-[11px] text-muted-foreground">Projection Laser & Poésie Algorithmique</p>
+                </div>
+
+                <div class="flex justify-between items-center p-2.5 rounded-lg bg-white/5 text-[11px]">
+                  <span class="text-muted-foreground">Mode Hors-Ligne</span>
+                  <span class="text-emerald-400 font-semibold">Synchronisé</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projet 5 : Art & Performance -->
+        <article class="p-8 md:p-12 rounded-3xl bg-black border border-white/10 glow-card" data-project-category="art" data-animate>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div class="lg:col-span-7 space-y-6">
+              <div class="flex items-center gap-3">
+                <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-300 font-mono">Projet Artistique</span>
+                <span class="text-xs text-muted-foreground">Création 2026</span>
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                « Matière Première » — Galerie sensorielle en clair-obscur
+              </h2>
+              
+              <div class="space-y-4 text-sm leading-relaxed text-muted-foreground">
+                <p><strong class="text-white">Le Problème :</strong> Un sculpteur et plasticien voulait prolonger l'expérience de son exposition sans tomber dans la simple boutique en ligne ou le catalogue PDF figé.</p>
+                <p><strong class="text-white">L'Idée :</strong> Une scénographie numérique en clair-obscur réagissant au scroll, où chaque sculpture se dévoile par la lumière et la voix de l'artiste.</p>
+                <p><strong class="text-white">L'Expérience :</strong> Navigation sensorielle plein écran, sound design immersif, micro-podcasts explicatifs et prise de contact directe avec les collectionneurs.</p>
+                <p><strong class="text-white">Outils & Dispositifs imaginés :</strong> Canvas interactif réactif au curseur, lecture audio synchronisée, espace mécénat fluide.</p>
+                <p><strong class="text-emerald-400">Le Résultat :</strong> 12 œuvres acquises par des collectionneurs internationaux n'ayant pas pu se déplacer physiquement.</p>
+              </div>
+
+              <div class="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4">
+                <a href="/projet" class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs font-medium text-black hover:bg-white/90 transition-all">
+                  Imaginer un projet similaire →
+                </a>
+              </div>
+            </div>
+
+            <!-- UI Prototype Preview -->
+            <div class="lg:col-span-5">
+              <div class="rounded-2xl bg-zinc-950 p-5 border border-white/10 shadow-2xl space-y-4">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                  <span class="text-xs font-semibold text-white">Matière Première</span>
+                  <span class="text-[10px] text-emerald-400 font-mono">Pièce N°07</span>
+                </div>
+
+                <div class="p-6 rounded-xl bg-black border border-white/10 text-center relative overflow-hidden">
+                  <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-tr from-emerald-500/20 to-white/20 border border-white/20 flex items-center justify-center animate-pulse-subtle">
+                    <span class="text-xs font-mono text-white">3D</span>
+                  </div>
+                  <p class="text-xs font-medium text-white mt-3">« Résonance du Bronze »</p>
+                  <p class="text-[10px] text-muted-foreground">Fonte à la cire perdue, 2026</p>
+                </div>
+
+                <div class="p-2.5 rounded-lg bg-white/5 flex items-center justify-between text-xs">
+                  <span class="text-muted-foreground">Commentaire de l'artiste</span>
+                  <span class="text-emerald-400 font-mono">Écouter (01:42)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projet 6 : Cause & Association -->
+        <article class="p-8 md:p-12 rounded-3xl bg-black border border-white/10 glow-card" data-project-category="association" data-animate>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div class="lg:col-span-7 space-y-6">
+              <div class="flex items-center gap-3">
+                <span class="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs text-blue-300 font-mono">Cause & Association</span>
+                <span class="text-xs text-muted-foreground">Création 2026</span>
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                « Voix Libres » — Mobilisation & Récits vivants
+              </h2>
+              
+              <div class="space-y-4 text-sm leading-relaxed text-muted-foreground">
+                <p><strong class="text-white">Le Problème :</strong> Un collectif solidaire peinait à sensibiliser le grand public avec des formulaires d'adhésion austères et institutionnels.</p>
+                <p><strong class="text-white">L'Idée :</strong> Un storytelling immersif fondé sur les témoignages réels des bénéficiaires et une visualisation transparente de l'impact direct de chaque soutien.</p>
+                <p><strong class="text-white">L'Expérience :</strong> Récits interactifs à la première personne, infographies vivantes et module de soutien associatif sans intermédiaire bancaire superflu.</p>
+                <p><strong class="text-white">Outils & Dispositifs imaginés :</strong> Calculateur d'impact en temps réel, mur des contributeurs avec messages bienveillants.</p>
+                <p><strong class="text-emerald-400">Le Résultat :</strong> Taux d'engagement multiplié par 3, adhésions en hausse de 140% dès le premier mois.</p>
+              </div>
+
+              <div class="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4">
+                <a href="/projet" class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs font-medium text-black hover:bg-white/90 transition-all">
+                  Imaginer un projet similaire →
+                </a>
+              </div>
+            </div>
+
+            <!-- UI Prototype Preview -->
+            <div class="lg:col-span-5">
+              <div class="rounded-2xl bg-zinc-950 p-5 border border-white/10 shadow-2xl space-y-4">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                  <span class="text-xs font-semibold text-white">Voix Libres</span>
+                  <span class="text-[10px] text-blue-400 font-mono">Campagne 2026</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-white/5 border border-white/5 space-y-2">
+                  <div class="flex justify-between text-xs text-white">
+                    <span>Impact mesuré en direct</span>
+                    <span class="text-emerald-400 font-mono">+140%</span>
+                  </div>
+                  <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+                    <div class="bg-blue-400 h-full rounded-full" style="width: 78%"></div>
+                  </div>
+                  <p class="text-[10px] text-muted-foreground">78 ateliers d'expression financés</p>
+                </div>
+
+                <div class="p-2.5 rounded-lg bg-white/5 flex items-center justify-between text-xs">
+                  <span class="text-muted-foreground">Communauté active</span>
+                  <span class="text-white font-bold">1 240 soutiens</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== CTA Section ===== -->
+    <section class="py-20 text-center border-t border-border">
+      <div class="mx-auto max-w-3xl px-6" data-animate>
+        <span class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Votre Histoire</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold text-white tracking-tight">
+          Votre événement ne ressemble à aucun autre ?
+        </h2>
+        <p class="mt-4 text-muted-foreground">
+          C'est précisément notre terrain d'expression. Décrivez vos désirs dans notre configurateur conversationnel.
+        </p>
+        <div class="mt-8">
+          <a href="/projet" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-base font-medium text-black hover:bg-white/90 transition-all glow-subtle">
+            Imaginer mon projet →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="border-t border-border py-16 bg-black/60">
+    <div class="mx-auto max-w-5xl px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div class="md:col-span-2">
+          <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight text-white">
+            <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1"/></svg>
+            BYAIME
+          </a>
+          <p class="mt-4 text-sm text-muted-foreground max-w-md leading-relaxed">
+            Startup créative et technologique fondée par <strong>Matt Mez</strong>. Conception d'univers numériques sur mesure pour les événements et projets qui sortent des standards.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-white">Navigation</p>
+          <ul class="mt-4 space-y-2.5 text-sm text-muted-foreground">
+            <li><a href="/" class="hover:text-white transition-colors">Accueil</a></li>
+            <li><a href="/a-propos" class="hover:text-white transition-colors">À propos</a></li>
+            <li><a href="/projets" class="hover:text-white transition-colors">Galerie d'expériences</a></li>
+            <li><a href="/projet" class="hover:text-white transition-colors">Imaginer mon projet</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-white">Engagement</p>
+          <ul class="mt-4 space-y-2.5 text-sm text-muted-foreground">
+            <li><a href="/projet#soutien" class="hover:text-white transition-colors">Soutenir LE MONDE AIME</a></li>
+            <li><button type="button" data-open-dialog="modal-legal" class="hover:text-white transition-colors text-left">Mentions légales & CGU</button></li>
+            <li><button type="button" data-open-dialog="modal-privacy" class="hover:text-white transition-colors text-left">Confidentialité</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+        <p>© 2026 BYAIME. Conçu avec exigence par Matt Mez & LE MONDE AIME.</p>
+        <p>« Vous avez un événement. Nous imaginons son univers numérique. »</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modals -->
+  <dialog id="modal-legal" class="rounded-2xl bg-background text-foreground" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 3rem); max-width: 42rem; max-height: 80vh; padding: 0; overflow: hidden; border: none; font-size: 1rem">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2.5rem; flex-shrink: 0">
+      <h2 style="font-size: 1.25rem; font-weight: 700">Mentions légales & Cadre d'Engagement</h2>
+      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
+        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div style="overflow-y: auto; padding: 2rem 2.5rem 3rem; display: flex; flex-direction: column; gap: 2rem">
+      <p class="text-sm text-muted-foreground leading-relaxed">
+        Le site BYAIME est édité par <strong>Matt Mez</strong> en lien avec l'association <strong>LE MONDE AIME</strong> (loi 1901).
+      </p>
+    </div>
+  </dialog>
+
+  <dialog id="modal-privacy" class="rounded-2xl bg-background text-foreground" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 3rem); max-width: 42rem; max-height: 80vh; padding: 0; overflow: hidden; border: none; font-size: 1rem">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2.5rem; flex-shrink: 0">
+      <h2 style="font-size: 1.25rem; font-weight: 700">Politique de Confidentialité</h2>
+      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
+        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div style="overflow-y: auto; padding: 2rem 2.5rem 3rem; display: flex; flex-direction: column; gap: 1.5rem">
+      <p class="text-sm text-muted-foreground leading-relaxed">
+        Respect total de la vie privée. Aucun traceur publicitaire. Contact : <a href="mailto:contact@byaime.com" class="text-white underline">contact@byaime.com</a>.
+      </p>
+    </div>
+  </dialog>
+
+</body>
+</html>
