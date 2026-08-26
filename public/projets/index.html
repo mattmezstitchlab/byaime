@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galerie de Projets & Prototypes — BYAIME</title>
-  <meta name="description" content="Explorez la galerie de concepts et prototypes interactifs de BYAIME : mariages singuliers, cérémonies d'adieu, anniversaires et événements d'exception.">
+  <title>Expériences de Vie & Moments Singuliers — BYAIME</title>
+  <meta name="description" content="Découvrez les univers numériques imaginés par BYAIME : mariages, cérémonies d'hommage, anniversaires, projets de famille, collectifs et création libre.">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><circle cx='12' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/><circle cx='20' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/></svg>">
@@ -13,8 +13,8 @@
   <link rel="manifest" href="/manifest.json">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Galerie de Projets & Prototypes — BYAIME">
-  <meta property="og:description" content="Explorez nos créations de concepts d'univers numériques sur mesure pour les événements et projets qui sortent des standards.">
+  <meta property="og:title" content="Expériences de Vie & Moments Singuliers — BYAIME">
+  <meta property="og:description" content="Un seul moteur AIME, plusieurs univers de vie. Donnez vie à votre événement ou projet singulier avec Matt Mez.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://byaime.fr/projets">
   <meta property="og:image" content="https://byaime.fr/img/og-image.png">
@@ -27,9 +27,10 @@
     @keyframes modal-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
     @keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
   </style>
+  <script src="/js/aime-icons.js" defer></script>
   <script src="/js/main.js" defer></script>
 </head>
-<body class="font-sans antialiased text-foreground bg-background">
+<body class="font-sans antialiased text-foreground bg-background selection:bg-white/20 selection:text-white">
 
   <!-- Skip link -->
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md">
@@ -45,13 +46,18 @@
       </a>
 
       <div class="hidden items-center gap-6 lg:gap-8 md:flex absolute left-1/2 -translate-x-1/2">
+        <a href="/projets" class="text-sm text-white font-medium transition-colors flex items-center gap-1.5">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+          Expériences
+        </a>
+        <a href="/mariage" class="text-sm text-muted-foreground hover:text-white transition-colors">Mariage</a>
+        <a href="/card" class="text-sm text-muted-foreground hover:text-white transition-colors">AIME CARD</a>
+        <a href="/ecosysteme" class="text-sm text-muted-foreground hover:text-white transition-colors">Écosystème</a>
         <a href="/a-propos" class="text-sm text-muted-foreground hover:text-white transition-colors">À propos</a>
-        <a href="/projets" class="text-sm text-white font-medium transition-colors">Projets</a>
-        <a href="/projet" class="text-sm text-muted-foreground hover:text-white transition-colors">Imaginer mon projet</a>
       </div>
 
       <a href="/projet" class="hidden md:inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-medium text-black hover:bg-white/90 transition-all glow-subtle">
-        Imaginer mon projet
+        Préparer mon expérience
       </a>
 
       <button id="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" class="flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors md:hidden">
@@ -63,11 +69,16 @@
     <div id="mobile-menu" aria-hidden="true" class="hidden border-t border-border bg-background px-6 py-4 md:hidden">
       <div class="flex flex-col gap-4">
         <a href="/" class="text-sm text-muted-foreground hover:text-white transition-colors">Accueil</a>
+        <a href="/projets" class="text-sm text-white font-medium transition-colors flex items-center gap-1.5">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+          Expériences
+        </a>
+        <a href="/mariage" class="text-sm text-muted-foreground hover:text-white transition-colors">Mariage</a>
+        <a href="/card" class="text-sm text-muted-foreground hover:text-white transition-colors">AIME CARD</a>
+        <a href="/ecosysteme" class="text-sm text-muted-foreground hover:text-white transition-colors">Écosystème</a>
         <a href="/a-propos" class="text-sm text-muted-foreground hover:text-white transition-colors">À propos</a>
-        <a href="/projets" class="text-sm text-white font-medium transition-colors">Projets</a>
-        <a href="/projet" class="text-sm text-muted-foreground hover:text-white transition-colors">Imaginer mon projet</a>
         <a href="/projet" class="mt-2 inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black">
-          Imaginer mon projet
+          Préparer mon expérience
         </a>
       </div>
     </div>
@@ -75,333 +86,193 @@
 
   <main id="main">
 
-    <!-- ===== Hero Galerie ===== -->
-    <section class="py-[calc(32px+5vh)]">
-      <div class="mx-auto max-w-5xl px-6">
-        <div class="max-w-3xl" data-animate>
-          <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium tracking-wide mb-6 bg-white/[0.03]">
-            Galerie de Prototypes & Études Conceptuelles
-          </span>
-          <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-white leading-[1.15]">
-            Des univers sculptés pour <br class="hidden sm:inline">
-            <span class="text-gradient">des événements hors standards.</span>
-          </h1>
-          <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
-            Cliquez sur chaque projet pour explorer sa vue détaillée, tester ses modules interactifs ou lancer directement le configurateur avec ce template. <span class="italic text-gray-400">Projets conceptuels — démonstrations de ce que BYAIME peut imaginer.</span>
-          </p>
-        </div>
+    <!-- ===== Hero Galerie des Expériences ===== -->
+    <section class="relative py-20 md:py-28 overflow-hidden border-b border-white/10">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/img/floral3.webp'); opacity: 0.40;"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black pointer-events-none"></div>
 
-        <!-- Filter Bar -->
-        <div class="mt-10 flex flex-wrap gap-2.5 items-center pt-6 border-t border-border" data-animate data-delay="1">
-          <button type="button" data-filter-btn="all" class="rounded-full bg-white px-4 py-2 text-xs font-medium text-black transition-all">
-            Tous les univers
-          </button>
-          <button type="button" data-filter-btn="mariage" class="rounded-full bg-white/5 px-4 py-2 text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
-            Mariages singuliers
-          </button>
-          <button type="button" data-filter-btn="hommage" class="rounded-full bg-white/5 px-4 py-2 text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
-            Cérémonies & Hommages
-          </button>
-          <button type="button" data-filter-btn="anniversaire" class="rounded-full bg-white/5 px-4 py-2 text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
-            Anniversaires & Caps
-          </button>
-          <button type="button" data-filter-btn="culture" class="rounded-full bg-white/5 px-4 py-2 text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
-            Événements & Festivals
-          </button>
-          <button type="button" data-filter-btn="art" class="rounded-full bg-white/5 px-4 py-2 text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
-            Art & Performance
-          </button>
-          <button type="button" data-filter-btn="association" class="rounded-full bg-white/5 px-4 py-2 text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
-            Causes & Associations
-          </button>
+      <div class="relative mx-auto max-w-5xl px-6 z-10 space-y-6" data-animate>
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium tracking-wide bg-black/40 backdrop-blur-md text-white">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Univers & Moments de Vie • Moteur AIME Universel
+        </span>
+
+        <h1 class="text-4xl font-medium tracking-tight sm:text-6xl text-white leading-[1.12]">
+          Un moteur unique. <br>
+          <span class="text-gradient">Des expériences pour chaque moment de vie.</span>
+        </h1>
+
+        <p class="max-w-2xl text-base md:text-lg text-gray-200 leading-relaxed font-normal">
+          BYAIME n'impose aucun modèle rigide. Choisissez votre moment ou racontez simplement votre idée avec vos propres mots :
+        </p>
+
+        <!-- The Universal Categories -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 text-xs">
+          <a href="/mariage" class="p-4 rounded-2xl bg-black/80 border border-pink-500/30 hover:border-pink-400 transition-all text-center space-y-1 block group">
+            <span class="font-bold text-white group-hover:text-pink-300 transition-colors">MARIAGE</span>
+            <p class="text-[11px] text-gray-400">Union & Fête d'amour</p>
+          </a>
+          <a href="#exp-famille" class="p-4 rounded-2xl bg-black/80 border border-white/15 hover:border-emerald-400 transition-all text-center space-y-1 block group">
+            <span class="font-bold text-white group-hover:text-emerald-300 transition-colors">FAMILLE</span>
+            <p class="text-[11px] text-gray-400">Réunions & Retrouvailles</p>
+          </a>
+          <a href="#exp-hommage" class="p-4 rounded-2xl bg-black/80 border border-white/15 hover:border-amber-400 transition-all text-center space-y-1 block group">
+            <span class="font-bold text-white group-hover:text-amber-300 transition-colors">HOMMAGE</span>
+            <p class="text-[11px] text-gray-400">Mémorial & Souvenir</p>
+          </a>
+          <a href="#exp-anniversaire" class="p-4 rounded-2xl bg-black/80 border border-white/15 hover:border-cyan-400 transition-all text-center space-y-1 block group">
+            <span class="font-bold text-white group-hover:text-cyan-300 transition-colors">ANNIVERSAIRE</span>
+            <p class="text-[11px] text-gray-400">Caps de vie & Surprises</p>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- ===== Les Projets Cliquables ===== -->
-    <section class="py-12 border-t border-border">
+    <!-- ===== SECTION JE NE SAIS PAS ENCORE (LA PORTE D'ENTRÉE ACCUEILLANTE) ===== -->
+    <section class="py-16 border-b border-white/10 bg-zinc-950/80">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="p-8 md:p-10 rounded-3xl bg-black border border-white/15 glow-card flex flex-col md:flex-row items-center justify-between gap-6" data-animate>
+          <div class="space-y-2 max-w-xl">
+            <span class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400">
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Vous ne savez pas encore ?
+            </span>
+            <h3 class="text-xl md:text-2xl font-bold text-white tracking-tight">
+              « J'ai une idée mais je ne sais pas comment la définir. »
+            </h3>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Ce n'est pas grave : vous n'avez pas besoin de termes techniques. Racontez simplement votre intention et AIME vous aidera à imaginer le chemin.
+            </p>
+          </div>
+          <div class="flex-shrink-0">
+            <a href="/projet" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
+              <span>Parler de mon idée librement →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Les Grandes Expériences de Vie ===== -->
+    <section class="py-20 border-b border-white/10">
       <div class="mx-auto max-w-5xl px-6 space-y-16">
 
-        <!-- PROJET 1 : LE GRAND JOUR (Mariage) -->
-        <article class="p-8 md:p-12 rounded-3xl bg-black border border-white/10 glow-card hover:border-white/30 transition-all" data-project-category="mariage" data-animate>
+        <!-- 01 : MARIAGE -->
+        <article class="p-8 md:p-12 rounded-3xl bg-black/85 backdrop-blur-md border border-pink-500/20 glow-card hover:border-pink-500/40 transition-all" data-animate>
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div class="lg:col-span-7 space-y-6">
+            <div class="lg:col-span-7 space-y-5">
               <div class="flex items-center gap-3">
-                <span class="rounded-full border border-pink-500/30 bg-pink-500/10 px-3 py-1 text-xs text-pink-300 font-mono">Mariage Singulier</span>
-                <span class="text-xs px-2.5 py-0.5 rounded bg-white/10 text-white font-mono">STATUT : CONCEPT / PROTOTYPE</span>
+                <span class="rounded-full border border-pink-500/30 bg-pink-500/10 px-3 py-1 text-xs text-pink-300 font-mono">01 • Mariage Singulier</span>
               </div>
               <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                LE GRAND JOUR® — L'Univers Numérique des Futurs Mariés
+                L'Univers Numérique de Votre Union
               </h2>
-              
-              <p class="text-sm text-foreground font-medium">
-                « Un univers numérique poétique et vivant, pensé pour faire voyager les invités dès l'invitation jusqu'aux années qui suivent le mariage. »
+              <p class="text-sm text-gray-200 leading-relaxed">
+                Un sanctuaire poétique pour voyager de l'invitation jusqu'aux années qui suivent le mariage : timeline vivante du Jour J, plan de table, musique d'ambiance et livre d'or vocal.
               </p>
-
-              <div class="space-y-3 text-xs leading-relaxed text-muted-foreground">
-                <p><strong class="text-white">Problème :</strong> Les sites de mariage habituels sont des formulaires génériques sans âme, encombrés de publicités ou trop rigides.</p>
-                <p><strong class="text-white">Intention & Concept :</strong> Créer un sanctuaire intime sous un ciel étoilé interactif avec synchronisation du jour J et boîte à souvenirs audio.</p>
-                <p><strong class="text-white">Modules Potentiels :</strong> Mini-site personnalisé • RSVP sans mot de passe • Profils invités • Timeline vivante • Programme • Plan de table interactif • Musique • Galerie photo HD • Souvenirs • Prestataires • Espace privé.</p>
-              </div>
-
-              <div class="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4">
-                <button type="button" data-open-dialog="modal-detail-mariage" class="inline-flex items-center rounded-full bg-white/10 border border-white/20 px-5 py-2.5 text-xs font-medium text-white hover:bg-white/20 transition-all">
-                  Explorer le prototype →
-                </button>
-                <a href="/projet?template=mariage" class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
-                  Créer mon expérience de mariage →
+              <div class="pt-2 flex flex-wrap gap-4">
+                <a href="/mariage" class="inline-flex items-center rounded-full bg-pink-400 px-6 py-3 text-xs font-bold text-black hover:bg-pink-300 transition-all">
+                  Découvrir l'univers Mariage →
+                </a>
+                <a href="/projet?template=mariage" class="inline-flex items-center rounded-full border border-white/20 px-5 py-3 text-xs text-white hover:bg-white/10 transition-colors">
+                  Préparer directement
                 </a>
               </div>
             </div>
-
-            <!-- Interactive Demo Widget on Card -->
-            <div class="lg:col-span-5 bg-zinc-950 p-6 rounded-2xl border border-white/10 shadow-2xl space-y-4">
-              <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                <p class="text-xs font-bold text-white">Démonstrations Interactives</p>
-                <span class="text-[10px] text-pink-300 font-mono">Testez ci-dessous</span>
-              </div>
-
-              <!-- Mini Timeline cliquable -->
-              <div data-interactive-timeline class="space-y-2.5">
-                <p class="text-[11px] font-semibold text-white">1. Timeline du Jour J (Cliquez) :</p>
-                <div class="grid grid-cols-5 gap-1 text-[10px] font-mono text-center">
-                  <button type="button" data-timeline-step data-timeline-title="08:30 Préparatifs" data-timeline-time="08:30" data-timeline-desc="Coiffure, thé vert et derniers ajustements dans la suite nuptiale." class="p-1.5 rounded border border-pink-500 bg-pink-500/20 text-white transition-all scale-105">08:30</button>
-                  <button type="button" data-timeline-step data-timeline-title="11:00 Cérémonie Laïque" data-timeline-time="11:00" data-timeline-desc="Échange des vœux sous la verrière fleurie." class="p-1.5 rounded border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">11:00</button>
-                  <button type="button" data-timeline-step data-timeline-title="12:30 Cocktail & Musique" data-timeline-time="12:30" data-timeline-desc="Jardin des oliviers et concert acoustique en plein air." class="p-1.5 rounded border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">12:30</button>
-                  <button type="button" data-timeline-step data-timeline-title="19:30 Dîner sous les étoiles" data-timeline-time="19:30" data-timeline-desc="Grande halle et discours des témoins." class="p-1.5 rounded border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">19:30</button>
-                  <button type="button" data-timeline-step data-timeline-title="22:30 Première Danse" data-timeline-time="22:30" data-timeline-desc="Ouverture de la piste et lancement de la soirée." class="p-1.5 rounded border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">22:30</button>
-                </div>
-                <div data-timeline-info class="p-2.5 rounded-lg bg-white/5 border border-white/5 text-[11px] min-h-[50px]">
-                  <span class="font-semibold text-white">08:30 Préparatifs</span>
-                  <p class="text-muted-foreground mt-0.5">Coiffure, thé vert et derniers ajustements dans la suite nuptiale.</p>
-                </div>
-              </div>
-
-              <!-- Mini Invité lookup -->
-              <div data-guest-lookup class="space-y-1.5 pt-2 border-t border-white/10">
-                <p class="text-[11px] font-semibold text-white">2. Module « Invités & Table » :</p>
-                <input type="text" data-guest-input placeholder="Tapez 'Claire' ou 'Camille'..." class="w-full text-xs rounded-lg border border-border bg-black px-3 py-1.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-pink-400">
-                <div data-guest-result class="text-[11px] text-muted-foreground">
-                  <p class="italic">Recherche instantanée de table pour le Jour J.</p>
-                </div>
-              </div>
-
+            <div class="lg:col-span-5 p-6 rounded-2xl bg-zinc-950 border border-white/10 text-xs text-gray-300 space-y-2">
+              <p class="font-bold text-white font-mono uppercase text-[10px] text-pink-300">Fonctions phares :</p>
+              <p>• Timeline du Jour J synchronisée</p>
+              <p>• RSVP sans mot de passe</p>
+              <p>• Plan de table par prénom</p>
+              <p>• Livre d'or vocal des invités</p>
+              <p>• Galerie HD sans perte</p>
             </div>
           </div>
         </article>
 
-        <!-- PROJET 2 : CÉRÉMONIE D'ADIEU & HOMMAGE -->
-        <article class="p-8 md:p-12 rounded-3xl bg-black border border-white/10 glow-card hover:border-white/30 transition-all" data-project-category="hommage" data-animate>
+        <!-- 02 : FAMILLE -->
+        <article id="exp-famille" class="p-8 md:p-12 rounded-3xl bg-black/85 backdrop-blur-md border border-white/10 glow-card hover:border-emerald-500/30 transition-all" data-animate>
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div class="lg:col-span-7 space-y-6">
+            <div class="lg:col-span-7 space-y-5">
               <div class="flex items-center gap-3">
-                <span class="rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs text-amber-300 font-mono">Cérémonie & Hommage</span>
-                <span class="text-xs px-2.5 py-0.5 rounded bg-white/10 text-white font-mono">STATUT : CONCEPT / PROTOTYPE</span>
+                <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-300 font-mono">02 • Famille & Retrouvailles</span>
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                « Retrouvailles & Mémoires » — Fêtes de Famille Intergénérationnelles
+              </h2>
+              <p class="text-sm text-gray-200 leading-relaxed">
+                Réunir différentes générations autour d'un arbre généalogique interactif, d'anecdotes d'enfance, de photos d'archives et de quiz collaboratifs.
+              </p>
+              <div class="pt-2">
+                <a href="/projet?template=famille" class="inline-flex items-center rounded-full bg-white px-6 py-3 text-xs font-bold text-black hover:bg-white/90 transition-all">
+                  Préparer une fête de famille →
+                </a>
+              </div>
+            </div>
+            <div class="lg:col-span-5 p-6 rounded-2xl bg-zinc-950 border border-white/10 text-xs text-gray-300 space-y-2">
+              <p class="font-bold text-white font-mono uppercase text-[10px] text-emerald-400">Fonctions phares :</p>
+              <p>• Galerie d'archives et photos anciennes</p>
+              <p>• Récits de vie et anecdotes sonores</p>
+              <p>• Trombinoscope familial</p>
+              <p>• Organisation logistique intergénérationnelle</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03 : HOMMAGE -->
+        <article id="exp-hommage" class="p-8 md:p-12 rounded-3xl bg-black/85 backdrop-blur-md border border-white/10 glow-card hover:border-amber-500/30 transition-all" data-animate>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div class="lg:col-span-7 space-y-5">
+              <div class="flex items-center gap-3">
+                <span class="rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs text-amber-300 font-mono">03 • Hommage & Mémoire</span>
               </div>
               <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
                 « La Trace & Le Souvenir » — Mémorial Poétique & Apaisé
               </h2>
-              
-              <p class="text-sm text-foreground font-medium">
-                « Un espace digne, sobre et d'une infinie délicatesse pour rassembler les proches et transmettre les mémoires d'une vie. »
+              <p class="text-sm text-gray-200 leading-relaxed">
+                Un sanctuaire intime et digne pour relier les proches du monde entier, allumer des pensées virtuelles et conserver la mémoire d'un être cher.
               </p>
-
-              <div class="space-y-3 text-xs leading-relaxed text-muted-foreground">
-                <p><strong class="text-white">Problème :</strong> Les cérémonies d'adieu manquent souvent d'un espace soigné et pérenne pour relier les proches éloignés géographiquement.</p>
-                <p><strong class="text-white">Intention & Concept :</strong> Un mémorial numérique intime avec diffusion audio discrète, bougies virtuelles et recueil de récits familiaux.</p>
-                <p><strong class="text-white">Modules Potentiels :</strong> Programme de cérémonie • Hommage & Biographie • Galerie privée • Musique & Pièces sonores • Témoignages & Condoléances • Livre de souvenirs • Livret numérique imprimable.</p>
-              </div>
-
-              <div class="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4">
-                <button type="button" data-open-dialog="modal-detail-hommage" class="inline-flex items-center rounded-full bg-white/10 border border-white/20 px-5 py-2.5 text-xs font-medium text-white hover:bg-white/20 transition-all">
-                  Explorer le prototype →
-                </button>
-                <a href="/projet?template=ceremonie" class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
-                  Créer mon hommage mémoriel →
+              <div class="pt-2">
+                <a href="/projet?template=ceremonie" class="inline-flex items-center rounded-full bg-white px-6 py-3 text-xs font-bold text-black hover:bg-white/90 transition-all">
+                  Préparer un hommage →
                 </a>
               </div>
             </div>
-
-            <!-- Interactive Candle Widget -->
-            <div class="lg:col-span-5 bg-zinc-950 p-6 rounded-2xl border border-white/10 shadow-2xl space-y-4">
-              <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                <p class="text-xs font-bold text-white">Démonstration : Bougie Virtuelle</p>
-                <span class="text-[10px] text-amber-300 font-mono">Geste Interactif</span>
-              </div>
-
-              <div data-candle-widget class="space-y-3 text-center">
-                <div data-candle-flame class="h-4 w-4 rounded-full bg-amber-400/80 animate-pulse mx-auto"></div>
-                <p class="text-xs italic text-gray-200">« Une pensée déposée avec douceur par la famille. »</p>
-                <p data-candle-count class="text-xs font-bold text-white">312 pensées déposées</p>
-                <button type="button" data-candle-btn class="w-full py-2.5 rounded-xl border border-white/20 bg-white/5 text-xs font-medium text-white hover:bg-white/10 transition-all">
-                   Allumer une bougie en mémoire
-                </button>
-              </div>
+            <div class="lg:col-span-5 p-6 rounded-2xl bg-zinc-950 border border-white/10 text-xs text-gray-300 space-y-2">
+              <p class="font-bold text-white font-mono uppercase text-[10px] text-amber-300">Fonctions phares :</p>
+              <p>• Bougies virtuelles et pensées douces</p>
+              <p>• Diffusion audio apaisée pour les absents</p>
+              <p>• Recueil de condoléances sécurisé</p>
+              <p>• Livret souvenir imprimable</p>
             </div>
           </div>
         </article>
 
-        <!-- PROJET 3 : ANNIVERSAIRE CAPSULE TEMPORELLE -->
-        <article class="p-8 md:p-12 rounded-3xl bg-black border border-white/10 glow-card hover:border-white/30 transition-all" data-project-category="anniversaire" data-animate>
+        <!-- 04 : ANNIVERSAIRE -->
+        <article id="exp-anniversaire" class="p-8 md:p-12 rounded-3xl bg-black/85 backdrop-blur-md border border-white/10 glow-card hover:border-cyan-500/30 transition-all" data-animate>
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div class="lg:col-span-7 space-y-6">
+            <div class="lg:col-span-7 space-y-5">
               <div class="flex items-center gap-3">
-                <span class="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300 font-mono">Anniversaire d'Exception</span>
-                <span class="text-xs px-2.5 py-0.5 rounded bg-white/10 text-white font-mono">STATUT : CONCEPT / PROTOTYPE</span>
+                <span class="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300 font-mono">04 • Anniversaire d'Exception</span>
               </div>
               <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                « Capsule Temporelle » — Rétrospective & Révélation Festive
+                « Capsule Temporelle » — Rétrospective & Fête Surprise
               </h2>
-              
-              <div class="space-y-3 text-xs leading-relaxed text-muted-foreground">
-                <p><strong class="text-white">Problème :</strong> Les invitations de grands anniversaires se dispersent sur des messageries sans narration ni suspense.</p>
-                <p><strong class="text-white">Intention & Concept :</strong> Une aventure numérique à étapes avec énigmes débloquées chaque semaine pour révéler le lieu secret.</p>
-                <p><strong class="text-white">Modules Potentiels :</strong> Frise chronologique des 40 ans • Révélation du lieu • Playlist participative • Cagnotte sans frais abusifs • Vidéos surprises secrètes • Trombinoscope.</p>
-              </div>
-
-              <div class="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4">
-                <button type="button" data-open-dialog="modal-detail-anniversaire" class="inline-flex items-center rounded-full bg-white/10 border border-white/20 px-5 py-2.5 text-xs font-medium text-white hover:bg-white/20 transition-all">
-                  Explorer le prototype →
-                </button>
-                <a href="/projet?template=anniversaire" class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
-                  Créer mon anniversaire →
+              <p class="text-sm text-gray-200 leading-relaxed">
+                Une aventure à suspense avant le jour J : énigmes pour le lieu secret, frise chronologique des 40 ans, playlist collective et coffre de vidéos surprises.
+              </p>
+              <div class="pt-2">
+                <a href="/projet?template=anniversaire" class="inline-flex items-center rounded-full bg-white px-6 py-3 text-xs font-bold text-black hover:bg-white/90 transition-all">
+                  Préparer un anniversaire →
                 </a>
               </div>
             </div>
-
-            <!-- Mini Preview -->
-            <div class="lg:col-span-5 bg-zinc-950 p-6 rounded-2xl border border-white/10 shadow-2xl space-y-3 text-xs">
-              <p class="font-bold text-white">Module Énigme Débloqué</p>
-              <div class="p-3 rounded-lg bg-white/5 border border-white/5 font-mono text-cyan-300 text-[11px]">
-                Indice N°3 : « Rendez-vous là où le soleil couchant rejoint la verrière... »
-              </div>
-              <div class="flex justify-between p-2 rounded bg-white/5 text-[10px] text-muted-foreground">
-                <span>Playlist collaborative</span>
-                <span class="text-white">142 titres ajoutés</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- PROJET 4 : FESTIVAL / ÉVÉNEMENT CULTUREL -->
-        <article class="p-8 md:p-12 rounded-3xl bg-black border border-white/10 glow-card hover:border-white/30 transition-all" data-project-category="culture" data-animate>
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div class="lg:col-span-7 space-y-6">
-              <div class="flex items-center gap-3">
-                <span class="rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs text-violet-300 font-mono">Festival & Culture</span>
-                <span class="text-xs px-2.5 py-0.5 rounded bg-white/10 text-white font-mono">STATUT : CONCEPT / PROTOTYPE</span>
-              </div>
-              <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                « Pavillon Éphémère » — Scénographie Numérique de Festival
-              </h2>
-              
-              <div class="space-y-3 text-xs leading-relaxed text-muted-foreground">
-                <p><strong class="text-white">Problème :</strong> Les applications lourdes ne sont jamais téléchargées et les sites classiques s'effondrent sur réseau saturé.</p>
-                <p><strong class="text-white">Intention & Concept :</strong> Une Progressive Web App (PWA) ultra-rapide avec carte vectorielle interactive, agenda personnalisé et mode hors-ligne complet.</p>
-                <p><strong class="text-white">Modules Potentiels :</strong> Programme dynamique • Fiches artistes • Carte des scènes • Agenda favoris • Alertes en direct • Billetterie fluide.</p>
-              </div>
-
-              <div class="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4">
-                <button type="button" data-open-dialog="modal-detail-festival" class="inline-flex items-center rounded-full bg-white/10 border border-white/20 px-5 py-2.5 text-xs font-medium text-white hover:bg-white/20 transition-all">
-                  Explorer le prototype →
-                </button>
-                <a href="/projet?template=festival" class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
-                  Créer mon festival →
-                </a>
-              </div>
-            </div>
-
-            <!-- Mini Preview -->
-            <div class="lg:col-span-5 bg-zinc-950 p-6 rounded-2xl border border-white/10 shadow-2xl space-y-3 text-xs">
-              <p class="font-bold text-white">Mode Hors-Ligne Actif</p>
-              <div class="p-3 rounded-lg bg-white/5 border border-white/5 text-[11px] space-y-1">
-                <p class="text-white font-medium">Scène Agora • 21:00</p>
-                <p class="text-violet-300">Performance Audiovisuelle 360°</p>
-              </div>
-              <p class="text-[10px] text-emerald-400 font-mono">✓ Données synchronisées localement</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- PROJET 5 : ART & PERFORMANCE -->
-        <article class="p-8 md:p-12 rounded-3xl bg-black border border-white/10 glow-card hover:border-white/30 transition-all" data-project-category="art" data-animate>
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div class="lg:col-span-7 space-y-6">
-              <div class="flex items-center gap-3">
-                <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-300 font-mono">Projet Artistique</span>
-                <span class="text-xs px-2.5 py-0.5 rounded bg-white/10 text-white font-mono">STATUT : CONCEPT / PROTOTYPE</span>
-              </div>
-              <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                « Matière Première » — Scénographie Numérique Sensorielle
-              </h2>
-              
-              <div class="space-y-3 text-xs leading-relaxed text-muted-foreground">
-                <p><strong class="text-white">Problème :</strong> Comment prolonger une exposition d'art sans réduire les œuvres à un catalogue e-commerce froid ?</p>
-                <p><strong class="text-white">Intention & Concept :</strong> Une scénographie en clair-obscur où chaque sculpture se dévoile par la lumière et la voix de l'artiste au fil du scroll.</p>
-                <p><strong class="text-white">Modules Potentiels :</strong> Canvas interactif génératif • Sound design réactif • Galerie haute fidélité • Podcasts d'artistes • Espace mécénat.</p>
-              </div>
-
-              <div class="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4">
-                <button type="button" data-open-dialog="modal-detail-art" class="inline-flex items-center rounded-full bg-white/10 border border-white/20 px-5 py-2.5 text-xs font-medium text-white hover:bg-white/20 transition-all">
-                  Explorer le prototype →
-                </button>
-                <a href="/projet?template=artistique" class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
-                  Créer un projet artistique →
-                </a>
-              </div>
-            </div>
-
-            <!-- Mini Preview -->
-            <div class="lg:col-span-5 bg-zinc-950 p-6 rounded-2xl border border-white/10 shadow-2xl space-y-3 text-xs">
-              <p class="font-bold text-white">Scénographie Réactive</p>
-              <div class="p-4 rounded-lg bg-black border border-white/10 text-center">
-                <p class="text-xs font-mono text-emerald-400">« Résonance du Bronze »</p>
-                <p class="text-[10px] text-muted-foreground mt-1">Sound design synchronisé au pointeur</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- PROJET 6 : CAUSE & ASSOCIATION -->
-        <article class="p-8 md:p-12 rounded-3xl bg-black border border-white/10 glow-card hover:border-white/30 transition-all" data-project-category="association" data-animate>
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div class="lg:col-span-7 space-y-6">
-              <div class="flex items-center gap-3">
-                <span class="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs text-blue-300 font-mono">Cause & Association</span>
-                <span class="text-xs px-2.5 py-0.5 rounded bg-white/10 text-white font-mono">STATUT : CONCEPT / PROTOTYPE</span>
-              </div>
-              <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                « Voix Libres » — Mobilisation Citoyenne & Récits Vivants
-              </h2>
-              
-              <div class="space-y-3 text-xs leading-relaxed text-muted-foreground">
-                <p><strong class="text-white">Problème :</strong> Formulaires d'adhésion austères et manque d'incarnation humaine des actions menées.</p>
-                <p><strong class="text-white">Intention & Concept :</strong> Récits immersifs à la première personne et visualiseur dynamique de l'impact des engagements.</p>
-                <p><strong class="text-white">Modules Potentiels :</strong> Récits & Témoignages • Visualiseur d'impact • Module d'adhésion & don • Manifeste • Mur des soutiens.</p>
-              </div>
-
-              <div class="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4">
-                <button type="button" data-open-dialog="modal-detail-association" class="inline-flex items-center rounded-full bg-white/10 border border-white/20 px-5 py-2.5 text-xs font-medium text-white hover:bg-white/20 transition-all">
-                  Explorer le prototype →
-                </button>
-                <a href="/projet?template=association" class="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
-                  Créer une plateforme associative →
-                </a>
-              </div>
-            </div>
-
-            <!-- Mini Preview -->
-            <div class="lg:col-span-5 bg-zinc-950 p-6 rounded-2xl border border-white/10 shadow-2xl space-y-3 text-xs">
-              <p class="font-bold text-white">Visualiseur d'Impact</p>
-              <div class="p-3 rounded-lg bg-white/5 border border-white/5 space-y-1.5">
-                <div class="flex justify-between text-[11px]">
-                  <span>Ateliers financés</span>
-                  <span class="text-blue-400 font-bold">100% réalisés</span>
-                </div>
-                <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                  <div class="bg-blue-400 h-full w-3/4 rounded-full"></div>
-                </div>
-              </div>
+            <div class="lg:col-span-5 p-6 rounded-2xl bg-zinc-950 border border-white/10 text-xs text-gray-300 space-y-2">
+              <p class="font-bold text-white font-mono uppercase text-[10px] text-cyan-300">Fonctions phares :</p>
+              <p>• Énigmes progressives pour lieu secret</p>
+              <p>• Frise chronologique animée</p>
+              <p>• Playlist collaborative des amis</p>
+              <p>• Coffre-fort de vidéos surprises</p>
             </div>
           </div>
         </article>
@@ -409,19 +280,19 @@
       </div>
     </section>
 
-    <!-- ===== CTA vers /projet ===== -->
-    <section class="py-20 text-center border-t border-border">
-      <div class="mx-auto max-w-3xl px-6" data-animate>
-        <span class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Votre Histoire</span>
-        <h2 class="mt-3 text-3xl md:text-4xl font-bold text-white tracking-tight">
-          Votre événement ne ressemble à aucun autre ?
+    <!-- ===== Call to action vers /projet ===== -->
+    <section class="py-24 text-center bg-black">
+      <div class="mx-auto max-w-3xl px-6 space-y-6" data-animate>
+        <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Votre Vision</span>
+        <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
+          Prêts à donner vie à votre expérience ?
         </h2>
-        <p class="mt-4 text-muted-foreground">
-          C'est précisément notre terrain d'expression. Décrivez vos désirs dans notre configurateur conversationnel.
+        <p class="text-sm text-gray-300 leading-relaxed max-w-xl mx-auto">
+          Dites-nous simplement ce que vous imaginez. AIME vous aide à concevoir un univers qui ne ressemble qu'à vous.
         </p>
-        <div class="mt-8">
-          <a href="/projet" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-base font-medium text-black hover:bg-white/90 transition-all glow-subtle">
-            Imaginer mon projet →
+        <div class="pt-4">
+          <a href="/projet" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
+            Préparer mon expérience maintenant →
           </a>
         </div>
       </div>
@@ -429,171 +300,8 @@
 
   </main>
 
-  <!-- ===== MODALES DE DÉTAILS DE PROJETS ===== -->
-  <!-- Modale Détail Mariage -->
-  <dialog id="modal-detail-mariage" class="rounded-3xl bg-background text-foreground border border-white/10" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 48rem; max-height: 85vh; padding: 0; overflow: hidden; font-size: 1rem">
-    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2rem; flex-shrink: 0">
-      <div>
-        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-pink-500/20 text-pink-300">CONCEPT / PROTOTYPE</span>
-        <h3 class="text-lg font-bold text-white mt-1">LE GRAND JOUR® — Mariage & Célébration</h3>
-      </div>
-      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
-        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div style="overflow-y: auto; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem">
-      <div class="space-y-4 text-xs text-muted-foreground leading-relaxed">
-        <p><strong class="text-white">Problème résolu :</strong> Éviter l'éparpillement des informations (mails, WhatsApp, RSVP papier) et offrir une véritable scénographie mémorable.</p>
-        <p><strong class="text-white">Intention artistique :</strong> Une esthétique céleste et douce, rythmée par la musique du couple et des repères spatiaux élégants.</p>
-        <p><strong class="text-white">Modules disponibles :</strong></p>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-white font-medium">
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ Timeline interactive</span>
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ RSVP sans compte</span>
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ Profils invités</span>
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ Plan de table</span>
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ Musique & Boîte à sons</span>
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ Galerie photo HD</span>
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ Livre d'or vocal</span>
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ Prestataires & Hôtels</span>
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ Espace privé</span>
-        </div>
-      </div>
-      <div class="pt-4 border-t border-white/10 flex justify-between items-center">
-        <span class="text-xs text-muted-foreground">Conception : Matt Mez</span>
-        <a href="/projet?template=mariage" class="inline-flex items-center rounded-full bg-white px-5 py-2 text-xs font-semibold text-black hover:bg-white/90">
-          Créer mon expérience de mariage →
-        </a>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- Modale Détail Hommage -->
-  <dialog id="modal-detail-hommage" class="rounded-3xl bg-background text-foreground border border-white/10" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 48rem; max-height: 85vh; padding: 0; overflow: hidden; font-size: 1rem">
-    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2rem; flex-shrink: 0">
-      <div>
-        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">CONCEPT / PROTOTYPE</span>
-        <h3 class="text-lg font-bold text-white mt-1">La Trace & Le Souvenir — Mémorial & Hommage</h3>
-      </div>
-      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
-        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div style="overflow-y: auto; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem">
-      <div class="space-y-4 text-xs text-muted-foreground leading-relaxed">
-        <p><strong class="text-white">Problème résolu :</strong> Permettre le recueillement intime des proches dispersés dans le respect absolu de la dignité et du deuil.</p>
-        <p><strong class="text-white">Modules mémoriels :</strong></p>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-white font-medium">
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ Espace hommage</span>
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ Retransmission audio</span>
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ Bougies virtuelles</span>
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ Témoignages sécurisés</span>
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ Livre de souvenirs</span>
-          <span class="p-2 rounded bg-white/5 border border-white/5">✓ Livret imprimable HD</span>
-        </div>
-      </div>
-      <div class="pt-4 border-t border-white/10 flex justify-between items-center">
-        <span class="text-xs text-muted-foreground">Conception : Matt Mez</span>
-        <a href="/projet?template=ceremonie" class="inline-flex items-center rounded-full bg-white px-5 py-2 text-xs font-semibold text-black hover:bg-white/90">
-          Créer mon hommage mémoriel →
-        </a>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- Modale Détail Anniversaire -->
-  <dialog id="modal-detail-anniversaire" class="rounded-3xl bg-background text-foreground border border-white/10" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 48rem; max-height: 85vh; padding: 0; overflow: hidden; font-size: 1rem">
-    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2rem; flex-shrink: 0">
-      <div>
-        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">CONCEPT / PROTOTYPE</span>
-        <h3 class="text-lg font-bold text-white mt-1">Capsule Temporelle — Célébration & Rétrospective</h3>
-      </div>
-      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
-        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div style="overflow-y: auto; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem">
-      <p class="text-xs text-muted-foreground leading-relaxed">
-        Créer une dynamique festive avant et pendant l'événement : frise chronologique animée, énigmes pour le lieu secret, playlist collaborative et coffre-fort de vidéos surprises.
-      </p>
-      <div class="pt-4 border-t border-white/10 flex justify-end">
-        <a href="/projet?template=anniversaire" class="inline-flex items-center rounded-full bg-white px-5 py-2 text-xs font-semibold text-black hover:bg-white/90">
-          Créer mon anniversaire →
-        </a>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- Modale Détail Festival -->
-  <dialog id="modal-detail-festival" class="rounded-3xl bg-background text-foreground border border-white/10" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 48rem; max-height: 85vh; padding: 0; overflow: hidden; font-size: 1rem">
-    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2rem; flex-shrink: 0">
-      <div>
-        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-violet-500/20 text-violet-300">CONCEPT / PROTOTYPE</span>
-        <h3 class="text-lg font-bold text-white mt-1">Pavillon Éphémère — Festival & Culture</h3>
-      </div>
-      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
-        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div style="overflow-y: auto; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem">
-      <p class="text-xs text-muted-foreground leading-relaxed">
-        Application web progressive (PWA) ultra-légère fonctionnant à 100% hors-ligne pour les festivals, salons et rassemblements artistiques.
-      </p>
-      <div class="pt-4 border-t border-white/10 flex justify-end">
-        <a href="/projet?template=festival" class="inline-flex items-center rounded-full bg-white px-5 py-2 text-xs font-semibold text-black hover:bg-white/90">
-          Créer mon festival →
-        </a>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- Modale Détail Art -->
-  <dialog id="modal-detail-art" class="rounded-3xl bg-background text-foreground border border-white/10" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 48rem; max-height: 85vh; padding: 0; overflow: hidden; font-size: 1rem">
-    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2rem; flex-shrink: 0">
-      <div>
-        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">CONCEPT / PROTOTYPE</span>
-        <h3 class="text-lg font-bold text-white mt-1">Matière Première — Art & Performance</h3>
-      </div>
-      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
-        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div style="overflow-y: auto; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem">
-      <p class="text-xs text-muted-foreground leading-relaxed">
-        Scénographie numérique pour artistes contemporains, galeries et performances interactives avec sound design réactif.
-      </p>
-      <div class="pt-4 border-t border-white/10 flex justify-end">
-        <a href="/projet?template=artistique" class="inline-flex items-center rounded-full bg-white px-5 py-2 text-xs font-semibold text-black hover:bg-white/90">
-          Créer un projet artistique →
-        </a>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- Modale Détail Association -->
-  <dialog id="modal-detail-association" class="rounded-3xl bg-background text-foreground border border-white/10" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 48rem; max-height: 85vh; padding: 0; overflow: hidden; font-size: 1rem">
-    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2rem; flex-shrink: 0">
-      <div>
-        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">CONCEPT / PROTOTYPE</span>
-        <h3 class="text-lg font-bold text-white mt-1">Voix Libres — Cause & Mobilisation</h3>
-      </div>
-      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
-        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div style="overflow-y: auto; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem">
-      <p class="text-xs text-muted-foreground leading-relaxed">
-        Plateforme d'engagement associatif mettant en valeur les histoires humaines et la transparence des impacts concrets.
-      </p>
-      <div class="pt-4 border-t border-white/10 flex justify-end">
-        <a href="/projet?template=association" class="inline-flex items-center rounded-full bg-white px-5 py-2 text-xs font-semibold text-black hover:bg-white/90">
-          Créer une plateforme associative →
-        </a>
-      </div>
-    </div>
-  </dialog>
-
   <!-- ===== Footer ===== -->
-  <footer class="border-t border-border py-16 bg-black/60">
+  <footer class="border-t border-border py-16 bg-black/80">
     <div class="mx-auto max-w-5xl px-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
         <div class="md:col-span-2">
@@ -602,28 +310,26 @@
             BYAIME
           </a>
           <p class="mt-4 text-sm text-muted-foreground max-w-md leading-relaxed">
-            Studio créatif et technologique fondé par <strong>Matt Mez</strong>. Conception d'univers numériques sur mesure pour les événements et projets qui sortent des standards.
+            Studio créatif et technologique fondé par <strong>Matt Mez</strong>. Conception d'univers numériques sur mesure pour les événements et moments de vie singuliers.
           </p>
         </div>
 
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wider text-white">Navigation</p>
+          <p class="text-xs font-semibold uppercase tracking-wider text-white">Expériences</p>
           <ul class="mt-4 space-y-2.5 text-sm text-muted-foreground">
-            <li><a href="/" class="hover:text-white transition-colors">Accueil</a></li>
-            <li><a href="/a-propos" class="hover:text-white transition-colors">À propos</a></li>
-            <li><a href="/projets" class="hover:text-white transition-colors">Projets</a></li>
+            <li><a href="/mariage" class="hover:text-white transition-colors">Mariage</a></li>
+            <li><a href="/projets" class="text-white font-medium">Toutes les expériences</a></li>
             <li><a href="/card" class="hover:text-white transition-colors">AIME CARD</a></li>
-            <li><a href="/ecosysteme" class="hover:text-white transition-colors">Écosystème de Réciprocité</a></li>
-            <li><a href="/projet" class="hover:text-white transition-colors">Imaginer mon projet</a></li>
+            <li><a href="/ecosysteme" class="hover:text-white transition-colors">Écosystème</a></li>
           </ul>
         </div>
 
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wider text-white">Engagement</p>
+          <p class="text-xs font-semibold uppercase tracking-wider text-white">Studio</p>
           <ul class="mt-4 space-y-2.5 text-sm text-muted-foreground">
-            <li><a href="/projet#soutien" class="hover:text-white transition-colors">Soutenir LE MONDE AIME</a></li>
-            <li><button type="button" data-open-dialog="modal-legal" class="hover:text-white transition-colors text-left">Mentions légales & CGU</button></li>
-            <li><button type="button" data-open-dialog="modal-privacy" class="hover:text-white transition-colors text-left">Confidentialité</button></li>
+            <li><a href="/a-propos" class="hover:text-white transition-colors">À propos de Matt Mez</a></li>
+            <li><a href="/projet" class="hover:text-white transition-colors">Préparer mon projet</a></li>
+            <li><a href="mailto:contact@byaime.com" class="hover:text-white transition-colors">contact@byaime.com</a></li>
           </ul>
         </div>
       </div>
@@ -634,35 +340,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- Modals -->
-  <dialog id="modal-legal" class="rounded-2xl bg-background text-foreground" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 3rem); max-width: 42rem; max-height: 80vh; padding: 0; overflow: hidden; border: none; font-size: 1rem">
-    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2.5rem; flex-shrink: 0">
-      <h2 style="font-size: 1.25rem; font-weight: 700">Mentions légales & Cadre d'Engagement</h2>
-      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
-        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div style="overflow-y: auto; padding: 2rem 2.5rem 3rem; display: flex; flex-direction: column; gap: 2rem">
-      <p class="text-sm text-muted-foreground leading-relaxed">
-        Le site BYAIME est édité par <strong>Matt Mez</strong> en lien avec l'association <strong>LE MONDE AIME</strong> (loi 1901).
-      </p>
-    </div>
-  </dialog>
-
-  <dialog id="modal-privacy" class="rounded-2xl bg-background text-foreground" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 3rem); max-width: 42rem; max-height: 80vh; padding: 0; overflow: hidden; border: none; font-size: 1rem">
-    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2.5rem; flex-shrink: 0">
-      <h2 style="font-size: 1.25rem; font-weight: 700">Politique de Confidentialité</h2>
-      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
-        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div style="overflow-y: auto; padding: 2rem 2.5rem 3rem; display: flex; flex-direction: column; gap: 1.5rem">
-      <p class="text-sm text-muted-foreground leading-relaxed">
-        Respect total de la vie privée. Aucun traceur publicitaire. Contact : <a href="mailto:contact@byaime.com" class="text-white underline">contact@byaime.com</a>.
-      </p>
-    </div>
-  </dialog>
 
 </body>
 </html>
