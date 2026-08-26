@@ -1,7 +1,7 @@
 {
-  "name": "Your Company Name",
-  "short_name": "Company",
-  "description": "Replace with your own description.",
+  "name": "BYAIME",
+  "short_name": "BYAIME",
+  "description": "Conseil et conception IA axés sur des solutions concrètes et mesurables.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
