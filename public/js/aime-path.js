@@ -1,29 +1,30 @@
-// ===== BYAIME — AIME PATH : Moteur de Choix Adaptatifs & Navigation Guidée (v2.1 SVG Icons) =====
-// Progressive disclosure decision engine using pure minimalist vector SVG icons.
+// ===== BYAIME — AIME PATH : Moteur de Choix Adaptatifs en Révélation Progressive (v3.0) =====
+// Intelligent cascading dropdowns & editorial selectors for adaptive project structuring.
 
 (function () {
   'use strict';
 
   function getDynamicStepConfig(selections, context) {
-    var I = window.AIME_Icons || {};
     var stepIdx = selections.length;
 
     // Niveau 0 : QU'AVEZ-VOUS ENVIE DE CRÉER ?
     if (stepIdx === 0) {
       return {
-        title: 'Qu\'avez-vous envie de créer ?',
-        subtitle: 'Sélectionnez la nature de votre moment singulier :',
+        stepNumber: 1,
+        question: 'Qu\'avez-vous envie de créer ?',
+        label: 'Type d\'événement ou de moment singulier :',
+        placeholder: '-- Choisir la nature de votre projet... --',
         options: [
-          { id: 'mariage', title: 'Mariage Singulier', desc: 'Union, célébration à deux, fête intimiste ou grandiose', iconSvg: I.mariage || '✦', type: 'mariage' },
-          { id: 'ceremonie', title: 'Cérémonie & Hommage', desc: 'Mémorial apaisé, recueillement, transmission de mémoires', iconSvg: I.ceremonie || '✦', type: 'ceremonie' },
-          { id: 'anniversaire', title: 'Anniversaire d\'Exception', desc: 'Cap de vie, célébration surprise, retrouvailles', iconSvg: I.anniversaire || '✦', type: 'anniversaire' },
-          { id: 'evenement', title: 'Événement Culturel', desc: 'Rencontres, festival artistique, salon indépendant', iconSvg: I.evenement || '✦', type: 'evenement' },
-          { id: 'festival', title: 'Festival & Rassemblement', desc: 'Plein air, programmation musicale, public nombreux', iconSvg: I.festival || '✦', type: 'festival' },
-          { id: 'artistique', title: 'Projet Artistique', desc: 'Scénographie d\'œuvres, exposition, performance', iconSvg: I.artistique || '✦', type: 'artistique' },
-          { id: 'association', title: 'Cause & Association', desc: 'Mobilisation citoyenne, plaidoyer, récits d\'impact', iconSvg: I.association || '✦', type: 'association' },
-          { id: 'professionnel', title: 'Projet Professionnel', desc: 'Lancement d\'initiative, keynotes, vitrine statutaire', iconSvg: I.professionnel || '✦', type: 'professionnel' },
-          { id: 'autre', title: 'Autre Création Libre', desc: 'Une intuition originale qui ne rentre dans aucune case', iconSvg: I.autre || '✦', type: 'autre' },
-          { id: 'indecis', title: 'Je ne sais pas encore', desc: 'Surprenez-moi : partons d\'une page blanche ensemble', iconSvg: I.indecis || '✦', type: 'indecis' }
+          { id: 'mariage', title: 'Mariage Singulier (Union, célébration intime ou grande fête)', type: 'mariage' },
+          { id: 'ceremonie', title: 'Cérémonie & Hommage (Mémorial apaisé, recueillement, mémoire)', type: 'ceremonie' },
+          { id: 'anniversaire', title: 'Anniversaire d\'Exception (Cap de vie, célébration surprise)', type: 'anniversaire' },
+          { id: 'evenement', title: 'Événement Culturel (Rencontres, festival, salon indépendant)', type: 'evenement' },
+          { id: 'festival', title: 'Festival & Rassemblement (Plein air, concerts, public nombreux)', type: 'festival' },
+          { id: 'artistique', title: 'Projet Artistique & Exposition (Scénographie d\'œuvres, performance)', type: 'artistique' },
+          { id: 'association', title: 'Cause & Association (Mobilisation citoyenne, plaidoyer)', type: 'association' },
+          { id: 'professionnel', title: 'Projet Professionnel (Lancement, vitrine statutaire)', type: 'professionnel' },
+          { id: 'autre', title: 'Autre Création Libre (Intuition originale sur mesure)', type: 'autre' },
+          { id: 'indecis', title: 'Je ne sais pas encore (Surprenez-moi, page blanche)', type: 'indecis' }
         ]
       };
     }
@@ -35,37 +36,39 @@
 
       if (eventType === 'mariage') {
         audOpts = [
-          { id: 'aud_proches', title: 'Pour nos proches & amis', desc: 'Cercle intime et invités de cœur (20 à 120 pers.)', iconSvg: I.guests || '✦', val: 'Mes proches' },
-          { id: 'aud_famille', title: 'Pour notre famille', desc: 'Célébration chaleureuse et intergénérationnelle', iconSvg: I.association || '✦', val: 'Ma famille' },
-          { id: 'aud_grande_fete', title: 'Pour une grande fête', desc: 'Nombreux convives venant de différentes régions (120+ pers.)', iconSvg: I.spark || '✦', val: 'Une communauté' }
+          { id: 'aud_proches', title: 'Pour nos proches & amis (Cercle intime, 20 à 120 pers.)', val: 'Mes proches' },
+          { id: 'aud_famille', title: 'Pour notre famille (Célébration intergénérationnelle)', val: 'Ma famille' },
+          { id: 'aud_grande_fete', title: 'Pour une grande fête (Nombreux convives, 120+ pers.)', val: 'Une communauté' }
         ];
       } else if (eventType === 'ceremonie') {
         audOpts = [
-          { id: 'aud_famille_hommage', title: 'Pour la famille & proches', desc: 'Recueillement intime et bienveillant', iconSvg: I.ceremonie || '✦', val: 'Ma famille' },
-          { id: 'aud_proches_distance', title: 'Pour les proches éloignés', desc: 'Permettre à ceux qui sont loin de s\'unir à la mémoire', iconSvg: I.lienSocial || '✦', val: 'Mes proches' }
+          { id: 'aud_famille_hommage', title: 'Pour la famille & les proches intimes', val: 'Ma famille' },
+          { id: 'aud_proches_distance', title: 'Pour les proches éloignés (Connexion à distance)', val: 'Mes proches' }
         ];
       } else if (eventType === 'anniversaire') {
         audOpts = [
-          { id: 'aud_amis_proches', title: 'Pour le groupe d\'amis', desc: 'Complices, amis d\'enfance et proches', iconSvg: I.spark || '✦', val: 'Mes proches' },
-          { id: 'aud_famille_amis', title: 'Famille et amis réunis', desc: 'Grande célébration intergénérationnelle', iconSvg: I.guests || '✦', val: 'Ma famille' }
+          { id: 'aud_amis_proches', title: 'Pour le groupe d\'amis complices', val: 'Mes proches' },
+          { id: 'aud_famille_amis', title: 'Famille et amis réunis', val: 'Ma famille' }
         ];
       } else if (eventType === 'festival' || eventType === 'evenement') {
         audOpts = [
-          { id: 'aud_public_fest', title: 'Pour le grand public', desc: 'Festivaliers, curieux et passionnés', iconSvg: I.tickets || '✦', val: 'Un public' },
-          { id: 'aud_communaute_art', title: 'Pour une communauté d\'artistes', desc: 'Réseau créatif et partenaires', iconSvg: I.artists || '✦', val: 'Une communauté' }
+          { id: 'aud_public_fest', title: 'Pour le grand public et festivaliers', val: 'Un public' },
+          { id: 'aud_communaute_art', title: 'Pour une communauté d\'artistes et partenaires', val: 'Une communauté' }
         ];
       } else {
         audOpts = [
-          { id: 'aud_general_proches', title: 'Pour mes proches', desc: 'Cercle intime et personnes de confiance', iconSvg: I.guests || '✦', val: 'Mes proches' },
-          { id: 'aud_general_communaute', title: 'Pour une communauté', desc: 'Public ciblé ou membres adhérents', iconSvg: I.association || '✦', val: 'Une communauté' }
+          { id: 'aud_general_proches', title: 'Pour mes proches et personnes de confiance', val: 'Mes proches' },
+          { id: 'aud_general_communaute', title: 'Pour une communauté ou adhérents', val: 'Une communauté' }
         ];
       }
 
-      audOpts.push({ id: 'aud_surprenez_all', title: 'Surprenez-moi', desc: 'AIME calibrera l\'audience selon le projet', iconSvg: I.indecis || '✦', val: 'Mes proches' });
+      audOpts.push({ id: 'aud_surprenez_all', title: 'Surprenez-moi (AIME calibrera l\'audience)', val: 'Mes proches' });
 
       return {
-        title: 'Pour qui imaginez-vous cette expérience ?',
-        subtitle: 'Précisez l\'audience et les personnes concernées :',
+        stepNumber: 2,
+        question: 'Pour qui imaginez-vous cette expérience ?',
+        label: 'Audience et personnes concernées :',
+        placeholder: '-- Choisir l\'audience... --',
         options: audOpts
       };
     }
@@ -77,47 +80,48 @@
 
       if (eType === 'mariage') {
         intOpts = [
-          { id: 'int_organiser', title: 'Organiser & Coordonner', desc: 'Programme, déroulé, plan de table et fluidité logistique', iconSvg: I.timeline || '✦', val: 'Organiser' },
-          { id: 'int_partager', title: 'Partager & Émouvoir', desc: 'Musique d\'ambiance, récit à deux et livre d\'or vocal', iconSvg: I.music || '✦', val: 'Partager' },
-          { id: 'int_histoire', title: 'Raconter notre histoire', desc: 'Storytelling immersif, photos d\'archives et anecdotes', iconSvg: I.memories || '✦', val: 'Raconter une histoire' },
-          { id: 'int_souvenirs', title: 'Créer des souvenirs éternels', desc: 'Galerie photo HD participative et livre de vœux', iconSvg: I.gallery || '✦', val: 'Créer des souvenirs' },
-          { id: 'int_reunir', title: 'Tout réunir en un seul lieu', desc: 'L\'expérience complète combinant déroulé, musique et partage', iconSvg: I.autre || '✦', val: 'Créer une expérience' }
+          { id: 'int_organiser', title: 'Organiser & Coordonner (Programme, déroulé, plan de table)', val: 'Organiser' },
+          { id: 'int_partager', title: 'Partager & Émouvoir (Musique, récit à deux, livre d\'or vocal)', val: 'Partager' },
+          { id: 'int_histoire', title: 'Raconter notre histoire (Storytelling immersif, archives)', val: 'Raconter une histoire' },
+          { id: 'int_souvenirs', title: 'Créer des souvenirs éternels (Galerie photo HD participative)', val: 'Créer des souvenirs' }
         ];
       } else if (eType === 'ceremonie') {
         intOpts = [
-          { id: 'int_recueillement', title: 'Recueillement & Hommage', desc: 'Bougies virtuelles, biographie intime et pensées', iconSvg: I.tributes || '✦', val: 'Émouvoir' },
-          { id: 'int_souvenirs_mem', title: 'Raconter & Transmettre les souvenirs', desc: 'Anecdotes familiales, photos d\'époque et livret souvenir', iconSvg: I.memories || '✦', val: 'Créer des souvenirs' },
-          { id: 'int_audio_homm', title: 'Relier les proches par l\'audio', desc: 'Retransmission sonore apaisée et registre de condoléances', iconSvg: I.audio || '✦', val: 'Partager' }
+          { id: 'int_recueillement', title: 'Recueillement & Hommage (Bougies virtuelles, pensées)', val: 'Émouvoir' },
+          { id: 'int_souvenirs_mem', title: 'Raconter & Transmettre les souvenirs (Anecdotes, livret)', val: 'Créer des souvenirs' },
+          { id: 'int_audio_homm', title: 'Relier les proches par l\'audio (Retransmission sonore)', val: 'Partager' }
         ];
       } else if (eType === 'anniversaire') {
         intOpts = [
-          { id: 'int_celebrer', title: 'Célébrer & Fêter', desc: 'Dynamique festive, playlist collective et cagnotte', iconSvg: I.spark || '✦', val: 'Créer une expérience' },
-          { id: 'int_surprise', title: 'Garder la surprise absolue', desc: 'Énigmes pour révéler le lieu et coffre de vidéos secrètes', iconSvg: I.video || '✦', val: 'Faire participer' },
-          { id: 'int_retrospect', title: 'Rétrospective des années', desc: 'Frise chronologique des étapes marquantes de la vie', iconSvg: I.memories || '✦', val: 'Créer des souvenirs' }
+          { id: 'int_celebrer', title: 'Célébrer & Fêter (Dynamique festive, playlist collective)', val: 'Créer une expérience' },
+          { id: 'int_surprise', title: 'Garder la surprise absolue (Énigmes de lieu, vidéos secrètes)', val: 'Faire participer' },
+          { id: 'int_retrospect', title: 'Rétrospective des années (Frise chronologique)', val: 'Créer des souvenirs' }
         ];
       } else if (eType === 'festival' || eType === 'evenement') {
         intOpts = [
-          { id: 'int_guider_live', title: 'Guider en direct (Live & Offline)', desc: 'Programme dynamique, carte des scènes sans réseau', iconSvg: I.map || '✦', val: 'Informer' },
-          { id: 'int_artistes_expo', title: 'Mettre en valeur les artistes', desc: 'Fiches immersives et extraits musicaux en écoute', iconSvg: I.artists || '✦', val: 'Créer une expérience' },
-          { id: 'int_billetterie_acces', title: 'Accès & Billetterie fluide', desc: 'Réservation immédiate et gestion des accès', iconSvg: I.tickets || '✦', val: 'Organiser' }
+          { id: 'int_guider_live', title: 'Guider en direct (Programme dynamique, carte sans réseau)', val: 'Informer' },
+          { id: 'int_artistes_expo', title: 'Mettre en valeur les artistes (Fiches et écoute audio)', val: 'Créer une expérience' },
+          { id: 'int_billetterie_acces', title: 'Accès & Billetterie fluide (Réservation immédiate)', val: 'Organiser' }
         ];
       } else if (eType === 'association') {
         intOpts = [
-          { id: 'int_recits_impact', title: 'Récits de terrain & Preuves', desc: 'Témoignages vivants et visualiseur d\'impact direct', iconSvg: I.impact || '✦', val: 'Raconter une histoire' },
-          { id: 'int_mobiliser', title: 'Mobiliser & Fédérer', desc: 'Module d\'adhésion, manifeste et mur des soutiens', iconSvg: I.donations || '✦', val: 'Rassembler' }
+          { id: 'int_recits_impact', title: 'Récits de terrain & Preuves (Témoignages et impact direct)', val: 'Raconter une histoire' },
+          { id: 'int_mobiliser', title: 'Mobiliser & Fédérer (Adhésion, manifeste, mur des soutiens)', val: 'Rassembler' }
         ];
       } else {
         intOpts = [
-          { id: 'int_creer_inédit', title: 'Façonner une expérience inédite', desc: 'Scénographie interactive sur mesure et design d\'émotion', iconSvg: I.spark || '✦', val: 'Créer une expérience' },
-          { id: 'int_raconter_libre', title: 'Raconter une histoire singulière', desc: 'Storytelling immersif articulé autour de votre vision', iconSvg: I.memories || '✦', val: 'Raconter une histoire' }
+          { id: 'int_creer_inédit', title: 'Façonner une expérience inédite (Scénographie sur mesure)', val: 'Créer une expérience' },
+          { id: 'int_raconter_libre', title: 'Raconter une histoire singulière (Storytelling immersif)', val: 'Raconter une histoire' }
         ];
       }
 
-      intOpts.push({ id: 'int_surprenez_opt', title: 'Surprenez-moi', desc: 'Laissez AIME définir la meilleure intention', iconSvg: I.indecis || '✦', val: 'Partager' });
+      intOpts.push({ id: 'int_surprenez_opt', title: 'Surprenez-moi (Laissez AIME définir l\'intention)', val: 'Partager' });
 
       return {
-        title: 'Que voulez-vous faire vivre en priorité ?',
-        subtitle: 'Définissez le cœur battant de l\'univers :',
+        stepNumber: 3,
+        question: 'Que voulez-vous faire vivre en priorité ?',
+        label: 'Intention directrice :',
+        placeholder: '-- Choisir l\'intention clé... --',
         options: intOpts
       };
     }
@@ -131,47 +135,49 @@
       if (evType === 'mariage') {
         if (lastSel === 'int_organiser') {
           focusOpts = [
-            { id: 'foc_jour_j', title: 'Le Jour J & Le Déroulé', desc: 'La journée entière comme interface vivante synchronisée', iconSvg: I.timeline || '✦', signal: 'Jour J' },
-            { id: 'foc_invites_tables', title: 'Invités & Plan de Table', desc: 'Recherche de table par prénom et plan spatialisé', iconSvg: I.tables || '✦', signal: 'Plan de table' },
-            { id: 'foc_programme_guide', title: 'Programme & Guide complet', desc: 'Hébergements, itinéraires et détails pratiques', iconSvg: I.program || '✦', signal: 'Guide pratique' }
+            { id: 'foc_jour_j', title: 'Le Jour J & Le Déroulé (Interface vivante synchronisée)', signal: 'Jour J' },
+            { id: 'foc_invites_tables', title: 'Invités & Plan de Table (Recherche par prénom)', signal: 'Plan de table' },
+            { id: 'foc_programme_guide', title: 'Programme & Guide complet (Hébergements, itinéraires)', signal: 'Guide pratique' }
           ];
         } else if (lastSel === 'int_partager') {
           focusOpts = [
-            { id: 'foc_musique_sons', title: 'Musique & Ambiance Sonore', desc: 'Lecteur audio immersif et boîte à sons partagée', iconSvg: I.music || '✦', signal: 'Musique' },
-            { id: 'foc_vocal_messages', title: 'Livre d\'or Vocal', desc: 'Messages vocaux enregistrés par les proches', iconSvg: I.guestbook || '✦', signal: 'Livre vocal' },
-            { id: 'foc_recit_deux', title: 'Récit à deux interactif', desc: 'L\'histoire du couple racontée avec poésie', iconSvg: I.spark || '✦', signal: 'Récit poétique' }
+            { id: 'foc_musique_sons', title: 'Musique & Ambiance Sonore (Lecteur immersif)', signal: 'Musique' },
+            { id: 'foc_vocal_messages', title: 'Livre d\'or Vocal (Enregistrements audio des proches)', signal: 'Livre vocal' },
+            { id: 'foc_recit_deux', title: 'Récit à deux interactif (L\'histoire racontée avec poésie)', signal: 'Récit poétique' }
           ];
         } else {
           focusOpts = [
-            { id: 'foc_galerie_live', title: 'Galerie & Dépôt Photos HD', desc: 'Upload direct sans compression pour les invités', iconSvg: I.gallery || '✦', signal: 'Galerie HD' },
-            { id: 'foc_souvenirs_capsule', title: 'Capsule & Archives', desc: 'Mémoire conservée pour les décennies à venir', iconSvg: I.memories || '✦', signal: 'Archives de vie' },
-            { id: 'foc_jour_j_tout', title: 'Timeline & Musique réunies', desc: 'La symbiose du déroulé et du sound design', iconSvg: I.timeline || '✦', signal: 'Timeline et Musique' }
+            { id: 'foc_galerie_live', title: 'Galerie & Dépôt Photos HD (Upload participatif sans perte)', signal: 'Galerie HD' },
+            { id: 'foc_souvenirs_capsule', title: 'Capsule & Archives (Mémoire conservée pour les décennies)', signal: 'Archives de vie' },
+            { id: 'foc_jour_j_tout', title: 'Timeline & Musique réunies (Symbiose déroulé et sound design)', signal: 'Timeline et Musique' }
           ];
         }
       } else if (evType === 'ceremonie') {
         focusOpts = [
-          { id: 'foc_temoignages_condoleances', title: 'Témoignages & Condoléances', desc: 'Recueil sécurisé où chacun dépose un souvenir', iconSvg: I.testimonials || '✦', signal: 'Témoignages' },
-          { id: 'foc_bougies_lumieres', title: 'Bougies Virtuelles & Pensées', desc: 'Geste d\'hommage allumé par les proches du monde entier', iconSvg: I.tributes || '✦', signal: 'Bougies virtuelles' },
-          { id: 'foc_retransmission_audio', title: 'Retransmission Audio HD', desc: 'Diffusion sonore haute fidélité pour les absents', iconSvg: I.audio || '✦', signal: 'Retransmission audio' }
+          { id: 'foc_temoignages_condoleances', title: 'Témoignages & Condoléances (Recueil sécurisé)', signal: 'Témoignages' },
+          { id: 'foc_bougies_lumieres', title: 'Bougies Virtuelles & Pensées (Hommage international)', signal: 'Bougies virtuelles' },
+          { id: 'foc_retransmission_audio', title: 'Retransmission Audio HD (Diffusion pour les absents)', signal: 'Retransmission audio' }
         ];
       } else if (evType === 'anniversaire') {
         focusOpts = [
-          { id: 'foc_videos_surprises', title: 'Coffre de Vidéos Surprises', desc: 'Capsules vidéo secrètes débloquées le jour J', iconSvg: I.video || '✦', signal: 'Vidéos surprises' },
-          { id: 'foc_enigmes_lieu', title: 'Énigmes pour le Lieu Secret', desc: 'Indices progressifs pour faire monter le suspense', iconSvg: I.countdown || '✦', signal: 'Énigmes lieu' },
-          { id: 'foc_playlist_fete', title: 'Boîte à Sons des Amis', desc: 'Sélection musicale collaborative pour la soirée', iconSvg: I.music || '✦', signal: 'Playlist collaborative' }
+          { id: 'foc_videos_surprises', title: 'Coffre de Vidéos Surprises (Débloquées le jour J)', signal: 'Vidéos surprises' },
+          { id: 'foc_enigmes_lieu', title: 'Énigmes pour le Lieu Secret (Indices progressifs)', signal: 'Énigmes lieu' },
+          { id: 'foc_playlist_fete', title: 'Boîte à Sons des Amis (Sélection collaborative)', signal: 'Playlist collaborative' }
         ];
       } else {
         focusOpts = [
-          { id: 'foc_carte_lieux', title: 'Cartographie & Lieux', desc: 'Repères interactifs et guidage fluide', iconSvg: I.map || '✦', signal: 'Carte interactive' },
-          { id: 'foc_programme_live', title: 'Programme en direct', desc: 'Horaires, artistes et alertes en direct', iconSvg: I.program || '✦', signal: 'Programme dynamique' }
+          { id: 'foc_carte_lieux', title: 'Cartographie & Lieux (Repères interactifs)', signal: 'Carte interactive' },
+          { id: 'foc_programme_live', title: 'Programme en direct (Horaires et alertes)', signal: 'Programme dynamique' }
         ];
       }
 
-      focusOpts.push({ id: 'foc_surprenez_foc', title: 'Je ne sais pas encore', desc: 'AIME choisira le point d\'ancrage idéal', iconSvg: I.indecis || '✦', signal: 'Exploration' });
+      focusOpts.push({ id: 'foc_surprenez_foc', title: 'Je ne sais pas encore (AIME choisira le point d\'ancrage)', signal: 'Exploration' });
 
       return {
-        title: 'Quel dispositif clé souhaitez-vous mettre en scène ?',
-        subtitle: 'L\'interaction majeure de votre mini-site :',
+        stepNumber: 4,
+        question: 'Quel dispositif clé souhaitez-vous mettre en scène ?',
+        label: 'Interaction majeure :',
+        placeholder: '-- Choisir le dispositif clé... --',
         options: focusOpts
       };
     }
@@ -179,15 +185,17 @@
     // Niveau 4 : Ambiance & Matière
     if (stepIdx === 4) {
       return {
-        title: 'Quelle ambiance sensorielle imaginez-vous ?',
-        subtitle: 'Choisissez la matière visuelle et la lumière :',
+        stepNumber: 5,
+        question: 'Quelle ambiance sensorielle imaginez-vous ?',
+        label: 'Matière visuelle & lumière :',
+        placeholder: '-- Choisir l\'atmosphère... --',
         options: [
-          { id: 'atmo_poetique', title: 'Poétique & Céleste', desc: 'Tons chauds, contrastes doux, respiration feutrée', iconSvg: I.transmission || '✦', val: 'poetique' },
-          { id: 'atmo_minimaliste', title: 'Minimaliste & Épurée', desc: 'Fond noir profond, typographie statutaire, silence', iconSvg: I.autre || '✦', val: 'minimaliste' },
-          { id: 'atmo_cinematique', title: 'Cinématique & Immersive', desc: 'Micro-interactions sensorielles, sound design réactif', iconSvg: I.video || '✦', val: 'cinematique' },
-          { id: 'atmo_vibrante', title: 'Vibrante & Festive', desc: 'Rythme affirmé, contrastes éclatants et énergie', iconSvg: I.spark || '✦', val: 'vibrante' },
-          { id: 'atmo_elegante', title: 'Élégante & Statutaire', desc: 'Typographie d\'auteur, précision chirurgicale', iconSvg: I.professionnel || '✦', val: 'elegante' },
-          { id: 'atmo_libre', title: 'Libre & Sur Mesure', desc: 'Façonnée librement sans contrainte préétablie', iconSvg: I.ecologie || '✦', val: 'libre' }
+          { id: 'atmo_poetique', title: 'Poétique & Céleste (Tons chauds, contrastes doux, respiration)', val: 'poetique' },
+          { id: 'atmo_minimaliste', title: 'Minimaliste & Épurée (Fond noir profond, typographie statutaire)', val: 'minimaliste' },
+          { id: 'atmo_cinematique', title: 'Cinématique & Immersive (Interactions sensorielles, sound design)', val: 'cinematique' },
+          { id: 'atmo_vibrante', title: 'Vibrante & Festive (Rythme affirmé, énergie partagée)', val: 'vibrante' },
+          { id: 'atmo_elegante', title: 'Élégante & Statutaire (Typographie d\'auteur, précision)', val: 'elegante' },
+          { id: 'atmo_libre', title: 'Libre & Sur Mesure (Façonnée librement)', val: 'libre' }
         ]
       };
     }
@@ -283,67 +291,85 @@
     var suggestionsContainer = document.getElementById('path-suggestions-tags');
     var launchBtn = document.getElementById('path-launch-btn');
 
-    function renderCurrentStep() {
-      var currentStepIdx = aimePathState.selections.length;
+    function renderCascadingSelectors() {
       if (!stepsContainer) return;
-
       stepsContainer.innerHTML = '';
 
-      if (currentStepIdx >= 5) {
-        renderCompletedState();
-        return;
-      }
+      var totalSteps = 5;
+      var currentStepIdx = aimePathState.selections.length;
 
-      var stepConfig = getDynamicStepConfig(aimePathState.selections, aimePathState.context);
-      if (!stepConfig) return;
+      var stackContainer = document.createElement('div');
+      stackContainer.className = 'space-y-4';
 
-      var stepWrap = document.createElement('div');
-      stepWrap.className = 'space-y-4 animate-fadeIn';
-      stepWrap.innerHTML = '<div>' +
-        '<div class="flex items-center gap-2">' +
-        '<span class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold">Étape 0' + (currentStepIdx + 1) + ' / 05</span>' +
-        '<span class="text-xs text-muted-foreground font-mono">Choix adaptatif</span>' +
-        '</div>' +
-        '<h3 class="text-lg md:text-xl font-bold text-white tracking-tight mt-1">' + stepConfig.title + '</h3>' +
-        '<p class="text-xs text-muted-foreground mt-0.5">' + stepConfig.subtitle + '</p>' +
-        '</div>';
+      // Render each already chosen step as an active editorial selector
+      for (var i = 0; i <= currentStepIdx && i < totalSteps; i++) {
+        var dummySelections = aimePathState.selections.slice(0, i);
+        var stepConfig = getDynamicStepConfig(dummySelections, aimePathState.context);
+        if (!stepConfig) break;
 
-      var grid = document.createElement('div');
-      grid.className = 'grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2';
+        var isAnswered = i < currentStepIdx;
+        var selectedVal = isAnswered ? aimePathState.selections[i].optionId : 'none';
 
-      stepConfig.options.forEach(function (opt) {
-        var card = document.createElement('button');
-        card.type = 'button';
-        card.className = 'p-3.5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/40 hover:bg-white/[0.06] text-left transition-all group flex items-start gap-3';
+        var fieldWrap = document.createElement('div');
+        fieldWrap.className = 'p-4 md:p-5 rounded-2xl bg-zinc-950/90 border border-white/15 space-y-2 animate-fadeIn';
         
-        var iconHtml = typeof opt.iconSvg === 'string' && opt.iconSvg.indexOf('<svg') !== -1
-          ? opt.iconSvg
-          : '<span class="text-emerald-400">✦</span>';
-
-        card.innerHTML = '<div class="p-2 rounded-xl bg-white/5 border border-white/5 group-hover:scale-110 transition-transform flex-shrink-0">' + iconHtml + '</div>' +
-          '<div class="flex-1">' +
-          '<p class="text-xs font-bold text-white group-hover:text-emerald-300 transition-colors">' + opt.title + '</p>' +
-          '<p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">' + opt.desc + '</p>' +
+        var fieldId = 'path-selector-step-' + i;
+        var headerHtml = '<div class="flex items-center justify-between">' +
+          '<label for="' + fieldId + '" class="block text-xs font-semibold text-white uppercase tracking-wider font-mono">' +
+          '<span class="text-emerald-400 mr-2">0' + (i + 1) + '.</span>' + stepConfig.question +
+          '</label>' +
+          (isAnswered ? '<span class="text-[10px] text-emerald-400 font-mono">✓ Choisi</span>' : '<span class="text-[10px] text-gray-400 font-mono">En attente</span>') +
           '</div>';
 
-        card.addEventListener('click', function () {
-          aimePathState.selections.push({
-            step: currentStepIdx,
-            optionId: opt.id,
-            data: opt
-          });
-          recalculateContext();
-          renderBreadcrumbs();
-          updateSynthesis();
-          renderCurrentStep();
-          window.trackBYAIME('aime_path_step_selected', { step: currentStepIdx, option: opt.id });
+        var selectHtml = '<div class="relative">' +
+          '<select id="' + fieldId + '" class="w-full appearance-none rounded-xl bg-black border border-white/20 p-3 text-xs md:text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-400 cursor-pointer font-medium pr-10">' +
+          '<option value="none">' + stepConfig.placeholder + '</option>';
+
+        stepConfig.options.forEach(function (opt) {
+          var isSel = (opt.id === selectedVal) ? ' selected' : '';
+          selectHtml += '<option value="' + opt.id + '"' + isSel + '>' + opt.title + '</option>';
         });
 
-        grid.appendChild(card);
-      });
+        selectHtml += '</select>' +
+          '<div class="pointer-events-none absolute inset-y-0 right-3.5 flex items-center text-emerald-400">' +
+          '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>' +
+          '</div></div>';
 
-      stepWrap.appendChild(grid);
-      stepsContainer.appendChild(stepWrap);
+        fieldWrap.innerHTML = headerHtml + selectHtml;
+
+        (function (stepIndex, config) {
+          var selectEl = fieldWrap.querySelector('#' + fieldId);
+          if (selectEl) {
+            selectEl.addEventListener('change', function () {
+              var val = this.value;
+              if (val === 'none') {
+                aimePathState.selections = aimePathState.selections.slice(0, stepIndex);
+              } else {
+                var matchedOpt = config.options.find(function (o) { return o.id === val; });
+                if (matchedOpt) {
+                  aimePathState.selections = aimePathState.selections.slice(0, stepIndex);
+                  aimePathState.selections.push({
+                    step: stepIndex,
+                    optionId: matchedOpt.id,
+                    data: matchedOpt
+                  });
+                }
+              }
+              recalculateContext();
+              renderBreadcrumbs();
+              updateSynthesis();
+              renderCascadingSelectors();
+            });
+          }
+        })(i, stepConfig);
+
+        stackContainer.appendChild(fieldWrap);
+
+        // If this step isn't answered yet, do not render subsequent steps
+        if (!isAnswered) break;
+      }
+
+      stepsContainer.appendChild(stackContainer);
     }
 
     function renderBreadcrumbs() {
@@ -351,14 +377,14 @@
       breadcrumbsContainer.innerHTML = '';
 
       if (aimePathState.selections.length === 0) {
-        breadcrumbsContainer.innerHTML = '<span class="text-xs text-muted-foreground italic">Sélectionnez une première direction pour lancer l\'arborescence...</span>';
+        breadcrumbsContainer.innerHTML = '<span class="text-xs text-muted-foreground italic">Sélectionnez votre première intention pour déployer l\'arborescence adaptative...</span>';
         return;
       }
 
       aimePathState.selections.forEach(function (sel, idx) {
         var chip = document.createElement('span');
         chip.className = 'tag-removable cursor-pointer';
-        chip.innerHTML = '<span>' + sel.data.title + '</span><button type="button" class="tag-remove-btn" title="Modifier ce choix" aria-label="Supprimer">×</button>';
+        chip.innerHTML = '<span>' + sel.data.title.split('(')[0].trim() + '</span><button type="button" class="tag-remove-btn" title="Modifier ce choix" aria-label="Supprimer">×</button>';
 
         var removeBtn = chip.querySelector('button');
         removeBtn.addEventListener('click', function (e) {
@@ -367,8 +393,10 @@
           recalculateContext();
           renderBreadcrumbs();
           updateSynthesis();
-          renderCurrentStep();
-          window.trackBYAIME('aime_path_branch_changed', { prunedFromStep: idx });
+          renderCascadingSelectors();
+          if (window.trackBYAIME) {
+            window.trackBYAIME('aime_path_branch_changed', { prunedFromStep: idx });
+          }
         });
 
         breadcrumbsContainer.appendChild(chip);
@@ -404,40 +432,15 @@
       }
     }
 
-    function renderCompletedState() {
-      if (!stepsContainer) return;
-      stepsContainer.innerHTML = '';
-
-      var completedWrap = document.createElement('div');
-      completedWrap.className = 'p-6 rounded-3xl bg-zinc-950 border border-emerald-500/30 text-center space-y-4 glow-card animate-fadeIn';
-      completedWrap.innerHTML = '<div class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 mx-auto">' +
-        '<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>' +
-        '</div>' +
-        '<h4 class="text-lg font-bold text-white tracking-tight">Votre intention est parfaitement structurée.</h4>' +
-        '<p class="text-xs text-muted-foreground max-w-md mx-auto leading-relaxed">AIME PATH a généré l\'intention idéale. Cliquez ci-dessous pour lancer AIME CONCEPT et explorer les 3 directions créatives adaptées.</p>' +
-        '<div class="pt-2">' +
-        '<button id="btn-path-finalize-cta" type="button" class="px-8 py-3.5 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">' +
-        '✦ Construire cette idée avec AIME →' +
-        '</button>' +
-        '</div>';
-
-      var finalizeBtn = completedWrap.querySelector('#btn-path-finalize-cta');
-      if (finalizeBtn) {
-        finalizeBtn.addEventListener('click', function () {
-          launchAimeFromPath();
-        });
-      }
-
-      stepsContainer.appendChild(completedWrap);
-    }
-
     function launchAimeFromPath() {
       var structuredIntent = convertStateToStructuredIntent();
       try {
         localStorage.setItem('byaime_direct_intent', JSON.stringify(structuredIntent));
       } catch (e) {}
 
-      window.trackBYAIME('aime_path_to_intent', { eventType: structuredIntent.eventType.value });
+      if (window.trackBYAIME) {
+        window.trackBYAIME('aime_path_to_intent', { eventType: structuredIntent.eventType.value });
+      }
       window.location.href = '/projet?from=aime_path';
     }
 
@@ -448,7 +451,7 @@
     }
 
     renderBreadcrumbs();
-    renderCurrentStep();
+    renderCascadingSelectors();
   }
 
   document.addEventListener('DOMContentLoaded', function () {
