@@ -52,6 +52,7 @@
           <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
           AIME CARD
         </a>
+        <a href="/ecosysteme" class="text-sm text-muted-foreground hover:text-white transition-colors">Écosystème</a>
         <a href="/projet" class="text-sm text-muted-foreground hover:text-white transition-colors">Imaginer mon projet</a>
       </div>
 
@@ -74,6 +75,7 @@
           <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
           AIME CARD
         </a>
+        <a href="/ecosysteme" class="text-sm text-muted-foreground hover:text-white transition-colors">Écosystème</a>
         <a href="/projet" class="text-sm text-muted-foreground hover:text-white transition-colors">Imaginer mon projet</a>
       </div>
     </div>
@@ -81,48 +83,53 @@
 
   <main id="main">
 
-    <!-- ===== Hero AIME CARD ===== -->
-    <section class="py-[calc(32px+4vh)]">
-      <div class="mx-auto max-w-5xl px-6 text-center">
-        <div class="max-w-3xl mx-auto" data-animate>
-          <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium tracking-wide mb-6 bg-white/[0.03]">
-            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            Prototype Expérimental AIME • Carte Universelle de Profil & Contribution
-          </span>
-          <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-white leading-[1.15]">
-            Et si nous pouvions rendre visible <br class="hidden sm:inline">
-            <span class="text-gradient">ce qui a toujours été invisible ?</span>
-          </h1>
-          <p class="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed">
-            Une personne ne se résume pas à son argent, son emploi ou son statut administratif. Elle possède du temps, des compétences, une capacité d'entraide, de transmission et d'action. AIME CARD est la carte numérique qui représente cette richesse humaine.
-          </p>
-        </div>
+    <!-- ===== SECTION 01 : HERO IMMERSIF MONUMENTAL ===== -->
+    <section class="relative py-[calc(48px+6vh)] overflow-hidden border-b border-border">
+      <!-- Background Monumental Imagery & Glow -->
+      <div class="absolute inset-0 bg-black pointer-events-none"></div>
+      <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-700 opacity-20 pointer-events-none" style="background-image: url('/img/floral5.webp');"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black pointer-events-none"></div>
+
+      <div class="relative mx-auto max-w-5xl px-6 text-center z-10 space-y-6" data-animate>
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium tracking-wide bg-white/[0.05] backdrop-blur-md">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Objet Numérique Précieux • Passeport de Contribution Universelle
+        </span>
+        <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-white leading-[1.15]">
+          Et si nous pouvions rendre visible <br class="hidden sm:inline">
+          <span class="text-gradient">ce qui a toujours été invisible ?</span>
+        </h1>
+        <p class="max-w-2xl mx-auto text-base md:text-lg text-muted-foreground leading-relaxed">
+          Une personne ne se résume pas à son argent, son emploi ou son statut administratif. Elle possède du temps, des compétences, une capacité d'entraide, de transmission et d'action. AIME CARD est la carte numérique qui représente cette richesse humaine.
+        </p>
       </div>
     </section>
 
-    <!-- ===== 3D INTERACTIVE CARD SHOWCASE ===== -->
-    <section class="py-10 border-t border-border relative">
-      <div class="mx-auto max-w-5xl px-6">
+    <!-- ===== SECTION 02 : ÉCRIN 3D DE LA CARTE UNIVERSELLE ===== -->
+    <section class="py-16 relative overflow-hidden bg-black/90">
+      <!-- Background Network Aura -->
+      <div class="absolute inset-0 bg-cover bg-center opacity-10 pointer-events-none" style="background-image: url('/img/ecosystem-network.webp');"></div>
+      <div class="absolute inset-0 bg-radial-gradient opacity-40 pointer-events-none"></div>
+
+      <div class="relative mx-auto max-w-5xl px-6 z-10 space-y-8">
         
         <!-- Helper Hint -->
-        <div id="card-flip-hint" class="text-center mb-6 transition-opacity duration-300">
-          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-xs font-mono text-emerald-300 border border-white/10 animate-bounce">
+        <div id="card-flip-hint" class="text-center transition-opacity duration-300">
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-xs font-mono text-emerald-300 border border-white/10 shadow-lg animate-bounce">
             ↻ Touchez ou cliquez sur la carte pour la retourner en 3D
           </span>
         </div>
 
         <!-- 3D Card Stage Container -->
         <div class="flex flex-col items-center justify-center">
-          <div id="aime-card-3d-wrap" class="card-3d-wrap w-full max-w-[440px] min-h-[580px] cursor-pointer select-none" data-animate>
+          <div id="aime-card-3d-wrap" class="card-3d-wrap w-full max-w-[450px] min-h-[600px] cursor-pointer select-none" data-animate>
             
-            <div id="aime-card-inner" class="card-3d-inner w-full min-h-[580px]">
+            <div id="aime-card-inner" class="card-3d-inner w-full min-h-[600px]">
 
-              <!-- ======================================================= -->
               <!-- RECTO : QUI JE SUIS -->
-              <!-- ======================================================= -->
               <div class="card-3d-face p-8 rounded-3xl bg-zinc-950 border border-white/20 shadow-2xl flex flex-col justify-between space-y-6 relative overflow-hidden" style="background: radial-gradient(80% 60% at 50% 10%, rgba(35,35,42,0.95) 0%, #09090b 100%);">
                 
-                <!-- Holographic Chip & Brand Header -->
+                <!-- Holographic Chip & Header -->
                 <div class="flex items-center justify-between border-b border-white/10 pb-4">
                   <div class="flex items-center gap-2.5">
                     <div class="w-8 h-6 rounded-md bg-gradient-to-tr from-amber-400/80 via-yellow-200 to-amber-600/80 p-0.5 shadow-md flex items-center justify-center">
@@ -133,7 +140,7 @@
                     </div>
                     <span class="text-xs font-mono font-bold tracking-widest text-white">AIME CARD</span>
                   </div>
-                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-muted-foreground uppercase">RECTO • QUI JE SUIS</span>
+                  <span class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/10 text-muted-foreground uppercase">RECTO • QUI JE SUIS</span>
                 </div>
 
                 <!-- Identity Block -->
@@ -143,13 +150,14 @@
                     <div>
                       <h2 class="text-2xl font-bold text-white tracking-tight">MATT MEZ</h2>
                       <p class="text-xs text-pink-300 font-mono mt-0.5">Concepteur • Musicien • Directeur artistique</p>
-                      <p class="text-[11px] text-muted-foreground mt-1 flex items-center gap-1">
-                        <span>📍</span> Paris & Territoires créatifs
+                      <p class="text-[11px] text-muted-foreground mt-1 flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-5.5-7-11.5a7 7 0 0114 0c0 6-7 11.5-7 11.5z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                        Paris & Territoires créatifs
                       </p>
                     </div>
                   </div>
 
-                  <!-- Skills Tags -->
+                  <!-- Compétences -->
                   <div class="space-y-1.5 pt-2">
                     <span class="text-[10px] uppercase font-mono text-muted-foreground tracking-wider">Compétences :</span>
                     <div class="flex flex-wrap gap-1.5">
@@ -160,14 +168,17 @@
                     </div>
                   </div>
 
-                  <!-- Je peux transmettre -->
+                  <!-- Transmission -->
                   <div class="space-y-1.5">
-                    <span class="text-[10px] uppercase font-mono text-emerald-400 tracking-wider">Je peux transmettre :</span>
+                    <span class="text-[10px] uppercase font-mono text-emerald-400 tracking-wider flex items-center gap-1">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><path d="M9 12h6M12 9l3 3-3 3"/></svg>
+                      Je peux transmettre :
+                    </span>
                     <div class="flex flex-wrap gap-1.5">
-                      <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300">Créativité</span>
-                      <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300">Design sensible</span>
-                      <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300">Musique</span>
-                      <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300">Artisanat du code</span>
+                      <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300">Créativité</span>
+                      <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300">Design sensible</span>
+                      <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300">Musique</span>
+                      <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300">Artisanat du code</span>
                     </div>
                   </div>
 
@@ -180,18 +191,16 @@
                   </div>
                 </div>
 
-                <!-- Bottom Bar & Flip Trigger -->
+                <!-- Bottom Bar -->
                 <div class="pt-4 border-t border-white/10 flex items-center justify-between">
-                  <span class="text-[10px] font-mono text-muted-foreground">ID : aime_matt_mez</span>
-                  <button id="btn-flip-card" type="button" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white text-[11px] font-bold text-black hover:bg-white/90 transition-all glow-subtle">
+                  <span class="text-[10px] font-mono text-muted-foreground">ID: aime_matt_mez</span>
+                  <button id="btn-flip-card" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
                     <span>Retourner la carte ↻</span>
                   </button>
                 </div>
               </div>
 
-              <!-- ======================================================= -->
               <!-- VERSO : MA CONTRIBUTION -->
-              <!-- ======================================================= -->
               <div class="card-3d-face card-3d-back p-8 rounded-3xl bg-zinc-950 border border-white/20 shadow-2xl flex flex-col justify-between space-y-5 relative overflow-hidden" style="background: radial-gradient(80% 60% at 50% 90%, rgba(30,40,35,0.95) 0%, #09090b 100%);">
                 
                 <!-- Verso Header -->
@@ -200,10 +209,10 @@
                     <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
                     <span class="text-xs font-mono font-bold tracking-widest text-white">AIME CONTRIBUTION</span>
                   </div>
-                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 uppercase">VERSO • CE QUE JE CONTRIBUE</span>
+                  <span class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 uppercase">VERSO • CE QUE JE CONTRIBUE</span>
                 </div>
 
-                <!-- Subtitle & Main Counter -->
+                <!-- Central Counter -->
                 <div class="text-center py-1">
                   <p class="text-[11px] text-gray-400 italic">« Ce qui était invisible devient lisible. »</p>
                   <div class="mt-2">
@@ -212,42 +221,42 @@
                   </div>
                 </div>
 
-                <!-- 6 Categories Grid -->
+                <!-- 6 Categories Grid with Minimalist Vector SVGs -->
                 <div class="grid grid-cols-3 gap-2 text-center text-xs">
-                  <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
-                    <span class="text-base">🤝</span>
-                    <p id="card-count-entraide" class="font-bold text-white font-mono text-sm mt-0.5">73</p>
-                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider">ENTRAIDE</p>
+                  <div class="p-2.5 rounded-2xl bg-white/5 border border-white/5 space-y-1">
+                    <div class="flex justify-center"><svg class="w-4 h-4 text-cyan-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2z"/></svg></div>
+                    <p id="card-count-entraide" class="font-bold text-white font-mono text-sm">73</p>
+                    <p class="text-[8px] text-muted-foreground uppercase font-bold tracking-wider">ENTRAIDE</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
-                    <span class="text-base">🧠</span>
-                    <p id="card-count-transmission" class="font-bold text-white font-mono text-sm mt-0.5">42</p>
-                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider">TRANSMISSION</p>
+                  <div class="p-2.5 rounded-2xl bg-white/5 border border-white/5 space-y-1">
+                    <div class="flex justify-center"><svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><path d="M9 12h6M12 9l3 3-3 3"/></svg></div>
+                    <p id="card-count-transmission" class="font-bold text-white font-mono text-sm">42</p>
+                    <p class="text-[8px] text-muted-foreground uppercase font-bold tracking-wider">TRANSMISSION</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
-                    <span class="text-base">🌱</span>
-                    <p id="card-count-ecologie" class="font-bold text-white font-mono text-sm mt-0.5">31</p>
-                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider">ÉCOLOGIE</p>
+                  <div class="p-2.5 rounded-2xl bg-white/5 border border-white/5 space-y-1">
+                    <div class="flex justify-center"><svg class="w-4 h-4 text-emerald-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 0110 10c0 5.523-4.477 10-10 10S2 17.523 2 12C2 6.477 6.477 2 12 2z"/><path d="M7 14c3-6 8-7 10-7 0 2-1 7-7 10-2-1-3-2-3-3z"/></svg></div>
+                    <p id="card-count-ecologie" class="font-bold text-white font-mono text-sm">31</p>
+                    <p class="text-[8px] text-muted-foreground uppercase font-bold tracking-wider">ÉCOLOGIE</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
-                    <span class="text-base">🛠️</span>
-                    <p id="card-count-matiere" class="font-bold text-white font-mono text-sm mt-0.5">28</p>
-                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider">MATIÈRE</p>
+                  <div class="p-2.5 rounded-2xl bg-white/5 border border-white/5 space-y-1">
+                    <div class="flex justify-center"><svg class="w-4 h-4 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+                    <p id="card-count-matiere" class="font-bold text-white font-mono text-sm">28</p>
+                    <p class="text-[8px] text-muted-foreground uppercase font-bold tracking-wider">MATIÈRE</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
-                    <span class="text-base">❤️</span>
-                    <p id="card-count-lien-social" class="font-bold text-white font-mono text-sm mt-0.5">64</p>
-                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider">LIEN SOCIAL</p>
+                  <div class="p-2.5 rounded-2xl bg-white/5 border border-white/5 space-y-1">
+                    <div class="flex justify-center"><svg class="w-4 h-4 text-pink-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0113 0"/><circle cx="19" cy="11" r="2.5"/><circle cx="5" cy="11" r="2.5"/></svg></div>
+                    <p id="card-count-lien-social" class="font-bold text-white font-mono text-sm">64</p>
+                    <p class="text-[8px] text-muted-foreground uppercase font-bold tracking-wider">LIEN SOCIAL</p>
                   </div>
-                  <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
-                    <span class="text-base">🏘️</span>
-                    <p id="card-count-territoire" class="font-bold text-white font-mono text-sm mt-0.5">46</p>
-                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider">TERRITOIRE</p>
+                  <div class="p-2.5 rounded-2xl bg-white/5 border border-white/5 space-y-1">
+                    <div class="flex justify-center"><svg class="w-4 h-4 text-violet-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-5.5-7-11.5a7 7 0 0114 0c0 6-7 11.5-7 11.5z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+                    <p id="card-count-territoire" class="font-bold text-white font-mono text-sm">46</p>
+                    <p class="text-[8px] text-muted-foreground uppercase font-bold tracking-wider">TERRITOIRE</p>
                   </div>
                 </div>
 
-                <!-- Ce que j'apporte ↕ Ce dont j'ai besoin -->
-                <div class="space-y-2 text-[11px] pt-1">
+                <!-- Reciprocal Summary -->
+                <div class="space-y-1.5 text-[11px] pt-1">
                   <div class="flex items-center justify-between text-muted-foreground">
                     <span class="text-white font-bold font-mono tracking-wider text-[10px] uppercase">CE QUE J'APPORTE</span>
                     <span>Aide • Transmission • Prototypage</span>
@@ -258,13 +267,13 @@
                   </div>
                 </div>
 
-                <!-- Verso Actions -->
+                <!-- Actions -->
                 <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
-                  <button type="button" data-open-dialog="modal-add-contribution" class="px-3.5 py-1.5 rounded-full bg-emerald-400 text-[11px] font-bold text-black hover:bg-emerald-300 transition-all glow-subtle">
+                  <button type="button" data-open-dialog="modal-add-contribution" class="px-4 py-2 rounded-full bg-emerald-400 text-xs font-bold text-black hover:bg-emerald-300 transition-all glow-subtle">
                     + Ajouter une contribution
                   </button>
-                  <button id="btn-flip-card-back" type="button" class="px-3 py-1.5 rounded-full border border-white/20 text-[11px] font-medium text-white hover:bg-white/10 transition-all">
-                    <span>Voir le recto ↻</span>
+                  <button id="btn-flip-card-back" type="button" class="px-3.5 py-1.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
+                    <span>Voir recto ↻</span>
                   </button>
                 </div>
 
@@ -274,7 +283,7 @@
           </div>
         </div>
 
-        <!-- Success Toast Notification -->
+        <!-- Toast -->
         <div id="toast-contribution-added" class="hidden fixed bottom-8 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-2xl bg-emerald-500 text-black font-bold text-xs shadow-2xl flex items-center gap-2">
           <span>✓ Contribution enregistrée dans votre écosystème AIME.</span>
         </div>
@@ -282,86 +291,25 @@
       </div>
     </section>
 
-    <!-- ===== PHILOSOPHIE DU CHANGEMENT DE PARADIGME ===== -->
-    <section class="py-16 border-t border-border bg-black/40">
-      <div class="mx-auto max-w-5xl px-6 space-y-12">
-        <div class="max-w-3xl mx-auto text-center space-y-4" data-animate>
-          <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Le Changement de Paradigme</span>
-          <h2 class="text-3xl font-bold text-white tracking-tight">
-            « Ma valeur ne se résume pas à ce que je possède. <br class="hidden sm:inline">
-            <span class="text-gradient">Elle se mesure aussi à ce que je transmets et partage. »</span>
+    <!-- ===== SECTION 03 : PONT NARRATIF VERS L'ÉCOSYSTÈME ===== -->
+    <section class="py-20 relative overflow-hidden border-t border-border bg-black">
+      <div class="absolute inset-0 bg-cover bg-center opacity-15 pointer-events-none" style="background-image: url('/img/transmission-hands.webp');"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent pointer-events-none"></div>
+
+      <div class="relative mx-auto max-w-5xl px-6 z-10 grid grid-cols-1 md:grid-cols-12 gap-10 items-center" data-animate>
+        <div class="md:col-span-8 space-y-4">
+          <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">La Carte Ouvre le Monde</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+            Votre profil vivant est le point d'ancrage d'un réseau de réciprocité.
           </h2>
           <p class="text-sm text-muted-foreground leading-relaxed">
-            La carte universelle AIME réconcilie l'identité personnelle et l'impact réel au sein de la communauté.
+            Ce que vous apportez devient une ressource pour un voisin ou un créateur. Ce dont vous avez besoin devient l'opportunité d'action de quelqu'un d'autre. Découvrez la démonstration complète du simulateur d'écosystème.
           </p>
-        </div>
-
-        <!-- Comparative Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch" data-animate>
-          
-          <div class="p-6 md:p-8 rounded-3xl bg-black border border-white/10 space-y-4">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">💳</span>
-              <h3 class="text-base font-bold text-white">Le Système Traditionnel</h3>
-            </div>
-            <ul class="space-y-2 text-xs text-muted-foreground leading-relaxed">
-              <li class="flex items-start gap-2"><span class="text-red-400">✕</span> Mesure uniquement les flux financiers et bancaires.</li>
-              <li class="flex items-start gap-2"><span class="text-red-400">✕</span> Rend invisible le temps donné, l'écoute et l'entraide de voisinage.</li>
-              <li class="flex items-start gap-2"><span class="text-red-400">✕</span> Réduit la personne à son statut administratif ou professionnel.</li>
-              <li class="flex items-start gap-2"><span class="text-red-400">✕</span> Isole les besoins et gaspille les ressources matérielles disponibles.</li>
-            </ul>
+          <div class="pt-2">
+            <a href="/ecosysteme" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
+              <span>Explorer l'Écosystème AIME Complet →</span>
+            </a>
           </div>
-
-          <div class="p-6 md:p-8 rounded-3xl bg-zinc-950 border border-emerald-500/30 glow-card space-y-4">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">✨</span>
-              <h3 class="text-base font-bold text-white">L'Approche AIME CARD</h3>
-            </div>
-            <ul class="space-y-2 text-xs text-gray-300 leading-relaxed">
-              <li class="flex items-start gap-2"><span class="text-emerald-400">✓</span> Révèle la valeur des actions humaines, du savoir et du lien social.</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-400">✓</span> Valorise ce que chacun peut apporter et transmettre sans monétisation forcée.</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-400">✓</span> Respecte strictement la vie privée (aucune donnée financière ou sensible).</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-400">✓</span> Prépare les futures synergies d'entraide et de mutualisation de ressources.</li>
-            </ul>
-          </div>
-
-        </div>
-
-        <!-- Contribution History Feed -->
-        <div class="p-6 md:p-8 rounded-3xl bg-black border border-white/10 space-y-4" data-animate>
-          <div class="flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-mono text-emerald-400 uppercase">Journal de Preuve & Démonstration</span>
-              <h3 class="text-base font-bold text-white mt-0.5">Dernières contributions enregistrées</h3>
-            </div>
-            <button id="btn-reset-card-demo" type="button" class="text-[11px] text-muted-foreground hover:text-white underline">
-              Réinitialiser la démo
-            </button>
-          </div>
-
-          <div id="card-contribution-history" class="space-y-2 pt-2">
-            <!-- Populated dynamically by js/aime-card.js -->
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ===== CTA VERS LE MOTEUR AIME ===== -->
-    <section class="py-16 text-center border-t border-border">
-      <div class="mx-auto max-w-3xl px-6" data-animate>
-        <span class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Écosystème AIME</span>
-        <h2 class="mt-2 text-3xl font-bold text-white tracking-tight">Vous avez un événement ou un projet à mettre en scène ?</h2>
-        <p class="mt-4 text-muted-foreground text-sm">
-          AIME CARD est le profil vivant qui pourra s'intégrer à vos mini-sites et univers numériques sur mesure.
-        </p>
-        <div class="mt-8 flex flex-wrap justify-center gap-4">
-          <a href="/projet" class="inline-flex items-center rounded-full bg-white px-8 py-3.5 text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
-            Imaginer mon projet avec AIME →
-          </a>
-          <a href="/projets" class="inline-flex items-center rounded-full border border-white/20 px-6 py-3.5 text-xs font-medium text-white hover:bg-white/10 transition-colors">
-            Explorer les prototypes
-          </a>
         </div>
       </div>
     </section>
@@ -384,12 +332,12 @@
       <div>
         <label for="contrib-category-select" class="block text-xs font-semibold text-white mb-1.5">Catégorie de la contribution :</label>
         <select id="contrib-category-select" class="w-full text-xs rounded-xl border border-border bg-black text-white p-3 focus:outline-none focus:ring-1 focus:ring-emerald-400">
-          <option value="entraide">🤝 Entraide (Coup de main, soutien, dépannage)</option>
-          <option value="transmission">🧠 Transmission (Partage de savoir, cours, formation)</option>
-          <option value="ecologie">🌱 Écologie (Action environnementale, réparation)</option>
-          <option value="matiere">🛠️ Matière (Prêt d'outil, don d'objet, ressources)</option>
-          <option value="lienSocial">❤️ Lien Social (Écoute, visite, inclusion, convivialité)</option>
-          <option value="territoire">🏘️ Territoire (Implication locale, projet citoyen)</option>
+          <option value="entraide">Entraide (Coup de main, soutien, dépannage)</option>
+          <option value="transmission">Transmission (Partage de savoir, cours, formation)</option>
+          <option value="ecologie">Écologie (Action environnementale, réparation)</option>
+          <option value="matiere">Matière (Prêt d'outil, don d'objet, ressources)</option>
+          <option value="lienSocial">Lien Social (Écoute, visite, inclusion, convivialité)</option>
+          <option value="territoire">Territoire (Implication locale, projet citoyen)</option>
         </select>
       </div>
 
@@ -436,6 +384,7 @@
             <li><a href="/a-propos" class="hover:text-white transition-colors">À propos</a></li>
             <li><a href="/projets" class="hover:text-white transition-colors">Projets</a></li>
             <li><a href="/card" class="text-white font-medium">AIME CARD</a></li>
+            <li><a href="/ecosysteme" class="hover:text-white transition-colors">Écosystème</a></li>
             <li><a href="/projet" class="hover:text-white transition-colors">Imaginer mon projet</a></li>
           </ul>
         </div>
@@ -481,7 +430,7 @@
     </div>
     <div style="overflow-y: auto; padding: 2rem 2.5rem 3rem; display: flex; flex-direction: column; gap: 1.5rem">
       <p class="text-sm text-muted-foreground leading-relaxed">
-        Respect total de la vie privée. Aucune donnée sensible n'est affichée sur les cartes publiques. Contact : <a href="mailto:contact@byaime.com" class="text-white underline">contact@byaime.com</a>.
+        Respect total de la vie privée. Aucune donnée sensible n'est affichée sur les profils publics. Contact : <a href="mailto:contact@byaime.com" class="text-white underline">contact@byaime.com</a>.
       </p>
     </div>
   </dialog>

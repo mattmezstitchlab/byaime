@@ -57,6 +57,11 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // Handle /ecosystem alias to /ecosysteme
+  if (pathname === '/ecosystem' || pathname === '/ecosystem/') {
+    pathname = '/ecosysteme';
+  }
+
   // Handle Static Files & Clean URLs
   let filePath = path.join(ROOT, pathname);
 
