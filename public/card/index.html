@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="fr" style="scroll-behavior: smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIME CARD — La Carte Universelle de Profil & de Contribution | BYAIME</title>
+  <meta name="description" content="Découvrez AIME CARD : la carte universelle numérique interactive en 3D qui rend visible la richesse humaine, l'entraide, la transmission et les contributions non monétaires.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><circle cx='12' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/><circle cx='20' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/></svg>">
+  <link rel="apple-touch-icon" href="/img/og-image.png">
+  <link rel="canonical" href="https://byaime.fr/card">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AIME CARD — La Carte Universelle de Profil & de Contribution | BYAIME">
+  <meta property="og:description" content="Et si votre valeur ne se résumait pas à votre argent ? Découvrez AIME CARD, l'objet numérique interactif en 3D qui révèle votre contribution humaine.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://byaime.fr/card">
+  <meta property="og:image" content="https://byaime.fr/img/og-image.png">
+
+  <link rel="preload" href="/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    dialog[open] { display: flex; flex-direction: column; animation: modal-in 0.25s ease-out; }
+    dialog::backdrop { background: rgba(0,0,0,0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); animation: backdrop-in 0.25s ease-out; }
+    @keyframes modal-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+    @keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/aime-card.js" defer></script>
+</head>
+<body class="font-sans antialiased text-foreground bg-background">
+
+  <!-- Skip link -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md">
+    Aller au contenu principal
+  </a>
+
+  <!-- ===== Navigation ===== -->
+  <header id="main-header" class="sticky top-0 z-40 w-full bg-background/80 backdrop-blur-md transition-[border-color] duration-300" style="border-bottom: 1px solid transparent">
+    <nav id="main-nav" class="relative mx-auto flex max-w-5xl items-center justify-between px-6 pt-12 pb-0 transition-[padding] duration-300">
+      <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight text-white">
+        <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1"/></svg>
+        BYAIME
+      </a>
+
+      <div class="hidden items-center gap-6 lg:gap-8 md:flex absolute left-1/2 -translate-x-1/2">
+        <a href="/a-propos" class="text-sm text-muted-foreground hover:text-white transition-colors">À propos</a>
+        <a href="/projets" class="text-sm text-muted-foreground hover:text-white transition-colors">Projets</a>
+        <a href="/card" class="text-sm text-white font-medium transition-colors flex items-center gap-1.5">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+          AIME CARD
+        </a>
+        <a href="/projet" class="text-sm text-muted-foreground hover:text-white transition-colors">Imaginer mon projet</a>
+      </div>
+
+      <a href="/projet" class="hidden md:inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-medium text-black hover:bg-white/90 transition-all glow-subtle">
+        Imaginer mon projet
+      </a>
+
+      <button id="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" class="flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors md:hidden">
+        <span class="sr-only">Ouvrir le menu</span>
+        <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" aria-hidden="true" class="hidden border-t border-border bg-background px-6 py-4 md:hidden">
+      <div class="flex flex-col gap-4">
+        <a href="/" class="text-sm text-muted-foreground hover:text-white transition-colors">Accueil</a>
+        <a href="/a-propos" class="text-sm text-muted-foreground hover:text-white transition-colors">À propos</a>
+        <a href="/projets" class="text-sm text-muted-foreground hover:text-white transition-colors">Projets</a>
+        <a href="/card" class="text-sm text-white font-medium transition-colors flex items-center gap-1.5">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+          AIME CARD
+        </a>
+        <a href="/projet" class="text-sm text-muted-foreground hover:text-white transition-colors">Imaginer mon projet</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== Hero AIME CARD ===== -->
+    <section class="py-[calc(32px+4vh)]">
+      <div class="mx-auto max-w-5xl px-6 text-center">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium tracking-wide mb-6 bg-white/[0.03]">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Prototype Expérimental AIME • Carte Universelle de Profil & Contribution
+          </span>
+          <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-white leading-[1.15]">
+            Et si nous pouvions rendre visible <br class="hidden sm:inline">
+            <span class="text-gradient">ce qui a toujours été invisible ?</span>
+          </h1>
+          <p class="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+            Une personne ne se résume pas à son argent, son emploi ou son statut administratif. Elle possède du temps, des compétences, une capacité d'entraide, de transmission et d'action. AIME CARD est la carte numérique qui représente cette richesse humaine.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3D INTERACTIVE CARD SHOWCASE ===== -->
+    <section class="py-10 border-t border-border relative">
+      <div class="mx-auto max-w-5xl px-6">
+        
+        <!-- Helper Hint -->
+        <div id="card-flip-hint" class="text-center mb-6 transition-opacity duration-300">
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-xs font-mono text-emerald-300 border border-white/10 animate-bounce">
+            ↻ Touchez ou cliquez sur la carte pour la retourner en 3D
+          </span>
+        </div>
+
+        <!-- 3D Card Stage Container -->
+        <div class="flex flex-col items-center justify-center">
+          <div id="aime-card-3d-wrap" class="card-3d-wrap w-full max-w-[440px] min-h-[580px] cursor-pointer select-none" data-animate>
+            
+            <div id="aime-card-inner" class="card-3d-inner w-full min-h-[580px]">
+
+              <!-- ======================================================= -->
+              <!-- RECTO : QUI JE SUIS -->
+              <!-- ======================================================= -->
+              <div class="card-3d-face p-8 rounded-3xl bg-zinc-950 border border-white/20 shadow-2xl flex flex-col justify-between space-y-6 relative overflow-hidden" style="background: radial-gradient(80% 60% at 50% 10%, rgba(35,35,42,0.95) 0%, #09090b 100%);">
+                
+                <!-- Holographic Chip & Brand Header -->
+                <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-6 rounded-md bg-gradient-to-tr from-amber-400/80 via-yellow-200 to-amber-600/80 p-0.5 shadow-md flex items-center justify-center">
+                      <div class="w-full h-full border border-black/30 rounded-sm grid grid-cols-2 gap-0.5 p-0.5 opacity-70">
+                        <div class="bg-black/20"></div><div class="bg-black/20"></div>
+                        <div class="bg-black/20"></div><div class="bg-black/20"></div>
+                      </div>
+                    </div>
+                    <span class="text-xs font-mono font-bold tracking-widest text-white">AIME CARD</span>
+                  </div>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-muted-foreground uppercase">RECTO • QUI JE SUIS</span>
+                </div>
+
+                <!-- Identity Block -->
+                <div class="space-y-4">
+                  <div class="flex items-center gap-4">
+                    <img src="/img/matt-mez.webp" alt="Matt Mez" width="1024" height="1024" class="w-20 h-20 rounded-2xl object-cover ring-2 ring-white/20 shadow-lg">
+                    <div>
+                      <h2 class="text-2xl font-bold text-white tracking-tight">MATT MEZ</h2>
+                      <p class="text-xs text-pink-300 font-mono mt-0.5">Concepteur • Musicien • Directeur artistique</p>
+                      <p class="text-[11px] text-muted-foreground mt-1 flex items-center gap-1">
+                        <span>📍</span> Paris & Territoires créatifs
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Skills Tags -->
+                  <div class="space-y-1.5 pt-2">
+                    <span class="text-[10px] uppercase font-mono text-muted-foreground tracking-wider">Compétences :</span>
+                    <div class="flex flex-wrap gap-1.5">
+                      <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-200">Design d'émotion</span>
+                      <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-200">Musique & Sound Design</span>
+                      <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-200">UX/UI</span>
+                      <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-200">Création Numérique</span>
+                    </div>
+                  </div>
+
+                  <!-- Je peux transmettre -->
+                  <div class="space-y-1.5">
+                    <span class="text-[10px] uppercase font-mono text-emerald-400 tracking-wider">Je peux transmettre :</span>
+                    <div class="flex flex-wrap gap-1.5">
+                      <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300">Créativité</span>
+                      <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300">Design sensible</span>
+                      <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300">Musique</span>
+                      <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300">Artisanat du code</span>
+                    </div>
+                  </div>
+
+                  <!-- Ce que j'apporte -->
+                  <div class="space-y-1.5">
+                    <span class="text-[10px] uppercase font-mono text-muted-foreground tracking-wider">Ce que je peux apporter :</span>
+                    <p class="text-xs text-muted-foreground leading-relaxed">
+                      Écoute humaine, prototypage rapide, transmission d'outils numériques et ateliers ouverts.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Bottom Bar & Flip Trigger -->
+                <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                  <span class="text-[10px] font-mono text-muted-foreground">ID : aime_matt_mez</span>
+                  <button id="btn-flip-card" type="button" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white text-[11px] font-bold text-black hover:bg-white/90 transition-all glow-subtle">
+                    <span>Retourner la carte ↻</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- ======================================================= -->
+              <!-- VERSO : MA CONTRIBUTION -->
+              <!-- ======================================================= -->
+              <div class="card-3d-face card-3d-back p-8 rounded-3xl bg-zinc-950 border border-white/20 shadow-2xl flex flex-col justify-between space-y-5 relative overflow-hidden" style="background: radial-gradient(80% 60% at 50% 90%, rgba(30,40,35,0.95) 0%, #09090b 100%);">
+                
+                <!-- Verso Header -->
+                <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                  <div class="flex items-center gap-2">
+                    <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                    <span class="text-xs font-mono font-bold tracking-widest text-white">AIME CONTRIBUTION</span>
+                  </div>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 uppercase">VERSO • CE QUE JE CONTRIBUE</span>
+                </div>
+
+                <!-- Subtitle & Main Counter -->
+                <div class="text-center py-1">
+                  <p class="text-[11px] text-gray-400 italic">« Ce qui était invisible devient lisible. »</p>
+                  <div class="mt-2">
+                    <span id="card-total-contributions" class="text-5xl font-extrabold text-white tracking-tight font-mono">284</span>
+                    <p class="text-[10px] font-mono uppercase tracking-widest text-emerald-400 font-bold mt-0.5">ACTIONS & CONTRIBUTIONS CERTIFIÉES</p>
+                  </div>
+                </div>
+
+                <!-- 6 Categories Grid -->
+                <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                  <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
+                    <span class="text-base">🤝</span>
+                    <p id="card-count-entraide" class="font-bold text-white font-mono text-sm mt-0.5">73</p>
+                    <p class="text-[9px] text-muted-foreground uppercase">Entraide</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
+                    <span class="text-base">🧠</span>
+                    <p id="card-count-transmission" class="font-bold text-white font-mono text-sm mt-0.5">42</p>
+                    <p class="text-[9px] text-muted-foreground uppercase">Transmission</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
+                    <span class="text-base">🌱</span>
+                    <p id="card-count-ecologie" class="font-bold text-white font-mono text-sm mt-0.5">31</p>
+                    <p class="text-[9px] text-muted-foreground uppercase">Écologie</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
+                    <span class="text-base">🛠️</span>
+                    <p id="card-count-matiere" class="font-bold text-white font-mono text-sm mt-0.5">28</p>
+                    <p class="text-[9px] text-muted-foreground uppercase">Matière</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
+                    <span class="text-base">❤️</span>
+                    <p id="card-count-lien-social" class="font-bold text-white font-mono text-sm mt-0.5">64</p>
+                    <p class="text-[9px] text-muted-foreground uppercase">Lien Social</p>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
+                    <span class="text-base">🏘️</span>
+                    <p id="card-count-territoire" class="font-bold text-white font-mono text-sm mt-0.5">46</p>
+                    <p class="text-[9px] text-muted-foreground uppercase">Territoire</p>
+                  </div>
+                </div>
+
+                <!-- Ce que j'apporte ↕ Ce dont j'ai besoin -->
+                <div class="space-y-2 text-[11px] pt-1">
+                  <div class="flex items-center justify-between text-muted-foreground">
+                    <span class="text-white font-semibold">Ce que j'apporte :</span>
+                    <span>Aide • Transmission • Prototypage</span>
+                  </div>
+                  <div class="flex items-center justify-between text-muted-foreground">
+                    <span class="text-emerald-300 font-semibold">Ce dont j'ai besoin :</span>
+                    <span>Formation • Matériel d'art • Partenaires</span>
+                  </div>
+                </div>
+
+                <!-- Verso Actions -->
+                <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+                  <button type="button" data-open-dialog="modal-add-contribution" class="px-3.5 py-1.5 rounded-full bg-emerald-400 text-[11px] font-bold text-black hover:bg-emerald-300 transition-all glow-subtle">
+                    + Ajouter une contribution
+                  </button>
+                  <button id="btn-flip-card-back" type="button" class="px-3 py-1.5 rounded-full border border-white/20 text-[11px] font-medium text-white hover:bg-white/10 transition-all">
+                    <span>Voir le recto ↻</span>
+                  </button>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Toast Notification -->
+        <div id="toast-contribution-added" class="hidden fixed bottom-8 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-2xl bg-emerald-500 text-black font-bold text-xs shadow-2xl flex items-center gap-2">
+          <span>✓ Contribution enregistrée dans votre écosystème AIME.</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== PHILOSOPHIE DU CHANGEMENT DE PARADIGME ===== -->
+    <section class="py-16 border-t border-border bg-black/40">
+      <div class="mx-auto max-w-5xl px-6 space-y-12">
+        <div class="max-w-3xl mx-auto text-center space-y-4" data-animate>
+          <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Le Changement de Paradigme</span>
+          <h2 class="text-3xl font-bold text-white tracking-tight">
+            « Ma valeur ne se résume pas à ce que je possède. <br class="hidden sm:inline">
+            <span class="text-gradient">Elle se mesure aussi à ce que je transmets et partage. »</span>
+          </h2>
+          <p class="text-sm text-muted-foreground leading-relaxed">
+            La carte universelle AIME réconcilie l'identité personnelle et l'impact réel au sein de la communauté.
+          </p>
+        </div>
+
+        <!-- Comparative Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch" data-animate>
+          
+          <div class="p-6 md:p-8 rounded-3xl bg-black border border-white/10 space-y-4">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">💳</span>
+              <h3 class="text-base font-bold text-white">Le Système Traditionnel</h3>
+            </div>
+            <ul class="space-y-2 text-xs text-muted-foreground leading-relaxed">
+              <li class="flex items-start gap-2"><span class="text-red-400">✕</span> Mesure uniquement les flux financiers et bancaires.</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">✕</span> Rend invisible le temps donné, l'écoute et l'entraide de voisinage.</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">✕</span> Réduit la personne à son statut administratif ou professionnel.</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">✕</span> Isole les besoins et gaspille les ressources matérielles disponibles.</li>
+            </ul>
+          </div>
+
+          <div class="p-6 md:p-8 rounded-3xl bg-zinc-950 border border-emerald-500/30 glow-card space-y-4">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">✨</span>
+              <h3 class="text-base font-bold text-white">L'Approche AIME CARD</h3>
+            </div>
+            <ul class="space-y-2 text-xs text-gray-300 leading-relaxed">
+              <li class="flex items-start gap-2"><span class="text-emerald-400">✓</span> Révèle la valeur des actions humaines, du savoir et du lien social.</li>
+              <li class="flex items-start gap-2"><span class="text-emerald-400">✓</span> Valorise ce que chacun peut apporter et transmettre sans monétisation forcée.</li>
+              <li class="flex items-start gap-2"><span class="text-emerald-400">✓</span> Respecte strictement la vie privée (aucune donnée financière ou sensible).</li>
+              <li class="flex items-start gap-2"><span class="text-emerald-400">✓</span> Prépare les futures synergies d'entraide et de mutualisation de ressources.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Contribution History Feed -->
+        <div class="p-6 md:p-8 rounded-3xl bg-black border border-white/10 space-y-4" data-animate>
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-mono text-emerald-400 uppercase">Journal de Preuve & Démonstration</span>
+              <h3 class="text-base font-bold text-white mt-0.5">Dernières contributions enregistrées</h3>
+            </div>
+            <button id="btn-reset-card-demo" type="button" class="text-[11px] text-muted-foreground hover:text-white underline">
+              Réinitialiser la démo
+            </button>
+          </div>
+
+          <div id="card-contribution-history" class="space-y-2 pt-2">
+            <!-- Populated dynamically by js/aime-card.js -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== CTA VERS LE MOTEUR AIME ===== -->
+    <section class="py-16 text-center border-t border-border">
+      <div class="mx-auto max-w-3xl px-6" data-animate>
+        <span class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Écosystème AIME</span>
+        <h2 class="mt-2 text-3xl font-bold text-white tracking-tight">Vous avez un événement ou un projet à mettre en scène ?</h2>
+        <p class="mt-4 text-muted-foreground text-sm">
+          AIME CARD est le profil vivant qui pourra s'intégrer à vos mini-sites et univers numériques sur mesure.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="/projet" class="inline-flex items-center rounded-full bg-white px-8 py-3.5 text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
+            Imaginer mon projet avec AIME →
+          </a>
+          <a href="/projets" class="inline-flex items-center rounded-full border border-white/20 px-6 py-3.5 text-xs font-medium text-white hover:bg-white/10 transition-colors">
+            Explorer les prototypes
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== MODALE : AJOUTER UNE CONTRIBUTION ===== -->
+  <dialog id="modal-add-contribution" class="rounded-3xl bg-zinc-950 text-foreground border border-white/10" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 34rem; max-height: 85vh; padding: 0; overflow: hidden; font-size: 1rem">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.25rem 1.75rem; flex-shrink: 0">
+      <div>
+        <span class="text-[10px] font-mono text-emerald-400 uppercase">AIME CONTRIBUTION</span>
+        <h3 class="text-base font-bold text-white mt-0.5">Enregistrer une contribution</h3>
+      </div>
+      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
+        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <form id="form-add-contribution" style="overflow-y: auto; padding: 1.5rem 1.75rem; display: flex; flex-direction: column; gap: 1.25rem">
+      <div>
+        <label for="contrib-category-select" class="block text-xs font-semibold text-white mb-1.5">Catégorie de la contribution :</label>
+        <select id="contrib-category-select" class="w-full text-xs rounded-xl border border-border bg-black text-white p-3 focus:outline-none focus:ring-1 focus:ring-emerald-400">
+          <option value="entraide">🤝 Entraide (Coup de main, soutien, dépannage)</option>
+          <option value="transmission">🧠 Transmission (Partage de savoir, cours, formation)</option>
+          <option value="ecologie">🌱 Écologie (Action environnementale, réparation)</option>
+          <option value="matiere">🛠️ Matière (Prêt d'outil, don d'objet, ressources)</option>
+          <option value="lienSocial">❤️ Lien Social (Écoute, visite, inclusion, convivialité)</option>
+          <option value="territoire">🏘️ Territoire (Implication locale, projet citoyen)</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="contrib-description-input" class="block text-xs font-semibold text-white mb-1.5">Description de l'action : *</label>
+        <textarea id="contrib-description-input" rows="3" required placeholder="Ex: J'ai animé un atelier bénévole d'initiation au design ou aidé un voisin à réparer son matériel..." class="w-full text-xs rounded-xl border border-border bg-black p-3 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-emerald-400 resize-y"></textarea>
+      </div>
+
+      <div>
+        <label for="contrib-context-input" class="block text-xs font-semibold text-white mb-1.5">Bénéficiaire / Contexte (optionnel) :</label>
+        <input id="contrib-context-input" type="text" placeholder="Ex: Voisinage, association locale, ami..." class="w-full text-xs rounded-xl border border-border bg-black px-3 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-emerald-400">
+      </div>
+
+      <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5 text-[11px] text-muted-foreground">
+        <strong class="text-white">Principe fondamental :</strong> Cette action valorise le lien humain sans lui attribuer de valeur financière arbitraire.
+      </div>
+
+      <div class="pt-2 flex items-center justify-between gap-3">
+        <button type="submit" class="flex-1 py-3 rounded-full bg-emerald-400 text-xs font-bold text-black hover:bg-emerald-300 transition-all glow-subtle">
+          Valider ma contribution →
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- ===== Footer ===== -->
+  <footer class="border-t border-border py-16 bg-black/60">
+    <div class="mx-auto max-w-5xl px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div class="md:col-span-2">
+          <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight text-white">
+            <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1"/></svg>
+            BYAIME
+          </a>
+          <p class="mt-4 text-sm text-muted-foreground max-w-md leading-relaxed">
+            Studio créatif et technologique fondé par <strong>Matt Mez</strong>. Conception d'univers numériques sur mesure et de l'écosystème de contribution AIME.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-white">Navigation</p>
+          <ul class="mt-4 space-y-2.5 text-sm text-muted-foreground">
+            <li><a href="/" class="hover:text-white transition-colors">Accueil</a></li>
+            <li><a href="/a-propos" class="hover:text-white transition-colors">À propos</a></li>
+            <li><a href="/projets" class="hover:text-white transition-colors">Projets</a></li>
+            <li><a href="/card" class="text-white font-medium">AIME CARD</a></li>
+            <li><a href="/projet" class="hover:text-white transition-colors">Imaginer mon projet</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-white">Engagement</p>
+          <ul class="mt-4 space-y-2.5 text-sm text-muted-foreground">
+            <li><a href="/projet#soutien" class="hover:text-white transition-colors">Soutenir LE MONDE AIME</a></li>
+            <li><button type="button" data-open-dialog="modal-legal" class="hover:text-white transition-colors text-left">Mentions légales & CGU</button></li>
+            <li><button type="button" data-open-dialog="modal-privacy" class="hover:text-white transition-colors text-left">Confidentialité</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+        <p>© 2026 BYAIME. Conçu avec exigence par Matt Mez & LE MONDE AIME.</p>
+        <p>« Rendre visible ce qui a toujours été invisible. »</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modals -->
+  <dialog id="modal-legal" class="rounded-2xl bg-background text-foreground" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 3rem); max-width: 42rem; max-height: 80vh; padding: 0; overflow: hidden; border: none; font-size: 1rem">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2.5rem; flex-shrink: 0">
+      <h2 style="font-size: 1.25rem; font-weight: 700">Mentions légales & Cadre d'Engagement</h2>
+      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
+        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div style="overflow-y: auto; padding: 2rem 2.5rem 3rem; display: flex; flex-direction: column; gap: 2rem">
+      <p class="text-sm text-muted-foreground leading-relaxed">
+        Le site BYAIME est édité par <strong>Matt Mez</strong> en lien avec l'association <strong>LE MONDE AIME</strong> (loi 1901).
+      </p>
+    </div>
+  </dialog>
+
+  <dialog id="modal-privacy" class="rounded-2xl bg-background text-foreground" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 3rem); max-width: 42rem; max-height: 80vh; padding: 0; overflow: hidden; border: none; font-size: 1rem">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2.5rem; flex-shrink: 0">
+      <h2 style="font-size: 1.25rem; font-weight: 700">Politique de Confidentialité</h2>
+      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
+        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div style="overflow-y: auto; padding: 2rem 2.5rem 3rem; display: flex; flex-direction: column; gap: 1.5rem">
+      <p class="text-sm text-muted-foreground leading-relaxed">
+        Respect total de la vie privée. Aucune donnée sensible n'est affichée sur les cartes publiques. Contact : <a href="mailto:contact@byaime.com" class="text-white underline">contact@byaime.com</a>.
+      </p>
+    </div>
+  </dialog>
+
+</body>
+</html>

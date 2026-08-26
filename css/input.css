@@ -73,6 +73,43 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+/* ===== AIME CARD 3D FLIP & PERSPECTIVE ===== */
+
+.card-3d-wrap {
+  perspective: 1400px;
+}
+
+.card-3d-inner {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+
+.card-3d-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-3d-face {
+  position: relative;
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 1.5rem;
+}
+
+.card-3d-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  border-radius: 1.5rem;
+}
+
+/* Glass & Texture Overlay for Cards */
+.card-glass-shine {
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.12) 0%, transparent 55%);
+}
+
 /* ===== Interactive Module Pills & Chips ===== */
 
 .tag-removable {
@@ -180,6 +217,9 @@ html:not(.js) [data-animate] {
     transform: none !important;
     transition: none !important;
   }
+  .card-3d-inner {
+    transition: none !important;
+  }
   [data-delay="1"],
   [data-delay="2"],
   [data-delay="3"],
@@ -239,6 +279,9 @@ html:not(.js) [data-animate] {
 .bar-3 { animation: soundwave 1.4s ease-in-out infinite 0.4s; }
 .bar-4 { animation: soundwave 1.0s ease-in-out infinite 0.1s; }
 .bar-5 { animation: soundwave 1.3s ease-in-out infinite 0.3s; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.animate-fadeIn { animation: fadeIn 0.3s ease-out forwards; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-ring-1,
