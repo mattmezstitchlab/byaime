@@ -932,169 +932,679 @@
     });
   });
 
+  // =========================================================================
+  // 4. V12 ENGINE : LE JOUR J — UNE SEULE TIMELINE, UN SEUL MONDE
+  // =========================================================================
+
+  var momentDatabases = {
+    "11:00": {
+      id: "11:00",
+      title: "11:00 · Cérémonie Laïque",
+      time: "11:00 → 12:15 (1h15)",
+      location: "Sous la grande verrière fleurie du domaine",
+      image: "/img/floral4.webp",
+      peopleDesc: "84 invités réunis · Famille & Témoins aux premiers rangs",
+      guestIds: ["claire", "antoine", "camille", "thomas", "sophie", "lucas"],
+      providers: [
+        { id: "officiant", name: "Éléonore V.", role: "Célébrante laïque", category: "Célébration" },
+        { id: "atelier-lumiere", name: "Atelier Lumière", role: "Photographe de mariage", category: "Image & Reportage" },
+        { id: "quatuor-cordes", name: "Quatuor Cordes & Âme", role: "Musiciens acoustiques", category: "Musique Live" },
+        { id: "herbier-poetique", name: "L'Herbier Poétique", role: "Scénographie florale", category: "Art Végétal" }
+      ],
+      music: {
+        title: "Canon in D (Pachelbel) — Version acoustique live",
+        type: "Morceau d'entrée & procession",
+        contributedBy: "Choisi pour l'entrée sous la verrière",
+        note: "Interprété au violoncelle et violon par Quatuor Cordes"
+      },
+      contributions: [
+        { type: "Vœux", text: "Échange des alliances sous l'arche végétale & lecture des promesses" },
+        { type: "Mots doux", text: "18 messages d'amour intimes déposés dans le livre d'or avant la cérémonie" }
+      ],
+      desc: "Échange des vœux et des alliances sous la verrière fleurie, premier grand temps fort émotionnel de la journée."
+    },
+    "12:30": {
+      id: "12:30",
+      title: "12:30 · Cocktail & Vin d'Honneur",
+      time: "12:30 → 18:30 (6h00)",
+      location: "Jardin des oliviers & terrasse du domaine",
+      image: "/img/floral7.webp",
+      peopleDesc: "84 invités réunis · Tous réunis en plein air",
+      guestIds: ["sophie", "thomas", "claire", "lucas", "camille", "antoine"],
+      providers: [
+        { id: "saveurs-terroir", name: "Saveurs du Terroir", role: "Chef & Traiteur artisanal", category: "Gastronomie" },
+        { id: "atelier-lumiere", name: "Atelier Lumière", role: "Photographe reportage", category: "Image & Reportage" },
+        { id: "herbier-poetique", name: "L'Herbier Poétique", role: "Fleuriste & Déco", category: "Art Végétal" }
+      ],
+      music: {
+        title: "Bossa & Jazz doux en plein air",
+        type: "Ambiance lounge en terrasse",
+        contributedBy: "Sélection d'accueil des proches",
+        note: "Accompagnement acoustique doux pendant les rafraîchissements"
+      },
+      contributions: [
+        { type: "Photos live", text: "12 premières photos spontanées partagées en direct par Sophie & Thomas" },
+        { type: "Toast", text: "Discours d'accueil des mariés et retrouvailles des familles" }
+      ],
+      desc: "Rafraîchissements, dégustation des pièces du terroir, photos de groupe spontanées et retrouvailles des proches sous les oliviers."
+    },
+    "19:30": {
+      id: "19:30",
+      title: "19:30 · Dîner sous les lampions",
+      time: "19:30 → 22:15 (2h45)",
+      location: "Grande halle du domaine",
+      image: "/img/floral5.webp",
+      peopleDesc: "84 invités · Répartis sur 12 tables rondes",
+      guestIds: ["claire", "antoine", "camille", "thomas", "sophie", "lucas"],
+      tableIds: ["Table Orion", "Table Cassiopée", "Table Pégase", "Table Andromède"],
+      providers: [
+        { id: "saveurs-terroir", name: "Saveurs du Terroir", role: "Service gastronomique & Pièce montée", category: "Gastronomie" },
+        { id: "collectif-sound", name: "Collectif Sound & Night", role: "DJ & Scénographie son/lumière", category: "Musique & Fête" },
+        { id: "herbier-poetique", name: "L'Herbier Poétique", role: "Centres de tables végétaux", category: "Art Végétal" }
+      ],
+      music: {
+        title: "Midnight City (M83) — Entrée festive des mariés",
+        type: "Morceau d'entrée au dîner",
+        contributedBy: "Claire",
+        note: "« Pour danser sous les lampions dès le début du repas ! »"
+      },
+      contributions: [
+        { type: "Plan de table", text: "Recherche instantanée par prénom : chacun trouve sa place sans attroupement" },
+        { type: "Discours", text: "3 discours intimes des témoins et projection des souvenirs d'enfance" }
+      ],
+      desc: "Dîner assis à la lueur des lampions, discours intimes, pièce montée spectaculaire et découverte des tables."
+    },
+    "22:30": {
+      id: "22:30",
+      title: "22:30 · Première Danse & Soirée",
+      time: "22:30 → 04:00 (Jusqu'au bout de la nuit)",
+      location: "Piste de danse & bar de nuit",
+      image: "/img/floral3.webp",
+      peopleDesc: "Tous les invités réunis sur la piste de danse",
+      guestIds: ["sophie", "lucas", "thomas", "claire", "antoine", "camille"],
+      providers: [
+        { id: "collectif-sound", name: "Collectif Sound & Night", role: "DJ & Mix en direct", category: "Musique & Fête" },
+        { id: "atelier-lumiere", name: "Atelier Lumière", role: "Captation de soirée & lumière", category: "Image & Reportage" }
+      ],
+      music: {
+        title: "La Playlist Collective des Invités (61 morceaux proposés)",
+        type: "Bande-son 100% collaborative",
+        contributedBy: "Vos invités (Ma Chanson)",
+        note: "Chaque invité apporte le titre qui le représente pour enflammer la piste"
+      },
+      contributions: [
+        { type: "La Playlist", text: "61 morceaux et dédicaces transmis en direct au DJ" },
+        { type: "Mots doux", text: "37 messages d'amour et anecdotes déposés dans la soirée" }
+      ],
+      desc: "Ouverture du bal par les mariés et embrasement de la piste de danse au son de la playlist collective des invités."
+    },
+    "Lendemain": {
+      id: "Lendemain",
+      title: "Lendemain · Brunch & Souvenirs",
+      time: "11:30 → 16:00 (4h30)",
+      location: "Terrasse du parc & piscine",
+      image: "/img/floral1.webp",
+      peopleDesc: "Famille & proches hébergés sur place (42 personnes)",
+      guestIds: ["claire", "antoine", "camille", "thomas"],
+      providers: [
+        { id: "food-truck", name: "Food Truck d'Antan", role: "Brunch artisanal & crêpes", category: "Gastronomie Conviviale" }
+      ],
+      music: {
+        title: "Playlist acoustique relaxante & solaire",
+        type: "Ambiance détente du lendemain",
+        contributedBy: "Sélection douce des mariés",
+        note: "Fond sonore chaleureux pour clore le week-end en douceur"
+      },
+      contributions: [
+        { type: "Galerie HD", text: "Découverte de la galerie collective complète (48 photos HD déposées)" },
+        { type: "Livre d'or", text: "Recueil complet des vœux et remise du pack d'archive numérique" }
+      ],
+      desc: "Brunch décontracté au soleil, derniers partages, baignade et remise du sanctuaire d'archives du mariage."
+    }
+  };
+
+  var guestsDatabase = [
+    {
+      id: "claire",
+      name: "Claire",
+      avatar: "👩🏻",
+      table: "Table Orion",
+      tableNumber: "01",
+      seat: "Place 1",
+      song: "Midnight City",
+      artist: "M83",
+      message: "Pour danser sous les lampions jusqu'au bout de la nuit !",
+      rsvp: "Présente (Accompagnée)",
+      diet: "Végétarien",
+      journey: [
+        { time: "11:00", title: "Cérémonie Laïque", note: "Au premier rang côté mariée" },
+        { time: "12:30", title: "Cocktail", note: "Porte un toast au vin d'honneur" },
+        { time: "19:30", title: "Dîner — Table Orion", note: "Assise à la table 01 avec Antoine et Paul" },
+        { time: "22:30", title: "Première Danse & Soirée", note: "A apporté Midnight City (M83)" }
+      ]
+    },
+    {
+      id: "antoine",
+      name: "Antoine",
+      avatar: "👨🏼",
+      table: "Table Orion",
+      tableNumber: "01",
+      seat: "Place 2",
+      song: "Heroes",
+      artist: "David Bowie",
+      message: "Tellement fier de vous deux. Que cette journée soit inoubliable !",
+      rsvp: "Présent",
+      diet: "Standard",
+      journey: [
+        { time: "11:00", title: "Cérémonie Laïque", note: "Présent dans la verrière fleurie" },
+        { time: "12:30", title: "Cocktail", note: "Retrouvailles des amis d'enfance" },
+        { time: "19:30", title: "Dîner — Table Orion", note: "Assis avec Claire et Marc" },
+        { time: "22:30", title: "Soirée", note: "Sur la piste pour Heroes" }
+      ]
+    },
+    {
+      id: "camille",
+      name: "Camille",
+      avatar: "👩🏼",
+      table: "Table Cassiopée",
+      tableNumber: "02",
+      seat: "Place 4",
+      song: "La Vie en Rose",
+      artist: "Édith Piaf (version acoustique)",
+      message: "Un amour infini pour vous deux. Merci de nous faire vivre ce moment magique.",
+      rsvp: "Présente",
+      diet: "Sans gluten",
+      journey: [
+        { time: "11:00", title: "Cérémonie Laïque", note: "Lecture d'un poème intime pendant les vœux" },
+        { time: "12:30", title: "Cocktail", note: "Photos complices avec les mariés" },
+        { time: "19:30", title: "Dîner — Table Cassiopée", note: "Toast et discours des témoins" },
+        { time: "22:30", title: "Soirée", note: "Ambiance festive sur la piste" }
+      ]
+    },
+    {
+      id: "sophie",
+      name: "Sophie",
+      avatar: "👩🏽",
+      table: "Table Pégase",
+      tableNumber: "03",
+      seat: "Place 3",
+      song: "September",
+      artist: "Earth, Wind & Fire",
+      message: "Prête pour enflammer la piste de danse ! Vous êtes magnifiques.",
+      rsvp: "Présente",
+      diet: "Standard",
+      journey: [
+        { time: "11:00", title: "Cérémonie Laïque", note: "Présente dans la verrière" },
+        { time: "12:30", title: "Cocktail", note: "A partagé 3 photos live dans le parc" },
+        { time: "19:30", title: "Dîner — Table Pégase", note: "Assise avec Lucas et Alexandre" },
+        { time: "22:30", title: "Soirée", note: "Lance la danse sur September" }
+      ]
+    },
+    {
+      id: "thomas",
+      name: "Thomas",
+      avatar: "👨🏻",
+      table: "Table Cassiopée",
+      tableNumber: "02",
+      seat: "Place 5",
+      song: "You Are The Best Thing",
+      artist: "Ray LaMontagne",
+      message: "Notre chanson d'amitié éternelle. Santé aux mariés !",
+      rsvp: "Présent (Accompagné)",
+      diet: "Standard",
+      journey: [
+        { time: "11:00", title: "Cérémonie Laïque", note: "Témoin du marié" },
+        { time: "12:30", title: "Cocktail", note: "Animation du vin d'honneur" },
+        { time: "19:30", title: "Dîner — Table Cassiopée", note: "Toast des témoins" },
+        { time: "22:30", title: "Soirée", note: "Lancement de la playlist collective" }
+      ]
+    },
+    {
+      id: "lucas",
+      name: "Lucas",
+      avatar: "👨🏽",
+      table: "Table Pégase",
+      tableNumber: "03",
+      seat: "Place 1",
+      song: "Something About Us",
+      artist: "Daft Punk",
+      message: "Félicitations aux mariés, hâte de fêter ça dignement !",
+      rsvp: "Présent",
+      diet: "Standard",
+      journey: [
+        { time: "11:00", title: "Cérémonie Laïque", note: "Présent dans la verrière" },
+        { time: "12:30", title: "Cocktail", note: "Photos entre amis d'école" },
+        { time: "19:30", title: "Dîner — Table Pégase", note: "Assis avec Sophie et Manon" },
+        { time: "22:30", title: "Soirée", note: "Sur la piste de danse" }
+      ]
+    }
+  ];
+
+  var tablesDatabase = {
+    "Table Orion": {
+      name: "Table Orion",
+      number: "01",
+      vibe: "Amis d'enfance & rires",
+      guests: ["Claire", "Antoine", "Paul", "Julie", "Marc", "Hélène", "Julien"]
+    },
+    "Table Cassiopée": {
+      name: "Table Cassiopée",
+      number: "02",
+      vibe: "Témoins & complices",
+      guests: ["Camille", "Thomas", "Émilie", "Nicolas", "Romain", "Laura"]
+    },
+    "Table Pégase": {
+      name: "Table Pégase",
+      number: "03",
+      vibe: "Cousins & ambiance festive",
+      guests: ["Sophie", "Lucas", "Alexandre", "Manon", "Maxime", "Chloé"]
+    },
+    "Table Andromède": {
+      name: "Table Andromède",
+      number: "04",
+      vibe: "Famille proche & émotions",
+      guests: ["Jean-Pierre", "Martine", "Bernard", "Françoise", "Claude"]
+    }
+  };
+
+  var providersDatabase = {
+    "atelier-lumiere": {
+      id: "atelier-lumiere",
+      name: "Atelier Lumière & Instant",
+      craft: "Photographe de Mariage",
+      category: "Image & Reportage",
+      location: "Aix-en-Provence",
+      image: "/img/teammember3.webp",
+      desc: "Reportage sensible en lumière naturelle, photos spontanées et captation d'émotions vraies sans poses artificielles.",
+      moments: ["11:00 Cérémonie Laïque", "12:30 Cocktail & Vin d'Honneur", "22:30 Soirée & Première Danse"]
+    },
+    "collectif-sound": {
+      id: "collectif-sound",
+      name: "Collectif Sound & Night",
+      craft: "DJ, Son & Scénographie Lumineuse",
+      category: "Musique & Fête",
+      location: "Marseille & Provence",
+      image: "/img/teammember11.webp",
+      desc: "Animation musicale soignée, intégration fluide de la playlist collective des invités et éclairage architectural chaleureux.",
+      moments: ["19:30 Dîner sous les lampions", "22:30 Première Danse & Soirée"]
+    },
+    "saveurs-terroir": {
+      id: "saveurs-terroir",
+      name: "Saveurs du Terroir",
+      craft: "Traiteur & Chef Événementiel",
+      category: "Gastronomie",
+      location: "Avignon",
+      image: "/img/floral5.webp",
+      desc: "Cocktail dînatoire généreux, produits locaux en circuit court de saison et pièce montée sur mesure.",
+      moments: ["12:30 Cocktail & Vin d'Honneur", "19:30 Dîner sous les lampions"]
+    },
+    "herbier-poetique": {
+      id: "herbier-poetique",
+      name: "L'Herbier Poétique",
+      craft: "Fleuriste & Scénographie Végétale",
+      category: "Art Végétal",
+      location: "Saint-Rémy-de-Provence",
+      image: "/img/floral4.webp",
+      desc: "Création florale de saison, arches végétales délicates, centres de tables et matières organiques éco-responsables.",
+      moments: ["11:00 Cérémonie Laïque", "12:30 Cocktail", "19:30 Dîner"]
+    },
+    "quatuor-cordes": {
+      id: "quatuor-cordes",
+      name: "Quatuor Cordes & Âme",
+      craft: "Ensemble Acoustique",
+      category: "Musique Live",
+      location: "Arles",
+      image: "/img/floral1.webp",
+      desc: "Interprétation acoustique délicate au violoncelle et violon pour la procession et l'échange des vœux.",
+      moments: ["11:00 Cérémonie Laïque"]
+    },
+    "officiant": {
+      id: "officiant",
+      name: "Éléonore V.",
+      craft: "Célébrante de Cérémonie Laïque",
+      category: "Célébration",
+      location: "Provence",
+      image: "/img/matt-mez.webp",
+      desc: "Écriture et célébration de cérémonies sur mesure avec récits d'amour personnalisés.",
+      moments: ["11:00 Cérémonie Laïque"]
+    },
+    "food-truck": {
+      id: "food-truck",
+      name: "Food Truck d'Antan",
+      craft: "Brunch Convivial Artisanal",
+      category: "Gastronomie Conviviale",
+      location: "Luberon",
+      image: "/img/floral7.webp",
+      desc: "Crêpes fraîches, jus pressés du verger et produits fermiers pour le lendemain matin.",
+      moments: ["Lendemain Brunch & Souvenirs"]
+    }
+  };
+
+  // Expose Relational In-Context Inspector (Never leave Day-J)
+  window.openAIMEInspector = function (type, id) {
+    var modal = document.getElementById("aime-relation-modal");
+    var container = document.getElementById("aime-relation-modal-content");
+    if (!modal || !container) return;
+
+    var html = "";
+
+    if (type === "guest") {
+      var g = guestsDatabase.find(function (item) {
+        return item.id === id || item.name.toLowerCase() === (id || "").toLowerCase();
+      });
+      if (!g) g = guestsDatabase[0];
+
+      var journeyItems = (g.journey || []).map(function (step) {
+        return "<div class=\"flex items-start gap-3 p-2.5 rounded-xl bg-white/[0.04] border border-white/5\">" +
+          "<span class=\"text-[10px] font-mono text-pink-300 font-bold mt-0.5 whitespace-nowrap\">" + step.time + "</span>" +
+          "<div><p class=\"text-xs font-semibold text-white\">" + step.title + "</p><p class=\"text-[11px] text-gray-400\">" + step.note + "</p></div>" +
+          "</div>";
+      }).join("");
+
+      html = "<div class=\"space-y-5 animate-fadeIn text-xs text-gray-300\">" +
+        "<div class=\"flex items-center justify-between border-b border-white/10 pb-3\">" +
+        "<div class=\"flex items-center gap-3\">" +
+        "<div class=\"w-10 h-10 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-lg\">" + g.avatar + "</div>" +
+        "<div><h3 class=\"text-base font-bold text-white\">" + g.name + "</h3><p class=\"text-[11px] text-pink-300 font-mono\">" + g.table + " · " + g.seat + "</p></div>" +
+        "</div>" +
+        "<span class=\"px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-[10px] font-mono text-emerald-300 font-semibold\">" + g.rsvp + "</span>" +
+        "</div>" +
+        "<div class=\"grid grid-cols-1 sm:grid-cols-2 gap-3\">" +
+        "<div class=\"p-3 rounded-2xl bg-black/60 border border-white/10 space-y-1\">" +
+        "<span class=\"text-[9px] font-mono text-gray-400 uppercase\">🎵 Chanson apportée (« Ma Chanson ») :</span>" +
+        "<p class=\"text-xs font-bold text-white\">" + g.song + " <span class=\"font-normal text-gray-400\">— " + g.artist + "</span></p>" +
+        "<p class=\"text-[10px] text-pink-300 italic\">« " + g.message + " »</p>" +
+        "</div>" +
+        "<div class=\"p-3 rounded-2xl bg-black/60 border border-white/10 space-y-1\">" +
+        "<span class=\"text-[9px] font-mono text-gray-400 uppercase\">🍽️ Régime alimentaire :</span>" +
+        "<p class=\"text-xs font-bold text-white\">" + g.diet + "</p>" +
+        "<p class=\"text-[10px] text-gray-400\">Transmis aux cuisines</p>" +
+        "</div>" +
+        "</div>" +
+        "<div class=\"space-y-2\">" +
+        "<span class=\"text-[10px] font-mono text-gray-400 uppercase tracking-wider\">Parcours dans le Jour J de Claire & Antoine :</span>" +
+        "<div class=\"space-y-1.5\">" + journeyItems + "</div>" +
+        "</div>" +
+        "<div class=\"pt-2 flex justify-end\">" +
+        "<button type=\"button\" onclick=\"document.getElementById(\'aime-relation-modal\').close()\" class=\"px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-medium transition-colors\">Retour au Jour J</button>" +
+        "</div>" +
+        "</div>";
+    } else if (type === "table") {
+      var t = tablesDatabase[id] || tablesDatabase["Table Orion"];
+      var guestChips = (t.guests || []).map(function (name) {
+        return "<button type=\"button\" onclick=\"window.openAIMEInspector(\'guest\', \'" + name + "\')\" class=\"p-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-pink-400/50 hover:bg-pink-500/10 text-white transition-all flex items-center justify-between text-xs\">" +
+          "<span class=\"font-medium\">" + name + "</span>" +
+          "<span class=\"text-[10px] text-pink-300\">Voir parcours →</span>" +
+          "</button>";
+      }).join("");
+
+      html = "<div class=\"space-y-5 animate-fadeIn text-xs text-gray-300\">" +
+        "<div class=\"flex items-center justify-between border-b border-white/10 pb-3\">" +
+        "<div>" +
+        "<span class=\"text-[10px] font-mono text-pink-300 uppercase\">DÎNER SOUS LES LAMPIONS · TABLE " + t.number + "</span>" +
+        "<h3 class=\"text-base font-bold text-white mt-0.5\">" + t.name + "</h3>" +
+        "</div>" +
+        "<span class=\"px-2.5 py-1 rounded-full bg-white/10 text-[10px] font-mono text-gray-300\">" + t.guests.length + " convives</span>" +
+        "</div>" +
+        "<div class=\"p-3 rounded-2xl bg-pink-500/10 border border-pink-500/20 text-xs text-pink-200\">" +
+        "✨ Ambiance de table : <strong>" + t.vibe + "</strong>" +
+        "</div>" +
+        "<div class=\"space-y-2\">" +
+        "<span class=\"text-[10px] font-mono text-gray-400 uppercase tracking-wider\">Convives assis à cette table (Cliquez pour inspecter) :</span>" +
+        "<div class=\"grid grid-cols-1 sm:grid-cols-2 gap-2\">" + guestChips + "</div>" +
+        "</div>" +
+        "<div class=\"pt-2 flex justify-end\">" +
+        "<button type=\"button\" onclick=\"document.getElementById(\'aime-relation-modal\').close()\" class=\"px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-medium transition-colors\">Retour au Dîner</button>" +
+        "</div>" +
+        "</div>";
+    } else if (type === "provider") {
+      var p = providersDatabase[id] || providersDatabase["atelier-lumiere"];
+      var momentList = (p.moments || []).map(function (m) {
+        return "<span class=\"px-2.5 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] text-gray-300\">● " + m + "</span>";
+      }).join(" ");
+
+      html = "<div class=\"space-y-5 animate-fadeIn text-xs text-gray-300\">" +
+        "<div class=\"flex items-start gap-4 border-b border-white/10 pb-4\">" +
+        "<div class=\"w-14 h-14 rounded-2xl bg-cover bg-center border border-white/10 shrink-0\" style=\"background-image: url(\'" + p.image + "\')\"></div>" +
+        "<div>" +
+        "<span class=\"text-[10px] font-mono text-emerald-400 uppercase font-semibold\">" + p.category + " · " + p.location + "</span>" +
+        "<h3 class=\"text-base font-bold text-white mt-0.5\">" + p.name + "</h3>" +
+        "<p class=\"text-xs text-pink-300\">" + p.craft + "</p>" +
+        "</div>" +
+        "</div>" +
+        "<div class=\"p-3.5 rounded-2xl bg-black/60 border border-white/10 space-y-1.5\">" +
+        "<span class=\"text-[10px] font-mono text-gray-400 uppercase\">Savoir-faire & Signature :</span>" +
+        "<p class=\"text-xs text-gray-200 leading-relaxed\">" + p.desc + "</p>" +
+        "</div>" +
+        "<div class=\"space-y-2\">" +
+        "<span class=\"text-[10px] font-mono text-gray-400 uppercase tracking-wider\">Moments d'intervention le Jour J :</span>" +
+        "<div class=\"flex flex-wrap gap-1.5\">" + momentList + "</div>" +
+        "</div>" +
+        "<div class=\"pt-2 flex justify-between items-center\">" +
+        "<span class=\"text-[10px] font-mono text-emerald-400\">✓ Prestataire vérifié BYAIME</span>" +
+        "<button type=\"button\" onclick=\"document.getElementById(\'aime-relation-modal\').close()\" class=\"px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-medium transition-colors\">Fermer</button>" +
+        "</div>" +
+        "</div>";
+    } else if (type === "rsvp") {
+      html = "<div class=\"space-y-5 animate-fadeIn text-xs text-gray-300\">" +
+        "<div class=\"border-b border-white/10 pb-3\">" +
+        "<span class=\"text-[10px] font-mono text-emerald-400 uppercase font-semibold\">Action Jour J · Confirmation 1-Clic</span>" +
+        "<h3 class=\"text-base font-bold text-white mt-0.5\">Confirmer ma présence au mariage</h3>" +
+        "<p class=\"text-[11px] text-gray-400 mt-1\">Claire & Antoine · 12 Septembre · Sans création de compte</p>" +
+        "</div>" +
+        "<form id=\"modal-rsvp-form\" onsubmit=\"event.preventDefault(); window.submitAimeRsvp();\" class=\"space-y-3\">" +
+        "<div><label class=\"text-[10px] font-mono uppercase text-gray-400 block mb-1\">Votre Prénom & Nom :</label><input id=\"modal-rsvp-name\" type=\"text\" required placeholder=\"Ex: Sophie Dupont\" class=\"w-full rounded-xl border border-white/15 bg-black px-3.5 py-2.5 text-white text-xs placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-pink-400\"></div>" +
+        "<div class=\"grid grid-cols-2 gap-2\">" +
+        "<div><label class=\"text-[10px] font-mono uppercase text-gray-400 block mb-1\">Présence :</label><select id=\"modal-rsvp-status\" class=\"w-full rounded-xl border border-white/15 bg-black px-3 py-2 text-white text-xs\"><option>Présent(e)</option><option>Présent(e) + Accompagné(e)</option><option>Ne pourra pas venir</option></select></div>" +
+        "<div><label class=\"text-[10px] font-mono uppercase text-gray-400 block mb-1\">Régime :</label><select id=\"modal-rsvp-diet\" class=\"w-full rounded-xl border border-white/15 bg-black px-3 py-2 text-white text-xs\"><option>Standard</option><option>Végétarien</option><option>Végan</option><option>Sans gluten</option></select></div>" +
+        "</div>" +
+        "<button type=\"submit\" class=\"w-full py-2.5 rounded-full bg-emerald-400 text-xs font-bold text-black hover:bg-emerald-300 transition-all\">✓ Valider ma réponse en 1 clic</button>" +
+        "</form>" +
+        "<div id=\"modal-rsvp-success\" class=\"hidden p-3 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-xs text-emerald-300 space-y-1 text-center\">" +
+        "<p class=\"font-bold\">✓ Présence enregistrée avec succès !</p>" +
+        "<p class=\"text-[11px] text-emerald-200\">Votre place a été attribuée et votre régime transmis aux cuisines.</p>" +
+        "</div>" +
+        "</div>";
+    }
+
+    container.innerHTML = html;
+    modal.showModal();
+    document.body.style.overflow = "hidden";
+  };
+
+  window.submitAimeRsvp = function () {
+    var form = document.getElementById("modal-rsvp-form");
+    var success = document.getElementById("modal-rsvp-success");
+    if (form && success) {
+      form.classList.add("hidden");
+      success.classList.remove("hidden");
+      setTimeout(function () {
+        var modal = document.getElementById("aime-relation-modal");
+        if (modal) modal.close();
+      }, 1800);
+    }
+  };
+
   // Prototypes interactifs
   document.addEventListener('DOMContentLoaded', function () {
-    // Timeline Interactive (V9 Living Relational Cockpit)
-    document.querySelectorAll('[data-interactive-timeline]').forEach(function (timeline) {
-      var steps = timeline.querySelectorAll('[data-timeline-step]');
-      var infoDisplay = timeline.querySelector('[data-timeline-info]');
+    var timelines = document.querySelectorAll("[data-interactive-timeline]");
 
-      var momentDatabases = {
-        '11:00': {
-          title: '11:00 · Cérémonie Laïque',
-          time: '11:00 → 12:15 (1h15)',
-          location: 'Sous la grande verrière fleurie',
-          people: '84 invités · Famille & Proches',
-          providers: 'Officiant · Photographe Atelier Lumière · Violoncelliste',
-          music: 'Canon in D (Entrée) & Morceau acoustique live',
-          contributions: 'Vœux intimes & recueil des messages d\'amour déposés par Claire & Camille',
-          desc: 'Échange des alliances sous la verrière fleurie et premier temps fort émotionnel de la journée.'
-        },
-        '12:30': {
-          title: '12:30 · Cocktail & Vin d\'Honneur',
-          time: '12:30 → 18:30 (6h00)',
-          location: 'Jardin des oliviers & terrasse du domaine',
-          people: '84 invités · Tous réunis',
-          providers: 'Traiteur Saveurs du Terroir · Photographe · Groupe acoustique',
-          music: 'Sons d\'ambiance doux & morceaux choisis par les proches',
-          contributions: '12 premières photos partagées en direct par Sophie & Thomas',
-          desc: 'Rafraîchissements, premières photos de groupe dans le parc et retrouvailles des proches.'
-        },
-        '19:30': {
-          title: '19:30 · Dîner sous les lampions',
-          time: '19:30 → 22:15 (2h45)',
-          location: 'Grande halle du domaine',
-          people: '84 invités · 12 tables réparties',
-          providers: 'Traiteur Saveurs du Terroir · Maître d\'hôtel · DJ Collectif Sound',
-          music: 'Entrée des mariés & fond sonore élégant',
-          contributions: 'Plan de table interactif par prénom, anecdotes et discours des témoins',
-          desc: 'Dîner assis à la lueur des lampions, discours intimes et pièce montée.'
-        },
-        '22:30': {
-          title: '22:30 · Première Danse & Soirée',
-          time: '22:30 → 04:00 (Jusqu\'au bout de la nuit)',
-          location: 'Piste de danse & bar de nuit',
-          people: 'Tous les invités sur la piste',
-          providers: 'DJ Collectif Sound & Night · Éclairagiste',
-          music: 'La Playlist Collective des Invités (61 morceaux proposés)',
-          contributions: 'Dédicaces en direct, photos de fête et surprises sur la piste',
-          desc: 'Ouverture du bal par les mariés et lancement de la playlist collective des invités pour le DJ.'
-        },
-        'Lendemain': {
-          title: 'Lendemain · Brunch & Souvenirs',
-          time: '11:30 → 16:00 (4h30)',
-          location: 'Terrasse du parc & piscine',
-          people: 'Famille & proches hébergés sur place',
-          providers: 'Traiteur brunch · Food truck convivial',
-          music: 'Playlist acoustique relaxante',
-          contributions: 'Découverte de la galerie collective complète (48 photos HD) et des vœux du livre d\'or',
-          desc: 'Brunch décontracté au soleil, derniers partages et remise du pack d\'archive du mariage.'
+    timelines.forEach(function (timeline) {
+      var steps = timeline.querySelectorAll("[data-timeline-step]");
+      var infoDisplay = timeline.querySelector("[data-timeline-info]");
+
+      function renderMoment(key) {
+        var m = momentDatabases[key] || momentDatabases["11:00"];
+
+        // Format Key Guests
+        var guestsHtml = (m.guestIds || []).map(function (gId) {
+          var g = guestsDatabase.find(function (item) { return item.id === gId; }) || { name: gId };
+          return "<button type=\"button\" onclick=\"window.openAIMEInspector(\'guest\', \'" + gId + "\')\" class=\"inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 hover:border-pink-400 hover:bg-pink-500/10 text-[11px] text-white transition-all\">" +
+            "<span>" + g.name + "</span>" +
+            "<span class=\"text-[9px] text-pink-300\">→</span>" +
+            "</button>";
+        }).join(" ");
+
+        // Format Tables (if Dîner)
+        var tablesHtml = "";
+        if (m.tableIds && m.tableIds.length) {
+          var tChips = m.tableIds.map(function (tName) {
+            return "<button type=\"button\" onclick=\"window.openAIMEInspector(\'table\', \'" + tName + "\')\" class=\"px-2 py-0.5 rounded-lg bg-pink-500/10 border border-pink-500/20 text-[10px] text-pink-300 hover:bg-pink-500/20 transition-all font-mono\">" + tName + "</button>";
+          }).join(" ");
+          tablesHtml = "<div class=\"pt-1 flex flex-wrap items-center gap-1.5\"><span class=\"text-[9px] font-mono uppercase text-gray-400\">Tables clés :</span>" + tChips + "</div>";
         }
-      };
+
+        // Format Providers
+        var providersHtml = (m.providers || []).map(function (p) {
+          return "<button type=\"button\" onclick=\"window.openAIMEInspector(\'provider\', \'" + p.id + "\')\" class=\"inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 hover:border-emerald-400 hover:bg-emerald-500/10 text-[11px] text-white transition-all\">" +
+            "<span>" + p.name + "</span>" +
+            "<span class=\"text-[9px] text-emerald-400\">(" + p.role + ")</span>" +
+            "</button>";
+        }).join(" ");
+
+        // Format Contributions
+        var contribsHtml = (m.contributions || []).map(function (c) {
+          return "<div class=\"p-2 rounded-xl bg-white/[0.03] border border-white/5 text-[11px] text-gray-300\"><strong class=\"text-pink-300\">" + c.type + " :</strong> " + c.text + "</div>";
+        }).join("");
+
+        if (infoDisplay) {
+          infoDisplay.innerHTML = "<div class=\"p-5 md:p-6 rounded-3xl bg-zinc-950/90 border border-white/15 space-y-4 animate-fadeIn shadow-xl\">" +
+            "<div class=\"flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-3\">" +
+            "<div>" +
+            "<h3 class=\"text-lg font-bold text-white tracking-tight\">" + m.title + "</h3>" +
+            "<p class=\"text-xs text-pink-300 font-mono mt-0.5\">" + m.time + " · 📍 " + m.location + "</p>" +
+            "</div>" +
+            "<span class=\"self-start sm:self-auto text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30\">Moment actif du Jour J</span>" +
+            "</div>" +
+            "<p class=\"text-xs md:text-sm text-gray-200 leading-relaxed\">" + m.desc + "</p>" +
+            "<div class=\"grid grid-cols-1 md:grid-cols-2 gap-3 pt-2\">" +
+            "<div class=\"p-3.5 rounded-2xl bg-black/60 border border-white/10 space-y-2\">" +
+            "<div class=\"flex justify-between items-center\"><span class=\"text-[10px] font-mono uppercase text-gray-400\">👥 Personnes (" + m.peopleDesc + ") :</span></div>" +
+            "<div class=\"flex flex-wrap gap-1.5\">" + guestsHtml + "</div>" +
+            tablesHtml +
+            "</div>" +
+            "<div class=\"p-3.5 rounded-2xl bg-black/60 border border-white/10 space-y-2\">" +
+            "<span class=\"text-[10px] font-mono uppercase text-gray-400\">✨ Prestataires du moment (Cliquez) :</span>" +
+            "<div class=\"flex flex-wrap gap-1.5\">" + providersHtml + "</div>" +
+            "</div>" +
+            "<div class=\"p-3.5 rounded-2xl bg-black/60 border border-white/10 space-y-1.5\">" +
+            "<span class=\"text-[10px] font-mono uppercase text-gray-400\">🎵 Musique du moment (« Ma Chanson ») :</span>" +
+            "<p class=\"text-xs font-bold text-white\">" + m.music.title + "</p>" +
+            "<p class=\"text-[11px] text-pink-300 italic\">" + m.music.note + "</p>" +
+            "</div>" +
+            "<div class=\"p-3.5 rounded-2xl bg-black/60 border border-white/10 space-y-1.5\">" +
+            "<span class=\"text-[10px] font-mono uppercase text-gray-400\">💬 Traces & Contributions :</span>" +
+            "<div class=\"space-y-1\">" + contribsHtml + "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>";
+        }
+      }
 
       steps.forEach(function (step) {
-        step.addEventListener('click', function () {
+        step.addEventListener("click", function () {
           steps.forEach(function (s) {
-            s.classList.remove('bg-pink-500/20', 'border-pink-500', 'text-white', 'scale-105');
-            s.classList.add('bg-white/5', 'border-white/10', 'text-muted-foreground');
+            s.classList.remove("bg-pink-500/20", "border-pink-500", "text-white", "scale-105");
+            s.classList.add("bg-white/5", "border-white/10", "text-muted-foreground");
           });
-          step.classList.remove('bg-white/5', 'border-white/10', 'text-muted-foreground');
-          step.classList.add('bg-pink-500/20', 'border-pink-500', 'text-white', 'scale-105');
+          step.classList.remove("bg-white/5", "border-white/10", "text-muted-foreground");
+          step.classList.add("bg-pink-500/20", "border-pink-500", "text-white", "scale-105");
 
-          var timeKey = step.getAttribute('data-timeline-time') || '11:00';
-          var m = momentDatabases[timeKey] || {
-            title: step.getAttribute('data-timeline-title') || timeKey,
-            time: timeKey,
-            location: 'Domaine de réception',
-            people: '84 invités',
-            providers: 'Prestataires coordonnés',
-            music: 'Ambiance du moment',
-            contributions: 'Contributions actives des invités',
-            desc: step.getAttribute('data-timeline-desc') || 'Temps fort du Jour J.'
-          };
-
-          if (infoDisplay) {
-            infoDisplay.innerHTML = '<div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3 animate-fadeIn text-xs">' +
-              '<div class="flex justify-between items-baseline border-b border-white/10 pb-2">' +
-              '<div>' +
-              '<span class="font-bold text-white text-sm">' + m.title + '</span>' +
-              '<p class="text-[10px] text-pink-300 font-mono">' + m.time + ' · 📍 ' + m.location + '</p>' +
-              '</div>' +
-              '<span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Moment actif</span>' +
-              '</div>' +
-              '<p class="text-gray-300 text-xs leading-relaxed">' + m.desc + '</p>' +
-              '<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] pt-1">' +
-              '<div class="p-2 rounded-xl bg-white/5"><span class="text-[9px] font-mono uppercase text-gray-400">👥 Personnes & Tables :</span><p class="text-white mt-0.5">' + m.people + '</p></div>' +
-              '<div class="p-2 rounded-xl bg-white/5"><span class="text-[9px] font-mono uppercase text-gray-400">✨ Prestataires associés :</span><p class="text-white mt-0.5">' + m.providers + '</p></div>' +
-              '<div class="p-2 rounded-xl bg-white/5"><span class="text-[9px] font-mono uppercase text-gray-400">🎵 Musique & Ambiance :</span><p class="text-white mt-0.5">' + m.music + '</p></div>' +
-              '<div class="p-2 rounded-xl bg-white/5"><span class="text-[9px] font-mono uppercase text-gray-400">💬 Contributions du moment :</span><p class="text-pink-300 mt-0.5">' + m.contributions + '</p></div>' +
-              '</div>' +
-              '</div>';
-          }
+          var timeKey = step.getAttribute("data-timeline-time") || "11:00";
+          renderMoment(timeKey);
         });
       });
+
+      // Initial render on load
+      renderMoment("11:00");
     });
 
-    // Player
-    document.querySelectorAll('[data-interactive-player]').forEach(function (player) {
-      var playBtn = player.querySelector('[data-player-toggle]');
-      var statusText = player.querySelector('[data-player-status]');
-      var bars = player.querySelectorAll('.bar-1, .bar-2, .bar-3, .bar-4, .bar-5');
-      var isPlaying = true;
-
-      if (playBtn) {
-        playBtn.addEventListener('click', function () {
-          isPlaying = !isPlaying;
-          if (isPlaying) {
-            playBtn.innerHTML = '<svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
-            if (statusText) statusText.textContent = 'En lecture';
-            bars.forEach(function (b) { b.style.animationPlayState = 'running'; });
-          } else {
-            playBtn.innerHTML = '<svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-            if (statusText) statusText.textContent = 'En pause';
-            bars.forEach(function (b) { b.style.animationPlayState = 'paused'; });
-          }
-        });
-      }
-    });
-
-    // Guest lookup (Interconnected Module Demonstration & Person Journey)
-    document.querySelectorAll('[data-guest-lookup]').forEach(function (widget) {
-      var input = widget.querySelector('[data-guest-input]');
-      var result = widget.querySelector('[data-guest-result]');
-      var guestsDatabase = [
-        { name: 'Claire', table: 'Table Orion (Place 1)', song: 'Midnight City — M83', message: 'Pour danser sous les lampions !', rsvp: 'Présente (Accompagnée)', journey: ['11:00 Cérémonie Laïque', '12:30 Cocktail (Photo partagée)', '19:30 Table Orion', '22:30 Première Danse'] },
-        { name: 'Antoine', table: 'Table Orion (Place 2)', song: 'Heroes — David Bowie', message: 'Hâte de célébrer avec vous !', rsvp: 'Présent', journey: ['11:00 Cérémonie Laïque', '12:30 Cocktail', '19:30 Table Orion', '22:30 Première Danse'] },
-        { name: 'Camille', table: 'Table Cassiopée (Place 4)', song: 'La Vie en Rose — Édith Piaf', message: 'Un amour infini pour vous deux.', rsvp: 'Présente', journey: ['11:00 Cérémonie (Vœux lus)', '12:30 Cocktail', '19:30 Table Cassiopée', '22:30 Soirée'] },
-        { name: 'Sophie', table: 'Table Pégase (Place 3)', song: 'September — Earth, Wind & Fire', message: 'Prête pour enflammer la piste !', rsvp: 'Présente', journey: ['11:00 Cérémonie', '12:30 Cocktail (3 photos live)', '19:30 Table Pégase', '22:30 Soirée'] },
-        { name: 'Thomas', table: 'Table Cassiopée (Place 5)', song: 'You Are The Best Thing — Ray LaMontagne', message: 'Notre chanson d\'amitié éternelle.', rsvp: 'Présent (Accompagné)', journey: ['11:00 Cérémonie', '12:30 Cocktail', '19:30 Table Cassiopée', '22:30 Playlist lancée'] },
-        { name: 'Lucas', table: 'Table Pégase (Place 1)', song: 'Something About Us — Daft Punk', message: 'Félicitations aux mariés !', rsvp: 'Présent', journey: ['11:00 Cérémonie', '12:30 Cocktail', '19:30 Table Pégase', '22:30 Soirée'] }
-      ];
+    // Plan de table interactif / Guest Lookup
+    document.querySelectorAll("[data-guest-lookup]").forEach(function (widget) {
+      var input = widget.querySelector("[data-guest-input]");
+      var result = widget.querySelector("[data-guest-result]");
 
       if (input && result) {
-        input.addEventListener('input', function () {
+        input.addEventListener("input", function () {
           var query = input.value.trim().toLowerCase();
           if (!query) {
-            result.innerHTML = '<p class="text-xs text-muted-foreground italic">Tapez un prénom pour tester la recherche d\'invité et ses contributions...</p>';
+            result.innerHTML = "<p class=\"text-xs text-muted-foreground italic\">Recherche instantanée par prénom (ex: \'Claire\', \'Thomas\', \'Sophie\', \'Lucas\', \'Antoine\', \'Camille\')...</p>";
             return;
           }
           var match = guestsDatabase.find(function (g) {
             return g.name.toLowerCase().indexOf(query) !== -1;
           });
           if (match) {
-            var journeyHtml = (match.journey || []).map(function (j) { return '<span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-gray-300">● ' + j + '</span>'; }).join(' ');
-            result.innerHTML = '<div class="p-3.5 rounded-2xl bg-white/[0.06] border border-white/10 text-xs space-y-2 animate-fadeIn">' +
-              '<div class="flex justify-between items-center"><span class="text-white font-bold">' + match.name + '</span><span class="text-pink-300 font-mono font-semibold">' + match.table + '</span></div>' +
-              '<p class="text-[11px] text-gray-300">🎵 Chanson apportée : <span class="text-white italic">' + match.song + '</span></p>' +
-              '<p class="text-[10px] text-pink-300 italic">« ' + match.message + ' »</p>' +
-              '<div class="pt-1 border-t border-white/5 space-y-1"><span class="text-[9px] font-mono uppercase text-gray-400">Parcours dans le Jour J :</span><div class="flex flex-wrap gap-1">' + journeyHtml + '</div></div>' +
-              '</div>';
+            result.innerHTML = "<div class=\"p-4 rounded-2xl bg-white/[0.06] border border-white/15 text-xs space-y-3 animate-fadeIn\">" +
+              "<div class=\"flex justify-between items-center\">" +
+              "<div class=\"flex items-center gap-2\">" +
+              "<span class=\"text-base\">" + match.avatar + "</span>" +
+              "<span class=\"text-white font-bold text-sm\">" + match.name + "</span>" +
+              "</div>" +
+              "<button type=\"button\" onclick=\"window.openAIMEInspector(\'table\', \'" + match.table + "\')\" class=\"text-pink-300 font-mono font-semibold hover:underline\">" + match.table + " (" + match.seat + ") →</button>" +
+              "</div>" +
+              "<p class=\"text-[11px] text-gray-300\">🎵 Chanson apportée : <span class=\"text-white italic\">" + match.song + " — " + match.artist + "</span></p>" +
+              "<p class=\"text-[10px] text-pink-300 italic\">« " + match.message + " »</p>" +
+              "<button type=\"button\" onclick=\"window.openAIMEInspector(\'guest\', \'" + match.id + "\')\" class=\"w-full py-2 rounded-xl bg-pink-500/20 hover:bg-pink-500/30 text-white text-xs font-semibold transition-all\">" +
+              "Voir tout le parcours de " + match.name + " dans le Jour J →" +
+              "</button>" +
+              "</div>";
           } else {
-            result.innerHTML = '<p class="text-xs text-muted-foreground">Aucun invité trouvé pour "' + query + '" (testez \'Claire\', \'Thomas\', \'Sophie\' ou \'Lucas\').</p>';
+            result.innerHTML = "<p class=\"text-xs text-muted-foreground\">Aucun invité trouvé pour \"" + query + "\" (testez \'Claire\', \'Thomas\', \'Sophie\' ou \'Lucas\').</p>";
           }
         });
       }
     });
+
+    // Propose a song live widget (« Ma Chanson »)
+    var btnProposeSong = document.getElementById("btn-propose-song");
+    var songInputTitle = document.getElementById("song-input-title");
+    var songInputArtist = document.getElementById("song-input-artist");
+    var songInputGuest = document.getElementById("song-input-guest");
+    var playlistFeedList = document.getElementById("playlist-feed-list");
+    var playlistCounter = document.getElementById("playlist-header-counter");
+    var currentSongCount = 61;
+
+    if (btnProposeSong && playlistFeedList) {
+      btnProposeSong.addEventListener("click", function () {
+        var title = songInputTitle ? songInputTitle.value.trim() : "";
+        var artist = songInputArtist ? songInputArtist.value.trim() : "";
+        var guest = songInputGuest ? songInputGuest.value.trim() : "";
+
+        if (!title) {
+          alert("Veuillez indiquer le titre du morceau.");
+          if (songInputTitle) songInputTitle.focus();
+          return;
+        }
+
+        currentSongCount++;
+        if (playlistCounter) playlistCounter.textContent = currentSongCount + " morceaux";
+
+        var displayTitle = title + (artist ? " — " + artist : "");
+        var displayDedication = guest ? "« " + guest + " »" : "« Morceau proposé pour faire vibrer la soirée ! »";
+
+        var newSongItem = document.createElement("div");
+        newSongItem.className = "p-2.5 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-between text-xs animate-fadeIn";
+        newSongItem.innerHTML = "<div>" +
+          "<p class=\"font-bold text-white\">" + displayTitle + "</p>" +
+          "<p class=\"text-[10px] text-pink-300 italic\">" + displayDedication + "</p>" +
+          "</div>" +
+          "<span class=\"text-[10px] font-mono text-emerald-400 font-semibold\">✓ Ajouté en direct</span>";
+
+        playlistFeedList.insertBefore(newSongItem, playlistFeedList.firstChild);
+
+        if (songInputTitle) songInputTitle.value = "";
+        if (songInputArtist) songInputArtist.value = "";
+        if (songInputGuest) songInputGuest.value = "";
+
+        btnProposeSong.textContent = "✓ Morceau ajouté à la soirée !";
+        btnProposeSong.classList.add("bg-emerald-400");
+        setTimeout(function () {
+          btnProposeSong.textContent = "+ Ajouter ma chanson à la soirée";
+          btnProposeSong.classList.remove("bg-emerald-400");
+        }, 2500);
+      });
+    }
 
     // Candle
     document.querySelectorAll('[data-candle-widget]').forEach(function (widget) {

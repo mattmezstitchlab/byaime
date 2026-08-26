@@ -5,7 +5,7 @@
   "description": "BYAIME — Studio créatif et technologique d'expériences numériques sur mesure.",
   "scripts": {
     "dev": "concurrently \"npm run watch\" \"npm run serve\"",
-    "build": "tailwindcss -i css/input.css -o css/styles.css --minify && terser js/main.js -o js/main.min.js -c -m",
+    "build": "tailwindcss -i css/input.css -o css/styles.css --minify && terser js/main.js -o js/main.min.js -c -m && terser js/aime-card.js -o js/aime-card.min.js -c -m && terser js/aime-ecosystem.js -o js/aime-ecosystem.min.js -c -m && terser js/aime-icons.js -o js/aime-icons.min.js -c -m && terser js/aime-path.js -o js/aime-path.min.js -c -m && node sync.js",
     "watch": "tailwindcss -i css/input.css -o css/styles.css --watch",
     "serve": "node server.js",
     "start": "node server.js"

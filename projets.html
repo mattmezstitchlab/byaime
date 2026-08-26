@@ -37,27 +37,22 @@
     Aller au contenu principal
   </a>
 
-  <!-- ===== Navigation ===== -->
+  <!-- ===== Navigation V12 Épurée ===== -->
   <header id="main-header" class="sticky top-0 z-40 w-full bg-background/80 backdrop-blur-md transition-[border-color] duration-300" style="border-bottom: 1px solid transparent">
-    <nav id="main-nav" class="relative mx-auto flex max-w-5xl items-center justify-between px-6 pt-12 pb-0 transition-[padding] duration-300">
+    <nav id="main-nav" class="relative mx-auto flex max-w-5xl items-center justify-between px-6 pt-10 pb-0 transition-[padding] duration-300">
       <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight text-white">
         <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1"/></svg>
         BYAIME
       </a>
 
-      <div class="hidden items-center gap-6 lg:gap-8 md:flex absolute left-1/2 -translate-x-1/2">
-        <a href="/mariage" class="text-sm text-muted-foreground hover:text-white transition-colors">Mariage</a>
-        <a href="/projets" class="text-sm text-white font-medium transition-colors flex items-center gap-1.5">
-          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-          Expériences
-        </a>
-        <a href="/card" class="text-sm text-muted-foreground hover:text-white transition-colors">AIME CARD</a>
-        <a href="/ecosysteme" class="text-sm text-muted-foreground hover:text-white transition-colors">Écosystème</a>
+      <div class="hidden items-center gap-8 md:flex absolute left-1/2 -translate-x-1/2">
+        <a href="/mariage" class="text-sm text-muted-foreground hover:text-white transition-colors">Le Jour J</a>
+        <a href="/projet?template=mariage" class="text-sm text-muted-foreground hover:text-white transition-colors">Créer mon mariage</a>
         <a href="/a-propos" class="text-sm text-muted-foreground hover:text-white transition-colors">À propos</a>
       </div>
 
-      <a href="/projet" class="hidden md:inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-medium text-black hover:bg-white/90 transition-all glow-subtle">
-        Préparer mon expérience
+      <a href="/projet?template=mariage" class="hidden md:inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-medium text-black hover:bg-white/90 transition-all glow-subtle">
+        Créer mon mariage
       </a>
 
       <button id="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" class="flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors md:hidden">
@@ -69,15 +64,11 @@
     <div id="mobile-menu" aria-hidden="true" class="hidden border-t border-border bg-background px-6 py-4 md:hidden">
       <div class="flex flex-col gap-4">
         <a href="/" class="text-sm text-muted-foreground hover:text-white transition-colors">Accueil</a>
-        <a href="/mariage" class="text-sm text-muted-foreground hover:text-white transition-colors">Mariage</a>
-        <a href="/projets" class="text-sm text-white font-medium transition-colors flex items-center gap-1.5">
-          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-          Expériences
-        </a>
-        <a href="/card" class="text-sm text-muted-foreground hover:text-white transition-colors">AIME CARD</a>
-        <a href="/ecosysteme" class="text-sm text-muted-foreground hover:text-white transition-colors">Écosystème</a>
+        <a href="/mariage" class="text-sm text-muted-foreground hover:text-white transition-colors">Le Jour J</a>
+        <a href="/projet?template=mariage" class="text-sm text-muted-foreground hover:text-white transition-colors">Créer mon mariage</a>
         <a href="/a-propos" class="text-sm text-muted-foreground hover:text-white transition-colors">À propos</a>
-        <a href="/projet" class="mt-2 inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black">
+      </div>
+    </div>
           Préparer mon expérience
         </a>
       </div>
