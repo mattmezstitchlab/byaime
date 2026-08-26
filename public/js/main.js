@@ -1122,6 +1122,16 @@
 
     // Detection URL template
     var urlParams = new URLSearchParams(window.location.search);
+    var templateParam = urlParams.get('template');
+    var formuleParam = urlParams.get('formule');
+
+    if (formuleParam) {
+      var matchedFormuleInput = document.querySelector('input[name="cfg-formule"][value="' + formuleParam + '"]');
+      if (matchedFormuleInput) {
+        matchedFormuleInput.checked = true;
+      }
+    }
+
     // Check if incoming from AIME PATH in Hero
     var directIntentRaw = null;
     try {
@@ -1136,8 +1146,7 @@
         renderHumanValidationStep(parsedDirect);
         switchMode('intent');
       } catch (e) {}
-    } else var templateParam = urlParams.get('template');
-    if (templateParam && defaultPresets[templateParam]) {
+    } else if (templateParam && defaultPresets[templateParam]) {
       applyPresetToModel(templateParam);
       switchMode('manual');
     } else {
@@ -1704,6 +1713,13 @@
         renderStep4Checkboxes();
       }
 
+      if (currentStep === 5) {
+        var synthStep5 = document.getElementById('synth-step5-intent');
+        if (synthStep5) {
+          synthStep5.textContent = (projectModel.event.type || 'Événement').toUpperCase() + ' · ' + (projectModel.concept.title || 'Expérience singulière');
+        }
+      }
+
       recalculateLiveProposal();
       window.trackBYAIME('project_step_changed', { step: currentStep });
       configContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1940,6 +1956,15 @@
         var dialog = document.getElementById('modal-preview-experience');
         if (dialog) dialog.close();
         goToStep(1);
+      });
+    }
+
+    var proceedToStep5Btn = document.getElementById('btn-proceed-to-step5-from-prev');
+    if (proceedToStep5Btn) {
+      proceedToStep5Btn.addEventListener('click', function () {
+        var dialog = document.getElementById('modal-preview-experience');
+        if (dialog) dialog.close();
+        goToStep(5);
       });
     }
 

@@ -514,37 +514,61 @@ Mais vous pouvez aussi simplement écrire :
                   <div id="step4-tools-checkboxes" class="space-y-2.5"></div>
                 </div>
 
-                <!-- ÉTAPE 5 : Formules du Studio & Demande de Devis -->
+                <!-- ÉTAPE 5 : Synthèse du Projet, Formules du Studio & Demande de Devis -->
                 <div data-step-content="5" class="hidden space-y-6">
                   <div>
-                    <p class="text-xs font-mono text-muted-foreground uppercase">Étape 05 • Formules & Demande de Devis</p>
-                    <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Formules & Coordonnées de votre Projet</h2>
-                    <p class="text-xs text-muted-foreground mt-1">Tarifs indicatifs transparents pour la réalisation sur mesure par le Studio BYAIME :</p>
+                    <p class="text-xs font-mono text-muted-foreground uppercase">Étape 05 • Du Prototype à la Réalisation</p>
+                    <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Voici ce que nous allons créer</h2>
+                    <p class="text-xs text-muted-foreground mt-1">Votre intention est clarifiée. Découvrez ce que le Studio BYAIME réalisera pour votre événement :</p>
+                  </div>
+
+                  <!-- 3-Block Clarification Synthesis -->
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5">
+                      <span class="text-[10px] font-mono text-pink-300 font-bold uppercase">01 • CE QUE VOUS AVEZ IMAGINÉ</span>
+                      <p class="text-white font-semibold" id="synth-step5-intent">Mariage poétique & intime</p>
+                      <p class="text-[11px] text-muted-foreground leading-snug">Votre histoire, vos invités et l'atmosphère souhaitée pour votre célébration.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5">
+                      <span class="text-[10px] font-mono text-emerald-400 font-bold uppercase">02 • CE QUE VOUS AVEZ TESTÉ</span>
+                      <p class="text-white font-semibold">Le Prototype Interactif</p>
+                      <p class="text-[11px] text-muted-foreground leading-snug">La timeline, la playlist collective des invités, le plan de table et le livre d'or.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5">
+                      <span class="text-[10px] font-mono text-cyan-300 font-bold uppercase">03 • CE QUE LE STUDIO CRÉERA</span>
+                      <p class="text-white font-semibold">L'Univers Réel en Ligne</p>
+                      <p class="text-[11px] text-muted-foreground leading-snug">Design sur mesure par Matt Mez, hébergement, nom de domaine et accompagnement Jour J.</p>
+                    </div>
                   </div>
 
                   <!-- Formules Selection -->
-                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <label class="p-3.5 rounded-2xl border border-white/15 bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer block">
-                      <input type="radio" name="cfg-formule" value="essentiel" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <p class="text-xs font-bold text-white mt-1.5">Essentiel Jour J</p>
-                      <p class="text-sm font-extrabold text-white font-mono mt-0.5">~ 890 €</p>
-                      <p class="text-[10px] text-muted-foreground mt-1 leading-snug">Mini-site responsive, RSVP sans mot de passe, Timeline du Jour J, hébergement sécurisé.</p>
-                    </label>
+                  <div class="space-y-2 pt-2">
+                    <span class="text-xs font-semibold text-white uppercase font-mono">Estimations indicatives des formules du Studio :</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <label class="p-3.5 rounded-2xl border border-white/15 bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer block">
+                        <input type="radio" name="cfg-formule" value="essentiel" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                        <p class="text-xs font-bold text-white mt-1.5">01 • Essentiel Jour J</p>
+                        <p class="text-sm font-extrabold text-white font-mono mt-0.5">~ 890 € <span class="text-[10px] font-normal text-muted-foreground font-sans">indicatif</span></p>
+                        <p class="text-[10px] text-muted-foreground mt-1 leading-snug">Mini-site responsive, RSVP sans mot de passe, Timeline du Jour J, hébergement sécurisé.</p>
+                      </label>
 
-                    <label class="p-3.5 rounded-2xl border border-pink-500/80 bg-pink-500/10 hover:bg-pink-500/20 cursor-pointer block relative">
-                      <input type="radio" name="cfg-formule" value="participative" checked class="text-pink-400 focus:ring-pink-400 bg-black border-border h-4 w-4">
-                      <span class="absolute top-2 right-2 text-[8px] font-mono font-bold px-2 py-0.5 rounded bg-pink-500 text-black uppercase">Recommandé</span>
-                      <p class="text-xs font-bold text-white mt-1.5">Expérience Participative</p>
-                      <p class="text-sm font-extrabold text-pink-300 font-mono mt-0.5">~ 1 590 €</p>
-                      <p class="text-[10px] text-gray-200 mt-1 leading-snug">Tout l'Essentiel + Playlist collective des invités + Plan de table + Galerie participative + Livre d'or.</p>
-                    </label>
+                      <label class="p-3.5 rounded-2xl border border-pink-500/80 bg-pink-500/10 hover:bg-pink-500/20 cursor-pointer block relative">
+                        <input type="radio" name="cfg-formule" value="participative" checked class="text-pink-400 focus:ring-pink-400 bg-black border-border h-4 w-4">
+                        <span class="absolute top-2 right-2 text-[8px] font-mono font-bold px-2 py-0.5 rounded bg-pink-500 text-black uppercase">Recommandé</span>
+                        <p class="text-xs font-bold text-white mt-1.5">02 • Expérience Participative</p>
+                        <p class="text-sm font-extrabold text-pink-300 font-mono mt-0.5">~ 1 590 € <span class="text-[10px] font-normal text-muted-foreground font-sans">indicatif</span></p>
+                        <p class="text-[10px] text-gray-200 mt-1 leading-snug">Tout l'Essentiel + Playlist collective (« Ma Chanson ») + Plan de table + Galerie participative + Livre d'or.</p>
+                      </label>
 
-                    <label class="p-3.5 rounded-2xl border border-white/15 bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer block">
-                      <input type="radio" name="cfg-formule" value="sur_mesure" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <p class="text-xs font-bold text-white mt-1.5">Scénographie Sur Mesure</p>
-                      <p class="text-sm font-extrabold text-white font-mono mt-0.5">~ 2 490 €</p>
-                      <p class="text-[10px] text-muted-foreground mt-1 leading-snug">Création exclusive par Matt Mez, livre vocal, dépôt photo illimité, sound design & archive pérenne.</p>
-                    </label>
+                      <label class="p-3.5 rounded-2xl border border-white/15 bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer block">
+                        <input type="radio" name="cfg-formule" value="sur_mesure" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                        <p class="text-xs font-bold text-white mt-1.5">03 • Scénographie Sur Mesure</p>
+                        <p class="text-sm font-extrabold text-white font-mono mt-0.5">~ 2 490 € <span class="text-[10px] font-normal text-muted-foreground font-sans">indicatif</span></p>
+                        <p class="text-[10px] text-muted-foreground mt-1 leading-snug">Création exclusive par Matt Mez, livre vocal, dépôt photo/vidéo HD illimité & archive complète.</p>
+                      </label>
+                    </div>
                   </div>
 
                   <!-- Contact & Booking Info Form -->
@@ -553,7 +577,7 @@ Mais vous pouvez aussi simplement écrire :
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <label for="cfg-contact-first" class="block text-xs text-white mb-1">Prénom *</label>
+                        <label for="cfg-contact-first" class="block text-xs text-white mb-1">Prénom(s) *</label>
                         <input id="cfg-contact-first" type="text" required placeholder="Claire" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
                       </div>
                       <div>
@@ -973,7 +997,13 @@ Mais vous pouvez aussi simplement écrire :
     </div>
 
     <!-- View 1: Interactive Prototype Render -->
-    <div id="prev-view-render" style="overflow-y: auto; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 2.5rem; margin: 0 auto; transition: max-width 0.3s ease">
+    <div id="prev-view-render" style="overflow-y: auto; padding: 2rem; display: flex; flex-direction: column; gap: 2rem; margin: 0 auto; transition: max-width 0.3s ease">
+      
+      <!-- Discrete Prototype Proof Notice -->
+      <div class="p-2.5 rounded-xl bg-pink-500/10 border border-pink-500/25 text-center text-xs text-pink-300 font-mono">
+        ✦ Prototype interactif — Preuve de résultat vivante (Données de démonstration)
+      </div>
+
       <div class="flex justify-between items-center border-b border-white/10 pb-4">
         <span class="text-sm font-bold text-white flex items-center gap-2">
           <svg width="20" height="14" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -1028,6 +1058,14 @@ Mais vous pouvez aussi simplement écrire :
           <p id="prev-exp-signature" class="text-muted-foreground text-[11px] mt-0.5"></p>
         </div>
         <span class="text-emerald-400 font-mono text-xs">BYAIME Engine</span>
+      </div>
+
+      <!-- Bottom Direct Proceed CTA -->
+      <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span class="text-xs text-muted-foreground">Cette direction vous plaît ? Vous pouvez passer à l'estimation et à la réservation.</span>
+        <button id="btn-proceed-to-step5-from-prev" type="button" class="px-6 py-2.5 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
+          ✦ Valider et voir ce qui sera créé →
+        </button>
       </div>
     </div>
 
