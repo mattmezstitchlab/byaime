@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mariage — Vous créez l'univers, vos invités le font vivre | BYAIME</title>
-  <meta name="description" content="BYAIME imagine l'univers numérique de votre mariage : les mariés créent l'expérience, les invités la font vivre avec leurs chansons, leurs photos et leurs messages. AIME en garde la mémoire.">
+  <title>Mariage — Le Jour J : Une Seule Timeline, Un Seul Monde | BYAIME</title>
+  <meta name="description" content="Votre mariage prend forme dans le temps. BYAIME orchestre les moments, les invités, les tables, la playlist collective et les souvenirs dans une Timeline vivante.">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><circle cx='12' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/><circle cx='20' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/></svg>">
@@ -13,8 +13,8 @@
   <link rel="manifest" href="/manifest.json">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Mariage — Vous créez l'univers, vos invités le font vivre | BYAIME">
-  <meta property="og:description" content="Une idée devient une expérience. Une expérience devient un souvenir collectif. Découvrez l'univers participatif du mariage BYAIME.">
+  <meta property="og:title" content="Mariage — Le Jour J : Une Seule Timeline, Un Seul Monde | BYAIME">
+  <meta property="og:description" content="Le Jour J n'est pas une liste d'horaires : c'est un monde qui s'organise dans le temps. Découvrez l'univers vivant de votre mariage.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://byaime.fr/mariage">
   <meta property="og:image" content="https://byaime.fr/img/og-image.png">
@@ -88,10 +88,10 @@
   <main id="main">
 
     <!-- ================================================================= -->
-    <!-- SECTION 01 : HERO IMMERSIF MARIAGE (V8 EXPERIENCE ENGINE) -->
+    <!-- SECTION 01 : ÉCRAN INITIAL — LE JOUR J DANS LE TEMPS -->
     <!-- ================================================================= -->
-    <section class="relative min-h-[85vh] flex items-center py-20 md:py-32 overflow-hidden border-b border-white/10">
-      <!-- High Visibility Botanical Photographic Background -->
+    <section class="relative min-h-[75vh] flex items-center py-20 md:py-28 overflow-hidden border-b border-white/10">
+      <!-- High Visibility Photographic Layer -->
       <div class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105" style="background-image: url('/img/floral5.webp'); opacity: 0.65;"></div>
       <div class="absolute inset-0 bg-gradient-to-b from-black/75 via-black/45 to-black pointer-events-none"></div>
       <div class="absolute inset-0 bg-radial-gradient opacity-60 pointer-events-none"></div>
@@ -99,462 +99,80 @@
       <div class="relative mx-auto max-w-5xl px-6 z-10 space-y-8" data-animate>
         
         <div class="max-w-3xl space-y-4">
-          <span class="inline-flex items-center gap-2 rounded-full border border-pink-500/30 px-4 py-1.5 text-xs font-medium tracking-wide bg-pink-500/10 backdrop-blur-md text-pink-300">
-            <span class="h-1.5 w-1.5 rounded-full bg-pink-400 animate-pulse"></span>
-            Studio de Création • L'Univers Participatif du Mariage
-          </span>
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="inline-flex items-center gap-2 rounded-full border border-pink-500/30 px-3.5 py-1 text-xs font-mono font-semibold tracking-wide bg-pink-500/10 text-pink-300">
+              CLAIRE & ANTOINE · 12 SEPTEMBRE 2027 · PROVENCE
+            </span>
+            <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-white/10 text-gray-300">
+              Prototype interactif — Preuve de résultat vivante
+            </span>
+          </div>
 
           <h1 class="text-4xl font-medium tracking-tight sm:text-6xl lg:text-7xl text-white leading-[1.08]">
-            Vous créez l'univers de votre mariage. <br>
-            <span class="text-gradient">Vos invités le font vivre.</span>
+            Votre mariage prend forme dans le temps.
           </h1>
 
           <p class="text-base md:text-lg text-gray-200 leading-relaxed max-w-2xl drop-shadow-md">
-            Une expérience numérique créée autour de votre histoire, enrichie par vos proches et transformée en souvenir collectif. AIME en garde la mémoire.
+            Le Jour J n'est pas une liste d'horaires : c'est un monde qui s'organise dans le temps. <br class="hidden sm:inline">
+            Vous créez l'univers de votre mariage. Vos invités le font vivre avec leurs chansons, leurs photos et leurs messages.
           </p>
 
-          <!-- Live Activity Simulation Ticker -->
-          <div class="p-3 rounded-2xl bg-black/60 border border-white/15 backdrop-blur-md flex items-center gap-3 text-xs text-gray-300 max-w-xl">
-            <span class="h-2 w-2 rounded-full bg-emerald-400 animate-ping flex-shrink-0"></span>
-            <p class="text-[11px] font-mono leading-tight">
-              <strong class="text-white font-sans">En direct dans le prototype :</strong> Thomas a ajouté <em>Daft Punk</em> · Sophie a partagé une photo · Lucas a confirmé son RSVP · Claire a laissé un mot doux.
-            </p>
+          <div class="pt-2 flex flex-wrap items-center gap-4">
+            <a href="#cockpit-jour-j" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
+              <span>✦ Explorer le Jour J ci-dessous</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
+            </a>
+            <a href="/projet?template=mariage" class="inline-flex items-center rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-6 py-4 text-xs font-medium text-white hover:bg-white/10 transition-colors">
+              Créer mon propre univers
+            </a>
           </div>
-
-          <!-- Mode Selector : Je Raconte vs Je Choisis -->
-          <div class="mt-8 inline-flex p-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15" role="tablist">
-            <button id="mariage-tab-tell" type="button" class="px-6 py-2.5 rounded-full text-xs font-bold transition-all bg-white text-black shadow-lg">
-              ✦ Je raconte mon idée
-            </button>
-            <button id="mariage-tab-choose" type="button" class="px-6 py-2.5 rounded-full text-xs font-medium transition-all text-gray-300 hover:text-white">
-              ✦ Je choisis pas à pas
-            </button>
-          </div>
-        </div>
-
-        <!-- ============================================================= -->
-        <!-- WORKSPACE 1 : JE RACONTE (Textarea Libre & Chaleureux) -->
-        <!-- ============================================================= -->
-        <div id="mariage-panel-tell" class="p-6 md:p-8 rounded-3xl bg-zinc-950/85 backdrop-blur-xl border border-white/20 shadow-2xl space-y-5 animate-fadeIn">
-          <div>
-            <span class="text-xs font-mono text-pink-300 uppercase tracking-wider">Écrivez simplement avec vos mots</span>
-            <h3 class="text-lg md:text-xl font-bold text-white tracking-tight mt-1">Parlez-nous de ce que vous aimeriez vivre.</h3>
-            <p class="text-xs text-gray-300 mt-0.5">La date, le lieu, l'ambiance, les personnes importantes, vos envies particulières :</p>
-          </div>
-
-          <textarea id="mariage-intent-input" rows="4" placeholder="Ex: Nous nous marions en septembre prochain dans un domaine en Provence avec 80 proches. Nous voulons une ambiance poétique sous les étoiles, une timeline claire pour la journée, une playlist collective où chaque invité propose sa chanson, et un espace pour partager les photos..." class="w-full text-sm rounded-2xl border border-white/20 bg-black/60 p-4 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400 resize-y leading-relaxed font-sans"></textarea>
-
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <button id="mariage-btn-submit-intent" type="button" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
-              ✦ Voir mon prototype d'expérience en direct →
-            </button>
-            <span class="text-[11px] text-gray-400">Écoute humaine et confidentielle • Studio BYAIME</span>
-          </div>
-        </div>
-
-        <!-- ============================================================= -->
-        <!-- WORKSPACE 2 : JE CHOISIS (Cascade de Sélecteurs Adaptatifs) -->
-        <!-- ============================================================= -->
-        <div id="mariage-panel-choose" class="hidden p-6 md:p-8 rounded-3xl bg-zinc-950/85 backdrop-blur-xl border border-white/20 shadow-2xl space-y-5 animate-fadeIn">
-          <div>
-            <span class="text-xs font-mono text-pink-300 uppercase tracking-wider">Choix progressifs</span>
-            <h3 class="text-lg md:text-xl font-bold text-white tracking-tight mt-1">Précisez vos envies pas à pas.</h3>
-            <p class="text-xs text-gray-300 mt-0.5">Chaque réponse permet à AIME de calibrer le prototype de votre futur univers :</p>
-          </div>
-
-          <!-- Step 1 : Nature du mariage -->
-          <div class="p-4 rounded-2xl bg-black/60 border border-white/15 space-y-2">
-            <label for="mariage-step-nature" class="block text-xs font-semibold text-white uppercase tracking-wider font-mono">
-              <span class="text-pink-400 mr-1.5">01.</span> Quel style de mariage préparez-vous ?
-            </label>
-            <div class="relative">
-              <select id="mariage-step-nature" class="w-full appearance-none rounded-xl bg-black border border-white/20 p-3 text-xs md:text-sm text-white focus:outline-none focus:ring-2 focus:ring-pink-400 cursor-pointer font-medium pr-10">
-                <option value="none">-- Choisir le style... --</option>
-                <option value="intime">Mariage intimiste & poétique (20 à 60 proches)</option>
-                <option value="fete">Grande célébration festive & chaleureuse (100+ invités)</option>
-                <option value="laique">Cérémonie laïque en plein air (Domaine, nature, jardin)</option>
-                <option value="deux">Célébration à deux ou micro-mariage secret</option>
-                <option value="atypique">Mariage sur plusieurs jours / festival d'amour</option>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-3.5 flex items-center text-pink-400">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2 : Audience & Invités -->
-          <div id="mariage-step2-wrap" class="hidden p-4 rounded-2xl bg-black/60 border border-white/15 space-y-2 animate-fadeIn">
-            <label for="mariage-step-audience" class="block text-xs font-semibold text-white uppercase tracking-wider font-mono">
-              <span class="text-pink-400 mr-1.5">02.</span> Avec qui partagez-vous ce moment ?
-            </label>
-            <div class="relative">
-              <select id="mariage-step-audience" class="w-full appearance-none rounded-xl bg-black border border-white/20 p-3 text-xs md:text-sm text-white focus:outline-none focus:ring-2 focus:ring-pink-400 cursor-pointer font-medium pr-10">
-                <option value="none">-- Choisir l'audience... --</option>
-                <option value="proches">Nos proches et amis les plus chers</option>
-                <option value="famille">Toute la famille et les amis réunis</option>
-                <option value="monde">Des invités venant de différentes villes et pays</option>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-3.5 flex items-center text-pink-400">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 3 : Priorité essentielle -->
-          <div id="mariage-step3-wrap" class="hidden p-4 rounded-2xl bg-black/60 border border-white/15 space-y-2 animate-fadeIn">
-            <label for="mariage-step-intent" class="block text-xs font-semibold text-white uppercase tracking-wider font-mono">
-              <span class="text-pink-400 mr-1.5">03.</span> Quelle est votre priorité essentielle ?
-            </label>
-            <div class="relative">
-              <select id="mariage-step-intent" class="w-full appearance-none rounded-xl bg-black border border-white/20 p-3 text-xs md:text-sm text-white focus:outline-none focus:ring-2 focus:ring-pink-400 cursor-pointer font-medium pr-10">
-                <option value="none">-- Choisir la priorité... --</option>
-                <option value="organiser">Bien organiser la journée et guider les invités (Timeline, déroulé)</option>
-                <option value="participatif">Faire participer les invités (Playlist collective, photos, mots doux)</option>
-                <option value="histoire">Raconter notre histoire avec poésie (Photos d'enfance, récit)</option>
-                <option value="souvenirs">Conserver les souvenirs du mariage (Galerie photo HD, vœux)</option>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-3.5 flex items-center text-pink-400">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 4 : Ambiance souhaitée -->
-          <div id="mariage-step4-wrap" class="hidden p-4 rounded-2xl bg-black/60 border border-white/15 space-y-2 animate-fadeIn">
-            <label for="mariage-step-atmo" class="block text-xs font-semibold text-white uppercase tracking-wider font-mono">
-              <span class="text-pink-400 mr-1.5">04.</span> Quelle ambiance sensorielle vous ressemble ?
-            </label>
-            <div class="relative">
-              <select id="mariage-step-atmo" class="w-full appearance-none rounded-xl bg-black border border-white/20 p-3 text-xs md:text-sm text-white focus:outline-none focus:ring-2 focus:ring-pink-400 cursor-pointer font-medium pr-10">
-                <option value="none">-- Choisir l'ambiance... --</option>
-                <option value="poetique">Poétique & Céleste (Tons doux, ciel étoilé, respiration)</option>
-                <option value="elegante">Élégante & Naturelle (Matières organiques, pureté)</option>
-                <option value="festive">Vibrante & Festive (Rythme joyeux, convivialité)</option>
-                <option value="cinematique">Cinématique & Immersive (Micro-interactions sensibles)</option>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-3.5 flex items-center text-pink-400">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Synthesis & Action CTA -->
-          <div id="mariage-synthesis-wrap" class="hidden p-5 rounded-2xl bg-black/80 border border-pink-500/30 space-y-3 animate-fadeIn">
-            <div class="flex items-center gap-2">
-              <span class="h-2 w-2 rounded-full bg-pink-400 animate-pulse"></span>
-              <p id="mariage-synthesis-text" class="text-xs text-white leading-relaxed font-medium"></p>
-            </div>
-            <div class="pt-2 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
-              <span class="text-[11px] text-gray-400">Fonctions incluses : Timeline • Playlist Collective • Plan de table • Galerie HD</span>
-              <button id="mariage-btn-launch-custom" type="button" class="px-6 py-2.5 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
-                ✦ Voir mon prototype & le personnaliser →
-              </button>
-            </div>
-          </div>
-
         </div>
 
       </div>
     </section>
 
     <!-- ================================================================= -->
-    <!-- SECTION 02 : TOUT VOTRE MARIAGE, AU MÊME ENDROIT (6 USAGES CLÉS) -->
+    <!-- SECTION 02 : LE COCKPIT TEMPOREL DU JOUR J (LA TIMELINE VIVANTE) -->
     <!-- ================================================================= -->
-    <section class="py-20 relative overflow-hidden border-b border-white/10 bg-black">
-      <div class="mx-auto max-w-5xl px-6 space-y-12" data-animate>
-        
-        <div class="max-w-3xl mx-auto text-center space-y-3">
-          <span class="text-xs font-mono text-pink-300 uppercase tracking-widest">Expérience Globale Centralisée</span>
-          <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Tout votre mariage, au même endroit.</h2>
-          <p class="text-sm text-gray-300 leading-relaxed max-w-xl mx-auto">
-            Plus besoin d'éparpiller vos informations entre groupes de messagerie et formulaires froids. Un univers unique et élégant rassemble chaque étape.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <div class="p-6 md:p-8 rounded-3xl bg-zinc-950 border border-white/10 space-y-3 hover:border-pink-500/40 transition-all">
-            <div class="flex justify-between items-center text-xs font-mono">
-              <span class="text-pink-300 font-bold">01 • INVITER</span>
-              <span class="text-gray-400">Faire-part</span>
-            </div>
-            <h3 class="text-base font-bold text-white">Informer avec délicatesse</h3>
-            <p class="text-xs text-gray-300 leading-relaxed">
-              Un mini-site personnalisé présentant votre histoire, les repères géolocalisés des lieux et les hébergements partenaires.
-            </p>
-          </div>
-
-          <div class="p-6 md:p-8 rounded-3xl bg-zinc-950 border border-white/10 space-y-3 hover:border-pink-500/40 transition-all">
-            <div class="flex justify-between items-center text-xs font-mono">
-              <span class="text-pink-300 font-bold">02 • CONFIRMER</span>
-              <span class="text-gray-400">RSVP Fluide</span>
-            </div>
-            <h3 class="text-base font-bold text-white">Réponses sans compte</h3>
-            <p class="text-xs text-gray-300 leading-relaxed">
-              Vos invités confirment leur présence en 1 clic sans mot de passe, avec gestion des régimes et accompagnants.
-            </p>
-          </div>
-
-          <div class="p-6 md:p-8 rounded-3xl bg-zinc-950 border border-white/10 space-y-3 hover:border-pink-500/40 transition-all">
-            <div class="flex justify-between items-center text-xs font-mono">
-              <span class="text-pink-300 font-bold">03 • ORGANISER</span>
-              <span class="text-gray-400">Jour J</span>
-            </div>
-            <h3 class="text-base font-bold text-white">Timeline & Plan de Table</h3>
-            <p class="text-xs text-gray-300 leading-relaxed">
-              Déroulé synchronisé heure par heure et recherche instantanée de table par prénom pour fluidifier le dîner.
-            </p>
-          </div>
-
-          <div class="p-6 md:p-8 rounded-3xl bg-zinc-950 border border-white/10 space-y-3 hover:border-pink-500/40 transition-all">
-            <div class="flex justify-between items-center text-xs font-mono">
-              <span class="text-pink-300 font-bold">04 • PARTICIPER</span>
-              <span class="text-gray-400">Collaboratif</span>
-            </div>
-            <h3 class="text-base font-bold text-white">Chansons, Photos & Mots doux</h3>
-            <p class="text-xs text-gray-300 leading-relaxed">
-              Chaque proche propose un morceau pour la soirée (« Ma Chanson »), dépose ses photos en direct et laisse un message d'amour.
-            </p>
-          </div>
-
-          <div class="p-6 md:p-8 rounded-3xl bg-zinc-950 border border-white/10 space-y-3 hover:border-pink-500/40 transition-all">
-            <div class="flex justify-between items-center text-xs font-mono">
-              <span class="text-pink-300 font-bold">05 • VIVRE</span>
-              <span class="text-gray-400">En Direct</span>
-            </div>
-            <h3 class="text-base font-bold text-white">Vibrer ensemble le Jour J</h3>
-            <p class="text-xs text-gray-300 leading-relaxed">
-              La playlist collective inspire le DJ, les photos s'affichent en direct et la timeline guide chaque étape de la journée.
-            </p>
-          </div>
-
-          <div class="p-6 md:p-8 rounded-3xl bg-zinc-950 border border-white/10 space-y-3 hover:border-pink-500/40 transition-all">
-            <div class="flex justify-between items-center text-xs font-mono">
-              <span class="text-pink-300 font-bold">06 • SE SOUVENIR</span>
-              <span class="text-gray-400">Archive</span>
-            </div>
-            <h3 class="text-base font-bold text-white">Une mémoire collective</h3>
-            <p class="text-xs text-gray-300 leading-relaxed">
-              Après l'événement, les contributions deviennent un sanctuaire numérique conservé selon les modalités choisies.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ================================================================= -->
-    <!-- SECTION 03 : CHAQUE INVITÉ LAISSE UNE TRACE (MANIFESTE PARTICIPATIF) -->
-    <!-- ================================================================= -->
-    <section class="py-20 relative overflow-hidden border-b border-white/10 bg-zinc-950">
-      <div class="mx-auto max-w-5xl px-6 space-y-12" data-animate>
-        
-        <div class="max-w-3xl mx-auto text-center space-y-3">
-          <span class="text-xs font-mono text-pink-300 uppercase tracking-widest">Signature BYAIME</span>
-          <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Chaque invité laisse une trace.</h2>
-          <p class="text-sm text-gray-300 leading-relaxed max-w-xl mx-auto">
-            Une personne ➔ Une chanson. Une personne ➔ Une photo. Une personne ➔ Un mot doux. <br class="hidden sm:inline">
-            Plusieurs personnes ➔ Une mémoire commune vivante.
-          </p>
-        </div>
-
-        <!-- 3 Living Temporal States : AVANT / JOUR J / APRÈS -->
-        <div class="p-6 md:p-8 rounded-3xl bg-black/80 border border-white/15 backdrop-blur-xl shadow-2xl space-y-6">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
-            <div>
-              <span class="text-xs font-mono text-pink-300 font-bold uppercase">L'Univers Évolue dans le Temps</span>
-              <h3 class="text-sm font-bold text-white mt-0.5">Les 3 Temps Vivants du Mariage</h3>
-            </div>
-            
-            <div class="inline-flex p-1 rounded-full bg-white/10 border border-white/10 text-xs" role="tablist">
-              <button id="tab-state-avant" type="button" class="px-4 py-1.5 rounded-full bg-white text-black font-bold text-xs transition-all">
-                01 • AVANT
-              </button>
-              <button id="tab-state-jourj" type="button" class="px-4 py-1.5 rounded-full text-gray-300 hover:text-white text-xs transition-all">
-                02 • JOUR J
-              </button>
-              <button id="tab-state-apres" type="button" class="px-4 py-1.5 rounded-full text-gray-300 hover:text-white text-xs transition-all">
-                03 • APRÈS
-              </button>
-            </div>
-          </div>
-
-          <!-- State 1 : AVANT -->
-          <div id="panel-state-avant" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs animate-fadeIn">
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1.5">
-              <span class="text-[10px] font-mono text-pink-300 uppercase font-bold">Faire-part & RSVP</span>
-              <p class="text-white font-medium">Confirmation sans compte</p>
-              <p class="text-muted-foreground text-[11px]">Les invités confirment en 1 clic et découvrent les informations du lieu.</p>
-            </div>
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1.5">
-              <span class="text-[10px] font-mono text-pink-300 uppercase font-bold">Collecte Musicale</span>
-              <p class="text-white font-medium">« Ma Chanson »</p>
-              <p class="text-muted-foreground text-[11px]">Chaque proche dépose sa chanson pour composer la playlist de la soirée.</p>
-            </div>
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1.5">
-              <span class="text-[10px] font-mono text-pink-300 uppercase font-bold">Premiers Mots Doux</span>
-              <p class="text-white font-medium">Livre d'or ouvert</p>
-              <p class="text-muted-foreground text-[11px]">Les vœux commencent à affluer pour nourrir l'impatience du grand jour.</p>
-            </div>
-          </div>
-
-          <!-- State 2 : JOUR J -->
-          <div id="panel-state-jourj" class="hidden grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs animate-fadeIn">
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-emerald-500/30 space-y-1.5">
-              <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold">Timeline Dynamique</span>
-              <p class="text-white font-medium">Synchronisation en direct</p>
-              <p class="text-muted-foreground text-[11px]">Horaires mis à jour, rappels discrets et repères géolocalisés.</p>
-            </div>
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-emerald-500/30 space-y-1.5">
-              <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold">Photos Instantanées</span>
-              <p class="text-white font-medium">Dépôt participatif HD</p>
-              <p class="text-muted-foreground text-[11px]">Les invités téléversent leurs photos prises pendant le cocktail et le dîner.</p>
-            </div>
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-emerald-500/30 space-y-1.5">
-              <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold">La Playlist en Action</span>
-              <p class="text-white font-medium">Bande-son des proches</p>
-              <p class="text-muted-foreground text-[11px]">La sélection collective des invités guide la fête et inspire le DJ.</p>
-            </div>
-          </div>
-
-          <!-- State 3 : APRÈS -->
-          <div id="panel-state-apres" class="hidden grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs animate-fadeIn">
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-cyan-500/30 space-y-1.5">
-              <span class="text-[10px] font-mono text-cyan-300 uppercase font-bold">Galerie Complète</span>
-              <p class="text-white font-medium">Tous les points de vue</p>
-              <p class="text-muted-foreground text-[11px]">Les mariés récupèrent toutes les photos et vidéos en pleine résolution.</p>
-            </div>
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-cyan-500/30 space-y-1.5">
-              <span class="text-[10px] font-mono text-cyan-300 uppercase font-bold">Recueil d'Émotion</span>
-              <p class="text-white font-medium">Livre d'or & Archives complètes</p>
-              <p class="text-muted-foreground text-[11px]">L'intégralité des mots doux et messages vocaux archivés pour toujours.</p>
-            </div>
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-cyan-500/30 space-y-1.5">
-              <span class="text-[10px] font-mono text-cyan-300 uppercase font-bold">Pack Mémoire</span>
-              <p class="text-white font-medium">Archive post-événement</p>
-              <p class="text-muted-foreground text-[11px]">L'univers numérique et ses archives restent consultables après l'événement selon les modalités de la formule.</p>
-            </div>
-          </div>
-
-          <!-- Animated Progression Counter -->
-          <div class="pt-4 border-t border-white/10 space-y-2">
-            <div class="flex justify-between items-center text-[10px] font-mono text-gray-400">
-              <span>Progression collective de l'univers :</span>
-              <span class="text-pink-300 italic">Exemple — Données de démonstration</span>
-            </div>
-            <div class="grid grid-cols-2 sm:grid-cols-6 gap-3 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/10 pt-1">
-              <div class="p-1.5 space-y-0.5">
-                <span class="text-xl md:text-2xl font-extrabold font-mono text-white">80</span>
-                <p class="text-[9px] uppercase font-mono text-gray-400 font-bold">INVITÉS</p>
-              </div>
-              <div class="p-1.5 space-y-0.5 pt-2 sm:pt-1">
-                <span class="text-xl md:text-2xl font-extrabold font-mono text-emerald-400">73</span>
-                <p class="text-[9px] uppercase font-mono text-gray-400 font-bold">RSVP REÇUS</p>
-              </div>
-              <div class="p-1.5 space-y-0.5 pt-2 sm:pt-1">
-                <span class="text-xl md:text-2xl font-extrabold font-mono text-pink-300">61</span>
-                <p class="text-[9px] uppercase font-mono text-gray-400 font-bold">CHANSONS</p>
-              </div>
-              <div class="p-1.5 space-y-0.5 pt-2 sm:pt-1">
-                <span class="text-xl md:text-2xl font-extrabold font-mono text-cyan-300">48</span>
-                <p class="text-[9px] uppercase font-mono text-gray-400 font-bold">PHOTOS</p>
-              </div>
-              <div class="p-1.5 space-y-0.5 pt-2 sm:pt-1">
-                <span class="text-xl md:text-2xl font-extrabold font-mono text-amber-300">37</span>
-                <p class="text-[9px] uppercase font-mono text-gray-400 font-bold">MESSAGES</p>
-              </div>
-              <div class="p-1.5 space-y-0.5 pt-2 sm:pt-1">
-                <span class="text-xl md:text-2xl font-extrabold font-mono text-violet-300">24</span>
-                <p class="text-[9px] uppercase font-mono text-gray-400 font-bold">VOIX DÉPOSÉES</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4 Pillars of Guest Contribution -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          
-          <div class="p-6 rounded-3xl bg-black/70 border border-white/10 space-y-2.5 hover:border-pink-500/30 transition-all">
-            <span class="text-xs font-mono text-pink-300 font-bold">01 • MA CHANSON</span>
-            <h3 class="text-sm font-bold text-white">Portrait musical des proches</h3>
-            <p class="text-xs text-gray-300 leading-relaxed">
-              Une chanson de Julie, une de Thomas, une de mamie. À la fin, c'est le portrait sonore de votre entourage pour votre DJ.
-            </p>
-          </div>
-
-          <div class="p-6 rounded-3xl bg-black/70 border border-white/10 space-y-2.5 hover:border-pink-500/30 transition-all">
-            <span class="text-xs font-mono text-pink-300 font-bold">02 • MA PHOTO</span>
-            <h3 class="text-sm font-bold text-white">Galerie collective HD</h3>
-            <p class="text-xs text-gray-300 leading-relaxed">
-              Dépôt participatif de photos et vidéos du Jour J prises par vos proches en haute définition.
-            </p>
-          </div>
-
-          <div class="p-6 rounded-3xl bg-black/70 border border-white/10 space-y-2.5 hover:border-pink-500/30 transition-all">
-            <span class="text-xs font-mono text-pink-300 font-bold">03 • MON MESSAGE</span>
-            <h3 class="text-sm font-bold text-white">Capsule émotionnelle</h3>
-            <p class="text-xs text-gray-300 leading-relaxed">
-              Mots doux, anecdotes et vœux chaleureux déposés avant, pendant et après la fête sans création de compte.
-            </p>
-          </div>
-
-          <div class="p-6 rounded-3xl bg-black/70 border border-white/10 space-y-2.5 hover:border-pink-500/30 transition-all">
-            <span class="text-xs font-mono text-pink-300 font-bold">04 • MON RSVP</span>
-            <h3 class="text-sm font-bold text-white">Confirmation en un clic</h3>
-            <p class="text-xs text-gray-300 leading-relaxed">
-              Confirmation de présence fluide et rapide, régimes alimentaires et accompagnants sans mot de passe.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ================================================================= -->
-    <!-- SECTION 04 : L'UNIVERS DU JOUR J (PROTOTYPE VIVANT & RELATIONS) -->
-    <!-- ================================================================= -->
-    <section class="py-24 relative overflow-hidden border-b border-white/10 bg-black">
+    <section id="cockpit-jour-j" class="py-24 relative overflow-hidden border-b border-white/10 bg-black">
       <div class="mx-auto max-w-5xl px-6 space-y-12" data-animate>
         
         <div class="max-w-2xl space-y-2">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-xs text-pink-300 font-mono">
-            <span>Prototype interactif — Preuve de résultat — Données de démonstration</span>
-          </div>
-          <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">« L'Univers du Jour J » — Démonstration Live</h2>
-          <p class="text-xs md:text-sm text-gray-300">
-            Chaque module communique avec les autres : la timeline résonne avec la playlist et le plan de table.
+          <span class="text-xs font-mono text-pink-300 uppercase tracking-widest">Le Cockpit Temporel</span>
+          <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Le Jour J en un coup d'œil</h2>
+          <p class="text-sm text-gray-300">
+            Cliquez sur un moment pour révéler son lieu, ses personnes, ses prestataires, sa musique et ses contributions.
           </p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-          <!-- Left Column : Timeline Relationnelle & Seating Plan -->
-          <div class="lg:col-span-6 p-6 md:p-8 rounded-3xl bg-zinc-950 border border-white/15 space-y-6">
+          <!-- Left Column : The Living Timeline & Moment Universe Card -->
+          <div class="lg:col-span-7 p-6 md:p-8 rounded-3xl bg-zinc-950 border border-white/15 space-y-6 shadow-2xl">
             <div class="flex items-center justify-between border-b border-white/10 pb-3">
-              <span class="text-xs font-bold text-white">1. Timeline Relationnelle du Jour J</span>
-              <span class="text-[10px] text-pink-300 font-mono">Jour J</span>
+              <span class="text-xs font-bold text-white font-mono uppercase">1. Timeline du Jour J (Cliquez un moment)</span>
+              <span class="text-[10px] text-pink-300 font-mono">5 Temps Forts</span>
             </div>
 
-            <!-- Timeline cliquable avec relations -->
-            <div data-interactive-timeline class="space-y-3">
+            <!-- Timeline cliquable avec 5 moments -->
+            <div data-interactive-timeline class="space-y-4">
               <div class="grid grid-cols-5 gap-1 text-center text-xs font-mono">
-                <button type="button" data-timeline-step data-timeline-title="11:00 Cérémonie Laïque" data-timeline-time="11:00" data-timeline-desc="Lecture des vœux sous la verrière fleurie et recueil des messages d'amour." class="p-2 rounded-lg border border-pink-500 bg-pink-500/20 text-white transition-all scale-105">11:00</button>
-                <button type="button" data-timeline-step data-timeline-title="12:30 Cocktail & Vin d'Honneur" data-timeline-time="12:30" data-timeline-desc="Jardin des oliviers, premières photos en direct et musique d'accueil." class="p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">12:30</button>
-                <button type="button" data-timeline-step data-timeline-title="19:30 Dîner sous les lampions" data-timeline-time="19:30" data-timeline-desc="Grande halle, plan de table interactif et anecdotes familiales." class="p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">19:30</button>
-                <button type="button" data-timeline-step data-timeline-title="22:30 Première Danse & Soirée" data-timeline-time="22:30" data-timeline-desc="Ouverture du bal et lancement de la playlist collective des invités." class="p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">22:30</button>
-                <button type="button" data-timeline-step data-timeline-title="Lendemain Brunch & Souvenirs" data-timeline-time="Lendemain" data-timeline-desc="Brunch décontracté au soleil, derniers partages et remise du pack d'archive." class="p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">Lendemain</button>
+                <button type="button" data-timeline-step data-timeline-title="11:00 Cérémonie Laïque" data-timeline-time="11:00" data-timeline-desc="Lecture des vœux sous la verrière fleurie et recueil des messages d'amour." class="p-2.5 rounded-xl border border-pink-500 bg-pink-500/20 text-white transition-all scale-105">11:00</button>
+                <button type="button" data-timeline-step data-timeline-title="12:30 Cocktail & Vin d'Honneur" data-timeline-time="12:30" data-timeline-desc="Jardin des oliviers, premières photos en direct et musique d'accueil." class="p-2.5 rounded-xl border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">12:30</button>
+                <button type="button" data-timeline-step data-timeline-title="19:30 Dîner sous les lampions" data-timeline-time="19:30" data-timeline-desc="Grande halle, plan de table interactif et anecdotes familiales." class="p-2.5 rounded-xl border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">19:30</button>
+                <button type="button" data-timeline-step data-timeline-title="22:30 Première Danse & Soirée" data-timeline-time="22:30" data-timeline-desc="Ouverture du bal et lancement de la playlist collective des invités." class="p-2.5 rounded-xl border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">22:30</button>
+                <button type="button" data-timeline-step data-timeline-title="Lendemain Brunch & Souvenirs" data-timeline-time="Lendemain" data-timeline-desc="Brunch décontracté au soleil, derniers partages et remise du pack d'archive." class="p-2.5 rounded-xl border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">Lendemain</button>
               </div>
 
-              <div data-timeline-info class="min-h-[120px]">
+              <!-- TimeBlock Universe Card (Level 2) -->
+              <div data-timeline-info class="min-h-[140px]">
                 <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3 animate-fadeIn text-xs">
                   <div class="flex justify-between items-baseline border-b border-white/10 pb-2">
                     <div>
                       <span class="font-bold text-white text-sm">11:00 · Cérémonie Laïque</span>
                       <p class="text-[10px] text-pink-300 font-mono">11:00 → 12:15 (1h15) · 📍 Sous la grande verrière fleurie</p>
                     </div>
-                    <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Moment actif</span>
+                    <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold">Moment actif</span>
                   </div>
                   <p class="text-gray-300 text-xs leading-relaxed">Échange des alliances sous la verrière fleurie et premier temps fort émotionnel de la journée.</p>
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] pt-1">
@@ -569,23 +187,27 @@
 
             <!-- Seating lookup relationnel -->
             <div data-guest-lookup class="space-y-2 pt-4 border-t border-white/10">
-              <span class="text-xs font-bold text-white">2. Plan de Table Humain & Interconnecté :</span>
+              <span class="text-xs font-bold text-white font-mono uppercase">2. Plan de Table Humain (Cliquez un invité) :</span>
               <input type="text" data-guest-input placeholder="Tapez 'Claire', 'Thomas', 'Sophie' ou 'Lucas'..." class="w-full text-xs rounded-xl border border-white/20 bg-black px-3.5 py-2.5 text-white placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-pink-400">
               <div data-guest-result class="text-xs text-muted-foreground">
-                <p class="italic">Recherche par prénom révélant la table et les contributions de l'invité.</p>
+                <p class="italic">Recherche par prénom révélant la table, la chanson et le mot doux apporté par l'invité.</p>
               </div>
             </div>
           </div>
 
           <!-- Right Column : LA PLAYLIST COLLECTIVE DES INVITÉS -->
-          <div class="lg:col-span-6 p-6 md:p-8 rounded-3xl bg-zinc-950 border border-white/15 space-y-5">
+          <div class="lg:col-span-5 p-6 md:p-8 rounded-3xl bg-zinc-950 border border-white/15 space-y-5 shadow-2xl">
             <div class="flex items-center justify-between border-b border-white/10 pb-3">
               <div class="flex items-center gap-2">
                 <svg class="w-4 h-4 text-pink-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13M9 18a3 3 0 11-6 0 3 3 0 016 0zm12-2a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                 <span class="text-xs font-bold text-white">3. « Ma Chanson » — La Playlist Collective</span>
               </div>
-              <span id="playlist-header-counter" class="text-[10px] font-mono text-emerald-400">61 morceaux proposés</span>
+              <span id="playlist-header-counter" class="text-[10px] font-mono text-emerald-400">61 morceaux</span>
             </div>
+
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Chaque invité apporte le morceau qui le représente. AIME rassemble toutes les propositions dans la bande-son de votre soirée.
+            </p>
 
             <!-- Propose a song form -->
             <div id="widget-add-song" class="p-4 rounded-2xl bg-black/60 border border-white/10 space-y-3 text-xs">
@@ -636,20 +258,146 @@
     </section>
 
     <!-- ================================================================= -->
-    <!-- SECTION 05 : LE REGISTRE DES PRESTATAIRES & SAVOIR-FAIRE (AIME CARD) -->
+    <!-- SECTION 03 : CHAQUE INVITÉ LAISSE UNE TRACE (MÉMOIRE COLLECTIVE) -->
     <!-- ================================================================= -->
-    <section class="py-24 relative overflow-hidden border-b border-white/10 bg-zinc-950">
+    <section class="py-20 relative overflow-hidden border-b border-white/10 bg-zinc-950">
+      <div class="mx-auto max-w-5xl px-6 space-y-10" data-animate>
+        
+        <div class="max-w-3xl mx-auto text-center space-y-3">
+          <span class="text-xs font-mono text-pink-300 uppercase tracking-widest">Signature Participative</span>
+          <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Chaque invité laisse une trace.</h2>
+          <p class="text-sm text-gray-300 leading-relaxed max-w-xl mx-auto">
+            Une personne ➔ Une chanson. Une personne ➔ Une photo. Une personne ➔ Un mot doux. <br class="hidden sm:inline">
+            Plusieurs personnes ➔ Une mémoire commune vivante.
+          </p>
+        </div>
+
+        <!-- 3 Temporal States Switcher -->
+        <div class="p-6 md:p-8 rounded-3xl bg-black/80 border border-white/15 backdrop-blur-xl shadow-2xl space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
+            <div>
+              <span class="text-xs font-mono text-pink-300 font-bold uppercase">L'Univers Évolue dans le Temps</span>
+              <h3 class="text-sm font-bold text-white mt-0.5">Les 3 Temps Vivants du Mariage</h3>
+            </div>
+            
+            <div class="inline-flex p-1 rounded-full bg-white/10 border border-white/10 text-xs" role="tablist">
+              <button id="tab-state-avant" type="button" class="px-4 py-1.5 rounded-full bg-white text-black font-bold text-xs transition-all">
+                01 • AVANT
+              </button>
+              <button id="tab-state-jourj" type="button" class="px-4 py-1.5 rounded-full text-gray-300 hover:text-white text-xs transition-all">
+                02 • JOUR J
+              </button>
+              <button id="tab-state-apres" type="button" class="px-4 py-1.5 rounded-full text-gray-300 hover:text-white text-xs transition-all">
+                03 • APRÈS
+              </button>
+            </div>
+          </div>
+
+          <!-- State 1 : AVANT -->
+          <div id="panel-state-avant" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs animate-fadeIn">
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1.5">
+              <span class="text-[10px] font-mono text-pink-300 uppercase font-bold">Faire-part & RSVP</span>
+              <p class="text-white font-medium">Confirmation sans compte</p>
+              <p class="text-muted-foreground text-[11px]">Les invités confirment en 1 clic et découvrent les informations du lieu.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1.5">
+              <span class="text-[10px] font-mono text-pink-300 uppercase font-bold">Collecte Musicale</span>
+              <p class="text-white font-medium">« Ma Chanson »</p>
+              <p class="text-muted-foreground text-[11px]">Chaque proche dépose sa chanson pour composer la playlist de la soirée.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1.5">
+              <span class="text-[10px] font-mono text-pink-300 uppercase font-bold">Premiers Mots Doux</span>
+              <p class="text-white font-medium">Livre d'or ouvert</p>
+              <p class="text-muted-foreground text-[11px]">Les vœux commencent à affluer pour nourrir l'impatience du grand jour.</p>
+            </div>
+          </div>
+
+          <!-- State 2 : JOUR J -->
+          <div id="panel-state-jourj" class="hidden grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs animate-fadeIn">
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-emerald-500/30 space-y-1.5">
+              <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold">Timeline Dynamique</span>
+              <p class="text-white font-medium">Synchronisation du Jour J</p>
+              <p class="text-muted-foreground text-[11px]">Horaires synchronisés, rappels discrets et repères géolocalisés.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-emerald-500/30 space-y-1.5">
+              <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold">Photos Instantanées</span>
+              <p class="text-white font-medium">Dépôt participatif HD</p>
+              <p class="text-muted-foreground text-[11px]">Les invités téléversent leurs photos prises pendant le cocktail et le dîner.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-emerald-500/30 space-y-1.5">
+              <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold">La Playlist en Action</span>
+              <p class="text-white font-medium">Bande-son des proches</p>
+              <p class="text-muted-foreground text-[11px]">La sélection collective des invités guide la fête et inspire le DJ.</p>
+            </div>
+          </div>
+
+          <!-- State 3 : APRÈS -->
+          <div id="panel-state-apres" class="hidden grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs animate-fadeIn">
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-cyan-500/30 space-y-1.5">
+              <span class="text-[10px] font-mono text-cyan-300 uppercase font-bold">Galerie Complète</span>
+              <p class="text-white font-medium">Tous les points de vue</p>
+              <p class="text-muted-foreground text-[11px]">Les mariés récupèrent toutes les photos et vidéos en pleine résolution.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-cyan-500/30 space-y-1.5">
+              <span class="text-[10px] font-mono text-cyan-300 uppercase font-bold">Recueil d'Émotion</span>
+              <p class="text-white font-medium">Livre d'or & Archives complètes</p>
+              <p class="text-muted-foreground text-[11px]">L'intégralité des mots doux et messages vocaux archivés pour toujours.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-cyan-500/30 space-y-1.5">
+              <span class="text-[10px] font-mono text-cyan-300 uppercase font-bold">Pack Mémoire</span>
+              <p class="text-white font-medium">Archive post-événement</p>
+              <p class="text-muted-foreground text-[11px]">L'univers numérique et ses archives restent consultables après l'événement selon les modalités de la formule.</p>
+            </div>
+          </div>
+
+          <!-- Progression Counter -->
+          <div class="pt-4 border-t border-white/10 space-y-2">
+            <div class="flex justify-between items-center text-[10px] font-mono text-gray-400">
+              <span>Progression collective de l'univers :</span>
+              <span class="text-pink-300 italic">Exemple de progression — Données de démonstration</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/10 pt-1">
+              <div class="p-1.5 space-y-0.5">
+                <span class="text-xl md:text-2xl font-extrabold font-mono text-white">80</span>
+                <p class="text-[9px] uppercase font-mono text-gray-400 font-bold">INVITÉS</p>
+              </div>
+              <div class="p-1.5 space-y-0.5 pt-2 sm:pt-1">
+                <span class="text-xl md:text-2xl font-extrabold font-mono text-emerald-400">73</span>
+                <p class="text-[9px] uppercase font-mono text-gray-400 font-bold">RSVP REÇUS</p>
+              </div>
+              <div class="p-1.5 space-y-0.5 pt-2 sm:pt-1">
+                <span class="text-xl md:text-2xl font-extrabold font-mono text-pink-300">61</span>
+                <p class="text-[9px] uppercase font-mono text-gray-400 font-bold">CHANSONS</p>
+              </div>
+              <div class="p-1.5 space-y-0.5 pt-2 sm:pt-1">
+                <span class="text-xl md:text-2xl font-extrabold font-mono text-cyan-300">48</span>
+                <p class="text-[9px] uppercase font-mono text-gray-400 font-bold">PHOTOS</p>
+              </div>
+              <div class="p-1.5 space-y-0.5 pt-2 sm:pt-1">
+                <span class="text-xl md:text-2xl font-extrabold font-mono text-amber-300">37</span>
+                <p class="text-[9px] uppercase font-mono text-gray-400 font-bold">MESSAGES</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- SECTION 04 : LE REGISTRE DES PRESTATAIRES (QUI FERA VIVRE LE MARIAGE) -->
+    <!-- ================================================================= -->
+    <section class="py-24 relative overflow-hidden border-b border-white/10 bg-black">
       <div class="mx-auto max-w-5xl px-6 space-y-12" data-animate>
         
         <div class="max-w-2xl mx-auto text-center space-y-3">
           <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Registre & Savoir-Faire AIME</span>
-          <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Qui fera vivre votre mariage ?</h2>
+          <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Qui fera vivre chaque moment ?</h2>
           <p class="text-sm text-gray-300 leading-relaxed">
-            Découvrez les personnes, les savoir-faire et les prestataires qui peuvent rejoindre votre univers, ou créez votre carte pour figurer au registre.
+            Les personnes et les savoir-faire rejoignent les différents temps de votre mariage.
           </p>
         </div>
 
-        <!-- Horizontal Scrollable Cards Band -->
         <div class="space-y-4">
           <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-b border-white/10 pb-3">
             <span>Savoir-faire répertoriés pour le mariage :</span>
@@ -658,58 +406,58 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             
-            <div class="p-5 rounded-3xl bg-black/80 border border-white/15 space-y-3 hover:border-emerald-500/40 transition-all flex flex-col justify-between">
+            <div class="p-5 rounded-3xl bg-zinc-950 border border-white/15 space-y-3 hover:border-emerald-500/40 transition-all flex flex-col justify-between">
               <div class="space-y-2">
                 <span class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/10 text-emerald-300 uppercase font-semibold">PHOTOGRAPHE</span>
                 <h4 class="text-sm font-bold text-white">Atelier Lumière & Instant</h4>
                 <p class="text-[11px] text-gray-300 leading-relaxed">Reportage sensible en lumière naturelle, photos spontanées et captation d'émotions vraies.</p>
               </div>
               <div class="pt-2 border-t border-white/5 flex justify-between items-center text-[10px] text-gray-400 font-mono">
-                <span>Paris & Île-de-France</span>
+                <span>Intervention : Cérémonie & Soirée</span>
                 <span class="text-emerald-400">Carte vérifiée</span>
               </div>
             </div>
 
-            <div class="p-5 rounded-3xl bg-black/80 border border-white/15 space-y-3 hover:border-emerald-500/40 transition-all flex flex-col justify-between">
+            <div class="p-5 rounded-3xl bg-zinc-950 border border-white/15 space-y-3 hover:border-emerald-500/40 transition-all flex flex-col justify-between">
               <div class="space-y-2">
                 <span class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/10 text-pink-300 uppercase font-semibold">DJ & ANIMATION</span>
                 <h4 class="text-sm font-bold text-white">Collectif Sound & Night</h4>
                 <p class="text-[11px] text-gray-300 leading-relaxed">Animation musicale soignée, mix de la playlist collective des invités et éclairage chaleureux.</p>
               </div>
               <div class="pt-2 border-t border-white/5 flex justify-between items-center text-[10px] text-gray-400 font-mono">
-                <span>Provence & Sud</span>
+                <span>Intervention : Soirée & Bal</span>
                 <span class="text-pink-300">Carte vérifiée</span>
               </div>
             </div>
 
-            <div class="p-5 rounded-3xl bg-black/80 border border-white/15 space-y-3 hover:border-emerald-500/40 transition-all flex flex-col justify-between">
+            <div class="p-5 rounded-3xl bg-zinc-950 border border-white/15 space-y-3 hover:border-emerald-500/40 transition-all flex flex-col justify-between">
               <div class="space-y-2">
                 <span class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/10 text-amber-300 uppercase font-semibold">FLEURISTE & DÉCO</span>
                 <h4 class="text-sm font-bold text-white">L'Herbier Poétique</h4>
                 <p class="text-[11px] text-gray-300 leading-relaxed">Création florale de saison, arches végétales, centres de tables et matières organiques délicates.</p>
               </div>
               <div class="pt-2 border-t border-white/5 flex justify-between items-center text-[10px] text-gray-400 font-mono">
-                <span>France entière</span>
+                <span>Intervention : Cérémonie & Dîner</span>
                 <span class="text-amber-300">Carte vérifiée</span>
               </div>
             </div>
 
-            <div class="p-5 rounded-3xl bg-black/80 border border-white/15 space-y-3 hover:border-emerald-500/40 transition-all flex flex-col justify-between">
+            <div class="p-5 rounded-3xl bg-zinc-950 border border-white/15 space-y-3 hover:border-emerald-500/40 transition-all flex flex-col justify-between">
               <div class="space-y-2">
                 <span class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/10 text-cyan-300 uppercase font-semibold">TRAITEUR & CHEF</span>
                 <h4 class="text-sm font-bold text-white">Saveurs du Terroir</h4>
                 <p class="text-[11px] text-gray-300 leading-relaxed">Cocktail dînatoire généreux, produits locaux en circuit court et ateliers culinaires en direct.</p>
               </div>
               <div class="pt-2 border-t border-white/5 flex justify-between items-center text-[10px] text-gray-400 font-mono">
-                <span>Île-de-France & Normandie</span>
+                <span>Intervention : Cocktail & Dîner</span>
                 <span class="text-cyan-300">Carte vérifiée</span>
               </div>
             </div>
 
           </div>
 
-          <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-2xl bg-black/60 border border-white/10 text-xs">
-            <p class="text-gray-300">Vous êtes artisan, photographe, DJ ou wedding planner ?</p>
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-2xl bg-zinc-950 border border-white/10 text-xs">
+            <p class="text-gray-300">Vous êtes artisan, photographe, DJ ou fleuriste ?</p>
             <a href="/card" class="px-5 py-2 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
               Rejoindre le registre • Créer ma carte prestataire →
             </a>
@@ -720,9 +468,9 @@
     </section>
 
     <!-- ================================================================= -->
-    <!-- SECTION 06 : FORMULES DU STUDIO & DEMANDE DE RÉSERVATION DIRECTE -->
+    <!-- SECTION 05 : FORMULES DU STUDIO & DEMANDE DE RÉSERVATION DIRECTE -->
     <!-- ================================================================= -->
-    <section id="formules-mariage" class="py-24 relative overflow-hidden border-b border-white/10 bg-black">
+    <section id="formules-mariage" class="py-24 relative overflow-hidden border-b border-white/10 bg-zinc-950">
       <div class="mx-auto max-w-5xl px-6 space-y-16" data-animate>
         
         <div class="max-w-2xl mx-auto text-center space-y-3">
@@ -737,7 +485,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           
           <!-- Formule 1 : Essentiel -->
-          <div class="p-8 rounded-3xl bg-zinc-950 border border-white/15 flex flex-col justify-between space-y-6">
+          <div class="p-8 rounded-3xl bg-black/80 border border-white/15 flex flex-col justify-between space-y-6">
             <div class="space-y-4">
               <span class="text-xs font-mono text-gray-400 uppercase font-semibold">FORMULE 01</span>
               <h3 class="text-xl font-bold text-white">Essentiel Jour J</h3>
@@ -759,7 +507,7 @@
           </div>
 
           <!-- Formule 2 : Expérience Participative (Recommandée) -->
-          <div class="p-8 rounded-3xl bg-zinc-950 border-2 border-pink-500/80 glow-card flex flex-col justify-between space-y-6 relative shadow-2xl">
+          <div class="p-8 rounded-3xl bg-black border-2 border-pink-500/80 glow-card flex flex-col justify-between space-y-6 relative shadow-2xl">
             <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-pink-500 text-black font-mono font-bold text-[10px] uppercase tracking-wider">
               FORMULE PHARE · RECOMMANDÉE
             </div>
@@ -786,7 +534,7 @@
           </div>
 
           <!-- Formule 3 : Scénographie Sur Mesure -->
-          <div class="p-8 rounded-3xl bg-zinc-950 border border-white/15 flex flex-col justify-between space-y-6">
+          <div class="p-8 rounded-3xl bg-black/80 border border-white/15 flex flex-col justify-between space-y-6">
             <div class="space-y-4">
               <span class="text-xs font-mono text-gray-400 uppercase font-semibold">FORMULE 03</span>
               <h3 class="text-xl font-bold text-white">Scénographie Sur Mesure</h3>
@@ -810,7 +558,7 @@
         </div>
 
         <!-- Direct Booking & Quote Request Form -->
-        <div id="devis-mariage-form-box" class="max-w-3xl mx-auto p-8 md:p-10 rounded-3xl bg-zinc-950 border border-white/20 shadow-2xl space-y-6">
+        <div id="devis-mariage-form-box" class="max-w-3xl mx-auto p-8 md:p-10 rounded-3xl bg-black border border-white/20 shadow-2xl space-y-6">
           <div class="text-center space-y-2">
             <span class="text-xs font-mono text-pink-300 uppercase tracking-wider">Demande de Devis & Réservation de Date</span>
             <h3 class="text-2xl font-bold text-white tracking-tight">Transmettre votre projet à Matt Mez</h3>
@@ -1085,7 +833,7 @@
           }
 
           songCount++;
-          if (playlistCounter) playlistCounter.textContent = songCount + ' morceaux proposés';
+          if (playlistCounter) playlistCounter.textContent = songCount + ' morceaux';
 
           var row = document.createElement('div');
           row.className = 'p-2.5 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-between text-xs animate-fadeIn';

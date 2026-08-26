@@ -1058,17 +1058,17 @@
       }
     });
 
-    // Guest lookup (Interconnected Module Demonstration)
+    // Guest lookup (Interconnected Module Demonstration & Person Journey)
     document.querySelectorAll('[data-guest-lookup]').forEach(function (widget) {
       var input = widget.querySelector('[data-guest-input]');
       var result = widget.querySelector('[data-guest-result]');
       var guestsDatabase = [
-        { name: 'Claire', table: 'Table Orion (Place 1)', song: 'Midnight City — M83', message: 'Pour danser sous les lampions !' },
-        { name: 'Antoine', table: 'Table Orion (Place 2)', song: 'Heroes — David Bowie', message: 'Hâte de célébrer avec vous !' },
-        { name: 'Camille', table: 'Table Cassiopée (Place 4)', song: 'La Vie en Rose — Édith Piaf', message: 'Un amour infini pour vous deux.' },
-        { name: 'Sophie', table: 'Table Pégase (Place 3)', song: 'September — Earth, Wind & Fire', message: 'Prête pour enflammer la piste !' },
-        { name: 'Thomas', table: 'Table Cassiopée (Place 5)', song: 'You Are The Best Thing — Ray LaMontagne', message: 'Notre chanson d\'amitié éternelle.' },
-        { name: 'Lucas', table: 'Table Pégase (Place 1)', song: 'Something About Us — Daft Punk', message: 'Félicitations aux mariés !' }
+        { name: 'Claire', table: 'Table Orion (Place 1)', song: 'Midnight City — M83', message: 'Pour danser sous les lampions !', rsvp: 'Présente (Accompagnée)', journey: ['11:00 Cérémonie Laïque', '12:30 Cocktail (Photo partagée)', '19:30 Table Orion', '22:30 Première Danse'] },
+        { name: 'Antoine', table: 'Table Orion (Place 2)', song: 'Heroes — David Bowie', message: 'Hâte de célébrer avec vous !', rsvp: 'Présent', journey: ['11:00 Cérémonie Laïque', '12:30 Cocktail', '19:30 Table Orion', '22:30 Première Danse'] },
+        { name: 'Camille', table: 'Table Cassiopée (Place 4)', song: 'La Vie en Rose — Édith Piaf', message: 'Un amour infini pour vous deux.', rsvp: 'Présente', journey: ['11:00 Cérémonie (Vœux lus)', '12:30 Cocktail', '19:30 Table Cassiopée', '22:30 Soirée'] },
+        { name: 'Sophie', table: 'Table Pégase (Place 3)', song: 'September — Earth, Wind & Fire', message: 'Prête pour enflammer la piste !', rsvp: 'Présente', journey: ['11:00 Cérémonie', '12:30 Cocktail (3 photos live)', '19:30 Table Pégase', '22:30 Soirée'] },
+        { name: 'Thomas', table: 'Table Cassiopée (Place 5)', song: 'You Are The Best Thing — Ray LaMontagne', message: 'Notre chanson d\'amitié éternelle.', rsvp: 'Présent (Accompagné)', journey: ['11:00 Cérémonie', '12:30 Cocktail', '19:30 Table Cassiopée', '22:30 Playlist lancée'] },
+        { name: 'Lucas', table: 'Table Pégase (Place 1)', song: 'Something About Us — Daft Punk', message: 'Félicitations aux mariés !', rsvp: 'Présent', journey: ['11:00 Cérémonie', '12:30 Cocktail', '19:30 Table Pégase', '22:30 Soirée'] }
       ];
 
       if (input && result) {
@@ -1082,10 +1082,12 @@
             return g.name.toLowerCase().indexOf(query) !== -1;
           });
           if (match) {
-            result.innerHTML = '<div class="p-3 rounded-xl bg-white/[0.06] border border-white/10 text-xs space-y-1 animate-fadeIn">' +
+            var journeyHtml = (match.journey || []).map(function (j) { return '<span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-gray-300">● ' + j + '</span>'; }).join(' ');
+            result.innerHTML = '<div class="p-3.5 rounded-2xl bg-white/[0.06] border border-white/10 text-xs space-y-2 animate-fadeIn">' +
               '<div class="flex justify-between items-center"><span class="text-white font-bold">' + match.name + '</span><span class="text-pink-300 font-mono font-semibold">' + match.table + '</span></div>' +
               '<p class="text-[11px] text-gray-300">🎵 Chanson apportée : <span class="text-white italic">' + match.song + '</span></p>' +
               '<p class="text-[10px] text-pink-300 italic">« ' + match.message + ' »</p>' +
+              '<div class="pt-1 border-t border-white/5 space-y-1"><span class="text-[9px] font-mono uppercase text-gray-400">Parcours dans le Jour J :</span><div class="flex flex-wrap gap-1">' + journeyHtml + '</div></div>' +
               '</div>';
           } else {
             result.innerHTML = '<p class="text-xs text-muted-foreground">Aucun invité trouvé pour "' + query + '" (testez \'Claire\', \'Thomas\', \'Sophie\' ou \'Lucas\').</p>';
