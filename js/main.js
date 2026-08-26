@@ -982,32 +982,37 @@
       }
     });
 
-    // Guest lookup
+    // Guest lookup (Interconnected Module Demonstration)
     document.querySelectorAll('[data-guest-lookup]').forEach(function (widget) {
       var input = widget.querySelector('[data-guest-input]');
       var result = widget.querySelector('[data-guest-result]');
       var guestsDatabase = [
-        { name: 'Claire', table: 'Table Orion (Place 1)' },
-        { name: 'Antoine', table: 'Table Orion (Place 2)' },
-        { name: 'Camille', table: 'Table Cassiopée (Place 4)' },
-        { name: 'Sophie', table: 'Table Pégase (Place 3)' },
-        { name: 'Thomas', table: 'Table Cassiopée (Place 5)' }
+        { name: 'Claire', table: 'Table Orion (Place 1)', song: 'Midnight City — M83', message: 'Pour danser sous les lampions !' },
+        { name: 'Antoine', table: 'Table Orion (Place 2)', song: 'Heroes — David Bowie', message: 'Hâte de célébrer avec vous !' },
+        { name: 'Camille', table: 'Table Cassiopée (Place 4)', song: 'La Vie en Rose — Édith Piaf', message: 'Un amour infini pour vous deux.' },
+        { name: 'Sophie', table: 'Table Pégase (Place 3)', song: 'September — Earth, Wind & Fire', message: 'Prête pour enflammer la piste !' },
+        { name: 'Thomas', table: 'Table Cassiopée (Place 5)', song: 'You Are The Best Thing — Ray LaMontagne', message: 'Notre chanson d\'amitié éternelle.' },
+        { name: 'Lucas', table: 'Table Pégase (Place 1)', song: 'Something About Us — Daft Punk', message: 'Félicitations aux mariés !' }
       ];
 
       if (input && result) {
         input.addEventListener('input', function () {
           var query = input.value.trim().toLowerCase();
           if (!query) {
-            result.innerHTML = '<p class="text-xs text-muted-foreground italic">Tapez un prénom pour tester la recherche d\'invité...</p>';
+            result.innerHTML = '<p class="text-xs text-muted-foreground italic">Tapez un prénom pour tester la recherche d\'invité et ses contributions...</p>';
             return;
           }
           var match = guestsDatabase.find(function (g) {
             return g.name.toLowerCase().indexOf(query) !== -1;
           });
           if (match) {
-            result.innerHTML = '<div class="flex justify-between items-center p-2 rounded-lg bg-white/10 text-xs"><span class="text-white font-medium">' + match.name + '</span><span class="text-pink-300 font-mono">' + match.table + '</span></div>';
+            result.innerHTML = '<div class="p-3 rounded-xl bg-white/[0.06] border border-white/10 text-xs space-y-1 animate-fadeIn">' +
+              '<div class="flex justify-between items-center"><span class="text-white font-bold">' + match.name + '</span><span class="text-pink-300 font-mono font-semibold">' + match.table + '</span></div>' +
+              '<p class="text-[11px] text-gray-300">🎵 Chanson apportée : <span class="text-white italic">' + match.song + '</span></p>' +
+              '<p class="text-[10px] text-pink-300 italic">« ' + match.message + ' »</p>' +
+              '</div>';
           } else {
-            result.innerHTML = '<p class="text-xs text-muted-foreground">Aucun invité trouvé pour "' + query + '".</p>';
+            result.innerHTML = '<p class="text-xs text-muted-foreground">Aucun invité trouvé pour "' + query + '" (testez \'Claire\', \'Thomas\', \'Sophie\' ou \'Lucas\').</p>';
           }
         });
       }

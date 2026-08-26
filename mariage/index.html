@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mariage — L'Univers Numérique & Participatif de Votre Union | BYAIME</title>
-  <meta name="description" content="BYAIME imagine l'univers numérique de votre mariage : les mariés créent l'expérience, les invités la font vivre avec leurs chansons, leurs photos et leurs messages.">
+  <title>Mariage — Vous créez l'univers, vos invités le font vivre | BYAIME</title>
+  <meta name="description" content="BYAIME imagine l'univers numérique de votre mariage : les mariés créent l'expérience, les invités la font vivre avec leurs chansons, leurs photos et leurs messages. AIME en garde la mémoire.">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><circle cx='12' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/><circle cx='20' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/></svg>">
@@ -13,8 +13,8 @@
   <link rel="manifest" href="/manifest.json">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Mariage — L'Univers Numérique & Participatif de Votre Union | BYAIME">
-  <meta property="og:description" content="Vous préparez votre mariage ? Nous créons votre univers numérique, vos invités le font vivre avec leurs chansons, leurs photos et leurs messages.">
+  <meta property="og:title" content="Mariage — Vous créez l'univers, vos invités le font vivre | BYAIME">
+  <meta property="og:description" content="Un faire-part délicat, la timeline du Jour J, la playlist collective des invités, le plan de table et le sanctuaire de vos souvenirs.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://byaime.fr/mariage">
   <meta property="og:image" content="https://byaime.fr/img/og-image.png">
@@ -88,12 +88,12 @@
   <main id="main">
 
     <!-- ================================================================= -->
-    <!-- SECTION 01 : HERO IMMERSIF MARIAGE (MONUMENTAL FLORAL & PARTICIPATIF) -->
+    <!-- SECTION 01 : HERO IMMERSIF MARIAGE (V3 EXPERIENCE ENGINE) -->
     <!-- ================================================================= -->
     <section class="relative min-h-[85vh] flex items-center py-20 md:py-32 overflow-hidden border-b border-white/10">
       <!-- High Visibility Botanical Photographic Background -->
       <div class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105" style="background-image: url('/img/floral5.webp'); opacity: 0.65;"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black pointer-events-none"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/75 via-black/45 to-black pointer-events-none"></div>
       <div class="absolute inset-0 bg-radial-gradient opacity-60 pointer-events-none"></div>
 
       <div class="relative mx-auto max-w-5xl px-6 z-10 space-y-8" data-animate>
@@ -101,26 +101,33 @@
         <div class="max-w-3xl space-y-4">
           <span class="inline-flex items-center gap-2 rounded-full border border-pink-500/30 px-4 py-1.5 text-xs font-medium tracking-wide bg-pink-500/10 backdrop-blur-md text-pink-300">
             <span class="h-1.5 w-1.5 rounded-full bg-pink-400 animate-pulse"></span>
-            Studio de Création • Mariage Singulier & Participatif
+            Studio de Création • L'Univers Participatif du Mariage
           </span>
 
           <h1 class="text-4xl font-medium tracking-tight sm:text-6xl lg:text-7xl text-white leading-[1.08]">
-            Vous préparez votre mariage ? <br>
-            <span class="text-gradient">Nous imaginons son univers numérique.</span>
+            Vous créez l'univers de votre mariage. <br>
+            <span class="text-gradient">Vos invités le font vivre.</span>
           </h1>
 
           <p class="text-base md:text-lg text-gray-200 leading-relaxed max-w-2xl drop-shadow-md">
-            <strong>Les mariés créent l'univers ; les invités le font vivre.</strong> <br class="hidden sm:inline">
-            Un faire-part délicat, la timeline du Jour J, la playlist collective de votre soirée, le plan de table et le sanctuaire de vos souvenirs partagés.
+            Un faire-part délicat, la timeline du Jour J, la playlist collective de votre soirée, le plan de table et le sanctuaire de vos souvenirs partagés. AIME en garde la mémoire.
           </p>
+
+          <!-- Live Activity Simulation Ticker -->
+          <div class="p-3 rounded-2xl bg-black/60 border border-white/15 backdrop-blur-md flex items-center gap-3 text-xs text-gray-300 max-w-xl">
+            <span class="h-2 w-2 rounded-full bg-emerald-400 animate-ping flex-shrink-0"></span>
+            <p class="text-[11px] font-mono leading-tight">
+              <strong class="text-white font-sans">En direct dans le prototype :</strong> Thomas a ajouté <em>Daft Punk</em> · Sophie a déposé une photo · Lucas a confirmé son RSVP.
+            </p>
+          </div>
 
           <!-- Mode Selector : Je Raconte vs Je Choisis -->
           <div class="mt-8 inline-flex p-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15" role="tablist">
             <button id="mariage-tab-tell" type="button" class="px-6 py-2.5 rounded-full text-xs font-bold transition-all bg-white text-black shadow-lg">
-              Je raconte mon idée
+              ✦ Je raconte mon idée
             </button>
             <button id="mariage-tab-choose" type="button" class="px-6 py-2.5 rounded-full text-xs font-medium transition-all text-gray-300 hover:text-white">
-              Je choisis pas à pas
+              ✦ Je choisis pas à pas
             </button>
           </div>
         </div>
@@ -251,22 +258,28 @@
     </section>
 
     <!-- ================================================================= -->
-    <!-- SECTION 02 : LA CONTRIBUTION DES INVITÉS (LE CŒUR DU MINI-SITE) -->
+    <!-- SECTION 02 : CHAQUE INVITÉ LAISSE UNE TRACE (MANIFESTE PARTICIPATIF) -->
     <!-- ================================================================= -->
     <section class="py-20 relative overflow-hidden border-b border-white/10 bg-zinc-950">
       <div class="mx-auto max-w-5xl px-6 space-y-12" data-animate>
         
-        <div class="max-w-2xl mx-auto text-center space-y-3">
-          <span class="text-xs font-mono text-pink-300 uppercase tracking-widest">Une Expérience Vivante</span>
-          <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Les mariés créent l'univers ; les invités le font vivre.</h2>
-          <p class="text-sm text-gray-300 leading-relaxed">
-            Chaque proche apporte sa touche personnelle pour nourrir la mémoire collective de votre grand jour.
+        <div class="max-w-3xl mx-auto text-center space-y-3">
+          <span class="text-xs font-mono text-pink-300 uppercase tracking-widest">Signature BYAIME</span>
+          <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Chaque invité laisse une trace.</h2>
+          <p class="text-sm text-gray-300 leading-relaxed max-w-xl mx-auto">
+            Une personne ➔ Une chanson. Une personne ➔ Une photo. Une personne ➔ Un mot doux. <br class="hidden sm:inline">
+            Plusieurs personnes ➔ Une mémoire collective vivante.
           </p>
         </div>
 
-        <!-- Elegant Visual Counter of Contributions -->
-        <div class="p-6 md:p-8 rounded-3xl bg-black/80 border border-white/15 backdrop-blur-xl shadow-2xl">
-          <div class="grid grid-cols-2 sm:grid-cols-6 gap-4 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+        <!-- Animated Progression Counter -->
+        <div class="p-6 md:p-8 rounded-3xl bg-black/80 border border-white/15 backdrop-blur-xl shadow-2xl space-y-4">
+          <div class="flex justify-between items-center border-b border-white/10 pb-3 text-xs">
+            <span class="text-xs font-mono text-pink-300 font-bold uppercase">Progression Collective du Mariage</span>
+            <span class="text-[10px] font-mono text-gray-400 italic">Exemple de progression — Données de démonstration</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-6 gap-4 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/10 pt-2">
             <div class="p-2 space-y-1">
               <span class="text-2xl md:text-3xl font-extrabold font-mono text-white">80</span>
               <p class="text-[10px] uppercase font-mono text-gray-400 font-bold">INVITÉS</p>
@@ -292,8 +305,9 @@
               <p class="text-[10px] uppercase font-mono text-gray-400 font-bold">VOIX DÉPOSÉES</p>
             </div>
           </div>
-          <div class="mt-4 pt-4 border-t border-white/10 text-center">
-            <span class="text-xs font-mono text-emerald-300 uppercase tracking-wider">➔ Une archive numérique vivante conservée pour toujours.</span>
+
+          <div class="pt-3 border-t border-white/10 text-center">
+            <span class="text-xs font-mono text-emerald-300 uppercase tracking-wider">➔ « Votre mariage ne se contente pas d'être raconté : il est construit par ceux qui étaient là. »</span>
           </div>
         </div>
 
@@ -301,34 +315,34 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           
           <div class="p-6 rounded-3xl bg-black/70 border border-white/10 space-y-2.5 hover:border-pink-500/30 transition-all">
-            <span class="text-xs font-mono text-pink-300 font-bold">01 • MON RSVP</span>
-            <h3 class="text-sm font-bold text-white">Confirmation sans compte</h3>
+            <span class="text-xs font-mono text-pink-300 font-bold">01 • MA CHANSON</span>
+            <h3 class="text-sm font-bold text-white">Portrait musical des invités</h3>
             <p class="text-xs text-gray-300 leading-relaxed">
-              Vos invités confirment leur présence en un clic, sans mot de passe ni compte à créer.
+              Une chanson de Julie, une de Thomas, une de mamie. À la fin, c'est le portrait sonore de votre entourage pour votre DJ.
             </p>
           </div>
 
           <div class="p-6 rounded-3xl bg-black/70 border border-white/10 space-y-2.5 hover:border-pink-500/30 transition-all">
-            <span class="text-xs font-mono text-pink-300 font-bold">02 • MA CHANSON</span>
-            <h3 class="text-sm font-bold text-white">Playlist Collective</h3>
+            <span class="text-xs font-mono text-pink-300 font-bold">02 • MA PHOTO</span>
+            <h3 class="text-sm font-bold text-white">Galerie collective HD</h3>
             <p class="text-xs text-gray-300 leading-relaxed">
-              Chaque proche propose le morceau qui le représente et ajoute une dédicace pour votre soirée.
+              Dépôt participatif de photos et vidéos du Jour J prises par vos proches en haute définition sans compression.
             </p>
           </div>
 
           <div class="p-6 rounded-3xl bg-black/70 border border-white/10 space-y-2.5 hover:border-pink-500/30 transition-all">
-            <span class="text-xs font-mono text-pink-300 font-bold">03 • MA PHOTO</span>
-            <h3 class="text-sm font-bold text-white">Galerie Participative</h3>
+            <span class="text-xs font-mono text-pink-300 font-bold">03 • MON MESSAGE</span>
+            <h3 class="text-sm font-bold text-white">Capsule émotionnelle</h3>
             <p class="text-xs text-gray-300 leading-relaxed">
-              Dépôt direct des photos et vidéos prises le Jour J par vos convives en haute définition.
+              Mots doux, anecdotes et vœux chaleureux déposés avant, pendant et après la fête sans création de compte.
             </p>
           </div>
 
           <div class="p-6 rounded-3xl bg-black/70 border border-white/10 space-y-2.5 hover:border-pink-500/30 transition-all">
-            <span class="text-xs font-mono text-pink-300 font-bold">04 • MON MESSAGE</span>
-            <h3 class="text-sm font-bold text-white">Livre d'or & Mots doux</h3>
+            <span class="text-xs font-mono text-pink-300 font-bold">04 • MON RSVP</span>
+            <h3 class="text-sm font-bold text-white">Confirmation en un clic</h3>
             <p class="text-xs text-gray-300 leading-relaxed">
-              Recueil de vœux et messages chaleureux déposés avant, pendant et après la célébration.
+              Confirmation de présence fluide et rapide, régimes alimentaires et accompagnants sans friction.
             </p>
           </div>
 
@@ -338,59 +352,61 @@
     </section>
 
     <!-- ================================================================= -->
-    <!-- SECTION 03 : PROTOTYPE INTERACTIF EN DIRECT (PREUVE CONCRÈTE) -->
+    <!-- SECTION 03 : L'UNIVERS DU JOUR J (PROTOTYPE VIVANT & RELATIONS) -->
     <!-- ================================================================= -->
     <section class="py-24 relative overflow-hidden border-b border-white/10 bg-black">
       <div class="mx-auto max-w-5xl px-6 space-y-12" data-animate>
         
         <div class="max-w-2xl space-y-2">
-          <span class="text-xs font-mono text-pink-300 uppercase tracking-widest">Preuve de Résultat • Prototype Testable</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">« L'Astral & L'Intime » — Démonstration Live</h2>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-xs text-pink-300 font-mono">
+            <span>Prototype Interactif — Preuve de résultat — Données de démonstration</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">« L'Univers du Jour J » — Démonstration Live</h2>
           <p class="text-xs md:text-sm text-gray-300">
-            Testez concrètement les modules interactifs ci-dessous (données de démonstration conceptuelle).
+            Chaque module communique avec les autres : la timeline résonne avec la playlist et le plan de table.
           </p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-          <!-- Left Column : Timeline & Seating Plan -->
+          <!-- Left Column : Timeline Relationnelle & Seating Plan -->
           <div class="lg:col-span-6 p-6 md:p-8 rounded-3xl bg-zinc-950 border border-white/15 space-y-6">
             <div class="flex items-center justify-between border-b border-white/10 pb-3">
-              <span class="text-xs font-bold text-white">1. Timeline du Jour J (Cliquez pour tester)</span>
+              <span class="text-xs font-bold text-white">1. Timeline Relationnelle du Jour J</span>
               <span class="text-[10px] text-pink-300 font-mono">Jour J</span>
             </div>
 
-            <!-- Timeline cliquable -->
+            <!-- Timeline cliquable avec relations -->
             <div data-interactive-timeline class="space-y-3">
               <div class="grid grid-cols-4 gap-1.5 text-center text-xs font-mono">
-                <button type="button" data-timeline-step data-timeline-title="11:00 Cérémonie Laïque" data-timeline-time="11:00" data-timeline-desc="Sous la grande verrière du domaine, lecture de vœux et échange d'alliances." class="p-2 rounded-lg border border-pink-500 bg-pink-500/20 text-white transition-all scale-105">11:00</button>
-                <button type="button" data-timeline-step data-timeline-title="12:30 Cocktail & Musique" data-timeline-time="12:30" data-timeline-desc="Jardin des oliviers et set acoustique en direct." class="p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">12:30</button>
-                <button type="button" data-timeline-step data-timeline-title="19:30 Dîner sous les lampions" data-timeline-time="19:30" data-timeline-desc="Grande halle, plan de table interactif et prises de parole intimes." class="p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">19:30</button>
-                <button type="button" data-timeline-step data-timeline-title="22:30 Première Danse & Fête" data-timeline-time="22:30" data-timeline-desc="Ouverture de la piste, playlist collaborative et livre d'or vocal." class="p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">22:30</button>
+                <button type="button" data-timeline-step data-timeline-title="11:00 Cérémonie Laïque" data-timeline-time="11:00" data-timeline-desc="Lecture des vœux sous la verrière fleurie et recueil des messages d'amour." class="p-2 rounded-lg border border-pink-500 bg-pink-500/20 text-white transition-all scale-105">11:00</button>
+                <button type="button" data-timeline-step data-timeline-title="12:30 Cocktail & Vin d'Honneur" data-timeline-time="12:30" data-timeline-desc="Jardin des oliviers, premières photos en direct et musique d'accueil." class="p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">12:30</button>
+                <button type="button" data-timeline-step data-timeline-title="19:30 Dîner sous les lampions" data-timeline-time="19:30" data-timeline-desc="Grande halle, plan de table interactif et anecdotes familiales." class="p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">19:30</button>
+                <button type="button" data-timeline-step data-timeline-title="22:30 Première Danse & Soirée" data-timeline-time="22:30" data-timeline-desc="Ouverture du bal et lancement de la playlist collective des invités." class="p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">22:30</button>
               </div>
 
               <div data-timeline-info class="p-3.5 rounded-xl bg-white/5 border border-white/5 text-xs min-h-[60px]">
                 <span class="font-semibold text-white">11:00 Cérémonie Laïque</span>
-                <p class="text-muted-foreground mt-0.5">Sous la grande verrière du domaine, lecture de vœux et échange d'alliances.</p>
+                <p class="text-muted-foreground mt-0.5">Lecture des vœux sous la verrière fleurie et recueil des messages d'amour.</p>
               </div>
             </div>
 
-            <!-- Seating lookup -->
+            <!-- Seating lookup relationnel -->
             <div data-guest-lookup class="space-y-2 pt-4 border-t border-white/10">
-              <span class="text-xs font-bold text-white">2. Recherche de Table Instantanée :</span>
-              <input type="text" data-guest-input placeholder="Tapez 'Claire' ou 'Camille'..." class="w-full text-xs rounded-xl border border-white/20 bg-black px-3.5 py-2.5 text-white placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-pink-400">
+              <span class="text-xs font-bold text-white">2. Plan de Table Humain & Interconnecté :</span>
+              <input type="text" data-guest-input placeholder="Tapez 'Claire', 'Thomas', 'Sophie' ou 'Lucas'..." class="w-full text-xs rounded-xl border border-white/20 bg-black px-3.5 py-2.5 text-white placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-pink-400">
               <div data-guest-result class="text-xs text-muted-foreground">
-                <p class="italic">Recherche de table par prénom le soir du mariage.</p>
+                <p class="italic">Recherche par prénom révélant la table et les contributions de l'invité.</p>
               </div>
             </div>
           </div>
 
-          <!-- Right Column : LA PLAYLIST DE NOTRE MARIAGE (Widget participatif) -->
+          <!-- Right Column : LA PLAYLIST COLLECTIVE DES INVITÉS -->
           <div class="lg:col-span-6 p-6 md:p-8 rounded-3xl bg-zinc-950 border border-white/15 space-y-5">
             <div class="flex items-center justify-between border-b border-white/10 pb-3">
               <div class="flex items-center gap-2">
                 <svg class="w-4 h-4 text-pink-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13M9 18a3 3 0 11-6 0 3 3 0 016 0zm12-2a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                <span class="text-xs font-bold text-white">3. La Playlist Collective des Invités</span>
+                <span class="text-xs font-bold text-white">3. « Ma Chanson » — La Playlist Collective</span>
               </div>
               <span class="text-[10px] font-mono text-emerald-400">61 morceaux proposés</span>
             </div>
@@ -410,7 +426,7 @@
 
             <!-- Aggregated Songs Feed -->
             <div class="space-y-2">
-              <span class="text-[10px] font-mono uppercase text-gray-400">Morceaux ajoutés par les proches :</span>
+              <span class="text-[10px] font-mono uppercase text-gray-400">Portrait sonore des proches :</span>
               <div id="playlist-feed-list" class="space-y-1.5 max-h-[160px] overflow-y-auto pr-1">
                 <div class="p-2.5 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-between text-xs">
                   <div>
@@ -444,7 +460,7 @@
     </section>
 
     <!-- ================================================================= -->
-    <!-- SECTION 04 : FORMULES, TARIFS INDICATIFS & DEMANDE DE DEVIS -->
+    <!-- SECTION 04 : FORMULES DU STUDIO & DEMANDE DE RÉSERVATION DIRECTE -->
     <!-- ================================================================= -->
     <section id="formules-mariage" class="py-24 relative overflow-hidden border-b border-white/10 bg-zinc-950">
       <div class="mx-auto max-w-5xl px-6 space-y-16" data-animate>
@@ -453,7 +469,7 @@
           <span class="text-xs font-mono text-pink-300 uppercase tracking-widest">Prestations du Studio BYAIME</span>
           <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Formules Claires & Transparentes</h2>
           <p class="text-sm text-gray-300 leading-relaxed">
-            Une tarification transparente pour la conception, le développement, l'hébergement sécurisé et l'accompagnement de votre grand jour.
+            Estimations indicatives pour la conception sur mesure, le développement sans dépendances lourdes, l'hébergement sécurisé et l'accompagnement de votre grand jour.
           </p>
         </div>
 
@@ -465,15 +481,15 @@
             <div class="space-y-4">
               <span class="text-xs font-mono text-gray-400 uppercase font-semibold">FORMULE 01</span>
               <h3 class="text-xl font-bold text-white">Essentiel Jour J</h3>
-              <p class="text-3xl font-extrabold text-white font-mono">~ 890 € <span class="text-xs text-gray-400 font-normal font-sans">estimation</span></p>
-              <p class="text-xs text-gray-300 leading-relaxed">Le sanctuaire numérique fluide et élégant pour informer et coordonner vos invités.</p>
+              <p class="text-3xl font-extrabold text-white font-mono">~ 890 € <span class="text-xs text-gray-400 font-normal font-sans">estimation indicative</span></p>
+              <p class="text-xs text-gray-300 leading-relaxed">Le sanctuaire numérique fluide pour informer et synchroniser vos invités.</p>
               
               <ul class="space-y-2 text-xs text-gray-300 pt-2 border-t border-white/10">
                 <li class="flex items-center gap-2">✓ Mini-site responsive sur mesure</li>
                 <li class="flex items-center gap-2">✓ Faire-part & RSVP sans mot de passe</li>
                 <li class="flex items-center gap-2">✓ Timeline interactive du Jour J</li>
-                <li class="flex items-center gap-2">✓ Hébergement sécurisé & nom de domaine</li>
-                <li class="flex items-center gap-2">✓ Respect RGPD & zéro publicité</li>
+                <li class="flex items-center gap-2">✓ Hébergement sécurisé & nom de domaine inclus</li>
+                <li class="flex items-center gap-2">✓ Zéro publicité & respect de la vie privée</li>
               </ul>
             </div>
 
@@ -491,16 +507,16 @@
             <div class="space-y-4 pt-2">
               <span class="text-xs font-mono text-pink-300 uppercase font-semibold">FORMULE 02</span>
               <h3 class="text-xl font-bold text-white">Expérience Participative</h3>
-              <p class="text-3xl font-extrabold text-pink-300 font-mono">~ 1 590 € <span class="text-xs text-gray-400 font-normal font-sans">estimation</span></p>
+              <p class="text-3xl font-extrabold text-pink-300 font-mono">~ 1 590 € <span class="text-xs text-gray-400 font-normal font-sans">estimation indicative</span></p>
               <p class="text-xs text-gray-200 leading-relaxed">L'univers complet où vos proches deviennent les contributeurs actifs de votre fête.</p>
               
               <ul class="space-y-2 text-xs text-gray-200 pt-2 border-t border-white/10">
                 <li class="flex items-center gap-2 text-white font-medium">✓ Tout le pack Essentiel Jour J</li>
-                <li class="flex items-center gap-2">✓ <strong>La Playlist Collective</strong> des invités</li>
+                <li class="flex items-center gap-2">✓ <strong>La Playlist Collective</strong> des invités (« Ma Chanson »)</li>
                 <li class="flex items-center gap-2">✓ <strong>Plan de table interactif</strong> par prénom</li>
                 <li class="flex items-center gap-2">✓ <strong>Galerie photo participative</strong> Jour J</li>
                 <li class="flex items-center gap-2">✓ <strong>Livre d'or & Mots doux</strong></li>
-                <li class="flex items-center gap-2">✓ Permanence technique pendant la soirée</li>
+                <li class="flex items-center gap-2">✓ Accompagnement technique de la soirée</li>
               </ul>
             </div>
 
@@ -514,14 +530,14 @@
             <div class="space-y-4">
               <span class="text-xs font-mono text-gray-400 uppercase font-semibold">FORMULE 03</span>
               <h3 class="text-xl font-bold text-white">Scénographie Sur Mesure</h3>
-              <p class="text-3xl font-extrabold text-white font-mono">~ 2 490 € <span class="text-xs text-gray-400 font-normal font-sans">estimation</span></p>
-              <p class="text-xs text-gray-300 leading-relaxed">Création intégrale par Matt Mez avec direction artistique exclusive et archive pérenne.</p>
+              <p class="text-3xl font-extrabold text-white font-mono">~ 2 490 € <span class="text-xs text-gray-400 font-normal font-sans">estimation indicative</span></p>
+              <p class="text-xs text-gray-300 leading-relaxed">Création exclusive par Matt Mez avec direction artistique personnalisée et archive pérenne.</p>
               
               <ul class="space-y-2 text-xs text-gray-300 pt-2 border-t border-white/10">
                 <li class="flex items-center gap-2">✓ Tout le pack Participatif</li>
                 <li class="flex items-center gap-2">✓ Direction artistique exclusive Matt Mez</li>
                 <li class="flex items-center gap-2">✓ Livre d'or vocal & messages audio</li>
-                <li class="flex items-center gap-2">✓ Dépôt photo & vidéo HD illimité</li>
+                <li class="flex items-center gap-2">✓ Dépôt photo & vidéo HD</li>
                 <li class="flex items-center gap-2">✓ Pack d'archive complet post-mariage</li>
               </ul>
             </div>
@@ -537,8 +553,8 @@
         <div id="devis-mariage-form-box" class="max-w-3xl mx-auto p-8 md:p-10 rounded-3xl bg-black border border-white/20 shadow-2xl space-y-6">
           <div class="text-center space-y-2">
             <span class="text-xs font-mono text-pink-300 uppercase tracking-wider">Demande de Devis & Réservation de Date</span>
-            <h3 class="text-2xl font-bold text-white tracking-tight">Réserver votre date avec Matt Mez</h3>
-            <p class="text-xs text-gray-300">Recevez votre proposition personnalisée et vérifiez la disponibilité du studio sous 24h.</p>
+            <h3 class="text-2xl font-bold text-white tracking-tight">Transmettre votre projet à Matt Mez</h3>
+            <p class="text-xs text-gray-300">Ceci est une demande de création. L'estimation sera confirmée par le Studio après étude du projet (réponse généralement sous 24 h ouvrées).</p>
           </div>
 
           <form id="form-devis-mariage" class="space-y-4 text-xs">
@@ -585,15 +601,15 @@
 
             <div class="pt-2">
               <button type="submit" class="w-full py-4 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
-                ✦ Transmettre ma demande de devis au Studio BYAIME →
+                ✦ Transmettre ma demande de réservation au Studio BYAIME →
               </button>
             </div>
           </form>
 
           <!-- Toast Confirmation -->
           <div id="toast-devis-sent" class="hidden p-4 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-center space-y-1">
-            <p class="font-bold text-emerald-300">✓ Demande de devis transmise avec succès !</p>
-            <p class="text-[11px] text-gray-200">Matt Mez étudiera votre dossier et vous contactera sous 24h pour caler un échange de cadrage.</p>
+            <p class="font-bold text-emerald-300">✓ Demande de création transmise avec succès !</p>
+            <p class="text-[11px] text-gray-200">Matt Mez étudiera votre dossier et vous contactera sous 24 h ouvrées pour organiser la session de cadrage.</p>
           </div>
         </div>
 
@@ -764,7 +780,7 @@
         });
       }
 
-      // 4. Interactive Playlist Proposal in Prototype
+      // 4. Interactive Playlist Proposal in Prototype with Soft Animation
       var songBtn = document.getElementById('btn-propose-song');
       var songTitle = document.getElementById('song-input-title');
       var songArtist = document.getElementById('song-input-artist');
@@ -809,7 +825,6 @@
           var date = document.getElementById('dev-date') ? document.getElementById('dev-date').value : '';
           var formule = document.getElementById('dev-formule-choice') ? document.getElementById('dev-formule-choice').value : '';
 
-          // Track lead
           if (window.trackBYAIME) {
             window.trackBYAIME('mariage_devis_requested', { couple: coupleNames, date: date, formule: formule });
           }
