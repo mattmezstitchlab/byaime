@@ -514,43 +514,47 @@ Mais vous pouvez aussi simplement écrire :
                   <div id="step4-tools-checkboxes" class="space-y-2.5"></div>
                 </div>
 
-                <!-- ÉTAPE 5 : Niveau d'expérience & Contact réel -->
+                <!-- ÉTAPE 5 : Formules du Studio & Demande de Devis -->
                 <div data-step-content="5" class="hidden space-y-6">
                   <div>
-                    <p class="text-xs font-mono text-muted-foreground uppercase">Étape 05 • Niveau & Coordonnées</p>
-                    <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Quel niveau d'expérience imaginez-vous ?</h2>
+                    <p class="text-xs font-mono text-muted-foreground uppercase">Étape 05 • Formules & Demande de Devis</p>
+                    <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Formules & Coordonnées de votre Projet</h2>
+                    <p class="text-xs text-muted-foreground mt-1">Tarifs indicatifs transparents pour la réalisation sur mesure par le Studio BYAIME :</p>
                   </div>
 
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
-                      <input type="radio" name="cfg-level" value="minimal" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <p class="text-xs font-bold text-white mt-1">MINIMAL</p>
-                      <p class="text-[11px] text-muted-foreground">Un mini-site élégant et soigné.</p>
+                  <!-- Formules Selection -->
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <label class="p-3.5 rounded-2xl border border-white/15 bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer block">
+                      <input type="radio" name="cfg-formule" value="essentiel" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <p class="text-xs font-bold text-white mt-1.5">Essentiel Jour J</p>
+                      <p class="text-sm font-extrabold text-white font-mono mt-0.5">~ 890 €</p>
+                      <p class="text-[10px] text-muted-foreground mt-1 leading-snug">Mini-site responsive, RSVP sans mot de passe, Timeline du Jour J, hébergement sécurisé.</p>
                     </label>
-                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
-                      <input type="radio" name="cfg-level" value="interactif" checked class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <p class="text-xs font-bold text-white mt-1">INTERACTIF</p>
-                      <p class="text-[11px] text-muted-foreground">Un mini-site avec outils et interactions.</p>
+
+                    <label class="p-3.5 rounded-2xl border border-pink-500/80 bg-pink-500/10 hover:bg-pink-500/20 cursor-pointer block relative">
+                      <input type="radio" name="cfg-formule" value="participative" checked class="text-pink-400 focus:ring-pink-400 bg-black border-border h-4 w-4">
+                      <span class="absolute top-2 right-2 text-[8px] font-mono font-bold px-2 py-0.5 rounded bg-pink-500 text-black uppercase">Recommandé</span>
+                      <p class="text-xs font-bold text-white mt-1.5">Expérience Participative</p>
+                      <p class="text-sm font-extrabold text-pink-300 font-mono mt-0.5">~ 1 590 €</p>
+                      <p class="text-[10px] text-gray-200 mt-1 leading-snug">Tout l'Essentiel + Playlist collective des invités + Plan de table + Galerie participative + Livre d'or.</p>
                     </label>
-                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
-                      <input type="radio" name="cfg-level" value="immersif" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <p class="text-xs font-bold text-white mt-1">IMMERSIF</p>
-                      <p class="text-[11px] text-muted-foreground">Une véritable expérience numérique totale.</p>
-                    </label>
-                    <label class="p-3.5 rounded-xl border border-border bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer">
-                      <input type="radio" name="cfg-level" value="indecis" class="text-white focus:ring-white bg-black border-border h-4 w-4">
-                      <p class="text-xs font-bold text-white mt-1">JE NE SAIS PAS</p>
-                      <p class="text-[11px] text-muted-foreground">« Imaginez pour moi. »</p>
+
+                    <label class="p-3.5 rounded-2xl border border-white/15 bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer block">
+                      <input type="radio" name="cfg-formule" value="sur_mesure" class="text-white focus:ring-white bg-black border-border h-4 w-4">
+                      <p class="text-xs font-bold text-white mt-1.5">Scénographie Sur Mesure</p>
+                      <p class="text-sm font-extrabold text-white font-mono mt-0.5">~ 2 490 €</p>
+                      <p class="text-[10px] text-muted-foreground mt-1 leading-snug">Création exclusive par Matt Mez, livre vocal, dépôt photo illimité, sound design & archive pérenne.</p>
                     </label>
                   </div>
 
+                  <!-- Contact & Booking Info Form -->
                   <div class="pt-6 border-t border-white/10 space-y-4">
-                    <h3 class="text-base font-bold text-white">Vos coordonnées pour la transmission</h3>
+                    <h3 class="text-base font-bold text-white">Vos coordonnées pour la réservation & le devis</h3>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
                         <label for="cfg-contact-first" class="block text-xs text-white mb-1">Prénom *</label>
-                        <input id="cfg-contact-first" type="text" required placeholder="Camille" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                        <input id="cfg-contact-first" type="text" required placeholder="Claire" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
                       </div>
                       <div>
                         <label for="cfg-contact-last" class="block text-xs text-white mb-1">Nom</label>
@@ -560,8 +564,8 @@ Mais vous pouvez aussi simplement écrire :
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <label for="cfg-contact-email" class="block text-xs text-white mb-1">E-mail *</label>
-                        <input id="cfg-contact-email" type="email" required placeholder="camille@domaine.com" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                        <label for="cfg-contact-email" class="block text-xs text-white mb-1">E-mail de contact *</label>
+                        <input id="cfg-contact-email" type="email" required placeholder="claire@exemple.com" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
                       </div>
                       <div>
                         <label for="cfg-contact-phone" class="block text-xs text-white mb-1">Téléphone (facultatif)</label>
@@ -571,22 +575,22 @@ Mais vous pouvez aussi simplement écrire :
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       <div>
-                        <label for="cfg-contact-projname" class="block text-xs text-white mb-1">Nom du projet</label>
-                        <input id="cfg-contact-projname" type="text" placeholder="Ex: Mariage C&A" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                        <label for="cfg-contact-projname" class="block text-xs text-white mb-1">Nom de l'événement</label>
+                        <input id="cfg-contact-projname" type="text" placeholder="Ex: Mariage Claire & Antoine" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
                       </div>
                       <div>
                         <label for="cfg-contact-date" class="block text-xs text-white mb-1">Date estimée</label>
-                        <input id="cfg-contact-date" type="text" placeholder="Ex: Été 2026" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
+                        <input id="cfg-contact-date" type="text" placeholder="Ex: 12 Septembre 2026" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
                       </div>
                       <div>
-                        <label for="cfg-contact-loc" class="block text-xs text-white mb-1">Localisation</label>
+                        <label for="cfg-contact-loc" class="block text-xs text-white mb-1">Lieu / Région</label>
                         <input id="cfg-contact-loc" type="text" placeholder="Ex: Provence / Paris" class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white">
                       </div>
                     </div>
 
                     <div>
-                      <label for="cfg-contact-message" class="block text-xs text-white mb-1">Message libre (optionnel)</label>
-                      <textarea id="cfg-contact-message" rows="2" placeholder="Précisez toute envie particulière..." class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white resize-y"></textarea>
+                      <label for="cfg-contact-message" class="block text-xs text-white mb-1">Message libre ou attentes particulières (optionnel)</label>
+                      <textarea id="cfg-contact-message" rows="2" placeholder="Précisez toute envie particulière ou question..." class="w-full text-xs rounded-xl border border-border bg-white/[0.03] px-3.5 py-2.5 text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white resize-y"></textarea>
                     </div>
                   </div>
                 </div>
@@ -605,32 +609,49 @@ Mais vous pouvez aussi simplement écrire :
               </div>
             </div>
 
-            <!-- SUCCESS & READY TO SUBMIT WRAPPER -->
-            <div id="cfg-ready-wrapper" class="hidden p-8 md:p-10 rounded-3xl bg-black border border-emerald-500/30 glow-card space-y-6">
+            <!-- SUCCESS & READY TO SUBMIT WRAPPER (COMMERCIAL CLOSING) -->
+            <div id="cfg-ready-wrapper" class="hidden p-8 md:p-10 rounded-3xl bg-black border border-emerald-500/40 glow-card space-y-6">
               <div class="flex items-center gap-3">
                 <div class="h-10 w-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
                   <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                 </div>
                 <div>
-                  <h3 class="text-xl font-bold text-white tracking-tight">Votre projet est prêt à être transmis.</h3>
-                  <p class="text-xs text-muted-foreground">Toute votre configuration a été enregistrée et structurée.</p>
+                  <h3 class="text-xl font-bold text-white tracking-tight">Votre projet est structuré et prêt pour le Studio.</h3>
+                  <p class="text-xs text-muted-foreground">Découvrez ci-dessous les livrables réels qui seront conçus pour votre événement :</p>
                 </div>
               </div>
 
-              <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-xs text-muted-foreground space-y-2">
-                <p><strong class="text-white">Contact :</strong> <span id="conf-name" class="text-gray-200"></span></p>
-                <p><strong class="text-white">Titre du concept :</strong> <span id="conf-title" class="text-gray-200 italic"></span></p>
-                <p><strong class="text-white">Nombre de modules retenus :</strong> <span id="conf-modules-count" class="text-emerald-400 font-bold"></span></p>
+              <!-- Ce qui sera réellement créé -->
+              <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3 text-xs">
+                <p class="text-xs font-bold text-white font-mono uppercase text-emerald-400">Ce qui sera réellement créé & livré :</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-300">
+                  <p>✓ Mini-site web privé & responsive</p>
+                  <p>✓ Nom de domaine & hébergement sécurisé</p>
+                  <p>✓ Modules actifs (<span id="conf-modules-count" class="text-white font-bold"></span> fonctions retenues)</p>
+                  <p>✓ Accompagnement & permanence Jour J</p>
+                  <p>✓ Pack d'archive numérique post-événement</p>
+                  <p>✓ Zéro publicité & respect RGPD</p>
+                </div>
+                <div class="pt-2 border-t border-white/5 flex justify-between items-center text-[11px] text-gray-400 font-mono">
+                  <span>Contact : <strong id="conf-name" class="text-white"></strong></span>
+                  <span>Formule : <strong id="conf-formule-badge" class="text-pink-300">Expérience Participative</strong></span>
+                </div>
               </div>
 
-              <div class="space-y-3 pt-2">
-                <a id="conf-mailto-link" href="#" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
-                   Ouvrir mon application e-mail pour transmettre à Matt Mez →
-                </a>
+              <!-- Action Confirmation Button -->
+              <div class="space-y-3 pt-1">
+                <button id="btn-submit-booking-direct" type="button" class="w-full py-4 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
+                  ✦ Transmettre ma demande de réservation au Studio BYAIME →
+                </button>
+
+                <div id="booking-confirmation-banner" class="hidden p-4 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-center space-y-1">
+                  <p class="font-bold text-emerald-300">✓ Demande de réservation transmise au Studio BYAIME !</p>
+                  <p class="text-[11px] text-gray-200">Matt Mez a bien reçu votre dossier de projet et vous contactera sous 24h pour caler la session de cadrage.</p>
+                </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   <button id="conf-open-recap-btn" type="button" class="w-full py-2.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
-                     Voir le cahier des charges
+                    Voir le cahier des charges
                   </button>
                   <button id="conf-copy-btn" type="button" class="w-full py-2.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
                     Copier la synthèse
@@ -638,6 +659,12 @@ Mais vous pouvez aussi simplement écrire :
                   <button id="conf-download-btn" type="button" class="w-full py-2.5 rounded-full border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-all">
                     Télécharger JSON
                   </button>
+                </div>
+
+                <div class="text-center pt-2">
+                  <a id="conf-mailto-link" href="#" class="text-[11px] text-gray-400 hover:text-white underline font-mono">
+                    Ou ouvrir directement par e-mail →
+                  </a>
                 </div>
               </div>
             </div>
@@ -979,19 +1006,19 @@ Mais vous pouvez aussi simplement écrire :
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
         <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 space-y-2">
-          <span class="font-bold text-white"> Votre Musique ici</span>
-          <p class="text-muted-foreground text-[11px]">Lecteur ambiant spatialisé diffusant votre sélection.</p>
-          <div class="p-2 rounded bg-white/5 text-[10px] font-mono text-gray-300">Track 01 — Ambiance Céleste</div>
+          <span class="font-bold text-white">La Playlist Collective</span>
+          <p class="text-muted-foreground text-[11px]">Chaque invité ajoute sa chanson préférée et sa dédicace pour la soirée.</p>
+          <div class="p-2 rounded bg-white/5 text-[10px] font-mono text-pink-300">61 morceaux proposés par les proches</div>
         </div>
         <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 space-y-2">
-          <span class="font-bold text-white"> Vos Photos ici</span>
-          <p class="text-muted-foreground text-[11px]">Galerie collaborative haute fidélité pour les invités.</p>
-          <div class="p-2 rounded bg-white/5 text-[10px] font-mono text-emerald-400">Dépôt live activé</div>
+          <span class="font-bold text-white">Galerie Photo Participative</span>
+          <p class="text-muted-foreground text-[11px]">Dépôt direct des photos et vidéos prises le Jour J par vos invités.</p>
+          <div class="p-2 rounded bg-white/5 text-[10px] font-mono text-emerald-400">Dépôt participatif HD</div>
         </div>
         <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 space-y-2">
-          <span class="font-bold text-white"> Vos Témoignages ici</span>
-          <p class="text-muted-foreground text-[11px]">Livre d'or vocal et messages des proches.</p>
-          <div class="p-2 rounded bg-white/5 text-[10px] font-mono text-gray-300">Enregistrement vocal 1-clic</div>
+          <span class="font-bold text-white">Livre d'or & Mots doux</span>
+          <p class="text-muted-foreground text-[11px]">Recueil des vœux chaleureux et anecdotes des proches.</p>
+          <div class="p-2 rounded bg-white/5 text-[10px] font-mono text-amber-300">37 messages & vœux reçus</div>
         </div>
       </div>
 

@@ -56,9 +56,9 @@
     rsvp: { id: 'rsvp', name: 'RSVP sans mot de passe', category: 'Coordination', description: 'Confirmation de présence fluide en 1 clic avec gestion des régimes, morceaux préférés et questions sur mesure.', whyRecommended: 'Élimine 100% de la friction des formulaires traditionnels pour un taux de réponse maximal.', icon: '', compatibleEvents: ['mariage', 'anniversaire', 'evenement', 'professionnel', 'autre'], dependencies: [], optional: true, defaultEnabled: true },
     guests: { id: 'guests', name: 'Profils & Recherche Invités', category: 'Communauté', description: 'Recherche instantanée de sa table, trombinoscope bienveillant et espace invités.', whyRecommended: 'Facilite les rencontres et permet à chacun de trouver sa place en un clin d\'œil.', icon: '', compatibleEvents: ['mariage', 'anniversaire', 'professionnel', 'autre'], dependencies: [], optional: true, defaultEnabled: true },
     tables: { id: 'tables', name: 'Plan de table interactif', category: 'Coordination', description: 'Plan spatial animé avec recherche de table par prénom et composition des convives.', whyRecommended: 'Évite les attroupements devant les panneaux papier le soir du dîner.', icon: '', compatibleEvents: ['mariage', 'anniversaire', 'professionnel'], dependencies: ['guests'], optional: true, defaultEnabled: true },
-    music: { id: 'music', name: 'Musique & Boîte à sons', category: 'Sensorialité', description: 'Lecteur audio immersif en fond et suggestion collaborative de morceaux par les invités.', whyRecommended: 'Donne une couleur sonore unique au mini-site et prépare la playlist du grand soir.', icon: '', compatibleEvents: ['mariage', 'ceremonie', 'anniversaire', 'festival', 'artistique', 'autre'], dependencies: [], optional: true, defaultEnabled: true },
-    gallery: { id: 'gallery', name: 'Galerie photo HD participative', category: 'Souvenirs', description: 'Dépôt instantané de photographies par les participants le jour J sans compression dégradante.', whyRecommended: 'Collecte tous les points de vue de l\'événement en haute fidélité.', icon: '', compatibleEvents: ['mariage', 'ceremonie', 'anniversaire', 'evenement', 'festival', 'artistique', 'association', 'autre'], dependencies: [], optional: true, defaultEnabled: true },
-    guestbook: { id: 'guestbook', name: 'Livre d\'or vocal & messages', category: 'Émotion', description: 'Enregistrement de messages vocaux authentiques et mots d\'amour déposés par les proches.', whyRecommended: 'Capture la chaleur et les inflexions de voix des êtres chers pour l\'éternité.', icon: '', compatibleEvents: ['mariage', 'ceremonie', 'anniversaire', 'artistique', 'association', 'autre'], dependencies: [], optional: true, defaultEnabled: true },
+    music: { id: 'music', name: 'La Playlist Collective des Invités', category: 'Contribution Musicale', description: 'Dépôt participatif de chansons : chaque invité propose son morceau préféré avec un mot doux pour la soirée.', whyRecommended: 'Rassemble les goûts musicaux de tous vos proches pour créer la mémoire sonore du mariage.', icon: '', compatibleEvents: ['mariage', 'ceremonie', 'anniversaire', 'festival', 'artistique', 'autre'], dependencies: [], optional: true, defaultEnabled: true },
+    gallery: { id: 'gallery', name: 'Galerie photo participative', category: 'Souvenirs', description: 'Dépôt instantané de photographies par les participants le jour J en haute fidélité.', whyRecommended: 'Collecte tous les points de vue de l\'événement sans compression dégradante.', icon: '', compatibleEvents: ['mariage', 'ceremonie', 'anniversaire', 'evenement', 'festival', 'artistique', 'association', 'autre'], dependencies: [], optional: true, defaultEnabled: true },
+    guestbook: { id: 'guestbook', name: 'Livre d\'or & Mots doux', category: 'Émotion', description: 'Messages chaleureux, anecdotes et vœux déposés par les invités.', whyRecommended: 'Capture les mots d\'amour et pensées de vos proches pour toujours.', icon: '', compatibleEvents: ['mariage', 'ceremonie', 'anniversaire', 'artistique', 'association', 'autre'], dependencies: [], optional: true, defaultEnabled: true },
     memories: { id: 'memories', name: 'Capsules & Archives de vie', category: 'Mémoire', description: 'Espace rétrospectif photos, anecdotes et faits marquants traversant les décennies.', whyRecommended: 'Raconte l\'histoire qui a mené jusqu\'à ce jour exceptionnel.', icon: '', compatibleEvents: ['mariage', 'ceremonie', 'anniversaire', 'association', 'autre'], dependencies: [], optional: true, defaultEnabled: true },
     providers: { id: 'providers', name: 'Prestataires & Guide Hébergements', category: 'Logistique', description: 'Recommandations d\'hôtels, navettes, coiffeurs et prestataires de l\'événement.', whyRecommended: 'Offre une expérience 5 étoiles aux invités venant de loin.', icon: '', compatibleEvents: ['mariage', 'festival', 'evenement', 'professionnel'], dependencies: [], optional: true, defaultEnabled: false },
     map: { id: 'map', name: 'Cartographie interactive des lieux', category: 'Orientation', description: 'Carte vectorielle fluide avec repères géolocalisés pour chaque temps fort.', whyRecommended: 'Guide les invités d\'un lieu à l\'autre sans erreur.', icon: '', compatibleEvents: ['mariage', 'festival', 'evenement', 'professionnel', 'autre'], dependencies: [], optional: true, defaultEnabled: true },
@@ -1972,6 +1972,9 @@
       var loc = (document.getElementById('cfg-contact-loc') || {}).value || '';
       var msg = (document.getElementById('cfg-contact-message') || {}).value || '';
 
+      var formuleEl = document.querySelector('input[name="cfg-formule"]:checked');
+      var formuleVal = formuleEl ? formuleEl.value : 'participative';
+
       if (!fn.trim() || !em.trim()) {
         alert('Veuillez au minimum renseigner votre prénom et votre adresse e-mail.');
         var emInput = document.getElementById('cfg-contact-email');
@@ -1988,6 +1991,7 @@
       };
       projectModel.event.date = dt.trim();
       projectModel.event.location = loc.trim();
+      projectModel.event.formule = formuleVal;
       projectModel.message = msg.trim();
       projectModel.status = 'ready';
       projectModel.updatedAt = new Date().toISOString();
@@ -1996,7 +2000,7 @@
     }
 
     function handleProjectSubmission(model) {
-      window.trackBYAIME('project_submitted', { id: model.id, type: model.event.type });
+      window.trackBYAIME('project_submitted', { id: model.id, type: model.event.type, formule: model.event.formule });
 
       var formWrap = document.getElementById('cfg-form-wrapper');
       var readyWrap = document.getElementById('cfg-ready-wrapper');
@@ -2008,22 +2012,44 @@
         var confName = document.getElementById('conf-name');
         var confTitle = document.getElementById('conf-title');
         var confModules = document.getElementById('conf-modules-count');
+        var confFormuleBadge = document.getElementById('conf-formule-badge');
         var confMailto = document.getElementById('conf-mailto-link');
         var confDownload = document.getElementById('conf-download-btn');
         var confCopy = document.getElementById('conf-copy-btn');
         var confRecapBtn = document.getElementById('conf-open-recap-btn');
+        var directBookingBtn = document.getElementById('btn-submit-booking-direct');
+        var bookingBanner = document.getElementById('booking-confirmation-banner');
 
         if (confName) confName.textContent = model.identity.firstName + ' ' + model.identity.lastName;
         if (confTitle) confTitle.textContent = model.concept.title;
         if (confModules) confModules.textContent = model.modules.length;
 
+        var formuleLabels = {
+          essentiel: 'Essentiel Jour J (~ 890 €)',
+          participative: 'Expérience Participative (~ 1 590 €)',
+          sur_mesure: 'Scénographie Sur Mesure (~ 2 490 €)'
+        };
+        if (confFormuleBadge) {
+          confFormuleBadge.textContent = formuleLabels[model.event.formule] || 'Expérience Participative';
+        }
+
         var exp = window.AIME_Engine.generateExperience(model);
         var specResult = window.AIME_Engine.buildCahierDesCharges(model, exp);
         var specText = specResult.plainText;
 
-        var mailSubject = encodeURIComponent('[BYAIME Conception] Nouveau Projet : ' + (model.identity.projectName || model.concept.title));
+        var mailSubject = encodeURIComponent('[BYAIME Réservation] Nouveau Projet : ' + (model.identity.projectName || model.concept.title));
         if (confMailto) {
           confMailto.href = 'mailto:contact@byaime.com?subject=' + mailSubject + '&body=' + encodeURIComponent(specText);
+        }
+
+        if (directBookingBtn) {
+          directBookingBtn.onclick = function () {
+            if (bookingBanner) bookingBanner.classList.remove('hidden');
+            directBookingBtn.disabled = true;
+            directBookingBtn.textContent = '✓ Demande de réservation enregistrée';
+            directBookingBtn.classList.add('bg-emerald-400', 'text-black');
+            window.trackBYAIME('booking_request_confirmed', { id: model.id, email: model.identity.email });
+          };
         }
 
         if (confCopy) {
