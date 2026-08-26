@@ -934,10 +934,63 @@
 
   // Prototypes interactifs
   document.addEventListener('DOMContentLoaded', function () {
-    // Timeline
+    // Timeline Interactive (V9 Living Relational Cockpit)
     document.querySelectorAll('[data-interactive-timeline]').forEach(function (timeline) {
       var steps = timeline.querySelectorAll('[data-timeline-step]');
       var infoDisplay = timeline.querySelector('[data-timeline-info]');
+
+      var momentDatabases = {
+        '11:00': {
+          title: '11:00 · Cérémonie Laïque',
+          time: '11:00 → 12:15 (1h15)',
+          location: 'Sous la grande verrière fleurie',
+          people: '84 invités · Famille & Proches',
+          providers: 'Officiant · Photographe Atelier Lumière · Violoncelliste',
+          music: 'Canon in D (Entrée) & Morceau acoustique live',
+          contributions: 'Vœux intimes & recueil des messages d\'amour déposés par Claire & Camille',
+          desc: 'Échange des alliances sous la verrière fleurie et premier temps fort émotionnel de la journée.'
+        },
+        '12:30': {
+          title: '12:30 · Cocktail & Vin d\'Honneur',
+          time: '12:30 → 18:30 (6h00)',
+          location: 'Jardin des oliviers & terrasse du domaine',
+          people: '84 invités · Tous réunis',
+          providers: 'Traiteur Saveurs du Terroir · Photographe · Groupe acoustique',
+          music: 'Sons d\'ambiance doux & morceaux choisis par les proches',
+          contributions: '12 premières photos partagées en direct par Sophie & Thomas',
+          desc: 'Rafraîchissements, premières photos de groupe dans le parc et retrouvailles des proches.'
+        },
+        '19:30': {
+          title: '19:30 · Dîner sous les lampions',
+          time: '19:30 → 22:15 (2h45)',
+          location: 'Grande halle du domaine',
+          people: '84 invités · 12 tables réparties',
+          providers: 'Traiteur Saveurs du Terroir · Maître d\'hôtel · DJ Collectif Sound',
+          music: 'Entrée des mariés & fond sonore élégant',
+          contributions: 'Plan de table interactif par prénom, anecdotes et discours des témoins',
+          desc: 'Dîner assis à la lueur des lampions, discours intimes et pièce montée.'
+        },
+        '22:30': {
+          title: '22:30 · Première Danse & Soirée',
+          time: '22:30 → 04:00 (Jusqu\'au bout de la nuit)',
+          location: 'Piste de danse & bar de nuit',
+          people: 'Tous les invités sur la piste',
+          providers: 'DJ Collectif Sound & Night · Éclairagiste',
+          music: 'La Playlist Collective des Invités (61 morceaux proposés)',
+          contributions: 'Dédicaces en direct, photos de fête et surprises sur la piste',
+          desc: 'Ouverture du bal par les mariés et lancement de la playlist collective des invités pour le DJ.'
+        },
+        'Lendemain': {
+          title: 'Lendemain · Brunch & Souvenirs',
+          time: '11:30 → 16:00 (4h30)',
+          location: 'Terrasse du parc & piscine',
+          people: 'Famille & proches hébergés sur place',
+          providers: 'Traiteur brunch · Food truck convivial',
+          music: 'Playlist acoustique relaxante',
+          contributions: 'Découverte de la galerie collective complète (48 photos HD) et des vœux du livre d\'or',
+          desc: 'Brunch décontracté au soleil, derniers partages et remise du pack d\'archive du mariage.'
+        }
+      };
 
       steps.forEach(function (step) {
         step.addEventListener('click', function () {
@@ -948,12 +1001,35 @@
           step.classList.remove('bg-white/5', 'border-white/10', 'text-muted-foreground');
           step.classList.add('bg-pink-500/20', 'border-pink-500', 'text-white', 'scale-105');
 
-          var title = step.getAttribute('data-timeline-title');
-          var time = step.getAttribute('data-timeline-time');
-          var desc = step.getAttribute('data-timeline-desc');
+          var timeKey = step.getAttribute('data-timeline-time') || '11:00';
+          var m = momentDatabases[timeKey] || {
+            title: step.getAttribute('data-timeline-title') || timeKey,
+            time: timeKey,
+            location: 'Domaine de réception',
+            people: '84 invités',
+            providers: 'Prestataires coordonnés',
+            music: 'Ambiance du moment',
+            contributions: 'Contributions actives des invités',
+            desc: step.getAttribute('data-timeline-desc') || 'Temps fort du Jour J.'
+          };
 
           if (infoDisplay) {
-            infoDisplay.innerHTML = '<div class="flex justify-between items-baseline"><span class="font-semibold text-white">' + title + '</span><span class="font-mono text-pink-300 text-xs">' + time + '</span></div><p class="text-xs text-muted-foreground mt-1">' + desc + '</p>';
+            infoDisplay.innerHTML = '<div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3 animate-fadeIn text-xs">' +
+              '<div class="flex justify-between items-baseline border-b border-white/10 pb-2">' +
+              '<div>' +
+              '<span class="font-bold text-white text-sm">' + m.title + '</span>' +
+              '<p class="text-[10px] text-pink-300 font-mono">' + m.time + ' · 📍 ' + m.location + '</p>' +
+              '</div>' +
+              '<span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Moment actif</span>' +
+              '</div>' +
+              '<p class="text-gray-300 text-xs leading-relaxed">' + m.desc + '</p>' +
+              '<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] pt-1">' +
+              '<div class="p-2 rounded-xl bg-white/5"><span class="text-[9px] font-mono uppercase text-gray-400">👥 Personnes & Tables :</span><p class="text-white mt-0.5">' + m.people + '</p></div>' +
+              '<div class="p-2 rounded-xl bg-white/5"><span class="text-[9px] font-mono uppercase text-gray-400">✨ Prestataires associés :</span><p class="text-white mt-0.5">' + m.providers + '</p></div>' +
+              '<div class="p-2 rounded-xl bg-white/5"><span class="text-[9px] font-mono uppercase text-gray-400">🎵 Musique & Ambiance :</span><p class="text-white mt-0.5">' + m.music + '</p></div>' +
+              '<div class="p-2 rounded-xl bg-white/5"><span class="text-[9px] font-mono uppercase text-gray-400">💬 Contributions du moment :</span><p class="text-pink-300 mt-0.5">' + m.contributions + '</p></div>' +
+              '</div>' +
+              '</div>';
           }
         });
       });

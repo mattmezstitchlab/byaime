@@ -539,16 +539,31 @@
 
             <!-- Timeline cliquable avec relations -->
             <div data-interactive-timeline class="space-y-3">
-              <div class="grid grid-cols-4 gap-1.5 text-center text-xs font-mono">
+              <div class="grid grid-cols-5 gap-1 text-center text-xs font-mono">
                 <button type="button" data-timeline-step data-timeline-title="11:00 Cérémonie Laïque" data-timeline-time="11:00" data-timeline-desc="Lecture des vœux sous la verrière fleurie et recueil des messages d'amour." class="p-2 rounded-lg border border-pink-500 bg-pink-500/20 text-white transition-all scale-105">11:00</button>
                 <button type="button" data-timeline-step data-timeline-title="12:30 Cocktail & Vin d'Honneur" data-timeline-time="12:30" data-timeline-desc="Jardin des oliviers, premières photos en direct et musique d'accueil." class="p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">12:30</button>
                 <button type="button" data-timeline-step data-timeline-title="19:30 Dîner sous les lampions" data-timeline-time="19:30" data-timeline-desc="Grande halle, plan de table interactif et anecdotes familiales." class="p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">19:30</button>
                 <button type="button" data-timeline-step data-timeline-title="22:30 Première Danse & Soirée" data-timeline-time="22:30" data-timeline-desc="Ouverture du bal et lancement de la playlist collective des invités." class="p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">22:30</button>
+                <button type="button" data-timeline-step data-timeline-title="Lendemain Brunch & Souvenirs" data-timeline-time="Lendemain" data-timeline-desc="Brunch décontracté au soleil, derniers partages et remise du pack d'archive." class="p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-white transition-all">Lendemain</button>
               </div>
 
-              <div data-timeline-info class="p-3.5 rounded-xl bg-white/5 border border-white/5 text-xs min-h-[60px]">
-                <span class="font-semibold text-white">11:00 Cérémonie Laïque</span>
-                <p class="text-muted-foreground mt-0.5">Lecture des vœux sous la verrière fleurie et recueil des messages d'amour.</p>
+              <div data-timeline-info class="min-h-[120px]">
+                <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3 animate-fadeIn text-xs">
+                  <div class="flex justify-between items-baseline border-b border-white/10 pb-2">
+                    <div>
+                      <span class="font-bold text-white text-sm">11:00 · Cérémonie Laïque</span>
+                      <p class="text-[10px] text-pink-300 font-mono">11:00 → 12:15 (1h15) · 📍 Sous la grande verrière fleurie</p>
+                    </div>
+                    <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Moment actif</span>
+                  </div>
+                  <p class="text-gray-300 text-xs leading-relaxed">Échange des alliances sous la verrière fleurie et premier temps fort émotionnel de la journée.</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] pt-1">
+                    <div class="p-2 rounded-xl bg-white/5"><span class="text-[9px] font-mono uppercase text-gray-400">👥 Personnes :</span><p class="text-white mt-0.5">84 invités · Famille & Proches</p></div>
+                    <div class="p-2 rounded-xl bg-white/5"><span class="text-[9px] font-mono uppercase text-gray-400">✨ Prestataires :</span><p class="text-white mt-0.5">Officiant · Photographe · Violoncelle</p></div>
+                    <div class="p-2 rounded-xl bg-white/5"><span class="text-[9px] font-mono uppercase text-gray-400">🎵 Musique :</span><p class="text-white mt-0.5">Canon in D & Morceau acoustique live</p></div>
+                    <div class="p-2 rounded-xl bg-white/5"><span class="text-[9px] font-mono uppercase text-gray-400">💬 Contributions :</span><p class="text-pink-300 mt-0.5">Vœux intimes & messages d'amour</p></div>
+                  </div>
+                </div>
               </div>
             </div>
 
