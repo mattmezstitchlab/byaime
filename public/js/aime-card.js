@@ -295,7 +295,7 @@
             '</div>' +
             '<p class="text-gray-200 mt-1">' + item.description + '</p>' +
             '</div>' +
-            '<span class="text-[10px] text-emerald-400 font-mono flex items-center gap-1 flex-shrink-0">✓ Validée</span>';
+            '<span class="text-[10px] text-emerald-400 font-mono flex items-center gap-1 flex-shrink-0">' + (window.AIME_Icons ? window.AIME_Icons.verified : '') + ' Validée</span>';
           historyContainer.appendChild(row);
         });
       }
