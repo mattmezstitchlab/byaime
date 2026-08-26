@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="fr" style="scroll-behavior: smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'Écosystème AIME — Réciprocité, Contribution Humaine & Valeur Invisible | BYAIME</title>
+  <meta name="description" content="Découvrez l'écosystème de contribution humaine et de réciprocité AIME : rendre visible, mesurable et compréhensible la circulation des richesses non monétaires.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><circle cx='12' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/><circle cx='20' cy='16' r='8' stroke='white' stroke-width='1.5' fill='none'/></svg>">
+  <link rel="apple-touch-icon" href="/img/og-image.png">
+  <link rel="canonical" href="https://byaime.fr/ecosysteme">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="L'Écosystème AIME — Réciprocité & Contribution Humaine | BYAIME">
+  <meta property="og:description" content="Ce que vous apportez à l'écosystème devient une ressource pour quelqu'un. Ce dont vous avez besoin devient une opportunité pour quelqu'un d'autre.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://byaime.fr/ecosysteme">
+  <meta property="og:image" content="https://byaime.fr/img/og-image.png">
+
+  <link rel="preload" href="/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    dialog[open] { display: flex; flex-direction: column; animation: modal-in 0.25s ease-out; }
+    dialog::backdrop { background: rgba(0,0,0,0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); animation: backdrop-in 0.25s ease-out; }
+    @keyframes modal-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+    @keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/aime-card.js" defer></script>
+  <script src="/js/aime-ecosystem.js" defer></script>
+</head>
+<body class="font-sans antialiased text-foreground bg-background">
+
+  <!-- Skip link -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md">
+    Aller au contenu principal
+  </a>
+
+  <!-- ===== Navigation ===== -->
+  <header id="main-header" class="sticky top-0 z-40 w-full bg-background/80 backdrop-blur-md transition-[border-color] duration-300" style="border-bottom: 1px solid transparent">
+    <nav id="main-nav" class="relative mx-auto flex max-w-5xl items-center justify-between px-6 pt-12 pb-0 transition-[padding] duration-300">
+      <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight text-white">
+        <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1"/></svg>
+        BYAIME
+      </a>
+
+      <div class="hidden items-center gap-6 lg:gap-8 md:flex absolute left-1/2 -translate-x-1/2">
+        <a href="/a-propos" class="text-sm text-muted-foreground hover:text-white transition-colors">À propos</a>
+        <a href="/projets" class="text-sm text-muted-foreground hover:text-white transition-colors">Projets</a>
+        <a href="/card" class="text-sm text-muted-foreground hover:text-white transition-colors">AIME CARD</a>
+        <a href="/ecosysteme" class="text-sm text-white font-medium transition-colors flex items-center gap-1.5">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+          Écosystème
+        </a>
+        <a href="/projet" class="text-sm text-muted-foreground hover:text-white transition-colors">Imaginer mon projet</a>
+      </div>
+
+      <a href="/projet" class="hidden md:inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-medium text-black hover:bg-white/90 transition-all glow-subtle">
+        Imaginer mon projet
+      </a>
+
+      <button id="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" class="flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors md:hidden">
+        <span class="sr-only">Ouvrir le menu</span>
+        <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" aria-hidden="true" class="hidden border-t border-border bg-background px-6 py-4 md:hidden">
+      <div class="flex flex-col gap-4">
+        <a href="/" class="text-sm text-muted-foreground hover:text-white transition-colors">Accueil</a>
+        <a href="/a-propos" class="text-sm text-muted-foreground hover:text-white transition-colors">À propos</a>
+        <a href="/projets" class="text-sm text-muted-foreground hover:text-white transition-colors">Projets</a>
+        <a href="/card" class="text-sm text-muted-foreground hover:text-white transition-colors">AIME CARD</a>
+        <a href="/ecosysteme" class="text-sm text-white font-medium transition-colors flex items-center gap-1.5">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+          Écosystème
+        </a>
+        <a href="/projet" class="text-sm text-muted-foreground hover:text-white transition-colors">Imaginer mon projet</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== Hero Introduction ===== -->
+    <section class="py-[calc(32px+4vh)]">
+      <div class="mx-auto max-w-5xl px-6 text-center">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium tracking-wide mb-6 bg-white/[0.03]">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Démonstration Prospective • L'Écosystème de Contribution Réciproque AIME
+          </span>
+          <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-white leading-[1.15]">
+            Rendre visible la circulation <br class="hidden sm:inline">
+            <span class="text-gradient">des richesses humaines.</span>
+          </h1>
+          <p class="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+            L'économie ne commence pas seulement quand l'argent circule. Elle commence aussi lorsqu'une personne apporte quelque chose d'utile à une autre. Ce que vous apportez à l'écosystème peut devenir une ressource pour quelqu'un. Ce dont vous avez besoin peut devenir une opportunité de contribution pour quelqu'un d'autre.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- COUCHE 1 : LA PERSONNE (AIME CARD & CE QUE J'APPORTE / BESOIN) -->
+    <!-- ================================================================= -->
+    <section class="py-12 border-t border-border">
+      <div class="mx-auto max-w-5xl px-6 space-y-12">
+        <div class="max-w-2xl mx-auto text-center" data-animate>
+          <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Première Couche • La Personne</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight mt-1">Le Passeport de Contribution Personnelle</h2>
+          <p class="text-xs text-muted-foreground mt-1">L'AIME CARD rend lisible votre profil, vos transmissions et vos besoins d'entraide.</p>
+        </div>
+
+        <!-- 3D Card Preview & Reciprocal Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center" data-animate>
+          
+          <!-- Interactive 3D Card -->
+          <div class="lg:col-span-6 flex justify-center">
+            <div id="aime-card-3d-wrap" class="card-3d-wrap w-full max-w-[380px] min-h-[520px] cursor-pointer select-none">
+              <div id="aime-card-inner" class="card-3d-inner w-full min-h-[520px]">
+                
+                <!-- Recto -->
+                <div class="card-3d-face p-6 rounded-3xl bg-zinc-950 border border-white/20 shadow-2xl flex flex-col justify-between space-y-4" style="background: radial-gradient(80% 60% at 50% 10%, rgba(35,35,42,0.95) 0%, #09090b 100%);">
+                  <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                    <span class="text-xs font-mono font-bold tracking-widest text-white">AIME CARD</span>
+                    <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-white/10 text-muted-foreground">RECTO • IDENTITÉ</span>
+                  </div>
+                  <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                      <img src="/img/matt-mez.webp" alt="Matt Mez" width="1024" height="1024" class="w-16 h-16 rounded-xl object-cover ring-2 ring-white/20">
+                      <div>
+                        <h3 class="text-xl font-bold text-white">MATT MEZ</h3>
+                        <p class="text-[11px] text-pink-300 font-mono">Concepteur • Musicien</p>
+                        <p class="text-[10px] text-muted-foreground">📍 Paris & Territoires créatifs</p>
+                      </div>
+                    </div>
+                    <div class="space-y-1 text-xs">
+                      <span class="text-[9px] font-mono uppercase text-muted-foreground">Compétences :</span>
+                      <p class="text-gray-300 text-[11px]">Design d'émotion • Musique & Sound Design • UX/UI • Code</p>
+                    </div>
+                    <div class="space-y-1 text-xs">
+                      <span class="text-[9px] font-mono uppercase text-emerald-400">Je peux transmettre :</span>
+                      <p class="text-emerald-300 text-[11px]">Créativité • Design sensible • Musique • Ateliers ouverts</p>
+                    </div>
+                  </div>
+                  <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs">
+                    <span class="text-[9px] font-mono text-muted-foreground">ID: aime_matt_mez</span>
+                    <button id="btn-flip-card" type="button" class="px-3 py-1 rounded-full bg-white text-[10px] font-bold text-black hover:bg-white/90">
+                      Voir la contribution ↻
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Verso -->
+                <div class="card-3d-face card-3d-back p-6 rounded-3xl bg-zinc-950 border border-white/20 shadow-2xl flex flex-col justify-between space-y-4" style="background: radial-gradient(80% 60% at 50% 90%, rgba(30,40,35,0.95) 0%, #09090b 100%);">
+                  <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                    <span class="text-xs font-mono font-bold tracking-widest text-white">AIME CONTRIBUTION</span>
+                    <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">VERSO • VALEUR</span>
+                  </div>
+                  <div class="text-center py-1">
+                    <span id="card-total-contributions" class="text-4xl font-extrabold text-white font-mono">284</span>
+                    <p class="text-[9px] font-mono uppercase tracking-widest text-emerald-400 font-bold">CONTRIBUTIONS RECONNUES</p>
+                  </div>
+                  <div class="grid grid-cols-3 gap-1.5 text-center text-xs">
+                    <div class="p-1.5 rounded-lg bg-white/5"><p id="card-count-entraide" class="font-bold text-white font-mono">73</p><p class="text-[8px] text-muted-foreground uppercase">Entraide</p></div>
+                    <div class="p-1.5 rounded-lg bg-white/5"><p id="card-count-transmission" class="font-bold text-white font-mono">42</p><p class="text-[8px] text-muted-foreground uppercase">Transm.</p></div>
+                    <div class="p-1.5 rounded-lg bg-white/5"><p id="card-count-ecologie" class="font-bold text-white font-mono">31</p><p class="text-[8px] text-muted-foreground uppercase">Écolo.</p></div>
+                    <div class="p-1.5 rounded-lg bg-white/5"><p id="card-count-matiere" class="font-bold text-white font-mono">28</p><p class="text-[8px] text-muted-foreground uppercase">Matière</p></div>
+                    <div class="p-1.5 rounded-lg bg-white/5"><p id="card-count-lien-social" class="font-bold text-white font-mono">64</p><p class="text-[8px] text-muted-foreground uppercase">Social</p></div>
+                    <div class="p-1.5 rounded-lg bg-white/5"><p id="card-count-territoire" class="font-bold text-white font-mono">46</p><p class="text-[8px] text-muted-foreground uppercase">Territ.</p></div>
+                  </div>
+                  <div class="pt-2 border-t border-white/10 flex justify-between items-center text-xs">
+                    <button type="button" data-open-dialog="modal-add-contribution" class="px-2.5 py-1 rounded-full bg-emerald-400 text-[10px] font-bold text-black">+ Contribuer</button>
+                    <button id="btn-flip-card-back" type="button" class="px-2.5 py-1 rounded-full border border-white/20 text-[10px] text-white">Voir recto ↻</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Reciprocal Exchange Matrix -->
+          <div class="lg:col-span-6 space-y-6">
+            <div class="p-6 rounded-3xl bg-black border border-white/10 glow-card space-y-4">
+              <div class="flex items-center gap-2">
+                <span class="text-base">🤝</span>
+                <h3 class="text-sm font-bold text-white uppercase tracking-wider">Ce que je peux apporter :</h3>
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-200">Du temps</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-200">Une compétence</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-200">Un savoir-faire</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-200">Un objet / outil</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-200">Un véhicule</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-200">Un espace</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-200">Une écoute</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-200">Une réparation</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-200">Une formation</span>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-3xl bg-zinc-950 border border-emerald-500/20 space-y-4">
+              <div class="flex items-center gap-2">
+                <span class="text-base">🌱</span>
+                <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wider">Ce dont j'ai besoin :</h3>
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-300">Un accompagnement</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-300">Une compétence</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-300">Un transport</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-300">Un logement temporaire</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-300">Un outil spécifique</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-300">Une réparation</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-300">Un partenaire créatif</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-300">Une aide ponctuelle</span>
+                <span class="p-2 rounded-xl bg-white/5 border border-white/5 text-gray-300">Un espace libre</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- COUCHE 2 : LE COMPTEUR & LA CIRCULATION EN BOUCLE -->
+    <!-- ================================================================= -->
+    <section class="py-16 border-t border-border bg-black/50">
+      <div class="mx-auto max-w-5xl px-6 space-y-12">
+        <div class="max-w-2xl mx-auto text-center" data-animate>
+          <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Deuxième Couche • Le Compteur & La Circulation</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight mt-1">L'Indice de Réciprocité Humaine</h2>
+          <p class="text-xs text-muted-foreground mt-1">
+            Une mesure multidimensionnelle de la confiance et des flux de solidarité sans conversion monétaire.
+          </p>
+        </div>
+
+        <!-- 6 Metrics Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" data-animate>
+          <div class="p-4 rounded-2xl bg-black border border-white/10 text-center space-y-1">
+            <p class="text-2xl font-extrabold text-white font-mono">284</p>
+            <p class="text-[10px] font-mono text-emerald-400 font-semibold uppercase">CONTRIBUTIONS</p>
+            <p class="text-[9px] text-muted-foreground">Actions reconnues</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-black border border-white/10 text-center space-y-1">
+            <p class="text-2xl font-extrabold text-white font-mono">73</p>
+            <p class="text-[10px] font-mono text-emerald-400 font-semibold uppercase">RÉCIPROCITÉ</p>
+            <p class="text-[9px] text-muted-foreground">Interactions faites</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-black border border-white/10 text-center space-y-1">
+            <p class="text-2xl font-extrabold text-white font-mono">42</p>
+            <p class="text-[10px] font-mono text-emerald-400 font-semibold uppercase">TRANSMISSION</p>
+            <p class="text-[9px] text-muted-foreground">Savoirs partagés</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-black border border-white/10 text-center space-y-1">
+            <p class="text-2xl font-extrabold text-white font-mono">46</p>
+            <p class="text-[10px] font-mono text-emerald-400 font-semibold uppercase">IMPACT LOCAL</p>
+            <p class="text-[9px] text-muted-foreground">Actions de terrain</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-black border border-white/10 text-center space-y-1">
+            <p class="text-2xl font-extrabold text-white font-mono">28</p>
+            <p class="text-[10px] font-mono text-emerald-400 font-semibold uppercase">MATIÈRE</p>
+            <p class="text-[9px] text-muted-foreground">Objets mutualisés</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-black border border-white/10 text-center space-y-1">
+            <p class="text-2xl font-extrabold text-white font-mono">64</p>
+            <p class="text-[10px] font-mono text-emerald-400 font-semibold uppercase">LIEN SOCIAL</p>
+            <p class="text-[9px] text-muted-foreground">Écoute & présence</p>
+          </div>
+        </div>
+
+        <!-- Dynamic Circulation Loop Diagram -->
+        <div class="p-8 rounded-3xl bg-zinc-950 border border-white/10 glow-card space-y-6" data-animate>
+          <div class="text-center">
+            <span class="text-[10px] font-mono uppercase text-muted-foreground">Le Circuit Fermé de Solidarité</span>
+            <h3 class="text-lg font-bold text-white mt-0.5">L'Écosystème comme Espace de Circulation</h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-3">
+              <div class="flex items-center gap-2 text-xs font-mono text-emerald-300">
+                <span>➔</span> <strong>FLUX SORTANT (Ce que je donne)</strong>
+              </div>
+              <div class="flex items-center justify-between text-xs text-white">
+                <span class="p-2 rounded bg-white/5">JE CONTRIBUE</span>
+                <span class="text-muted-foreground">➔</span>
+                <span class="p-2 rounded bg-emerald-500/10 text-emerald-300 font-mono">L'ÉCOSYSTÈME</span>
+                <span class="text-muted-foreground">➔</span>
+                <span class="p-2 rounded bg-white/5">QUELQU'UN EN BÉNÉFICIE</span>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-3">
+              <div class="flex items-center gap-2 text-xs font-mono text-pink-300">
+                <span>➔</span> <strong>FLUX ENTRANT (Ce que je reçois)</strong>
+              </div>
+              <div class="flex items-center justify-between text-xs text-white">
+                <span class="p-2 rounded bg-white/5">QUELQU'UN CONTRIBUE</span>
+                <span class="text-muted-foreground">➔</span>
+                <span class="p-2 rounded bg-pink-500/10 text-pink-300 font-mono">L'ÉCOSYSTÈME</span>
+                <span class="text-muted-foreground">➔</span>
+                <span class="p-2 rounded bg-white/5">JE PEUX EN BÉNÉFICIER</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- COUCHE 3 : LE RÉSEAU INVISIBLE (CASCADE D'IMPACT & CONSTELLATION) -->
+    <!-- ================================================================= -->
+    <section class="py-16 border-t border-border">
+      <div class="mx-auto max-w-5xl px-6 space-y-12">
+        <div class="max-w-2xl mx-auto text-center" data-animate>
+          <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Troisième Couche • Le Réseau Invisible</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight mt-1">L'Effet Cascade des Contributions</h2>
+          <p class="text-xs text-muted-foreground mt-1">
+            Une seule action génère des résonances positives multiples au sein de la communauté. Cliquez sur un cas pour explorer la chaîne d'impact.
+          </p>
+        </div>
+
+        <div id="ripple-cases-container" class="grid grid-cols-1 md:grid-cols-3 gap-6" data-animate>
+          <!-- Populated dynamically by js/aime-ecosystem.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- COUCHE 4 : LE SIMULATEUR D'ÉCOSYSTÈME (POPULATION 100 PERSONNES) -->
+    <!-- ================================================================= -->
+    <section class="py-16 border-t border-border bg-black/60">
+      <div class="mx-auto max-w-5xl px-6 space-y-10">
+        <div class="max-w-2xl mx-auto text-center" data-animate>
+          <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Quatrième Couche • Le Mécanisme d'Équilibre</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight mt-1">Simulateur d'Écosystème & Réciprocité</h2>
+          <p class="text-xs text-muted-foreground mt-1">
+            Modélisez comment 100 personnes mutualisant leurs ressources diminuent le gaspillage et augmentent le bien-être collectif.
+          </p>
+          <p class="text-[10px] text-amber-300 font-mono mt-2">
+            SIMULATION CONCEPTUELLE — AUCUNE PROMESSE DE RENDEMENT, DE REVENU OU DE DROIT FINANCIER.
+          </p>
+        </div>
+
+        <div id="ecosystem-simulator-box" class="p-8 md:p-10 rounded-3xl bg-zinc-950 border border-white/10 glow-card" data-animate>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <!-- Controls (Sliders) -->
+            <div class="lg:col-span-6 space-y-6">
+              <div class="space-y-2">
+                <div class="flex justify-between text-xs text-white">
+                  <span>Partage & Mutualisation des Objets</span>
+                  <span id="sim-val-mutualisation" class="font-mono text-emerald-400 font-bold">55 %</span>
+                </div>
+                <input id="sim-slider-mutualisation" type="range" min="0" max="100" value="55" class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400">
+                <p class="text-[10px] text-muted-foreground">Outils de bricolage, véhicules, équipements partagés</p>
+              </div>
+
+              <div class="space-y-2">
+                <div class="flex justify-between text-xs text-white">
+                  <span>Transmission des Compétences & Temps</span>
+                  <span id="sim-val-skills" class="font-mono text-emerald-400 font-bold">65 %</span>
+                </div>
+                <input id="sim-slider-skills" type="range" min="0" max="100" value="65" class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400">
+                <p class="text-[10px] text-muted-foreground">Cours, écoute, entraide, réparations bénévoles</p>
+              </div>
+
+              <div class="space-y-2">
+                <div class="flex justify-between text-xs text-white">
+                  <span>Disponibilité des Espaces & Lieux</span>
+                  <span id="sim-val-space" class="font-mono text-emerald-400 font-bold">40 %</span>
+                </div>
+                <input id="sim-slider-space" type="range" min="0" max="100" value="40" class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400">
+                <p class="text-[10px] text-muted-foreground">Ateliers temporaires, accueil ponctuel dans le cadre légal</p>
+              </div>
+            </div>
+
+            <!-- Dynamic Simulation Output -->
+            <div class="lg:col-span-6 p-6 rounded-2xl bg-black border border-white/10 space-y-4">
+              <div class="flex justify-between items-baseline border-b border-white/10 pb-3">
+                <span class="text-xs uppercase font-mono text-muted-foreground">Potentiel de Réciprocité :</span>
+                <span id="sim-out-score" class="text-2xl font-extrabold text-emerald-400 font-mono">60 / 100</span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="p-3 rounded-xl bg-white/5">
+                  <span class="text-muted-foreground text-[10px] uppercase font-mono">Objets mutualisés</span>
+                  <p id="sim-out-objects" class="text-lg font-bold text-white font-mono mt-0.5">132</p>
+                </div>
+                <div class="p-3 rounded-xl bg-white/5">
+                  <span class="text-muted-foreground text-[10px] uppercase font-mono">Heures transmises</span>
+                  <p id="sim-out-hours" class="text-lg font-bold text-white font-mono mt-0.5">247 h</p>
+                </div>
+                <div class="p-3 rounded-xl bg-white/5">
+                  <span class="text-muted-foreground text-[10px] uppercase font-mono">Espaces mobilisés</span>
+                  <p id="sim-out-spaces" class="text-lg font-bold text-white font-mono mt-0.5">64</p>
+                </div>
+                <div class="p-3 rounded-xl bg-white/5">
+                  <span class="text-muted-foreground text-[10px] uppercase font-mono">Indice d'énergie préservée</span>
+                  <p id="sim-out-gain-index" class="text-lg font-bold text-pink-300 font-mono mt-0.5">14 655 pts</p>
+                </div>
+              </div>
+
+              <p class="text-[11px] text-gray-400 italic leading-relaxed pt-1">
+                Constat : Lorsque les ressources existantes sont partagées et réparées, le gaspillage diminue et la résilience collective s'accroît.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- COUCHE 5 : LA TRANSPARENCE & LE REGISTRE HORODATÉ -->
+    <!-- ================================================================= -->
+    <section class="py-16 border-t border-border">
+      <div class="mx-auto max-w-5xl px-6 space-y-10">
+        <div class="max-w-2xl mx-auto text-center" data-animate>
+          <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Cinquième Couche • La Transparence</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight mt-1">Le Registre de Preuve Horodaté</h2>
+          <p class="text-xs text-muted-foreground mt-1">
+            La valeur d'un système vient de ce que chacun peut comprendre et vérifier.
+          </p>
+        </div>
+
+        <!-- 5 Levels of Proof -->
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs" data-animate>
+          <div class="p-3 rounded-xl bg-white/5 border border-white/5"><span class="font-mono text-emerald-300">1. Déclaration</span><p class="text-[10px] text-muted-foreground mt-0.5">Action déclarée</p></div>
+          <div class="p-3 rounded-xl bg-white/5 border border-white/5"><span class="font-mono text-emerald-300">2. Confirmation</span><p class="text-[10px] text-muted-foreground mt-0.5">Accord du tiers</p></div>
+          <div class="p-3 rounded-xl bg-white/5 border border-white/5"><span class="font-mono text-emerald-300">3. Preuve</span><p class="text-[10px] text-muted-foreground mt-0.5">Document ou photo</p></div>
+          <div class="p-3 rounded-xl bg-white/5 border border-white/5"><span class="font-mono text-emerald-300">4. Validation</span><p class="text-[10px] text-muted-foreground mt-0.5">Tiers de confiance</p></div>
+          <div class="p-3 rounded-xl bg-white/5 border border-white/5"><span class="font-mono text-emerald-300">5. Reconnue</span><p class="text-[10px] text-muted-foreground mt-0.5">Certifiée au registre</p></div>
+        </div>
+
+        <!-- Timeline Log Feed -->
+        <div id="ecosystem-ledger-timeline" class="space-y-2.5" data-animate>
+          <!-- Populated dynamically by js/aime-ecosystem.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- COUCHE 6 : LE FUTUR DE L'ÉCOSYSTÈME (CONNECTEURS CONCEPTUELS) -->
+    <!-- ================================================================= -->
+    <section class="py-16 border-t border-border bg-black/40">
+      <div class="mx-auto max-w-5xl px-6 space-y-10">
+        <div class="max-w-2xl mx-auto text-center" data-animate>
+          <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Sixième Couche • Vision Prospective</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight mt-1">Ce que l'écosystème pourrait devenir</h2>
+          <p class="text-xs text-muted-foreground mt-1">
+            Des ponts respectueux et transparents avec les acteurs du monde réel.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-animate>
+          <div class="p-5 rounded-2xl bg-zinc-950 border border-white/10 space-y-2">
+            <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-white/10 text-muted-foreground uppercase">CONNECTEUR CONCEPTUEL</span>
+            <h4 class="text-sm font-bold text-white">Associations & Collectifs</h4>
+            <p class="text-xs text-muted-foreground">Mise en relation des besoins locaux avec les compétences citoyennes disponibles.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-zinc-950 border border-white/10 space-y-2">
+            <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-white/10 text-muted-foreground uppercase">CONNECTEUR CONCEPTUEL</span>
+            <h4 class="text-sm font-bold text-white">Entreprises & Mécénat</h4>
+            <p class="text-xs text-muted-foreground">Mise à disposition de matériel et soutien aux initiatives d'intérêt général.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-zinc-950 border border-white/10 space-y-2">
+            <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-white/10 text-muted-foreground uppercase">CONNECTEUR CONCEPTUEL</span>
+            <h4 class="text-sm font-bold text-white">Collectivités Territoriales</h4>
+            <p class="text-xs text-muted-foreground">Cartographie des initiatives citoyennes pour renforcer la résilience locale.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-zinc-950 border border-white/10 space-y-2">
+            <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-white/10 text-muted-foreground uppercase">CONNECTEUR CONCEPTUEL</span>
+            <h4 class="text-sm font-bold text-white">Justificatifs & Horodatage</h4>
+            <p class="text-xs text-muted-foreground">Archivage sécurisé des preuves de transmission sans dépendance opaque.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-zinc-950 border border-white/10 space-y-2">
+            <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-white/10 text-muted-foreground uppercase">CONNECTEUR CONCEPTUEL</span>
+            <h4 class="text-sm font-bold text-white">Paiements & Dons Agréés</h4>
+            <p class="text-xs text-muted-foreground">Passerelles officielles pour financer des bourses de projets associatifs.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-zinc-950 border border-white/10 space-y-2">
+            <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-white/10 text-muted-foreground uppercase">CONNECTEUR CONCEPTUEL</span>
+            <h4 class="text-sm font-bold text-white">Comptabilité Professionnelle</h4>
+            <p class="text-xs text-muted-foreground">Compatibilité avec les rapports RSE et le bénévolat de compétences.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- COUCHE 7 : LA DIMENSION ASSOCIATIVE (LE MONDE AIME) -->
+    <!-- ================================================================= -->
+    <section class="py-16 border-t border-border">
+      <div class="mx-auto max-w-5xl px-6 space-y-10">
+        <div class="max-w-2xl mx-auto text-center" data-animate>
+          <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Septième Couche • Gouvernance Partagée</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight mt-1">Le Rôle de l'Association LE MONDE AIME</h2>
+          <p class="text-xs text-muted-foreground mt-1">
+            Gouvernance transparente, animation de communauté et mesure d'impact social (Loi 1901).
+          </p>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-zinc-950 border border-white/10 glow-card space-y-6" data-animate>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+              <strong class="text-white">Animation de Communauté</strong>
+              <p class="text-muted-foreground">Organisation d'ateliers d'entraide, de médiation créative et de rencontres.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+              <strong class="text-white">Mesure d'Impact Réel</strong>
+              <p class="text-muted-foreground">Documentation rigoureuse des projets soutenus et des flux d'entraide.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+              <strong class="text-white">Gouvernance Ouverte</strong>
+              <p class="text-muted-foreground">Transparence totale des ressources et indépendance citoyenne.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- COUCHE 8 : LA CARTE COMME PASSEPORT & CONCLUSION -->
+    <!-- ================================================================= -->
+    <section class="py-20 text-center border-t border-border bg-black/70">
+      <div class="mx-auto max-w-3xl px-6 space-y-6" data-animate>
+        <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Huitième Couche • Le Passeport d'Écosystème</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+          « Ma valeur ne se résume pas à ce que je possède. <br>
+          <span class="text-gradient">Elle se mesure aussi à ce que je transmets et partage. »</span>
+        </h2>
+        <p class="text-sm text-muted-foreground leading-relaxed">
+          Découvrez votre AIME CARD en 3D ou donnez vie à l'univers numérique de votre événement avec le moteur de conception BYAIME.
+        </p>
+        <div class="pt-4 flex flex-wrap justify-center gap-4">
+          <a href="/card" class="inline-flex items-center rounded-full bg-white px-8 py-3.5 text-xs font-bold text-black hover:bg-white/90 transition-all glow-subtle">
+            Explorer AIME CARD 3D →
+          </a>
+          <a href="/projet" class="inline-flex items-center rounded-full border border-white/20 px-6 py-3.5 text-xs font-medium text-white hover:bg-white/10 transition-colors">
+            Imaginer mon projet d'événement
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== MODALE : DÉTAIL D'UN EFFET CASCADE ===== -->
+  <dialog id="modal-ripple-detail" class="rounded-3xl bg-zinc-950 text-foreground border border-white/10" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 2rem); max-width: 38rem; max-height: 85vh; padding: 0; overflow: hidden; font-size: 1rem">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.25rem 1.75rem; flex-shrink: 0">
+      <div>
+        <span id="rip-det-cat" class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 uppercase">TRANSMISSION</span>
+        <h3 id="rip-det-title" class="text-base font-bold text-white mt-1">Détails de l'Effet Cascade</h3>
+      </div>
+      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
+        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div style="overflow-y: auto; padding: 1.5rem 1.75rem; display: flex; flex-direction: column; gap: 1.25rem">
+      <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1 text-xs">
+        <span class="text-[10px] uppercase font-mono text-muted-foreground">Action Déclenchée :</span>
+        <p id="rip-det-initiator" class="text-white"></p>
+      </div>
+
+      <div class="space-y-2">
+        <span class="text-[10px] uppercase font-mono text-emerald-400">Paliers de propagation dans l'écosystème :</span>
+        <div id="rip-det-steps" class="space-y-2"></div>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-white/5 border border-white/10 text-xs text-gray-300">
+        <strong class="text-white">Impact global :</strong>
+        <p id="rip-det-summary" class="mt-0.5 italic"></p>
+      </div>
+
+      <div class="pt-2 border-t border-white/10 flex justify-end">
+        <button type="button" data-close-dialog class="px-5 py-2 rounded-full bg-white text-xs font-bold text-black hover:bg-white/90">
+          Fermer
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ===== Footer ===== -->
+  <footer class="border-t border-border py-16 bg-black/60">
+    <div class="mx-auto max-w-5xl px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div class="md:col-span-2">
+          <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight text-white">
+            <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1"/><circle cx="18" cy="10" r="9" stroke="currentColor" stroke-width="1"/></svg>
+            BYAIME
+          </a>
+          <p class="mt-4 text-sm text-muted-foreground max-w-md leading-relaxed">
+            Studio créatif et technologique fondé par <strong>Matt Mez</strong>. Conception d'univers numériques sur mesure et de l'écosystème de contribution AIME.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-white">Navigation</p>
+          <ul class="mt-4 space-y-2.5 text-sm text-muted-foreground">
+            <li><a href="/" class="hover:text-white transition-colors">Accueil</a></li>
+            <li><a href="/a-propos" class="hover:text-white transition-colors">À propos</a></li>
+            <li><a href="/projets" class="hover:text-white transition-colors">Projets</a></li>
+            <li><a href="/card" class="hover:text-white transition-colors">AIME CARD</a></li>
+            <li><a href="/ecosysteme" class="text-white font-medium">Écosystème</a></li>
+            <li><a href="/projet" class="hover:text-white transition-colors">Imaginer mon projet</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-white">Engagement</p>
+          <ul class="mt-4 space-y-2.5 text-sm text-muted-foreground">
+            <li><a href="/projet#soutien" class="hover:text-white transition-colors">Soutenir LE MONDE AIME</a></li>
+            <li><button type="button" data-open-dialog="modal-legal" class="hover:text-white transition-colors text-left">Mentions légales & CGU</button></li>
+            <li><button type="button" data-open-dialog="modal-privacy" class="hover:text-white transition-colors text-left">Confidentialité</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+        <p>© 2026 BYAIME. Conçu avec exigence par Matt Mez & LE MONDE AIME.</p>
+        <p>« Rendre visible ce qui a toujours été invisible. »</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modals -->
+  <dialog id="modal-legal" class="rounded-2xl bg-background text-foreground" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 3rem); max-width: 42rem; max-height: 80vh; padding: 0; overflow: hidden; border: none; font-size: 1rem">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2.5rem; flex-shrink: 0">
+      <h2 style="font-size: 1.25rem; font-weight: 700">Mentions légales & Cadre d'Engagement</h2>
+      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
+        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div style="overflow-y: auto; padding: 2rem 2.5rem 3rem; display: flex; flex-direction: column; gap: 2rem">
+      <p class="text-sm text-muted-foreground leading-relaxed">
+        Le site BYAIME est édité par <strong>Matt Mez</strong> en lien avec l'association <strong>LE MONDE AIME</strong> (loi 1901).
+      </p>
+    </div>
+  </dialog>
+
+  <dialog id="modal-privacy" class="rounded-2xl bg-background text-foreground" style="position: fixed; inset: 0; margin: auto; width: calc(100% - 3rem); max-width: 42rem; max-height: 80vh; padding: 0; overflow: hidden; border: none; font-size: 1rem">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding: 1.5rem 2.5rem; flex-shrink: 0">
+      <h2 style="font-size: 1.25rem; font-weight: 700">Politique de Confidentialité</h2>
+      <button type="button" data-close-dialog style="color: var(--color-muted-foreground); cursor: pointer; background: none; border: none" aria-label="Fermer">
+        <svg style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div style="overflow-y: auto; padding: 2rem 2.5rem 3rem; display: flex; flex-direction: column; gap: 1.5rem">
+      <p class="text-sm text-muted-foreground leading-relaxed">
+        Respect total de la vie privée. Aucune donnée sensible n'est affichée sur les profils publics. Contact : <a href="mailto:contact@byaime.com" class="text-white underline">contact@byaime.com</a>.
+      </p>
+    </div>
+  </dialog>
+
+</body>
+</html>
