@@ -62,6 +62,11 @@ const server = http.createServer(async (req, res) => {
     pathname = '/ecosysteme';
   }
 
+  // Handle /personne alias to /personne/matt-mez
+  if (pathname === '/personne' || pathname === '/personne/') {
+    pathname = '/personne/matt-mez';
+  }
+
   // Handle Static Files & Clean URLs
   let filePath = path.join(ROOT, pathname);
 
